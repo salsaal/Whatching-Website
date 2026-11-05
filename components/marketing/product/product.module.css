@@ -41,9 +41,35 @@
   animation: press 0.7s ease var(--d, 0s) both;
 }
 
+.pop {
+  animation: pop 0.01s linear var(--d, 0s) both;
+}
+
+.word {
+  animation: pop 0.25s ease var(--d, 0s) both;
+}
+
+.grow {
+  transform-origin: top center;
+  animation: grow 0.3s ease var(--d, 0s) both;
+}
+
+.tint {
+  animation: tint 0.5s ease var(--d, 0s) both;
+}
+
+.caret {
+  animation: blink 0.9s steps(1) infinite;
+}
+
 [data-play="false"] .in,
 [data-play="false"] .out,
-[data-play="false"] .press {
+[data-play="false"] .press,
+[data-play="false"] .grow,
+[data-play="false"] .tint,
+[data-play="false"] .pop,
+[data-play="false"] .word,
+[data-play="false"] .caret {
   animation-play-state: paused;
 }
 
@@ -74,17 +100,58 @@
   }
 }
 
+@keyframes pop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tint {
+  from {
+    border-color: var(--from, #dfe6e2);
+  }
+  to {
+    border-color: var(--to, #169f49);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .in {
+  .in,
+  .pop,
+  .word,
+  .grow,
+  .tint {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+  .tint {
+    border-color: var(--to, #169f49);
   }
   .out {
     animation: none;
     opacity: 0;
   }
-  .press {
+  .press,
+  .caret {
     animation: none;
   }
 }

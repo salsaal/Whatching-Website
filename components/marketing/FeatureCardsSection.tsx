@@ -3,15 +3,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal, SectionHeading } from "./Primitives";
 import BroadcastVisual from "./product/BroadcastVisual";
-import { AIChatVisual, FlowBuilderVisual } from "./visuals";
-
-// Interim: the chatbot and AI cards show the older visuals, scaled down,
-// until their rebuilt versions replace them.
-const Interim = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded-[18px] overflow-hidden" style={{ zoom: 0.62 }}>
-    {children}
-  </div>
-);
+import FlowVisual from "./product/FlowVisual";
+import AIAgentVisual from "./product/AIAgentVisual";
 
 const cards = [
   {
@@ -24,21 +17,13 @@ const cards = [
     title: "Chatbot builder",
     desc: "Build automated chats on a drag-and-drop canvas: menus, questions and branches, with a hand-over to a person. No coding.",
     href: "/features/whatsapp-flows",
-    visual: (
-      <Interim>
-        <FlowBuilderVisual />
-      </Interim>
-    )
+    visual: <FlowVisual />
   },
   {
     title: "AI agent",
     desc: "Answers customer questions from your own documents, website and FAQs, on WhatsApp and Instagram, and hands over to your team.",
     href: "/features/ai-chatbot",
-    visual: (
-      <Interim>
-        <AIChatVisual />
-      </Interim>
-    )
+    visual: <AIAgentVisual />
   }
 ];
 
@@ -58,7 +43,7 @@ const FeatureCardsSection = () => (
               className="h-full rounded-3xl p-3 flex flex-col md:flex-row lg:flex-col gap-5 md:items-center lg:items-stretch"
               style={{ background: "var(--background-secondary)" }}
             >
-              <div className="w-full md:w-1/2 lg:w-full shrink-0">
+              <div className="w-full md:w-1/2 lg:w-full shrink-0 lg:h-[440px]">
                 {card.visual}
               </div>
               <div className="px-3 pb-4 md:pb-0 lg:pb-4 flex flex-col gap-2">

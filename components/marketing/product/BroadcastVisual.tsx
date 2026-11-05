@@ -8,7 +8,7 @@ import {
   Send,
   Eye
 } from "lucide-react";
-import BeachArt from "./BeachArt";
+import TravelPhoto from "./TravelPhoto";
 import styles from "./product.module.css";
 import { useInViewPlay } from "./useInViewPlay";
 
@@ -38,11 +38,11 @@ const BroadcastVisual = () => {
   return (
     <div
       {...play}
-      className={styles.frame}
+      className={`${styles.frame} h-full flex flex-col`}
       role="img"
       aria-label="Whatching broadcast “Summer Escape”: the approved summer_escape template sent to 2,483 travel leads, with delivered, read and button click counts"
     >
-      <div className="px-4 pt-3.5 pb-3 flex items-start justify-between gap-3">
+      <div className="px-4 pt-3 pb-2.5 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p
             className="text-[10.5px] font-semibold uppercase tracking-[0.08em]"
@@ -91,7 +91,7 @@ const BroadcastVisual = () => {
         </div>
       </div>
 
-      <div className="px-4 pb-3 flex flex-wrap gap-1.5 text-[10.5px] font-semibold">
+      <div className="px-4 pb-2.5 flex flex-wrap gap-1.5 text-[10.5px] font-semibold">
         <span
           className="inline-flex items-center h-5 px-2 rounded-md tracking-[0.04em]"
           style={{ background: "#eef2ff", color: "#3b5bdb" }}
@@ -113,7 +113,9 @@ const BroadcastVisual = () => {
         </span>
       </div>
 
-      <div className={`${styles.chat} px-3 py-4 flex justify-end`}>
+      <div
+        className={`${styles.chat} flex-1 px-3 py-2.5 flex justify-end items-center`}
+      >
         <div
           className={`${styles.in} w-[88%] rounded-xl rounded-tr-[4px] overflow-hidden`}
           style={delay(T.send, {
@@ -123,7 +125,12 @@ const BroadcastVisual = () => {
           } as React.CSSProperties)}
         >
           <div className="p-1">
-            <BeachArt className="block w-full h-auto rounded-lg" />
+            <div
+              className="rounded-lg overflow-hidden"
+              style={{ aspectRatio: "240 / 84" }}
+            >
+              <TravelPhoto className="block w-full h-full" />
+            </div>
           </div>
           <div className="px-2.5 pt-1 pb-1.5 text-[12.5px] leading-[1.45]">
             <p>
@@ -168,13 +175,13 @@ const BroadcastVisual = () => {
             style={{ color: "#027eb5" }}
           >
             <div
-              className={`${styles.press} flex items-center justify-center gap-1.5 py-2 border-t`}
+              className={`${styles.press} flex items-center justify-center gap-1.5 py-1.5 border-t`}
               style={delay(T.tap, { borderColor: "rgba(11,20,26,0.08)" })}
             >
               <Reply className="w-3.5 h-3.5" aria-hidden /> Plan my trip
             </div>
             <div
-              className="flex items-center justify-center gap-1.5 py-2 border-t"
+              className="flex items-center justify-center gap-1.5 py-1.5 border-t"
               style={{ borderColor: "rgba(11,20,26,0.08)" }}
             >
               <ExternalLink className="w-3.5 h-3.5" aria-hidden /> View packages
