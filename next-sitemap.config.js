@@ -1,17 +1,12 @@
 // next-sitemap.config.js
+// Generated on every build (postbuild). The output in public/ is gitignored.
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_DOMAIN ?? "https://google.com", // Replace with your domain
-  generateRobotsTxt: true, // (Optional) Generates a robots.txt file
-  sitemapSize: 7000, // (Optional) Limit sitemap size, default is 5000
-  exclude: ["/admin/*", "/private/*"], // (Optional) Exclude specific paths
-  changefreq: "weekly", // (Optional) Set default change frequency
-  priority: 0.7, // (Optional) Set default priority for URLs,
-  // sourceDir: 'app',
+  siteUrl: "https://www.whatching.com",
+  generateRobotsTxt: true,
+  sitemapSize: 7000,
+  changefreq: "weekly",
+  priority: 0.7,
   robotsTxtOptions: {
-    policies: [
-      { userAgent: "*", allow: "/" },
-      { userAgent: "Googlebot", allow: "/blog" },
-      { userAgent: "Bingbot", disallow: "/private" }
-    ]
+    policies: [{ userAgent: "*", allow: "/" }]
   }
 };
