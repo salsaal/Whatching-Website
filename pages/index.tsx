@@ -1,6 +1,7 @@
 import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
+import DemoVideoSection from "@/components/marketing/DemoVideoSection";
 import TrustBar from "@/components/marketing/TrustBar";
 import EcosystemDiagram from "@/components/marketing/EcosystemDiagram";
 import PlatformOverview from "@/components/marketing/PlatformOverview";
@@ -18,6 +19,7 @@ import TrustAPISection from "@/components/marketing/TrustAPISection";
 import PricingPreview from "@/components/marketing/PricingPreview";
 import FaqSection, { homepageFaqs } from "@/components/marketing/FaqSection";
 import { faqSchema } from "@/lib/seo";
+import { demoVideoSchema } from "@/lib/data/video";
 import FinalCta from "@/components/marketing/FinalCta";
 
 export default function Home() {
@@ -27,10 +29,11 @@ export default function Home() {
         title="WhatsApp Business API & Marketing Software | Whatching"
         description="Sell and support customers on WhatsApp and Instagram from one place. Official WhatsApp Business API, broadcasts, chatbots and a team inbox. Free 7-day trial."
         path="/"
-        jsonLd={[faqSchema(homepageFaqs)]}
+        jsonLd={[faqSchema(homepageFaqs), demoVideoSchema("/")]}
       />
       <SiteShell>
         <Hero />
+        <DemoVideoSection />
         <TrustBar />
         <EcosystemDiagram />
         <PlatformOverview />

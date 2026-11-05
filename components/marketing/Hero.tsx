@@ -109,7 +109,7 @@ const Hero = () => {
             <Link href={PRODUCT_APP_URL} className="btn-primary">
               Start your free 7-day trial <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/#faq" className="btn-secondary">
+            <Link href="/demo" className="btn-secondary">
               Book a Demo
             </Link>
           </div>

@@ -12,7 +12,7 @@ const options = [
     icon: Users,
     title: "Talk to Sales",
     desc: "See a demo and find the right plan for your team.",
-    href: "mailto:hello@whatching.com?subject=Sales%20enquiry"
+    href: "/demo"
   },
   {
     icon: Headphones,
