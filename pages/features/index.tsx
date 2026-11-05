@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SiteShell from "@/components/marketing/SiteShell";
@@ -11,18 +11,16 @@ const categories: FeatureCategory[] = ["WhatsApp", "Instagram", "Platform"];
 export default function FeaturesIndex() {
   return (
     <>
-      <Head>
-        <title>Features | Whatching — WhatsApp &amp; Instagram Automation</title>
-        <meta
-          name="description"
-          content="Explore Whatching's full feature set — WhatsApp broadcasts, AI chatbots, no-code flows, a shared inbox, analytics and Instagram automation."
-        />
-      </Head>
+      <Seo
+        title="Features: WhatsApp Broadcasts, Chatbots & Inbox | Whatching"
+        description="WhatsApp broadcasts, message templates, a no-code chatbot builder, an AI agent, a shared team inbox, analytics and Instagram automation in one place."
+        path="/features"
+      />
       <SiteShell>
         <section className="hero-section !pb-16">
           <div className="container-wide relative">
             <Reveal>
-              <SectionHeading
+              <SectionHeading as="h1"
                 align="center"
                 eyebrow="Features"
                 title="Everything you need to convert conversations into revenue."

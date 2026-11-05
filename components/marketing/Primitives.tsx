@@ -79,13 +79,16 @@ export const SectionHeading = ({
   title,
   description,
   align = "left",
-  tone = "primary"
+  tone = "primary",
+  as: Heading = "h2"
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
   tone?: "primary" | "instagram" | "neutral";
+  /** Use "h1" when this is the page's main heading. The look stays the same. */
+  as?: "h1" | "h2";
 }) => (
   <div
     className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}
@@ -95,7 +98,7 @@ export const SectionHeading = ({
         <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
       </div>
     )}
-    <h2 className="heading-2 mb-4">{title}</h2>
+    <Heading className="heading-2 mb-4">{title}</Heading>
     {description && (
       <p className="body-large" style={{ color: "var(--text-secondary)" }}>
         {description}

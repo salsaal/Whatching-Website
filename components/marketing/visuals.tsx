@@ -263,8 +263,8 @@ export const AIChatVisual = () => (
           className="rounded-xl rounded-tr-sm px-4 py-2.5 text-sm max-w-[85%] text-white"
           style={{ background: "var(--primary)" }}
         >
-          Yes — size M is in stock, and cash on delivery is available for your
-          area. Want me to place the order?
+          Yes, size M is in stock, and cash on delivery is available for your
+          area. Would you like help choosing a colour?
         </div>
       </div>
       <div className="flex justify-start">
@@ -275,7 +275,7 @@ export const AIChatVisual = () => (
             color: "var(--text-body)"
           }}
         >
-          Yes please, go ahead 🙌
+          Yes please, can someone from the team help?
         </div>
       </div>
       <div className="flex justify-end">
@@ -283,39 +283,8 @@ export const AIChatVisual = () => (
           className="rounded-xl rounded-tr-sm px-4 py-2.5 text-sm max-w-[85%] text-white"
           style={{ background: "var(--primary)" }}
         >
-          Order #4821 created — you'll get tracking on WhatsApp once it ships 📦
+          Of course. I've passed your chat to Priya from our team. She'll reply here shortly.
         </div>
-      </div>
-    </div>
-
-    <div
-      className="mt-5 rounded-lg p-3"
-      style={{ background: "var(--accent-wash)" }}
-    >
-      <p
-        className="text-[11px] font-semibold uppercase tracking-wide mb-2"
-        style={{ color: "var(--primary-dark)" }}
-      >
-        Extracted from conversation
-      </p>
-      <div className="flex flex-wrap gap-1.5">
-        {[
-          "Size: M",
-          "Payment: COD",
-          "Status: Order created",
-          "Order ID: #4821"
-        ].map((chip) => (
-          <span
-            key={chip}
-            className="text-[11px] font-medium px-2.5 py-1 rounded-full"
-            style={{
-              background: "var(--surface)",
-              color: "var(--text-primary)"
-            }}
-          >
-            {chip}
-          </span>
-        ))}
       </div>
     </div>
 
@@ -329,7 +298,7 @@ export const AIChatVisual = () => (
           { icon: Check, label: "Collects details" },
           { icon: UserCheck, label: "Qualifies lead" },
           { icon: Users, label: "Assigns agent" },
-          { icon: Sparkles, label: "Closes the sale" }
+          { icon: Sparkles, label: "Team takes over" }
         ].map((step, i, arr) => (
           <React.Fragment key={step.label}>
             <div className="flex flex-col items-center gap-2">

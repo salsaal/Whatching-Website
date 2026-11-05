@@ -7,8 +7,7 @@ import {
   QueryKey
 } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
-import type { AppContext, AppProps } from "next/app";
-import App from "next/app";
+import type { AppProps } from "next/app";
 import React from "react";
 import { toast, Toaster } from "sonner";
 import { GeistSans } from "geist/font/sans";
@@ -75,33 +74,10 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
   fixSSRLayout();
 
   return (
-    <main className={GeistSans.className}>
+    <div className={GeistSans.className}>
+      {/* Titles, descriptions and share tags are set per page by components/Seo. */}
       <Head>
-        <title>WhatChing | WhatsApp Marketing & Automation Platform</title>
-
-        <meta
-          name="description"
-          content="Scale your business with WhatsApp automation. Send bulk campaigns, automate chats, and convert leads with AI-powered workflows."
-        />
-
-        {/* OG */}
-        <meta property="og:title" content="WhatChing | WhatsApp Marketing" />
-        <meta
-          property="og:description"
-          content="Scale your business with WhatsApp automation. Send bulk campaigns, automate chats, and convert leads with AI-powered workflows."
-        />
-        <meta
-          property="og:image"
-          content="https://www.whatching.com/og-image.png"
-        />
-        <meta property="og:type" content="website" />
-
-        {/* Favicon */}
         <link rel="icon" href="/favicon2.ico" />
-        <link
-          rel="apple-touch-icon"
-          href="https://www.whatching.com/og-image.png"
-        />
       </Head>
 
       <QueryClientProvider client={queryClient}>
@@ -109,14 +85,6 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <Analytics />
       </QueryClientProvider>
-    </main>
+    </div>
   );
 }
-
-CustomApp.getInitialProps = async (context: AppContext) => {
-  // // const client = initializeApollo({ headers: context.ctx.req?.headers });
-  // // resetServerContext();
-  const appProps = await App.getInitialProps(context);
-
-  return { ...appProps };
-};

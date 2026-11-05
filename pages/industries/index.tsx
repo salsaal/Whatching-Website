@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import IndustryGrid from "@/components/marketing/IndustryGrid";
 import FinalCta from "@/components/marketing/FinalCta";
@@ -6,16 +6,14 @@ import FinalCta from "@/components/marketing/FinalCta";
 export default function IndustriesIndex() {
   return (
     <>
-      <Head>
-        <title>Industries | Whatching</title>
-        <meta
-          name="description"
-          content="See how e-commerce, education, real estate, healthcare, travel and agency businesses use Whatching to automate WhatsApp and Instagram conversations."
-        />
-      </Head>
+      <Seo
+        title="WhatsApp Marketing by Industry | Whatching"
+        description="How online stores, coaching institutes, real estate, clinics, travel and marketing agencies use Whatching to sell and support customers on WhatsApp and Instagram."
+        path="/industries"
+      />
       <SiteShell>
         <div className="pt-16" />
-        <IndustryGrid />
+        <IndustryGrid headingAs="h1" />
         <FinalCta />
       </SiteShell>
     </>

@@ -1,9 +1,16 @@
 import React from "react";
 import SiteShell from "@/components/marketing/SiteShell";
+import Seo from "@/components/Seo/Seo";
 
 function RefundPolicy() {
   return (
-    <SiteShell>
+    <>
+      <Seo
+        title="Refund Policy | Whatching"
+        description="How free trials, cancellations and refunds work for Whatching subscriptions."
+        path="/refund-policy"
+      />
+      <SiteShell>
 
       <section className="section-padding !pt-32">
         <div className="container max-w-3xl">
@@ -151,7 +158,8 @@ function RefundPolicy() {
           </div>
         </div>
       </section>
-    </SiteShell>
+      </SiteShell>
+    </>
   );
 }
 

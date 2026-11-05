@@ -8,7 +8,7 @@ const SharedInboxSection = () => (
     id="inbox"
     eyebrow="Shared Inbox"
     title="One inbox for your entire team."
-    description="WhatsApp, Instagram, AI and human agents — all inside one unified conversation view. Assign chats, leave internal notes, and mention teammates without leaving the thread."
+    description="WhatsApp, Instagram, AI and human agents — all inside one unified conversation view. Assign every chat to the right teammate, and keep the whole team on one WhatsApp number."
     points={[
       { title: "Nothing falls through", desc: "Every conversation has a clear owner and status." },
       { title: "Full context, always", desc: "Customer profile, tags and history sit beside every chat." },

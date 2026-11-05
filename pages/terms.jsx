@@ -1,7 +1,8 @@
 import React from "react";
 import SiteShell from "@/components/marketing/SiteShell";
+import Seo from "@/components/Seo/Seo";
 
-const content = `Terms & Conditions | Whatching
+const content = `Terms & Conditions
 
 1. Introduction
 
@@ -195,7 +196,13 @@ function Terms() {
   const [heading, ...body] = content.split("\n");
 
   return (
-    <SiteShell>
+    <>
+      <Seo
+        title="Terms of Service | Whatching"
+        description="The terms that govern your use of the Whatching website and platform, including subscriptions, acceptable use and your responsibilities."
+        path="/terms"
+      />
+      <SiteShell>
 
       <section className="section-padding !pt-32">
         <div className="container max-w-4xl">
@@ -236,7 +243,8 @@ function Terms() {
           </div>
         </div>
       </section>
-    </SiteShell>
+      </SiteShell>
+    </>
   );
 }
 

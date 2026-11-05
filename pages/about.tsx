@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { ArrowRight, Bot, MessageCircle, Sparkles, Target } from "lucide-react";
 import SiteShell from "@/components/marketing/SiteShell";
@@ -15,18 +15,16 @@ const pillars = [
 export default function About() {
   return (
     <>
-      <Head>
-        <title>About Whatching</title>
-        <meta
-          name="description"
-          content="Whatching builds WhatsApp and Instagram automation software so businesses can turn every customer conversation into revenue."
-        />
-      </Head>
+      <Seo
+        title="About Whatching | WhatsApp & Instagram Automation"
+        description="Whatching is software for Indian businesses to sell and support customers on WhatsApp and Instagram, built on Meta's official WhatsApp Business Platform."
+        path="/about"
+      />
       <SiteShell>
         <section className="hero-section !pb-14">
           <div className="container-wide relative max-w-3xl">
             <Reveal>
-              <SectionHeading
+              <SectionHeading as="h1"
                 eyebrow="About Whatching"
                 title="Businesses don't lose customers because they don't care. They lose them because no one replied in time."
                 description="Whatching exists to close that gap — turning WhatsApp and Instagram into a real customer engagement channel, not just a place messages pile up."

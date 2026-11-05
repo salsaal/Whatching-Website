@@ -7,7 +7,8 @@ import { footerColumns } from "@/lib/data/nav";
 
 const columnDefs: { heading: string; key: keyof typeof footerColumns }[] = [
   { heading: "Product", key: "product" },
-  { heading: "Solutions", key: "solutions" },
+  { heading: "Industries", key: "industries" },
+  { heading: "Resources", key: "resources" },
   { heading: "Company", key: "company" }
 ];
 const socialLinks = [
@@ -28,8 +29,8 @@ const Footer = () => {
         className="container-wide"
         style={{ paddingTop: "5rem", paddingBottom: "3.5rem" }}
       >
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
-          <div className="lg:col-span-2">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-10 mb-14">
+          <div className="sm:col-span-2">
             <Link href="/" className="inline-flex">
               <Image src={Logo} className="h-7 w-max" alt="Whatching" />
             </Link>

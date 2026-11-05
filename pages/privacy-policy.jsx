@@ -1,5 +1,6 @@
 import React from "react";
 import SiteShell from "@/components/marketing/SiteShell";
+import Seo from "@/components/Seo/Seo";
 
 const content = `Privacy Policy
 This Privacy Policy is intended for global users and is designed to align with generally applicable international privacy and data protection principles, including GDPR, CCPA/CPRA, and similar privacy frameworks where applicable.
@@ -270,7 +271,13 @@ function PrivacyPolicy() {
   const [heading, ...body] = content.split("\n");
 
   return (
-    <SiteShell>
+    <>
+      <Seo
+        title="Privacy Policy | Whatching"
+        description="How Whatching collects, uses, stores and protects your information when you use the Whatching website and platform."
+        path="/privacy-policy"
+      />
+      <SiteShell>
 
       <section className="section-padding !pt-32">
         <div className="container max-w-4xl">
@@ -311,7 +318,8 @@ function PrivacyPolicy() {
           </div>
         </div>
       </section>
-    </SiteShell>
+      </SiteShell>
+    </>
   );
 }
 

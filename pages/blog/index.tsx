@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowRight } from "lucide-react";
@@ -13,15 +13,16 @@ export default function BlogIndex() {
 
   return (
     <>
-      <Head>
-        <title>Blog | Whatching</title>
-        <meta name="description" content="WhatsApp marketing, Instagram automation, WhatsApp API and AI automation guides from the Whatching team." />
-      </Head>
+      <Seo
+        title="Blog: WhatsApp & Instagram Marketing Guides | Whatching"
+        description="WhatsApp marketing, WhatsApp Business API, Instagram automation and AI chatbot guides from the Whatching team."
+        path="/blog"
+      />
       <SiteShell>
         <section className="hero-section !pb-10">
           <div className="container-wide relative">
             <Reveal>
-              <SectionHeading align="center" eyebrow="Blog" title="Playbooks for WhatsApp and Instagram automation." />
+              <SectionHeading as="h1" align="center" eyebrow="Blog" title="Playbooks for WhatsApp and Instagram automation." />
             </Reveal>
           </div>
         </section>

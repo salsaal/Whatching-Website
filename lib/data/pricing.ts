@@ -37,6 +37,7 @@ export const pricingPlans: PricingPlan[] = [
       "WhatsApp AI Agent",
       "1M AI Message Tokens",
       "Owner + 2 Team Members",
+      "Role-Based Team Permissions",
       "Sync WhatsApp Business App",
       "Single Phone Number Integration",
       "Messaging Template Management",
@@ -60,7 +61,6 @@ export const pricingPlans: PricingPlan[] = [
       "25,000 WhatsApp Contacts",
       "Upto 2 Phone Numbers per Organization",
       "Owner + 5 Team Members",
-      "Role-Based Team Permissions",
       "3M AI Message Tokens"
     ],
     featureGroups: [

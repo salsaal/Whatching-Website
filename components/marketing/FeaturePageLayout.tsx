@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import SiteShell from "./SiteShell";
@@ -8,6 +8,7 @@ import FinalCta from "./FinalCta";
 import { Reveal, SectionHeading, Eyebrow } from "./Primitives";
 import { Feature, features } from "@/lib/data/features";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
+import { breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
   const tone = feature.category === "Instagram" ? "instagram" : "primary";
@@ -15,13 +16,19 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
 
   return (
     <>
-      <Head>
-        <title>{feature.seoTitle}</title>
-        <meta name="description" content={feature.seoDescription} />
-        <meta property="og:title" content={feature.seoTitle} />
-        <meta property="og:description" content={feature.seoDescription} />
-        <link rel="canonical" href={`https://www.whatching.com/features/${feature.slug}`} />
-      </Head>
+      <Seo
+        title={feature.seoTitle}
+        description={feature.seoDescription}
+        path={`/features/${feature.slug}`}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Features", path: "/features" },
+            { name: feature.name, path: `/features/${feature.slug}` }
+          ]),
+          faqSchema(feature.faq)
+        ]}
+      />
       <SiteShell>
         <section className="hero-section !pb-14">
           <div className="container-wide relative">

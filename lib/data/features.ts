@@ -50,9 +50,9 @@ export const features: Feature[] = [
     headline: "WhatsApp marketing that reads like a platform, not a bulk sender.",
     subheadline:
       "Plan campaigns, automate follow-ups, and manage every lead from one workspace built on the official WhatsApp Business API.",
-    seoTitle: "WhatsApp Marketing Software | Whatching",
+    seoTitle: "WhatsApp Marketing Software for Businesses | Whatching",
     seoDescription:
-      "Whatching is a WhatsApp marketing platform for campaigns, automation, AI chatbots and lead management — built on the official WhatsApp Business API.",
+      "WhatsApp marketing software on the official WhatsApp Business API: broadcasts, message templates, chatbots, AI replies and a shared team inbox. Free 7-day trial.",
     problem:
       "Most teams manage WhatsApp outreach across spreadsheets, personal phones and disconnected tools — campaigns, replies and leads never live in one place.",
     solution:
@@ -60,7 +60,7 @@ export const features: Feature[] = [
     howItWorks: [
       { title: "Connect your number", description: "Bring your existing WhatsApp Business number in through the official API — no losing your chat history." },
       { title: "Build your audience", description: "Import and segment contacts by tags, source or lifecycle stage." },
-      { title: "Launch and automate", description: "Send campaigns, hand off to AI where useful, and route real conversations to your team." }
+      { title: "Launch and automate", description: "Send campaigns, let AI answer where it helps, and hand real conversations to your team." }
     ],
     benefits: [
       { title: "One system of record", description: "Campaigns, automation and conversations in a single contact timeline." },
@@ -88,9 +88,9 @@ export const features: Feature[] = [
     headline: "Broadcast campaigns that actually start conversations.",
     subheadline:
       "Send personalized promotional and transactional campaigns through the official WhatsApp Business API, with delivery analytics on every send.",
-    seoTitle: "WhatsApp Broadcast Software | Whatching",
+    seoTitle: "WhatsApp Broadcast & Bulk Messaging Software | Whatching",
     seoDescription:
-      "Send bulk WhatsApp broadcast campaigns with personalization, CTA buttons, scheduling and delivery analytics — built on the official WhatsApp Business API.",
+      "Send a WhatsApp broadcast to thousands of contacts at once, now or scheduled, using approved templates with images and buttons. Track delivered, read and replied.",
     problem:
       "Generic blasts get ignored, and most bulk-messaging tools give you no visibility into what happened after you hit send.",
     solution:
@@ -126,13 +126,13 @@ export const features: Feature[] = [
     headline: "AI that talks to your customers, not at them.",
     subheadline:
       "Whatching AI understands questions, qualifies leads, and hands off to your team the moment a human touch matters more.",
-    seoTitle: "AI Chatbot for WhatsApp | Whatching",
+    seoTitle: "AI Chatbot for WhatsApp & Instagram | Whatching",
     seoDescription:
-      "Automate WhatsApp conversations with an AI chatbot that understands intent, qualifies leads, and routes conversations to your team when needed.",
+      "An AI agent that answers customer questions on WhatsApp and Instagram from your own documents, website and FAQs, and hands over to your team when needed.",
     problem:
       "Scripted keyword bots frustrate customers, and having agents answer every FAQ around the clock doesn't scale.",
     solution:
-      "Whatching's AI understands customer intent, answers naturally, collects the details your team needs, and routes the conversation to a human at the right moment.",
+      "Whatching's AI understands customer intent, answers naturally, collects the details your team needs, and hands the conversation to a person at the right moment.",
     howItWorks: [
       { title: "AI detects intent", description: "Understands what the customer actually wants, not just keywords." },
       { title: "Collects details", description: "Asks the follow-up questions your sales or support team would ask." },
@@ -164,9 +164,9 @@ export const features: Feature[] = [
     headline: "Build customer journeys without writing code.",
     subheadline:
       "Design multi-step conversational flows visually — welcome messages, questions, conditions, and lead capture, all without a developer.",
-    seoTitle: "WhatsApp Flows Builder | Whatching",
+    seoTitle: "No-Code WhatsApp Chatbot Builder | Whatching",
     seoDescription:
-      "Build no-code WhatsApp automation flows — welcome messages, conditional logic, product recommendations and lead capture — with Whatching's visual flow builder.",
+      "Build a WhatsApp chatbot on a drag-and-drop canvas: menus, questions, branching and handing over to a person. No coding needed.",
     problem:
       "Every custom conversation journey used to mean a developer ticket and a wait — by the time it shipped, the campaign was over.",
     solution:
@@ -201,18 +201,18 @@ export const features: Feature[] = [
     eyebrow: "Team Inbox",
     headline: "One inbox for your entire team.",
     subheadline:
-      "WhatsApp, Instagram, AI and human agents — all inside one unified conversation view, with assignment, notes and mentions.",
-    seoTitle: "Shared WhatsApp Inbox for Teams | Whatching",
+      "WhatsApp, Instagram, AI and human agents — all inside one unified conversation view, with every chat assigned to the right person.",
+    seoTitle: "Shared Team Inbox for WhatsApp & Instagram | Whatching",
     seoDescription:
-      "Manage WhatsApp and Instagram conversations together with a shared team inbox — assign chats, leave internal notes, mention teammates and track status.",
+      "Your whole team replies to WhatsApp and Instagram chats from one inbox, with every chat assigned to the right person. One WhatsApp number, many teammates.",
     problem:
       "When every agent works from their own phone or tab, conversations get missed, duplicated, or answered twice.",
     solution:
       "Whatching's shared inbox brings WhatsApp and Instagram conversations, AI replies and human agents into one place — with clear ownership on every chat.",
     howItWorks: [
       { title: "Conversations arrive centrally", description: "WhatsApp and Instagram messages land in one unified list." },
-      { title: "Assign and tag", description: "Route conversations to the right agent or team, with tags for context." },
-      { title: "Collaborate inline", description: "Leave internal notes and @mention teammates without leaving the chat." }
+      { title: "Assign and tag", description: "Assign each conversation to the right teammate, with tags for context." },
+      { title: "Reply as a team", description: "Everyone works from the same number, so customers get one consistent conversation." }
     ],
     benefits: [
       { title: "Nothing falls through", description: "Every conversation has a clear owner and status." },
@@ -220,13 +220,13 @@ export const features: Feature[] = [
       { title: "Cross-channel view", description: "WhatsApp and Instagram conversations in the same workspace." }
     ],
     useCases: [
-      { title: "Support teams", description: "Distribute incoming conversations evenly across agents." },
+      { title: "Support teams", description: "Assign incoming chats so every customer has a clear owner." },
       { title: "Sales teams", description: "Hand qualified leads from AI straight to the right rep." },
       { title: "Agencies", description: "Manage multiple client inboxes from one login." }
     ],
     faq: [
       { question: "Can multiple agents use one WhatsApp number?", answer: "Yes — the shared inbox lets your whole team work from the same number without collisions." },
-      { question: "Can I assign conversations to specific agents?", answer: "Yes — conversations can be assigned manually or routed automatically by rule." }
+      { question: "Can I assign conversations to specific agents?", answer: "Yes — assign any conversation to a teammate from the inbox." }
     ],
     ctaLabel: "Explore Shared Inbox",
     related: ["ai-chatbot", "whatsapp-marketing", "analytics"]
@@ -240,9 +240,9 @@ export const features: Feature[] = [
     headline: "Know what's working. Scale what isn't.",
     subheadline:
       "Track delivery, replies, leads and conversions across every campaign and channel — WhatsApp and Instagram, in one dashboard.",
-    seoTitle: "WhatsApp & Instagram Analytics Dashboard | Whatching",
+    seoTitle: "WhatsApp Analytics Dashboard | Whatching",
     seoDescription:
-      "Understand campaign and conversation performance across WhatsApp and Instagram — delivery, read rates, replies, leads and conversions in one dashboard.",
+      "See conversations, broadcast results and what Meta is charging for your messages in one dashboard, across WhatsApp and Instagram.",
     problem:
       "Without shared reporting, teams argue about what's working instead of looking at the numbers.",
     solution:
@@ -278,9 +278,9 @@ export const features: Feature[] = [
     headline: "Turn Instagram engagement into conversations.",
     subheadline:
       "Transform comments, DMs and story replies into automated customer journeys — and hand qualified leads straight to WhatsApp.",
-    seoTitle: "Instagram Automation Software | Whatching",
+    seoTitle: "Instagram Automation for DMs & Comments | Whatching",
     seoDescription:
-      "Automate Instagram comments, DMs and message flows — capture leads, qualify them, and hand them off to your team or WhatsApp.",
+      "Auto-reply to Instagram comments, send a DM when someone comments a keyword, automate DMs and run an AI agent on Instagram. Included in the Pro plan.",
     problem:
       "Instagram engagement is high, but most of it dies in the comments section — no one follows up, and no lead ever gets captured.",
     solution:
@@ -316,9 +316,9 @@ export const features: Feature[] = [
     headline: "Every comment can become a conversation.",
     subheadline:
       "Trigger an automatic DM the moment someone comments a keyword on your post — no manual reply, no missed opportunity.",
-    seoTitle: "Instagram Comment Automation | Whatching",
+    seoTitle: "Instagram Comment Auto Reply & Comment-to-DM | Whatching",
     seoDescription:
-      "Automatically DM anyone who comments a keyword on your Instagram post — turn comments into conversations and leads without manual work.",
+      "Auto-reply to Instagram comments and send a DM to anyone who comments a keyword on your post. Turn comments into conversations without replying by hand.",
     problem:
       "\"Comment LINK and I'll send it to you\" posts generate hundreds of comments — and most brands still reply to them one by one, hours later.",
     solution:
@@ -354,9 +354,9 @@ export const features: Feature[] = [
     headline: "Build Instagram DM journeys that convert.",
     subheadline:
       "Welcome, qualify, and move a conversation from an Instagram DM to WhatsApp — without your team typing a single message.",
-    seoTitle: "Instagram DM Automation & Message Flows | Whatching",
+    seoTitle: "Instagram DM Automation | Whatching",
     seoDescription:
-      "Automate Instagram DM conversations with visual message flows — welcome, qualify, capture a phone number, and hand off to WhatsApp or your sales team.",
+      "Automate Instagram DMs with a no-code flow builder: welcome new messages, ask questions, collect details and hand the chat to your team.",
     problem:
       "Instagram DMs are where interested buyers land first — but without automation, a lot of that intent goes cold before anyone replies.",
     solution:
@@ -374,7 +374,7 @@ export const features: Feature[] = [
     useCases: [
       { title: "New follower welcome", description: "Greet and guide new followers who DM you." },
       { title: "Product interest", description: "Qualify interest before assigning a sales rep." },
-      { title: "Support triage", description: "Route support DMs to the right team automatically." }
+      { title: "Support triage", description: "Answer common support DMs automatically and hand the rest to your team." }
     ],
     faq: [
       { question: "Can Instagram DM flows collect a phone number?", answer: "Yes — flows can collect a number and continue the conversation on WhatsApp." },

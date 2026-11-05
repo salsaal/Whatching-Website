@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -8,17 +8,23 @@ import FinalCta from "./FinalCta";
 import { Reveal, SectionHeading, Eyebrow, staggerContainer, staggerItem } from "./Primitives";
 import { Industry } from "@/lib/data/industries";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
+import { breadcrumbSchema } from "@/lib/seo";
 
 const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
   return (
     <>
-      <Head>
-        <title>{industry.seoTitle}</title>
-        <meta name="description" content={industry.seoDescription} />
-        <meta property="og:title" content={industry.seoTitle} />
-        <meta property="og:description" content={industry.seoDescription} />
-        <link rel="canonical" href={`https://www.whatching.com/industries/${industry.slug}`} />
-      </Head>
+      <Seo
+        title={industry.seoTitle}
+        description={industry.seoDescription}
+        path={`/industries/${industry.slug}`}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Industries", path: "/industries" },
+            { name: industry.name, path: `/industries/${industry.slug}` }
+          ])
+        ]}
+      />
       <SiteShell>
         <section className="hero-section !pb-14">
           <div className="container-wide relative">

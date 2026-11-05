@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
@@ -16,25 +16,19 @@ import IndustryGrid from "@/components/marketing/IndustryGrid";
 import WhyWhatching from "@/components/marketing/WhyWhatching";
 import TrustAPISection from "@/components/marketing/TrustAPISection";
 import PricingPreview from "@/components/marketing/PricingPreview";
-import FaqSection from "@/components/marketing/FaqSection";
+import FaqSection, { homepageFaqs } from "@/components/marketing/FaqSection";
+import { faqSchema } from "@/lib/seo";
 import FinalCta from "@/components/marketing/FinalCta";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Whatching — WhatsApp &amp; Instagram Marketing Automation Platform</title>
-        <meta
-          name="description"
-          content="Whatching helps businesses turn WhatsApp and Instagram conversations into revenue — campaigns, AI chatbots, no-code flows, a shared inbox and analytics, built on official messaging APIs."
-        />
-        <meta property="og:title" content="Whatching — WhatsApp & Instagram Marketing Automation Platform" />
-        <meta
-          property="og:description"
-          content="Run campaigns, automate conversations, capture leads and convert customers across WhatsApp and Instagram — from one platform."
-        />
-        <meta property="og:type" content="website" />
-      </Head>
+      <Seo
+        title="WhatsApp Business API & Marketing Software | Whatching"
+        description="Sell and support customers on WhatsApp and Instagram from one place. Official WhatsApp Business API, broadcasts, chatbots and a team inbox. Free 7-day trial."
+        path="/"
+        jsonLd={[faqSchema(homepageFaqs)]}
+      />
       <SiteShell>
         <Hero />
         <TrustBar />

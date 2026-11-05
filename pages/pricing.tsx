@@ -1,6 +1,7 @@
 import React from "react";
-import Head from "next/head";
 import { Check, Minus } from "lucide-react";
+import Seo from "@/components/Seo/Seo";
+import { absoluteUrl, faqSchema, JsonLd, organizationRef, SITE_NAME } from "@/lib/seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import FaqAccordion from "@/components/marketing/FaqAccordion";
 import FinalCta from "@/components/marketing/FinalCta";
@@ -32,25 +33,51 @@ const Cell = ({ value }: { value: string | boolean }) => {
   return <span style={{ color: "var(--text-body)" }}>{value}</span>;
 };
 
+const softwareApplicationSchema: JsonLd = {
+  "@type": "SoftwareApplication",
+  name: SITE_NAME,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: absoluteUrl("/pricing"),
+  publisher: organizationRef,
+  offers: pricingPlans
+    .filter((plan) => plan.monthlyPrice !== null)
+    .map((plan) => ({
+      "@type": "Offer",
+      name: plan.name,
+      description: `${plan.tagline} Price per month, plus 18% GST.`,
+      price: String(plan.monthlyPrice),
+      priceCurrency: "INR",
+      url: absoluteUrl("/pricing"),
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: String(plan.monthlyPrice),
+        priceCurrency: "INR",
+        billingDuration: "P1M",
+        valueAddedTaxIncluded: false
+      }
+    }))
+};
+
 const PricingPage = () => {
   return (
     <>
-      <Head>
-        <title>Pricing | Whatching</title>
-        <meta
-          name="description"
-          content="Transparent WhatsApp and Instagram automation pricing with 0% markup on Meta's conversation fees. Compare Basic, Pro and Enterprise plans."
-        />
-      </Head>
+      <Seo
+        title="WhatsApp Business API Pricing in India | Whatching"
+        description="Plans from ₹2,499/month + GST. Meta's WhatsApp message charges are passed through at 0% markup. Compare Basic, Pro and Enterprise. Free 7-day Pro trial."
+        path="/pricing"
+        jsonLd={[softwareApplicationSchema, faqSchema(pricingFaq)]}
+      />
       <SiteShell>
         <section className="hero-section !min-h-0 !pt-32 !pb-12">
           <div className="container-wide relative text-center">
             <Reveal>
               <SectionHeading
+                as="h1"
                 align="center"
                 eyebrow="Pricing"
                 title="Flexible pricing for every business."
-                description="While others charge 20–35% commission on every WhatsApp conversation, Whatching connects you directly to Meta with zero markup fees."
+                description="Plans from ₹2,499 a month. Meta's own message charges are passed through at 0% markup, so you pay exactly what Meta charges."
               />
             </Reveal>
           </div>

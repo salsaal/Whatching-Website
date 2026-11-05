@@ -20,16 +20,8 @@ const ambientPills = [
     label: "Order confirmed ✓",
     className: "top-[20%] right-[4%] hidden lg:block"
   },
-  {
-    label: "AI replied in 4s",
-    className: "top-[52%] left-[1%] hidden xl:block"
-  },
   { label: "24/7", className: "bottom-[22%] right-[2%] hidden lg:block" },
-  { label: "Comment → DM", className: "bottom-[8%] left-[8%] hidden xl:block" },
-  {
-    label: "92% delivery rate",
-    className: "top-[6%] right-[24%] hidden xl:block"
-  }
+  { label: "Comment → DM", className: "bottom-[8%] left-[8%] hidden xl:block" }
 ];
 
 const channels = [

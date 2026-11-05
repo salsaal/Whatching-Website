@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Bot, Instagram, MessageCircle } from "lucide-react";
 import SiteShell from "@/components/marketing/SiteShell";
@@ -15,18 +15,16 @@ const categoryIcons: Record<string, React.ComponentType<{ className?: string }>>
 export default function ResourcesPage() {
   return (
     <>
-      <Head>
-        <title>Resources | Whatching</title>
-        <meta
-          name="description"
-          content="Guides and playbooks on WhatsApp marketing, WhatsApp API, Instagram automation and AI automation from Whatching."
-        />
-      </Head>
+      <Seo
+        title="WhatsApp & Instagram Marketing Guides | Whatching"
+        description="Practical guides on WhatsApp marketing, the WhatsApp Business API, Instagram automation and AI chatbots for Indian businesses."
+        path="/resources"
+      />
       <SiteShell>
         <section className="hero-section !pb-14">
           <div className="container-wide relative">
             <Reveal>
-              <SectionHeading
+              <SectionHeading as="h1"
                 align="center"
                 eyebrow="Resources"
                 title="Guides on WhatsApp and Instagram automation."

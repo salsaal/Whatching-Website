@@ -1,22 +1,42 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import SiteShell from "@/components/marketing/SiteShell";
 import { Reveal } from "@/components/marketing/Primitives";
 import FinalCta from "@/components/marketing/FinalCta";
 import { BlogPost, blogPostBySlug, blogPosts } from "@/lib/data/blog";
+import { absoluteUrl, breadcrumbSchema, DEFAULT_OG_IMAGE, organizationRef } from "@/lib/seo";
 
 export default function BlogPostPage({ post }: { post: BlogPost }) {
+  const path = `/blog/${post.slug}`;
   return (
     <>
-      <Head>
-        <title>{`${post.title} | Whatching Blog`}</title>
-        <meta name="description" content={post.seoDescription} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.seoDescription} />
-        <link rel="canonical" href={`https://www.whatching.com/blog/${post.slug}`} />
-      </Head>
+      <Seo
+        title={`${post.title} | Whatching`}
+        description={post.seoDescription}
+        path={path}
+        type="article"
+        publishedTime={post.date}
+        jsonLd={[
+          {
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.seoDescription,
+            datePublished: post.date,
+            articleSection: post.category,
+            image: DEFAULT_OG_IMAGE.url,
+            author: organizationRef,
+            publisher: organizationRef,
+            mainEntityOfPage: absoluteUrl(path)
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path }
+          ])
+        ]}
+      />
       <SiteShell>
         <article className="hero-section !pb-20">
           <div className="container-wide relative max-w-2xl">

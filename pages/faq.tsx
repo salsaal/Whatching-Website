@@ -1,4 +1,5 @@
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
+import { faqSchema } from "@/lib/seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import FaqAccordion from "@/components/marketing/FaqAccordion";
 import FinalCta from "@/components/marketing/FinalCta";
@@ -8,18 +9,17 @@ import { faqCategories } from "@/lib/data/faq";
 export default function FaqPage() {
   return (
     <>
-      <Head>
-        <title>FAQ | Whatching</title>
-        <meta
-          name="description"
-          content="Answers on getting started, WhatsApp and Instagram automation, AI, teams and billing on the Whatching platform."
-        />
-      </Head>
+      <Seo
+        title="WhatsApp Business API FAQ | Whatching"
+        description="Answers about getting started, WhatsApp Business API pricing, message templates, Instagram automation, the AI agent, teams and billing on Whatching."
+        path="/faq"
+        jsonLd={[faqSchema(faqCategories.flatMap((c) => c.items))]}
+      />
       <SiteShell>
         <section className="hero-section !pb-14">
           <div className="container-wide relative">
             <Reveal>
-              <SectionHeading align="center" eyebrow="FAQ" title="Frequently asked questions" description="Everything you need to know about the product and billing." />
+              <SectionHeading as="h1" align="center" eyebrow="FAQ" title="Frequently asked questions" description="Everything you need to know about the product and billing." />
             </Reveal>
           </div>
         </section>

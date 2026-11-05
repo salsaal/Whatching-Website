@@ -23,18 +23,18 @@ export const industries: Industry[] = [
     slug: "ecommerce",
     name: "E-commerce",
     eyebrow: "E-commerce",
-    headline: "Recover customers and drive repeat purchases.",
+    headline: "Answer shoppers fast and drive repeat purchases.",
     subheadline: "Turn browsers into buyers and buyers into repeat customers, across WhatsApp and Instagram.",
     seoTitle: "WhatsApp & Instagram Automation for E-commerce | Whatching",
-    seoDescription: "Recover abandoned carts, answer product questions instantly, and drive repeat purchases with WhatsApp and Instagram automation built for online stores.",
+    seoDescription: "Answer product questions instantly, send order updates and run repeat-purchase campaigns on WhatsApp and Instagram. Built for online stores in India.",
     summary: "Online stores lose customers between the ad click and the checkout. Whatching keeps the conversation open across Instagram and WhatsApp so fewer of them drop off.",
     journey: ["Instagram engagement", "DM", "WhatsApp", "Product conversation", "AI", "Sales", "Purchase"],
     challenges: [
-      { title: "Cart abandonment", description: "Customers leave without a nudge to come back." },
+      { title: "Quiet customers", description: "Past buyers never hear from you again, so they buy somewhere else." },
       { title: "Slow product Q&A", description: "Sizing, stock and shipping questions go unanswered for hours." }
     ],
     solutions: [
-      { title: "Automated recovery", description: "Follow-up flows re-engage abandoned carts on WhatsApp." },
+      { title: "Repeat-purchase broadcasts", description: "Send offers and restock alerts to tagged customer groups on WhatsApp." },
       { title: "Instant answers", description: "AI handles common product questions instantly, 24/7." }
     ],
     useCases: [
@@ -83,7 +83,7 @@ export const industries: Industry[] = [
     ],
     solutions: [
       { title: "Instant qualification", description: "Automated flows capture budget, location and timeline upfront." },
-      { title: "Smart routing", description: "Only qualified leads reach an agent's queue." }
+      { title: "Hand over qualified leads", description: "The chat goes to an agent once budget, location and timeline are captured." }
     ],
     useCases: [
       { title: "Property enquiries", description: "Instant response with qualifying questions." },
@@ -99,7 +99,7 @@ export const industries: Industry[] = [
     subheadline: "Handle appointment requests and common questions instantly, while keeping sensitive conversations with your staff.",
     seoTitle: "WhatsApp Automation for Healthcare Providers | Whatching",
     seoDescription: "Automate appointment enquiries, reminders and common questions with WhatsApp automation built for clinics, hospitals and healthcare providers.",
-    summary: "Patients expect a fast reply. Whatching handles appointment requests and routine questions instantly, and routes anything clinical straight to your staff.",
+    summary: "Patients expect a fast reply. Whatching handles appointment requests and routine questions instantly, and hands anything clinical to your staff.",
     journey: ["Enquiry via WhatsApp", "Automated triage", "AI FAQ handling", "Staff handoff", "Appointment booked", "Reminder sent", "Visit"],
     challenges: [
       { title: "High call volume", description: "Front-desk staff spend hours on repetitive scheduling questions." },
@@ -159,7 +159,7 @@ export const industries: Industry[] = [
     ],
     useCases: [
       { title: "Campaign management", description: "Launch and track campaigns across every client account." },
-      { title: "White-label reporting", description: "Share clean performance reports with clients." },
+      { title: "Campaign results", description: "See delivered, read and replied counts for every client broadcast." },
       { title: "Team collaboration", description: "Assign agency staff to the right client conversations." }
     ]
   }

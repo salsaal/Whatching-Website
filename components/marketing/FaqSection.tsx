@@ -4,7 +4,7 @@ import { Reveal, SectionHeading } from "./Primitives";
 import FaqAccordion from "./FaqAccordion";
 import { faqCategories } from "@/lib/data/faq";
 
-const homepageFaqs = faqCategories.flatMap((c) => c.items).slice(0, 10);
+export const homepageFaqs = faqCategories.flatMap((c) => c.items).slice(0, 10);
 
 const FaqSection = () => (
   <section className="py-20 max-sm:py-12" id="faq">

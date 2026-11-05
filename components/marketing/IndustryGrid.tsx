@@ -1,7 +1,20 @@
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Building2, GraduationCap, Home, Plane, ShoppingBag, Stethoscope } from "lucide-react";
-import { Reveal, SectionHeading, staggerContainer, staggerItem } from "./Primitives";
+import {
+  Building2,
+  GraduationCap,
+  Home,
+  Plane,
+  ShoppingBag,
+  Stethoscope
+} from "lucide-react";
+import {
+  Reveal,
+  SectionHeading,
+  staggerContainer,
+  staggerItem
+} from "./Primitives";
 import { industries } from "@/lib/data/industries";
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -13,11 +26,16 @@ const icons: Record<string, React.ComponentType<{ className?: string }>> = {
   agencies: Building2
 };
 
-const IndustryGrid = () => (
-  <section className="section-padding-large" style={{ background: "var(--background-secondary)" }} id="industries">
+const IndustryGrid = ({ headingAs = "h2" }: { headingAs?: "h1" | "h2" }) => (
+  <section
+    className="section-padding-large"
+    style={{ background: "var(--background-secondary)" }}
+    id="industries"
+  >
     <div className="container-wide">
       <Reveal>
         <SectionHeading
+          as={headingAs}
           align="center"
           eyebrow="Industries"
           title="Built for businesses that run on conversations."
@@ -35,16 +53,27 @@ const IndustryGrid = () => (
         {industries.map((ind) => {
           const Icon = icons[ind.slug] ?? Building2;
           return (
-            <motion.div key={ind.slug} variants={staggerItem} className="product-card !cursor-default">
-              <div className="icon-badge mb-4">
-                <Icon className="w-5 h-5" />
-              </div>
-              <h3 className="text-[15px] font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
-                {ind.name}
-              </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                {ind.headline}
-              </p>
+            <motion.div key={ind.slug} variants={staggerItem}>
+              <Link
+                href={`/industries/${ind.slug}`}
+                className="product-card block h-full"
+              >
+                <div className="icon-badge mb-4">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <h3
+                  className="text-[15px] font-semibold mb-1.5"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  {ind.name}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {ind.headline}
+                </p>
+              </Link>
             </motion.div>
           );
         })}

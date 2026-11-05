@@ -1,37 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { BarChart3, MessageCircle, TrendingUp, Users } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
 import { Reveal, SectionHeading } from "./Primitives";
-import { AppFrame, StatCard } from "./AppFrame";
-
-const AnimatedNumber = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduceMotion = useReducedMotion();
-  const [display, setDisplay] = useState(reduceMotion ? value : 0);
-
-  useEffect(() => {
-    if (!inView || reduceMotion) return;
-    const duration = 1000;
-    const start = performance.now();
-    let raf: number;
-    const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(value * eased));
-      if (progress < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, reduceMotion, value]);
-
-  return (
-    <span ref={ref}>
-      {display.toLocaleString()}
-      {suffix}
-    </span>
-  );
-};
+import { AppFrame } from "./AppFrame";
 
 const segmentColors = ["#f59e0b", "var(--primary)", "#3b82f6", "#e0645d"];
 
@@ -175,13 +145,6 @@ const AnalyticsSection = () => (
 
       <Reveal delay={0.1} className="mt-12">
         <AppFrame activeIndex={1}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
-            <StatCard icon={MessageCircle} label="Messages sent" value="48,210" />
-            <StatCard icon={TrendingUp} label="Delivery rate" value="98%" />
-            <StatCard icon={Users} label="Leads captured" value="1,284" />
-            <StatCard icon={BarChart3} label="Conversions" value="342" />
-          </div>
-
           <div className="grid md:grid-cols-3 gap-3">
             <SegmentedBar
               title="Conversation status"
@@ -214,23 +177,6 @@ const AnalyticsSection = () => (
         </AppFrame>
       </Reveal>
 
-      <Reveal delay={0.2} className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 max-w-3xl mx-auto text-center">
-        {[
-          { label: "Read rate", value: 71, suffix: "%" },
-          { label: "Click rate", value: 24, suffix: "%" },
-          { label: "Replies", value: 6120, suffix: "" },
-          { label: "Leads", value: 1284, suffix: "" }
-        ].map((m) => (
-          <div key={m.label}>
-            <p className="text-2xl font-bold" style={{ color: "var(--primary)" }}>
-              <AnimatedNumber value={m.value} suffix={m.suffix} />
-            </p>
-            <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
-              {m.label}
-            </p>
-          </div>
-        ))}
-      </Reveal>
     </div>
   </section>
 );

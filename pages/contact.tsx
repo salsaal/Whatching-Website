@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Head from "next/head";
+import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
 import { ArrowRight, Headphones, Mail, Users } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
@@ -41,15 +41,16 @@ export default function Contact() {
 
   return (
     <>
-      <Head>
-        <title>Contact Whatching</title>
-        <meta name="description" content="Talk to Whatching's sales or support team, or message us directly on WhatsApp." />
-      </Head>
+      <Seo
+        title="Contact Whatching | Sales & Support"
+        description="Talk to the Whatching team about WhatsApp Business API setup, plans or support. Email hello@whatching.com or send us a message and we usually reply within a day."
+        path="/contact"
+      />
       <SiteShell>
         <section className="hero-section !pb-16">
           <div className="container-wide relative">
             <Reveal>
-              <SectionHeading align="center" eyebrow="Contact" title="Let's talk." description="Whether it's sales, support, or a quick question — we usually reply within a day." />
+              <SectionHeading as="h1" align="center" eyebrow="Contact" title="Let's talk." description="Whether it's sales, support, or a quick question — we usually reply within a day." />
             </Reveal>
           </div>
         </section>

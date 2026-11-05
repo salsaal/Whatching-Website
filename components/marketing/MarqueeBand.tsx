@@ -2,46 +2,25 @@ import React from "react";
 import { CheckCheck } from "lucide-react";
 import { Reveal } from "./Primitives";
 
-const rowA = [
-  "Order confirmed ✓",
-  "Payment received",
-  "Lead qualified",
-  "AI replied in 3s",
+const eventsA = [
   "Broadcast delivered",
   "Comment → DM sent",
-  "Order confirmed ✓",
-  "Payment received",
-  "Lead qualified",
-  "AI replied in 3s",
-  "Broadcast delivered",
-  "Comment → DM sent",
-  "Order confirmed ✓",
-  "Payment received",
-  "Lead qualified",
-  "AI replied in 3s",
-  "Broadcast delivered",
-  "Comment → DM sent"
+  "Lead tagged",
+  "Chat assigned",
+  "Template approved",
+  "AI answered a question"
 ];
-const rowB = [
-  "92% read rate",
-  "127 new leads today",
-  "Catalogue sent",
-  "Appointment booked",
-  "Ticket resolved",
-  "Campaign live",
-  "92% read rate",
-  "127 new leads today",
-  "Catalogue sent",
-  "Appointment booked",
-  "Ticket resolved",
-  "Campaign live",
-  "92% read rate",
-  "127 new leads today",
-  "Catalogue sent",
-  "Appointment booked",
-  "Ticket resolved",
-  "Campaign live"
+const eventsB = [
+  "Brochure sent",
+  "Appointment reminder sent",
+  "Order update sent",
+  "Handed to a teammate",
+  "Campaign scheduled",
+  "New Instagram DM"
 ];
+// Repeated three times so the scrolling row never runs out.
+const rowA = [...eventsA, ...eventsA, ...eventsA];
+const rowB = [...eventsB, ...eventsB, ...eventsB];
 
 const MarqueeRow = ({
   items,

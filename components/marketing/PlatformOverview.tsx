@@ -36,7 +36,7 @@ const capabilities = [
     icon: MessagesSquare,
     title: "Shared Inbox",
     desc: "Your entire team can manage conversations together.",
-    points: ["Assign & tag conversations", "Internal notes and mentions"]
+    points: ["Assign & tag conversations", "One number, many teammates"]
   },
   {
     icon: Users,

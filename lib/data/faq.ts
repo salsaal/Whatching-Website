@@ -44,7 +44,7 @@ export const faqCategories: FaqCategory[] = [
     category: "Teams",
     items: [
       { question: "Can multiple agents use one inbox?", answer: "Yes — the shared inbox lets your whole team work from the same WhatsApp and Instagram accounts without collisions." },
-      { question: "Can conversations be assigned?", answer: "Yes — conversations can be assigned manually or routed automatically based on rules you set." }
+      { question: "Can conversations be assigned?", answer: "Yes — any conversation can be assigned to a teammate from the shared inbox." }
     ]
   },
   {

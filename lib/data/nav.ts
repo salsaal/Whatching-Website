@@ -7,34 +7,48 @@ export interface NavLink {
   href: string;
 }
 
-// Flat, no-dropdown nav — every item except Pricing scrolls to a homepage
-// section. Only Home, Pricing, Privacy Policy and Terms are launched pages
-// right now, so nothing here points at an unlaunched route.
+// Flat, no-dropdown nav. Every page on the site is reachable from here or
+// the footer, so search engines can find it without the sitemap.
 export const navLinks: NavLink[] = [
-  { label: "Features", href: "/#platform" },
-  { label: "WhatsApp", href: "/#broadcasts" },
-  { label: "Instagram", href: "/#instagram" },
-  { label: "Industries", href: "/#industries" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Pricing", href: "/pricing" }
+  { label: "Features", href: "/features" },
+  { label: "Instagram", href: "/features/instagram-automation" },
+  { label: "Industries", href: "/industries" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" }
 ];
 
 export const footerColumns = {
   product: [
-    { label: "Broadcasts", href: "/#broadcasts" },
-    { label: "AI Chatbots", href: "/#ai-chatbot" },
-    { label: "WhatsApp Flows", href: "/#flows" },
-    { label: "Shared Inbox", href: "/#inbox" },
-    { label: "Analytics", href: "/#analytics" },
-    { label: "Instagram Automation", href: "/#instagram" }
+    { label: "WhatsApp Marketing", href: "/features/whatsapp-marketing" },
+    { label: "WhatsApp Broadcasts", href: "/features/whatsapp-broadcast" },
+    { label: "Chatbot Builder", href: "/features/whatsapp-flows" },
+    { label: "AI Chatbot", href: "/features/ai-chatbot" },
+    { label: "Shared Inbox", href: "/features/shared-inbox" },
+    { label: "Analytics", href: "/features/analytics" },
+    { label: "Instagram Automation", href: "/features/instagram-automation" },
+    { label: "Instagram Comment Auto Reply", href: "/features/instagram-comment-automation" },
+    { label: "Instagram DM Automation", href: "/features/instagram-dm-automation" }
   ],
-  solutions: [
-    { label: "Industries we serve", href: "/#industries" },
-    { label: "Why Whatching", href: "/#why-whatching" },
+  industries: [
+    { label: "E-commerce", href: "/industries/ecommerce" },
+    { label: "Education", href: "/industries/education" },
+    { label: "Real Estate", href: "/industries/real-estate" },
+    { label: "Healthcare", href: "/industries/healthcare" },
+    { label: "Travel & Hospitality", href: "/industries/travel" },
+    { label: "Agencies", href: "/industries/agencies" }
+  ],
+  resources: [
+    { label: "Blog", href: "/blog" },
+    { label: "Guides", href: "/resources" },
+    { label: "FAQ", href: "/faq" },
     { label: "Pricing", href: "/pricing" }
   ],
   company: [
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms of Service", href: "/terms" }
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Refund Policy", href: "/refund-policy" }
   ]
 };
