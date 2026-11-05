@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, Bot, Instagram, Zap } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import HeroVideo from "./HeroVideo";
+import HeroPhone from "./HeroPhone";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
 const channels = [
@@ -75,7 +75,7 @@ const Hero = () => (
       </div>
 
       <div className="w-full max-w-[560px] mx-auto">
-        <HeroVideo />
+        <HeroPhone />
       </div>
     </div>
   </section>

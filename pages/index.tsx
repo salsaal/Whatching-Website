@@ -1,6 +1,7 @@
 import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
+import DemoVideoSection from "@/components/marketing/DemoVideoSection";
 import TrustBar from "@/components/marketing/TrustBar";
 import EcosystemDiagram from "@/components/marketing/EcosystemDiagram";
 import PlatformOverview from "@/components/marketing/PlatformOverview";
@@ -30,6 +31,7 @@ export default function Home() {
       />
       <SiteShell>
         <Hero />
+        <DemoVideoSection />
         <TrustBar />
         <EcosystemDiagram />
         <PlatformOverview />
