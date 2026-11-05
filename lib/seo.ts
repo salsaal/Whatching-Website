@@ -1,4 +1,5 @@
 import { FaqItem } from "@/lib/data/faq";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 export const SITE_URL = "https://www.whatching.com";
 export const SITE_NAME = "Whatching";
@@ -39,6 +40,13 @@ export const organizationSchema: JsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo.png`,
   email: "hello@whatching.com",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: WHATSAPP_NUMBER.replace(/ /g, "-"),
+    email: "hello@whatching.com",
+    areaServed: "IN"
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "6/8A Kustia Road",
@@ -59,7 +67,9 @@ export const websiteSchema: JsonLd = {
   publisher: { "@id": ORGANIZATION_ID }
 };
 
-export const breadcrumbSchema = (items: { name: string; path: string }[]): JsonLd => ({
+export const breadcrumbSchema = (
+  items: { name: string; path: string }[]
+): JsonLd => ({
   "@type": "BreadcrumbList",
   itemListElement: items.map((item, i) => ({
     "@type": "ListItem",

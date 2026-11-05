@@ -35,17 +35,17 @@ export const pricingPlans: PricingPlan[] = [
       "Drag & Drop Chatbot Builder",
       "Automated Follow Up Bot",
       "WhatsApp AI Agent",
-      "1M AI Message Tokens",
+      "AI usage included: 1M",
       "Owner + 2 Team Members",
       "Role-Based Team Permissions",
       "Sync WhatsApp Business App",
       "Single Phone Number Integration",
       "Messaging Template Management",
       "Analytics Dashboard",
-      "Unlimited Free Incoming Conversation",
-      "Multi Agent Shared Inbox"
-    ],
-    comingSoon: ["Track Meta Ad Campaign"]
+      "Unlimited incoming customer messages",
+      "Multi Agent Shared Inbox",
+      "Click-to-WhatsApp Ad Tracking"
+    ]
   },
   {
     id: "pro",
@@ -61,7 +61,7 @@ export const pricingPlans: PricingPlan[] = [
       "25,000 WhatsApp Contacts",
       "Upto 2 Phone Numbers per Organization",
       "Owner + 5 Team Members",
-      "3M AI Message Tokens"
+      "AI usage included: 3M"
     ],
     featureGroups: [
       {
@@ -75,7 +75,7 @@ export const pricingPlans: PricingPlan[] = [
         ]
       }
     ],
-    comingSoon: ["WhatsApp Forms", "Track Meta Ad Campaign"]
+    comingSoon: ["WhatsApp Forms"]
   },
   {
     id: "enterprise",
@@ -97,20 +97,75 @@ export const pricingPlans: PricingPlan[] = [
   }
 ];
 
+// Meta's per-message list rates for India in INR, read from Meta's official
+// pricing page. Update the date and figures together when Meta changes them.
+export const metaPricingSource = {
+  asOf: "1 October 2026",
+  url: "https://developers.facebook.com/docs/whatsapp/pricing"
+};
+
 export const metaConversationPricing = [
-  { category: "Marketing", desc: "Promotional messages, offers, announcements", price: "₹0.8631" },
-  { category: "Utility", desc: "Order updates, receipts, transactional alerts", price: "₹0.1150" },
-  { category: "Authentication", desc: "OTPs and verification (India)", price: "₹0.1150" },
-  { category: "Auth – International", desc: "OTPs for international numbers", price: "₹2.4971" },
-  { category: "Service", desc: "Replies to customer messages (within 24 hours)", price: "Free" }
+  {
+    category: "Marketing",
+    desc: "Promotional messages, offers, announcements",
+    price: "₹0.8631"
+  },
+  {
+    category: "Utility",
+    desc: "Order updates, receipts, transactional alerts",
+    price: "₹0.1150"
+  },
+  {
+    category: "Authentication",
+    desc: "OTPs and verification (India)",
+    price: "₹0.1150"
+  },
+  {
+    category: "Auth – International",
+    desc: "OTPs for international numbers",
+    price: "₹2.4971"
+  },
+  {
+    category: "Service",
+    desc: "Replies to customers within 24 hours. The first 1,000 each month are free for every WhatsApp number.",
+    price: "₹0.1150"
+  }
 ];
 
 export const pricingFaq = [
-  { question: "Is the WhatsApp API included in the subscription?", answer: "Yes — your Whatching subscription includes the platform and API connection. Meta charges a small per-conversation fee separately, based on message type." },
-  { question: "Are Meta charges included in the plan price?", answer: "No. Meta's conversation charges are billed at official rates with 0% markup, separate from your Whatching subscription — see the breakdown below." },
-  { question: "Can I cancel anytime?", answer: "Yes — there are no long-term contracts. You can cancel your subscription at any time." },
-  { question: "How does message pricing work?", answer: "Incoming conversations (customer messages you first) are free to reply to for 24 hours. Outbound marketing, utility and authentication messages are charged at Meta's official rate." },
-  { question: "Can I add team members?", answer: "Yes — Basic includes 2 team members and Pro includes 5, with role-based permissions on every plan." },
-  { question: "Can I use Instagram automation?", answer: "Yes — Instagram automation is included on the Pro plan, with comment and DM automation, an Instagram AI agent, and unlimited conversations." },
-  { question: "Can agencies manage multiple businesses?", answer: "Yes — Enterprise plans support multiple WhatsApp numbers and accounts under one workspace. Contact sales for agency pricing." }
+  {
+    question: "Is the WhatsApp API included in the subscription?",
+    answer:
+      "Yes — your Whatching subscription includes the platform and API connection. Meta charges a small per-message fee separately, based on message type."
+  },
+  {
+    question: "Are Meta charges included in the plan price?",
+    answer:
+      "No. Meta's message charges are billed at official rates with 0% markup, separate from your Whatching subscription — see the breakdown below."
+  },
+  {
+    question: "Can I cancel anytime?",
+    answer:
+      "Yes — there are no long-term contracts. If you cancel, your plan stays active until the end of the month you've paid for. That month isn't refunded."
+  },
+  {
+    question: "How does message pricing work?",
+    answer:
+      "Meta charges per message. Messages customers send you are free. Each WhatsApp number gets 1,000 free replies (service messages) a month, then ₹0.1150 each. Marketing, utility and authentication templates are charged at Meta's rate for India, with 0% markup from us."
+  },
+  {
+    question: "Can I add team members?",
+    answer:
+      "Yes — Basic includes 2 team members and Pro includes 5, with role-based permissions on every plan."
+  },
+  {
+    question: "Can I use Instagram automation?",
+    answer:
+      "Yes — Instagram automation is included on the Pro plan, with comment and DM automation, an Instagram AI agent, and unlimited conversations."
+  },
+  {
+    question: "Can agencies manage multiple businesses?",
+    answer:
+      "Yes — manage several client businesses from one login. Each business has its own plan. Contact sales if you need custom terms."
+  }
 ];

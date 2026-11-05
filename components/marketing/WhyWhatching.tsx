@@ -42,7 +42,7 @@ const WhyWhatching = () => (
             revenue.
           </p>
           <Link href={PRODUCT_APP_URL} className="btn-primary">
-            Start Your Free Trial →
+            Start your free 7-day trial →
           </Link>
         </Reveal>
 

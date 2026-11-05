@@ -44,8 +44,7 @@ const InstagramAutomationSection = () => (
           </h2>
           <p className="body-large" style={{ color: "rgba(255,255,255,0.65)" }}>
             Transform comments, DMs and interactions into automated customer
-            journeys — and hand qualified leads straight to your team or
-            WhatsApp.
+            journeys — and hand qualified leads straight to your team.
           </p>
         </div>
       </Reveal>

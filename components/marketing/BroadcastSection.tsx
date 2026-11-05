@@ -8,11 +8,20 @@ const BroadcastSection = () => (
     id="broadcasts"
     eyebrow="WhatsApp Broadcasts"
     title="Broadcast campaigns that actually start conversations."
-    description="Send personalized promotional and transactional campaigns through the official WhatsApp Business API — then watch delivery, reads, clicks and replies roll in on every send."
+    description="Send personalized promotional and transactional campaigns through the official WhatsApp Business API — then see delivered, read and replied counts, plus template button clicks, on every send."
     points={[
-      { title: "Personalize at scale", desc: "Dynamic variables, media messages and approved templates for every audience." },
-      { title: "Add CTA buttons", desc: "Turn a broadcast into a click, a reply, or a booked call." },
-      { title: "Schedule ahead", desc: "Plan campaigns weeks in advance and segment by tag or lifecycle stage." }
+      {
+        title: "Personalize at scale",
+        desc: "Dynamic variables, media messages and approved templates for every audience."
+      },
+      {
+        title: "Add CTA buttons",
+        desc: "Turn a broadcast into a click, a reply, or a booked call."
+      },
+      {
+        title: "Schedule ahead",
+        desc: "Plan campaigns weeks in advance and segment by tag or lifecycle stage."
+      }
     ]}
     ctaLabel="Create a Campaign"
     ctaHref={PRODUCT_APP_URL}

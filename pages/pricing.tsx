@@ -1,19 +1,33 @@
 import React from "react";
 import { Check, Minus } from "lucide-react";
 import Seo from "@/components/Seo/Seo";
-import { absoluteUrl, faqSchema, JsonLd, organizationRef, SITE_NAME } from "@/lib/seo";
+import {
+  absoluteUrl,
+  faqSchema,
+  JsonLd,
+  organizationRef,
+  SITE_NAME
+} from "@/lib/seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import FaqAccordion from "@/components/marketing/FaqAccordion";
 import FinalCta from "@/components/marketing/FinalCta";
 import PricingCard from "@/components/marketing/PricingCard";
 import { Reveal, SectionHeading } from "@/components/marketing/Primitives";
-import { metaConversationPricing, pricingFaq, pricingPlans } from "@/lib/data/pricing";
+import {
+  metaConversationPricing,
+  metaPricingSource,
+  pricingFaq,
+  pricingPlans
+} from "@/lib/data/pricing";
 
-const comparisonRows: { label: string; values: [string | boolean, string | boolean, string | boolean] }[] = [
+const comparisonRows: {
+  label: string;
+  values: [string | boolean, string | boolean, string | boolean];
+}[] = [
   { label: "WhatsApp contacts", values: ["10,000", "25,000", "High volume"] },
   { label: "Team members", values: ["2", "5", "Unlimited"] },
   { label: "WhatsApp numbers", values: ["1", "Up to 2", "Multiple"] },
-  { label: "AI message tokens", values: ["1M", "3M", "Unlimited"] },
+  { label: "AI usage included", values: ["1M", "3M", "Unlimited"] },
   { label: "Meta fee markup", values: ["0%", "0%", "0%"] },
   { label: "Shared inbox", values: [true, true, true] },
   { label: "No-code flow builder", values: [true, true, true] },
@@ -27,7 +41,10 @@ const Cell = ({ value }: { value: string | boolean }) => {
     return value ? (
       <Check className="w-4 h-4 mx-auto" style={{ color: "var(--primary)" }} />
     ) : (
-      <Minus className="w-4 h-4 mx-auto" style={{ color: "var(--text-muted)" }} />
+      <Minus
+        className="w-4 h-4 mx-auto"
+        style={{ color: "var(--text-muted)" }}
+      />
     );
   }
   return <span style={{ color: "var(--text-body)" }}>{value}</span>;
@@ -77,7 +94,7 @@ const PricingPage = () => {
                 align="center"
                 eyebrow="Pricing"
                 title="Flexible pricing for every business."
-                description="Plans from ₹2,499 a month. Meta's own message charges are passed through at 0% markup, so you pay exactly what Meta charges."
+                description="Plans from ₹2,499 a month. Meta's own message charges are passed through at 0% markup. Start your free 7-day trial of Pro. No card needed."
               />
             </Reveal>
           </div>
@@ -99,17 +116,30 @@ const PricingPage = () => {
         <section className="section-padding-large">
           <div className="container-wide">
             <Reveal>
-              <SectionHeading align="center" title="Which plan is right for me?" />
+              <SectionHeading
+                align="center"
+                title="Which plan is right for me?"
+              />
             </Reveal>
-            <Reveal delay={0.1} className="mt-10 max-w-4xl mx-auto overflow-x-auto">
+            <Reveal
+              delay={0.1}
+              className="mt-10 max-w-4xl mx-auto overflow-x-auto"
+            >
               <table className="w-full text-sm border-collapse">
                 <thead>
                   <tr style={{ borderBottom: "1px solid var(--border-light)" }}>
-                    <th className="text-left py-3 pr-4" style={{ color: "var(--text-muted)" }}>
+                    <th
+                      className="text-left py-3 pr-4"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       Feature
                     </th>
                     {pricingPlans.map((p) => (
-                      <th key={p.id} className="py-3 px-4 text-center font-semibold" style={{ color: "var(--text-primary)" }}>
+                      <th
+                        key={p.id}
+                        className="py-3 px-4 text-center font-semibold"
+                        style={{ color: "var(--text-primary)" }}
+                      >
                         {p.name}
                       </th>
                     ))}
@@ -117,8 +147,14 @@ const PricingPage = () => {
                 </thead>
                 <tbody>
                   {comparisonRows.map((row) => (
-                    <tr key={row.label} style={{ borderBottom: "1px solid var(--border-light)" }}>
-                      <td className="py-3 pr-4 font-medium" style={{ color: "var(--text-primary)" }}>
+                    <tr
+                      key={row.label}
+                      style={{ borderBottom: "1px solid var(--border-light)" }}
+                    >
+                      <td
+                        className="py-3 pr-4 font-medium"
+                        style={{ color: "var(--text-primary)" }}
+                      >
                         {row.label}
                       </td>
                       {row.values.map((v, i) => (
@@ -135,49 +171,89 @@ const PricingPage = () => {
         </section>
 
         {/* Meta pricing transparency */}
-        <section className="section-padding-large" style={{ background: "var(--background-secondary)" }}>
+        <section
+          className="section-padding-large"
+          style={{ background: "var(--background-secondary)" }}
+        >
           <div className="container-wide max-w-5xl">
             <Reveal>
               <SectionHeading
                 align="center"
                 title="Transparent WhatsApp conversation pricing"
-                description="Your subscription covers the platform. Meta charges a small conversation fee based on message type — billed at official rates with 0% markup."
+                description="Your subscription covers the platform. Meta charges a small fee for each message, based on its type — billed at Meta's official rates with 0% markup."
               />
             </Reveal>
 
             <div className="grid md:grid-cols-2 gap-4 mt-10 mb-8">
               <Reveal className="surface-card p-5">
-                <p className="text-lg font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
-                  Incoming chats are free
+                <p
+                  className="text-lg font-semibold mb-1.5"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  1,000 free replies a month
                 </p>
-                <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                  When customers message you first, replying is completely free for 24 hours.
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Messages customers send you are free. Meta gives each WhatsApp
+                  number 1,000 free replies a month, then charges per reply.
                 </p>
               </Reveal>
               <Reveal delay={0.06} className="surface-card p-5">
-                <p className="text-lg font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
+                <p
+                  className="text-lg font-semibold mb-1.5"
+                  style={{ color: "var(--text-primary)" }}
+                >
                   Outbound messages are paid
                 </p>
-                <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                  Meta charges per message based on the approved template category.
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Meta charges per message based on the approved template
+                  category.
                 </p>
               </Reveal>
             </div>
 
-            <Reveal delay={0.1} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Reveal
+              delay={0.1}
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
               {metaConversationPricing.map((item) => (
-                <div key={item.category} className="product-card !cursor-default flex flex-col justify-between">
+                <div
+                  key={item.category}
+                  className="product-card !cursor-default flex flex-col justify-between"
+                >
                   <div>
-                    <h3 className="font-semibold mb-1" style={{ color: "var(--text-primary)" }}>
+                    <h3
+                      className="font-semibold mb-1"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {item.category}
                     </h3>
-                    <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
+                    <p
+                      className="text-sm mb-4"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       {item.desc}
                     </p>
                   </div>
-                  <div className="text-lg font-semibold" style={{ color: item.price === "Free" ? "var(--primary)" : "var(--text-primary)" }}>
+                  <div
+                    className="text-lg font-semibold"
+                    style={{
+                      color:
+                        item.price === "Free"
+                          ? "var(--primary)"
+                          : "var(--text-primary)"
+                    }}
+                  >
                     {item.price}
-                    <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                    <span
+                      className="text-xs"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {" "}
                       /message
                     </span>
@@ -185,6 +261,22 @@ const PricingPage = () => {
                 </div>
               ))}
             </Reveal>
+            <p
+              className="text-xs text-center mt-6"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Meta&apos;s list rates for India in INR, as of{" "}
+              {metaPricingSource.asOf}. Source:{" "}
+              <a
+                href={metaPricingSource.url}
+                target="_blank"
+                rel="noreferrer"
+                className="underline"
+              >
+                Meta&apos;s WhatsApp pricing page
+              </a>
+              . Meta may change these rates.
+            </p>
           </div>
         </section>
 

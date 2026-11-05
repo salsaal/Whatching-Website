@@ -107,7 +107,7 @@ const Hero = () => {
 
           <div className="flex flex-wrap justify-center gap-3 mt-8">
             <Link href={PRODUCT_APP_URL} className="btn-primary">
-              Start Free Trial <ArrowRight className="w-4 h-4" />
+              Start your free 7-day trial <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/#faq" className="btn-secondary">
               Book a Demo
@@ -118,7 +118,7 @@ const Hero = () => {
             className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm"
             style={{ color: "var(--text-muted)" }}
           >
-            <span>No credit card required</span>
+            <span>7-day trial of Pro. No card needed.</span>
             <span>Setup in minutes</span>
           </div>
         </motion.div>

@@ -1,31 +1,29 @@
 import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
-import { ArrowRight, Bot, MessageCircle, Sparkles, Target } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import SiteShell from "@/components/marketing/SiteShell";
 import { Reveal, SectionHeading } from "@/components/marketing/Primitives";
-import FinalCta from "@/components/marketing/FinalCta";
+import { PRODUCT_APP_URL, WHATSAPP_URL } from "@/lib/constants";
 
-const pillars = [
-  {
-    icon: MessageCircle,
-    title: "Conversations",
-    desc: "We believe the conversation is the interface — not a form, not a ticket, not a funnel."
-  },
-  {
-    icon: Bot,
-    title: "Automation",
-    desc: "The repetitive 80% of customer conversation should run itself, so people can focus on the 20% that needs them."
-  },
-  {
-    icon: Sparkles,
-    title: "AI",
-    desc: "AI should make conversations feel more human, not less — understanding intent instead of matching keywords."
-  },
-  {
-    icon: Target,
-    title: "Growth",
-    desc: "Every feature we build is judged by one question: does this turn a conversation into revenue?"
-  }
+const capabilities = [
+  "Connect your WhatsApp Business number through Meta's official signup",
+  "Send broadcasts with approved message templates, now or scheduled",
+  "Build chatbots on a drag-and-drop canvas, no coding needed",
+  "Let an AI agent answer questions from your own documents, website and FAQs",
+  "Reply to WhatsApp and Instagram chats as a team, from one inbox",
+  "Tag contacts automatically by what they do, and follow up with the right group",
+  "See broadcast results, which ads bring in chats, and what Meta charges",
+  "Automate Instagram comments and DMs on the Pro plan"
+];
+
+const audiences = [
+  "Online stores",
+  "Coaching institutes",
+  "Real estate",
+  "Clinics",
+  "Travel agencies",
+  "Marketing agencies"
 ];
 
 export default function About() {
@@ -33,7 +31,7 @@ export default function About() {
     <>
       <Seo
         title="About Whatching | WhatsApp & Instagram Automation"
-        description="Whatching is software for Indian businesses to sell and support customers on WhatsApp and Instagram, built on Meta's official WhatsApp Business Platform."
+        description="Whatching is software for small and growing Indian businesses to sell and support customers on WhatsApp and Instagram from one place, on Meta's official platform."
         path="/about"
       />
       <SiteShell>
@@ -43,8 +41,8 @@ export default function About() {
               <SectionHeading
                 as="h1"
                 eyebrow="About Whatching"
-                title="Businesses don't lose customers because they don't care. They lose them because no one replied in time."
-                description="Whatching exists to close that gap — turning WhatsApp and Instagram into a real customer engagement channel, not just a place messages pile up."
+                title="WhatsApp and Instagram, in one place, for growing businesses."
+                description="Whatching helps small and growing Indian businesses sell and support their customers on WhatsApp and Instagram, from one place."
               />
             </Reveal>
           </div>
@@ -52,21 +50,28 @@ export default function About() {
 
         <section className="pb-20">
           <div className="container-wide max-w-3xl">
-            <Reveal className="surface-card p-8">
-              <p
-                className="text-xs font-semibold uppercase tracking-wide mb-3"
-                style={{ color: "var(--primary-dark)" }}
+            <Reveal>
+              <h2
+                className="heading-3 mb-4"
+                style={{ color: "var(--text-primary)" }}
               >
-                Our mission
-              </p>
-              <p
-                className="text-lg leading-relaxed"
-                style={{ color: "var(--text-body)" }}
-              >
-                Make business communication more intelligent, accessible and
-                scalable — so a team of two can respond like a team of twenty,
-                and a team of twenty never drops a conversation.
-              </p>
+                What Whatching does
+              </h2>
+              <ul className="space-y-3">
+                {capabilities.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-[15px] leading-relaxed"
+                    style={{ color: "var(--text-body)" }}
+                  >
+                    <Check
+                      className="w-5 h-5 shrink-0 mt-0.5"
+                      style={{ color: "var(--primary)" }}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </section>
@@ -75,67 +80,93 @@ export default function About() {
           className="section-padding-large"
           style={{ background: "var(--background-secondary)" }}
         >
-          <div className="container-wide">
+          <div className="container-wide max-w-3xl grid gap-12">
             <Reveal>
-              <SectionHeading align="center" title="What we build around" />
+              <h2
+                className="heading-3 mb-4"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Who it&apos;s for
+              </h2>
+              <p
+                className="text-[15px] leading-relaxed mb-5"
+                style={{ color: "var(--text-body)" }}
+              >
+                Small and growing businesses in India whose customers already
+                message them on WhatsApp and Instagram.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {audiences.map((a) => (
+                  <span key={a} className="pill !text-[13px]">
+                    {a}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href="/industries"
+                className="inline-flex items-center gap-1 text-sm font-semibold mt-5"
+                style={{ color: "var(--primary-dark)" }}
+              >
+                See how each industry uses it{" "}
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </Reveal>
-            <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
-              {pillars.map((p, i) => (
-                <Reveal
-                  key={p.title}
-                  delay={i * 0.08}
-                  className="product-card !cursor-default flex gap-4"
-                >
-                  <div
-                    className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0"
-                    style={{
-                      background: "var(--accent-wash)",
-                      color: "var(--primary)"
-                    }}
-                  >
-                    <p.icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3
-                      className="text-[15px] font-semibold mb-1.5"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      {p.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      {p.desc}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+
+            <Reveal>
+              <h2
+                className="heading-3 mb-4"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Why it exists
+              </h2>
+              <p
+                className="text-[15px] leading-relaxed mb-4"
+                style={{ color: "var(--text-body)" }}
+              >
+                Customers expect a quick reply on the apps they already use. For
+                most businesses, those chats end up spread across personal
+                phones and separate apps, and replies get missed.
+              </p>
+              <p
+                className="text-[15px] leading-relaxed"
+                style={{ color: "var(--text-body)" }}
+              >
+                Whatching brings WhatsApp and Instagram into one place for the
+                whole team. It runs on Meta&apos;s official WhatsApp Business
+                Platform, so your number is set up the approved way, not through
+                an unofficial WhatsApp tool that can get it banned.
+              </p>
+            </Reveal>
           </div>
         </section>
 
         <section className="section-padding-large">
           <div className="container-wide max-w-2xl text-center">
             <Reveal>
-              <h2 className="heading-2 mb-4">Where we&apos;re headed</h2>
+              <h2 className="heading-2 mb-4">Try it, or talk to us first</h2>
               <p
                 className="body-large mb-8"
                 style={{ color: "var(--text-secondary)" }}
               >
-                We started with WhatsApp marketing and automation. We&apos;re
-                building Whatching into the full customer engagement layer for
-                WhatsApp and Instagram — one workspace for every conversation
-                that touches revenue.
+                Start your free 7-day trial of Pro. No card needed. Or ask us
+                anything on WhatsApp.
               </p>
-              <Link href="/contact" className="btn-secondary">
-                Get in touch <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link href={PRODUCT_APP_URL} className="btn-primary">
+                  Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-secondary"
+                >
+                  <FaWhatsapp className="w-4 h-4" /> Chat with us on WhatsApp
+                </a>
+              </div>
             </Reveal>
           </div>
         </section>
-
-        <FinalCta />
       </SiteShell>
     </>
   );

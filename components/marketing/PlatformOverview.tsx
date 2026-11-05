@@ -11,7 +11,12 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { Reveal, SectionHeading, staggerContainer, staggerItem } from "./Primitives";
+import {
+  Reveal,
+  SectionHeading,
+  staggerContainer,
+  staggerItem
+} from "./Primitives";
 
 const capabilities = [
   {
@@ -24,7 +29,10 @@ const capabilities = [
     icon: Bot,
     title: "AI Automation",
     desc: "AI-powered customer conversations, available 24/7.",
-    points: ["Understands intent, not keywords", "Qualifies leads automatically"]
+    points: [
+      "Understands intent, not keywords",
+      "Qualifies leads automatically"
+    ]
   },
   {
     icon: Workflow,
@@ -42,7 +50,7 @@ const capabilities = [
     icon: Users,
     title: "Lead Management",
     desc: "Capture, qualify, segment and follow up with leads.",
-    points: ["Tags & custom attributes", "Visual pipeline stages"]
+    points: ["Tags & custom attributes", "Automatic tags from what contacts do"]
   },
   {
     icon: BarChart3,
@@ -54,7 +62,7 @@ const capabilities = [
     icon: Instagram,
     title: "Instagram Automation",
     desc: "Turn Instagram engagement into conversations and leads.",
-    points: ["DM & comment automation", "Hands off to WhatsApp"]
+    points: ["DM & comment automation", "Hands off to your team"]
   },
   {
     icon: Share2,
@@ -65,7 +73,10 @@ const capabilities = [
 ];
 
 const PlatformOverview = () => (
-  <section className="section-padding-large" style={{ background: "var(--background-secondary)" }}>
+  <section
+    className="section-padding-large"
+    style={{ background: "var(--background-secondary)" }}
+  >
     <div className="container-wide">
       <Reveal>
         <SectionHeading
@@ -84,20 +95,37 @@ const PlatformOverview = () => (
         className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12"
       >
         {capabilities.map((c) => (
-          <motion.div key={c.title} variants={staggerItem} className="product-card !cursor-default">
+          <motion.div
+            key={c.title}
+            variants={staggerItem}
+            className="product-card !cursor-default"
+          >
             <div className="icon-badge mb-4">
               <c.icon className="w-5 h-5" />
             </div>
-            <h3 className="text-[15px] font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
+            <h3
+              className="text-[15px] font-semibold mb-1.5"
+              style={{ color: "var(--text-primary)" }}
+            >
               {c.title}
             </h3>
-            <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--text-secondary)" }}>
+            <p
+              className="text-sm leading-relaxed mb-3"
+              style={{ color: "var(--text-secondary)" }}
+            >
               {c.desc}
             </p>
             <ul className="space-y-1.5">
               {c.points.map((p) => (
-                <li key={p} className="flex items-start gap-1.5 text-xs" style={{ color: "var(--text-muted)" }}>
-                  <Check className="w-3 h-3 mt-0.5 shrink-0" style={{ color: "var(--primary)" }} />
+                <li
+                  key={p}
+                  className="flex items-start gap-1.5 text-xs"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  <Check
+                    className="w-3 h-3 mt-0.5 shrink-0"
+                    style={{ color: "var(--primary)" }}
+                  />
                   {p}
                 </li>
               ))}

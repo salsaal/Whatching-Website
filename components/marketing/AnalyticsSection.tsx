@@ -12,11 +12,23 @@ const SegmentedBar = ({
   title: string;
   segments: { label: string; value: number; pct: number }[];
 }) => (
-  <div className="rounded-xl p-4" style={{ background: "var(--surface)", border: "1px solid var(--border-light)" }}>
-    <p className="text-sm font-semibold mb-3" style={{ color: "var(--text-primary)" }}>
+  <div
+    className="rounded-xl p-4"
+    style={{
+      background: "var(--surface)",
+      border: "1px solid var(--border-light)"
+    }}
+  >
+    <p
+      className="text-sm font-semibold mb-3"
+      style={{ color: "var(--text-primary)" }}
+    >
       {title}
     </p>
-    <div className="flex h-2.5 rounded-full overflow-hidden mb-3" style={{ background: "var(--background-secondary)" }}>
+    <div
+      className="flex h-2.5 rounded-full overflow-hidden mb-3"
+      style={{ background: "var(--background-secondary)" }}
+    >
       {segments.map((s, i) => (
         <motion.div
           key={s.label}
@@ -24,18 +36,34 @@ const SegmentedBar = ({
           initial={{ width: "0%" }}
           whileInView={{ width: `${s.pct}%` }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: 0.7,
+            delay: i * 0.1,
+            ease: [0.22, 1, 0.36, 1]
+          }}
         />
       ))}
     </div>
     <div className="space-y-1.5">
       {segments.map((s, i) => (
-        <div key={s.label} className="flex items-center justify-between text-xs">
-          <span className="flex items-center gap-1.5" style={{ color: "var(--text-secondary)" }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: segmentColors[i % segmentColors.length] }} />
+        <div
+          key={s.label}
+          className="flex items-center justify-between text-xs"
+        >
+          <span
+            className="flex items-center gap-1.5"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ background: segmentColors[i % segmentColors.length] }}
+            />
             {s.label}
           </span>
-          <span className="font-semibold" style={{ color: "var(--text-primary)" }}>
+          <span
+            className="font-semibold"
+            style={{ color: "var(--text-primary)" }}
+          >
             {s.value} ({s.pct}%)
           </span>
         </div>
@@ -60,14 +88,27 @@ const NewContactsChart = () => {
   const path = buildPath(linePoints, width, height);
 
   return (
-    <div className="rounded-xl p-4" style={{ background: "var(--surface)", border: "1px solid var(--border-light)" }}>
-      <p className="text-sm font-semibold mb-1" style={{ color: "var(--text-primary)" }}>
+    <div
+      className="rounded-xl p-4"
+      style={{
+        background: "var(--surface)",
+        border: "1px solid var(--border-light)"
+      }}
+    >
+      <p
+        className="text-sm font-semibold mb-1"
+        style={{ color: "var(--text-primary)" }}
+      >
         New contacts
       </p>
       <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
         Daily growth over the last 30 days
       </p>
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-24" preserveAspectRatio="none">
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="w-full h-24"
+        preserveAspectRatio="none"
+      >
         <motion.path
           d={`${path} L${width},${height} L0,${height} Z`}
           fill="var(--accent-wash)"
@@ -102,27 +143,48 @@ const funnelStages = [
 ];
 
 const BroadcastFunnel = () => (
-  <div className="rounded-xl p-4" style={{ background: "var(--surface)", border: "1px solid var(--border-light)" }}>
-    <p className="text-sm font-semibold mb-3" style={{ color: "var(--text-primary)" }}>
+  <div
+    className="rounded-xl p-4"
+    style={{
+      background: "var(--surface)",
+      border: "1px solid var(--border-light)"
+    }}
+  >
+    <p
+      className="text-sm font-semibold mb-3"
+      style={{ color: "var(--text-primary)" }}
+    >
       Broadcast funnel
     </p>
     <div className="space-y-2.5">
       {funnelStages.map((s, i) => (
         <div key={s.label} className="flex items-center gap-3">
-          <span className="text-xs w-20 shrink-0" style={{ color: "var(--text-muted)" }}>
+          <span
+            className="text-xs w-20 shrink-0"
+            style={{ color: "var(--text-muted)" }}
+          >
             {s.label}
           </span>
-          <div className="flex-1 h-4 rounded-full overflow-hidden" style={{ background: "var(--background-secondary)" }}>
+          <div
+            className="flex-1 h-4 rounded-full overflow-hidden"
+            style={{ background: "var(--background-secondary)" }}
+          >
             <motion.div
               className="h-full rounded-full"
-              style={{ background: s.label === "Failed" ? "#e0645d" : "var(--primary)", opacity: 1 - i * 0.12 }}
+              style={{
+                background: s.label === "Failed" ? "#e0645d" : "var(--primary)",
+                opacity: 1 - i * 0.12
+              }}
               initial={{ width: "0%" }}
               whileInView={{ width: `${s.pct}%` }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
             />
           </div>
-          <span className="text-xs font-semibold w-12 text-right shrink-0" style={{ color: "var(--text-primary)" }}>
+          <span
+            className="text-xs font-semibold w-12 text-right shrink-0"
+            style={{ color: "var(--text-primary)" }}
+          >
             {s.value.toLocaleString()}
           </span>
         </div>
@@ -139,7 +201,7 @@ const AnalyticsSection = () => (
           align="center"
           eyebrow="Analytics"
           title="Know what's working. Scale what isn't."
-          description="Delivery, engagement, leads and conversions — across WhatsApp and Instagram — in one dashboard. Figures shown are illustrative demo data."
+          description="Broadcast results, template button clicks, the ads that bring in chats and what Meta charges — across WhatsApp and Instagram — in one dashboard. Figures shown are illustrative demo data."
         />
       </Reveal>
 
@@ -176,7 +238,6 @@ const AnalyticsSection = () => (
           </div>
         </AppFrame>
       </Reveal>
-
     </div>
   </section>
 );
