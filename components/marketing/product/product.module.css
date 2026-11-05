@@ -1,0 +1,90 @@
+/* Shared styles for the code-built product visuals.
+   Timing: each animated element sets --d (its start delay). Animations run
+   once and hold the final frame; they pause while the visual is off screen
+   and are switched off entirely for reduced motion (final frame shown). */
+
+.frame {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(10, 18, 14, 0.08);
+  border-radius: 18px;
+  box-shadow:
+    0 1px 2px rgba(10, 18, 14, 0.05),
+    0 24px 48px -28px rgba(10, 18, 14, 0.28);
+  overflow: hidden;
+  color: #111b21;
+  font-variant-numeric: tabular-nums;
+}
+
+.chat {
+  background-color: #efeae2;
+  background-image:
+    radial-gradient(rgba(17, 27, 33, 0.05) 1px, transparent 1.2px),
+    radial-gradient(rgba(17, 27, 33, 0.035) 1px, transparent 1.2px);
+  background-size:
+    18px 18px,
+    18px 18px;
+  background-position:
+    0 0,
+    9px 9px;
+}
+
+.in {
+  animation: in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+}
+
+.out {
+  animation: out 0.3s ease var(--d, 0s) both;
+}
+
+.press {
+  animation: press 0.7s ease var(--d, 0s) both;
+}
+
+[data-play="false"] .in,
+[data-play="false"] .out,
+[data-play="false"] .press {
+  animation-play-state: paused;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--dy, 0px)) scale(var(--s, 1));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes press {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  35% {
+    background-color: rgba(2, 126, 181, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .out {
+    animation: none;
+    opacity: 0;
+  }
+  .press {
+    animation: none;
+  }
+}

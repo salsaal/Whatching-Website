@@ -12,13 +12,10 @@ export const Reveal = ({
   style?: React.CSSProperties;
   delay?: number;
 }) => {
+  // Always render the same motion element so the server HTML and the first
+  // client render match. Swapping in a plain <div> for reduced motion kept the
+  // server's opacity: 0 after hydration, leaving content invisible.
   const reduceMotion = useReducedMotion();
-  if (reduceMotion)
-    return (
-      <div className={className} style={style}>
-        {children}
-      </div>
-    );
 
   return (
     <motion.div
@@ -27,7 +24,11 @@ export const Reveal = ({
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={
+        reduceMotion
+          ? { duration: 0 }
+          : { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }
+      }
     >
       {children}
     </motion.div>

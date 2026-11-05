@@ -14,6 +14,9 @@ export const DEMO_VIDEO = {
   lengthAdjective: "3-minute"
 };
 
+export const youtubeEmbedUrl = (id: string, { autoplay = false } = {}) =>
+  `https://www.youtube-nocookie.com/embed/${id}?rel=0&playsinline=1${autoplay ? "&autoplay=1" : ""}`;
+
 export const demoVideoThumbnail = `https://i.ytimg.com/vi/${DEMO_VIDEO.id}/maxresdefault.jpg`;
 
 export const demoVideoSchema = (pagePath: string): JsonLd => ({

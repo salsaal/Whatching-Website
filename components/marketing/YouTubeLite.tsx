@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Play } from "lucide-react";
+import { youtubeEmbedUrl } from "@/lib/data/video";
 
 // Shows the thumbnail and a play button; the YouTube player only loads on
 // click, so the video adds no third-party script to the page load.
@@ -31,7 +32,7 @@ const YouTubeLite = ({
       {playing ? (
         <iframe
           className="absolute inset-0 w-full h-full"
-          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`}
+          src={youtubeEmbedUrl(id, { autoplay: true })}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

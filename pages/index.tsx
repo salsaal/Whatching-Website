@@ -1,14 +1,11 @@
 import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
-import DemoVideoSection from "@/components/marketing/DemoVideoSection";
 import TrustBar from "@/components/marketing/TrustBar";
 import EcosystemDiagram from "@/components/marketing/EcosystemDiagram";
 import PlatformOverview from "@/components/marketing/PlatformOverview";
 import MarqueeBand from "@/components/marketing/MarqueeBand";
-import BroadcastSection from "@/components/marketing/BroadcastSection";
-import AIChatbotSection from "@/components/marketing/AIChatbotSection";
-import FlowsSection from "@/components/marketing/FlowsSection";
+import FeatureCardsSection from "@/components/marketing/FeatureCardsSection";
 import InstagramAutomationSection from "@/components/marketing/InstagramAutomationSection";
 import SharedInboxSection from "@/components/marketing/SharedInboxSection";
 import AnalyticsSection from "@/components/marketing/AnalyticsSection";
@@ -16,7 +13,7 @@ import FeatureGrid from "@/components/marketing/FeatureGrid";
 import IndustryGrid from "@/components/marketing/IndustryGrid";
 import WhyWhatching from "@/components/marketing/WhyWhatching";
 import TrustAPISection from "@/components/marketing/TrustAPISection";
-import PricingPreview from "@/components/marketing/PricingPreview";
+import PricingBand from "@/components/marketing/PricingBand";
 import FaqSection, { homepageFaqs } from "@/components/marketing/FaqSection";
 import { faqSchema } from "@/lib/seo";
 import { demoVideoSchema } from "@/lib/data/video";
@@ -33,14 +30,11 @@ export default function Home() {
       />
       <SiteShell>
         <Hero />
-        <DemoVideoSection />
         <TrustBar />
         <EcosystemDiagram />
         <PlatformOverview />
         <MarqueeBand />
-        <BroadcastSection />
-        <AIChatbotSection />
-        <FlowsSection />
+        <FeatureCardsSection />
         <InstagramAutomationSection />
         <SharedInboxSection />
         <AnalyticsSection />
@@ -48,7 +42,7 @@ export default function Home() {
         <IndustryGrid />
         <WhyWhatching />
         <TrustAPISection />
-        <PricingPreview />
+        <PricingBand />
         <FaqSection />
         <FinalCta />
       </SiteShell>
