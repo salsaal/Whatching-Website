@@ -1,7 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BarChart3, Bot, Building2, Gauge, ShieldCheck, TicketPercent, Users, Workflow } from "lucide-react";
+import {
+  BarChart3,
+  Bot,
+  Building2,
+  Gauge,
+  ShieldCheck,
+  TicketPercent,
+  Users,
+  Workflow
+} from "lucide-react";
 import { Reveal, staggerContainer, staggerItem } from "./Primitives";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
@@ -21,10 +30,16 @@ const WhyWhatching = () => (
     <div className="container-wide">
       <div className="grid lg:grid-cols-2 gap-14 items-center">
         <Reveal>
-          <h2 className="heading-2 mb-4">Built for growth. Designed for conversations.</h2>
-          <p className="body-large mb-8" style={{ color: "var(--text-secondary)" }}>
-            Whatching isn't another bulk sender bolted onto a spreadsheet — it's a connected
-            workspace for every conversation that touches revenue.
+          <h2 className="heading-2 mb-4">
+            Built for growth. Designed for conversations.
+          </h2>
+          <p
+            className="body-large mb-8"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            Whatching isn&apos;t another bulk sender bolted onto a spreadsheet —
+            it&apos;s a connected workspace for every conversation that touches
+            revenue.
           </p>
           <Link href={PRODUCT_APP_URL} className="btn-primary">
             Start Your Free Trial →
@@ -43,12 +58,19 @@ const WhyWhatching = () => (
               key={reason.label}
               variants={staggerItem}
               className="rounded-2xl p-4 flex flex-col gap-3"
-              style={{ background: "var(--surface)", border: "1px solid var(--border-light)", boxShadow: "var(--shadow-card)" }}
+              style={{
+                background: "var(--surface)",
+                border: "1px solid var(--border-light)",
+                boxShadow: "var(--shadow-card)"
+              }}
             >
               <div className="icon-badge !w-9 !h-9">
                 <reason.icon className="w-4 h-4" />
               </div>
-              <span className="text-[13px] font-semibold leading-snug" style={{ color: "var(--text-primary)" }}>
+              <span
+                className="text-[13px] font-semibold leading-snug"
+                style={{ color: "var(--text-primary)" }}
+              >
                 {reason.label}
               </span>
             </motion.div>

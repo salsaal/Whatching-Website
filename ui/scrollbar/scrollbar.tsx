@@ -1,5 +1,5 @@
-/* eslint-disable react/display-name */
-import { ReactElement, ReactNode, memo } from "react";
+ 
+import { memo } from "react";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import { DivProps } from "react-html-props";

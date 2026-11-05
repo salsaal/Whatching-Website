@@ -98,7 +98,7 @@ const FinalCta = () => {
                     className="text-sm mt-1"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    We'll walk you through setup and answer any questions.
+                    We&apos;ll walk you through setup and answer any questions.
                   </p>
                 </div>
                 <div>
@@ -172,7 +172,7 @@ const FinalCta = () => {
                   className="text-lg font-semibold mb-2"
                   style={{ color: "var(--text-primary)" }}
                 >
-                  You're all set!
+                  You&apos;re all set!
                 </h3>
                 <p
                   className="text-sm"

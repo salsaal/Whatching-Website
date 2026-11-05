@@ -283,7 +283,8 @@ export const AIChatVisual = () => (
           className="rounded-xl rounded-tr-sm px-4 py-2.5 text-sm max-w-[85%] text-white"
           style={{ background: "var(--primary)" }}
         >
-          Of course. I've passed your chat to Priya from our team. She'll reply here shortly.
+          Of course. I&apos;ve passed your chat to Priya from our team.
+          She&apos;ll reply here shortly.
         </div>
       </div>
     </div>
