@@ -62,6 +62,15 @@
   animation: blink 0.9s steps(1) infinite;
 }
 
+.wipe {
+  animation: wipe 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0s) both;
+}
+
+.growx {
+  transform-origin: left center;
+  animation: growx 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+}
+
 [data-play="false"] .in,
 [data-play="false"] .out,
 [data-play="false"] .press,
@@ -69,6 +78,8 @@
 [data-play="false"] .tint,
 [data-play="false"] .pop,
 [data-play="false"] .word,
+[data-play="false"] .wipe,
+[data-play="false"] .growx,
 [data-play="false"] .caret {
   animation-play-state: paused;
 }
@@ -127,6 +138,24 @@
   }
 }
 
+@keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes growx {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -153,6 +182,12 @@
   .press,
   .caret {
     animation: none;
+  }
+  .wipe,
+  .growx {
+    animation: none;
+    clip-path: none;
+    transform: none;
   }
 }
 
