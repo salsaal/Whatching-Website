@@ -198,13 +198,3 @@ export const StatCard = ({
     </div>
   </div>
 );
-
-export const AppPanel = ({
-  children,
-  className
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <div className={`surface-card p-5 sm:p-6 ${className ?? ""}`}>{children}</div>
-);

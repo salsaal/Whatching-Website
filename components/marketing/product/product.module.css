@@ -155,3 +155,25 @@
     animation: none;
   }
 }
+
+/* Inbox: the conversation list only shows when the visual is wide enough. */
+.inbox {
+  container-type: inline-size;
+}
+
+.inboxList {
+  display: none;
+}
+
+.wideOnly {
+  display: none;
+}
+
+@container (min-width: 520px) {
+  .inboxList {
+    display: flex;
+  }
+  .wideOnly {
+    display: inline;
+  }
+}
