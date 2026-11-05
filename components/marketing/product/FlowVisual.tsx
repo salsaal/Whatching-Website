@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Check,
-  FileText,
   GalleryHorizontalEnd,
   List,
   MessageCircle,
@@ -27,7 +26,6 @@ const blocks = [
   { icon: MessageCircle, label: "Message" },
   { icon: List, label: "List menu" },
   { icon: GalleryHorizontalEnd, label: "Carousel" },
-  { icon: FileText, label: "Form" },
   { icon: Sparkles, label: "AI reply" },
   { icon: UserRound, label: "Assign agent" }
 ];
@@ -36,7 +34,7 @@ const nodes = [
   { icon: Zap, type: "Trigger", title: "Taps “Plan my trip”" },
   { icon: List, type: "List menu", title: "Where to go?" },
   { icon: GalleryHorizontalEnd, type: "Carousel", title: "Thailand packages" },
-  { icon: FileText, type: "Form", title: "Booking details" },
+  { icon: MessageCircle, type: "Message", title: "Booking request received" },
   { icon: UserRound, type: "Assign agent", title: "Hand to sales team" }
 ];
 
@@ -48,7 +46,7 @@ const FlowVisual = () => {
       {...play}
       className={`${styles.frame} h-full flex flex-col`}
       role="img"
-      aria-label="Whatching chatbot builder: the Trip planner flow, from a customer tapping Plan my trip, through a list menu, a carousel of Thailand packages and a booking form, to handing the chat to the sales team"
+      aria-label="Whatching chatbot builder: the Trip planner flow, from a customer tapping Plan my trip, through a list menu, a carousel of Thailand packages and a booking confirmation message, to handing the chat to the sales team"
     >
       <div className="px-4 pt-3 pb-2.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 min-w-0">

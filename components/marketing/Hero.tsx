@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     <section className="hero-section !pb-12">
-      <div className="container-wide relative grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-12 lg:gap-14 items-center">
+      <div className="container relative grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-12 lg:gap-14 items-center">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="pill mb-7">
             <FaWhatsapp
@@ -69,7 +69,7 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="w-full max-w-[420px] mx-auto">
+        <div className="w-full max-w-[560px] mx-auto">
           <HeroPhone />
         </div>
       </div>

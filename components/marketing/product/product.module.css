@@ -216,3 +216,24 @@
     display: flex;
   }
 }
+
+/* Hero picture: the whole composition scales down on narrow screens. */
+.heroStage {
+  container-type: inline-size;
+}
+
+.heroZoom {
+  zoom: 1;
+}
+
+@container (max-width: 520px) {
+  .heroZoom {
+    zoom: 0.85;
+  }
+}
+
+@container (max-width: 420px) {
+  .heroZoom {
+    zoom: 0.7;
+  }
+}

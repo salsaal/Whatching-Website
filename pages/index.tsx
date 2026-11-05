@@ -3,16 +3,12 @@ import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
 import EcosystemDiagram from "@/components/marketing/EcosystemDiagram";
-import PlatformOverview from "@/components/marketing/PlatformOverview";
 import MarqueeBand from "@/components/marketing/MarqueeBand";
 import FeatureCardsSection from "@/components/marketing/FeatureCardsSection";
 import InstagramAutomationSection from "@/components/marketing/InstagramAutomationSection";
 import SharedInboxSection from "@/components/marketing/SharedInboxSection";
 import AnalyticsSection from "@/components/marketing/AnalyticsSection";
-import FeatureGrid from "@/components/marketing/FeatureGrid";
 import IndustryGrid from "@/components/marketing/IndustryGrid";
-import WhyWhatching from "@/components/marketing/WhyWhatching";
-import TrustAPISection from "@/components/marketing/TrustAPISection";
 import PricingBand from "@/components/marketing/PricingBand";
 import FaqSection, { homepageFaqs } from "@/components/marketing/FaqSection";
 import { faqSchema } from "@/lib/seo";
@@ -31,16 +27,12 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <EcosystemDiagram />
-        <PlatformOverview />
         <MarqueeBand />
         <FeatureCardsSection />
         <InstagramAutomationSection />
         <SharedInboxSection />
         <AnalyticsSection />
-        <FeatureGrid />
         <IndustryGrid />
-        <WhyWhatching />
-        <TrustAPISection />
         <PricingBand />
         <FaqSection />
         <FinalCta />
