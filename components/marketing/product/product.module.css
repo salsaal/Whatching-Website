@@ -200,8 +200,7 @@
   display: none;
 }
 
-.wideOnly,
-.igPost {
+.wideOnly {
   display: none;
 }
 
@@ -211,9 +210,6 @@
   }
   .wideOnly {
     display: inline;
-  }
-  .igPost {
-    display: flex;
   }
 }
 
