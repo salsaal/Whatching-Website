@@ -1,29 +1,72 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Reveal } from "./Primitives";
-import { pricingPlans } from "@/lib/data/pricing";
+import { PricingPlan, pricingPlans } from "@/lib/data/pricing";
 import { industries } from "@/lib/data/industries";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
-// One-line plan summaries for the home page; the full lists stay on /pricing.
-const summaries: Record<string, string> = {
-  basic: "1 WhatsApp number · 10,000 contacts · owner + 2 team members",
-  pro: "2 WhatsApp numbers · 25,000 contacts · owner + 5 team members · Instagram included",
-  enterprise:
-    "More WhatsApp numbers, unlimited team members and a dedicated account manager"
+// The highlights shown on the home page. They are picked from each plan's own
+// feature list in lib/data/pricing.ts, so wording and limits stay in sync; the
+// full lists are on /pricing.
+const highlightNames: Record<string, string[]> = {
+  basic: [
+    "Bulk WhatsApp Messaging",
+    "10,000 WhatsApp Contacts",
+    "Drag & Drop Chatbot Builder",
+    "WhatsApp AI Agent",
+    "Owner + 2 Team Members",
+    "Multi Agent Shared Inbox"
+  ],
+  pro: [
+    "Includes all Basic features",
+    "25,000 WhatsApp Contacts",
+    "Upto 2 Phone Numbers per Organization",
+    "Owner + 5 Team Members",
+    "Instagram Automations",
+    "Instagram AI Agent"
+  ],
+  enterprise: [
+    "Includes all Pro features",
+    "High Volume Subscribers",
+    "Unlimited Team Members",
+    "More WhatsApp Numbers",
+    "Dedicated Account Manager",
+    "Priority Support"
+  ]
+};
+
+const ctaLabels: Record<string, string> = {
+  basic: "Get started",
+  pro: "Start free trial",
+  enterprise: "Contact sales"
+};
+
+const highlightsFor = (plan: PricingPlan) => {
+  const wanted = highlightNames[plan.id] ?? [];
+  const pool = [
+    ...plan.features,
+    ...(plan.featureGroups?.flatMap((g) => g.items) ?? [])
+  ];
+  return pool.filter((feature) => wanted.includes(feature));
 };
 
 const PricingBand = () => (
   <section className="section-padding-large" id="pricing">
     <div className="container-wide grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-      <Reveal className="lg:col-span-4 flex flex-col gap-4">
+      <Reveal className="lg:col-span-4 flex flex-col gap-4 lg:sticky lg:top-28">
         <h2 className="heading-2">Pricing in rupees. No markup on Meta.</h2>
         <p className="body-large" style={{ color: "var(--text-secondary)" }}>
           Prices per month, plus 18% GST. Meta&apos;s message charges are passed
           through at 0% markup.
         </p>
-        <div className="flex flex-wrap gap-2 mt-1">
+        <p
+          className="text-sm font-semibold mt-2"
+          style={{ color: "var(--text-primary)" }}
+        >
+          Built for
+        </p>
+        <div className="flex flex-wrap gap-2 -mt-1">
           {industries.map((ind) => (
             <Link
               key={ind.slug}
@@ -34,32 +77,42 @@ const PricingBand = () => (
             </Link>
           ))}
         </div>
-        <div className="flex flex-wrap gap-3 mt-3">
-          <Link href={PRODUCT_APP_URL} className="btn-primary">
-            Start your free 7-day trial <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link href="/pricing" className="btn-secondary">
-            Compare plans
-          </Link>
-        </div>
+        <Link
+          href="/pricing"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold mt-3"
+          style={{ color: "var(--primary-dark)" }}
+        >
+          Compare all plans <ArrowRight className="w-4 h-4" />
+        </Link>
       </Reveal>
 
-      <div className="lg:col-span-8 grid sm:grid-cols-3 gap-4">
+      <div className="lg:col-span-8 grid sm:grid-cols-3 gap-4 items-stretch">
         {pricingPlans.map((plan, i) => {
           const featured = plan.id === "pro";
+          const muted = featured
+            ? "rgba(255,255,255,0.62)"
+            : "var(--text-muted)";
+          const href = plan.ctaHref === "app" ? PRODUCT_APP_URL : plan.ctaHref;
           return (
             <Reveal
               key={plan.id}
               delay={i * 0.06}
-              className="rounded-3xl p-6 flex flex-col gap-3 h-full"
+              className="rounded-3xl p-6 flex flex-col h-full"
               style={
                 featured
-                  ? { background: "var(--text-primary)", color: "#ffffff" }
-                  : { background: "var(--background-secondary)" }
+                  ? {
+                      background: "var(--text-primary)",
+                      color: "#ffffff",
+                      boxShadow: "0 30px 60px -30px rgba(11,18,16,0.55)"
+                    }
+                  : {
+                      background: "var(--background-secondary)",
+                      border: "1px solid var(--border-light)"
+                    }
               }
             >
-              <p className="text-[17px] font-semibold flex items-center justify-between gap-2 flex-wrap">
-                {plan.name}
+              <div className="flex items-center justify-between gap-2 flex-wrap min-h-[28px]">
+                <p className="text-[17px] font-semibold">{plan.name}</p>
                 {featured && (
                   <span
                     className="text-[11px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 rounded-full"
@@ -71,9 +124,10 @@ const PricingBand = () => (
                     Free 7 days
                   </span>
                 )}
-              </p>
+              </div>
+
               <p
-                className="text-[36px] font-extrabold tracking-tight leading-none"
+                className="mt-4 text-[38px] font-extrabold tracking-tight leading-none"
                 style={featured ? undefined : { color: "var(--text-primary)" }}
               >
                 {plan.monthlyPrice === null
@@ -82,38 +136,46 @@ const PricingBand = () => (
                 {plan.monthlyPrice !== null && (
                   <span
                     className="text-sm font-medium ml-1"
-                    style={{
-                      color: featured
-                        ? "rgba(255,255,255,0.65)"
-                        : "var(--text-muted)"
-                    }}
+                    style={{ color: muted }}
                   >
                     /month
                   </span>
                 )}
               </p>
-              {plan.monthlyPrice !== null && (
-                <p
-                  className="text-xs"
-                  style={{
-                    color: featured
-                      ? "rgba(255,255,255,0.65)"
-                      : "var(--text-muted)"
-                  }}
-                >
-                  plus 18% GST
-                </p>
-              )}
-              <p
-                className="text-sm leading-relaxed mt-auto pt-2"
-                style={{
-                  color: featured
-                    ? "rgba(255,255,255,0.8)"
-                    : "var(--text-secondary)"
-                }}
-              >
-                {summaries[plan.id]}
+              <p className="text-xs mt-2" style={{ color: muted }}>
+                {plan.monthlyPrice === null
+                  ? "Priced to your volume"
+                  : "plus 18% GST"}
               </p>
+
+              <ul className="mt-6 space-y-3 flex-1">
+                {highlightsFor(plan).map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-2.5 text-[13.5px] leading-snug"
+                    style={{
+                      color: featured
+                        ? "rgba(255,255,255,0.88)"
+                        : "var(--text-body)"
+                    }}
+                  >
+                    <Check
+                      className="w-4 h-4 mt-px shrink-0"
+                      style={{ color: featured ? "#4ade80" : "var(--primary)" }}
+                      strokeWidth={2.6}
+                      aria-hidden
+                    />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href={href}
+                className={`${featured ? "btn-primary" : "btn-secondary"} w-full justify-center mt-7`}
+              >
+                {ctaLabels[plan.id] ?? plan.ctaLabel}
+              </Link>
             </Reveal>
           );
         })}

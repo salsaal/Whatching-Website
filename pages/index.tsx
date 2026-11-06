@@ -3,6 +3,7 @@ import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
 import EcosystemDiagram from "@/components/marketing/EcosystemDiagram";
+import AgenciesSection from "@/components/marketing/AgenciesSection";
 import MarqueeBand from "@/components/marketing/MarqueeBand";
 import FeatureCardsSection from "@/components/marketing/FeatureCardsSection";
 import InstagramAutomationSection from "@/components/marketing/InstagramAutomationSection";
@@ -27,6 +28,7 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <EcosystemDiagram />
+        <AgenciesSection />
         <MarqueeBand />
         <FeatureCardsSection />
         <InstagramAutomationSection />

@@ -1,107 +1,98 @@
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  Instagram,
-  MessageSquareText,
-  Send,
-  Users2,
-  Workflow,
-  Zap
-} from "lucide-react";
-import { Reveal, staggerContainer, staggerItem } from "./Primitives";
+import { ArrowRight, Check } from "lucide-react";
+import { Reveal } from "./Primitives";
 import InstagramVisual from "./product/InstagramVisual";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
-const capabilities = [
-  { icon: Send, title: "Instagram DM automation" },
-  { icon: MessageSquareText, title: "Comment automation" },
-  { icon: Zap, title: "Keyword-triggered DMs" },
-  { icon: Workflow, title: "Message flows" },
-  { icon: Users2, title: "Lead capture & qualification" },
-  { icon: Instagram, title: "Team handoff & analytics" }
+// What Instagram automation does, from the Pro plan.
+const points = [
+  "Auto-reply to comments on your posts and reels",
+  "Send a DM when someone comments a keyword",
+  "Automate DMs and story replies with a no-code flow",
+  "Run the AI agent on Instagram",
+  "Hand qualified chats to your team"
 ];
 
-// Heading, then the visual, then the tiles on phones; heading and tiles on
-// the left with the visual on the right from lg up.
+// Heading and points on the left, the visual on the right. On phones the
+// visual comes right after the heading. Brand graphite background, with the
+// Instagram colours kept to small accents.
 const InstagramAutomationSection = () => (
   <section
     id="instagram"
-    className="section-padding-large"
-    style={{ background: "#0b0b0f" }}
+    className="section-padding-large relative overflow-hidden"
+    style={{
+      background:
+        "radial-gradient(55% 60% at 100% 0%, rgba(214,36,159,0.16), rgba(214,36,159,0) 65%), radial-gradient(50% 55% at 0% 100%, rgba(22,159,73,0.2), rgba(22,159,73,0) 65%), #0b1210"
+    }}
   >
-    <div className="container-wide grid lg:grid-cols-2 gap-x-14 gap-y-10 lg:items-center">
-      <Reveal className="lg:col-start-1 lg:row-start-1 lg:self-end">
-        <div className="max-w-xl">
-          <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full text-white"
-            style={{
-              background:
-                "linear-gradient(135deg,#4f5bd5,#962fbf,#d6249f,#f77737)"
-            }}
-          >
-            Instagram
-          </span>
-          <h2 className="heading-2 mt-4 mb-4 !text-white">
-            Turn Instagram engagement into conversations.
-          </h2>
-          <p className="body-large" style={{ color: "rgba(255,255,255,0.65)" }}>
-            Reply to comments automatically, send a DM when someone comments a
-            keyword, and hand qualified leads straight to your team.
-          </p>
-        </div>
+    <div className="container-wide grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] gap-x-16 gap-y-10 items-center">
+      <Reveal className="lg:col-start-1 lg:row-start-1">
+        <span
+          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full text-white"
+          style={{
+            background:
+              "linear-gradient(135deg,#4f5bd5,#962fbf,#d6249f,#f77737)"
+          }}
+        >
+          Instagram
+        </span>
+        <h2 className="heading-2 mt-5 mb-4 !text-white max-w-lg">
+          Turn Instagram comments into conversations.
+        </h2>
+        <p
+          className="body-large max-w-lg"
+          style={{ color: "rgba(255,255,255,0.68)" }}
+        >
+          Reply to every comment, send a DM when someone asks for the price, and
+          hand qualified chats to your team.
+        </p>
       </Reveal>
 
       <Reveal
         delay={0.1}
         className="lg:col-start-2 lg:row-start-1 lg:row-span-2 w-full"
       >
-        <InstagramVisual />
+        <div
+          className="rounded-[20px]"
+          style={{
+            boxShadow:
+              "0 0 0 1px rgba(255,255,255,0.1), 0 50px 120px -40px rgba(214,36,159,0.4), 0 30px 70px -30px rgba(0,0,0,0.6)"
+          }}
+        >
+          <InstagramVisual />
+        </div>
       </Reveal>
 
-      <div className="lg:col-start-1 lg:row-start-2 lg:self-start">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-2 gap-3 sm:gap-4"
-        >
-          {capabilities.map((c) => (
-            <motion.div
-              key={c.title}
-              variants={staggerItem}
-              className="rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)"
-              }}
+      <Reveal delay={0.05} className="lg:col-start-1 lg:row-start-2">
+        <ul className="space-y-3.5 max-w-lg">
+          {points.map((point) => (
+            <li
+              key={point}
+              className="flex items-start gap-3 text-[15px] leading-snug text-white"
             >
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+              <span
+                className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
                 style={{
-                  background: "rgba(214,36,159,0.16)",
-                  color: "#f472c8"
+                  background: "rgba(61,220,124,0.16)",
+                  color: "#3ddc7c"
                 }}
               >
-                <c.icon className="w-4.5 h-4.5" />
-              </div>
-              <span className="text-[13px] sm:text-sm font-medium text-white leading-snug">
-                {c.title}
+                <Check className="w-3 h-3" strokeWidth={3.2} aria-hidden />
               </span>
-            </motion.div>
+              {point}
+            </li>
           ))}
-        </motion.div>
-
-        <Reveal delay={0.15} className="mt-8">
-          <Link
-            href={PRODUCT_APP_URL}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:opacity-80"
-          >
-            Automate Instagram <span aria-hidden>→</span>
+        </ul>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-9">
+          <Link href={PRODUCT_APP_URL} className="btn-primary">
+            Automate Instagram <ArrowRight className="w-4 h-4" />
           </Link>
-        </Reveal>
-      </div>
+          <span className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+            Included in the Pro plan
+          </span>
+        </div>
+      </Reveal>
     </div>
   </section>
 );

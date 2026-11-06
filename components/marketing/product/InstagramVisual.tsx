@@ -177,8 +177,8 @@ const InstagramVisual = () => {
             className="px-3 pt-1.5 text-[12px] leading-[1.4]"
             style={{ color: "#0b1210" }}
           >
-            <strong>wanderly.travels</strong> Phuket in December. Comment PRICE
-            and we&apos;ll send you the price list.
+            <strong className="mr-[3px]">wanderly.travels</strong> Phuket in
+            December. Comment PRICE and we&apos;ll send you the price list.
           </p>
           <div
             className="px-3 pt-2 pb-3 flex flex-col gap-2 text-[12px] leading-[1.35]"
@@ -188,7 +188,7 @@ const InstagramVisual = () => {
               className={styles.in}
               style={delay(T.comment, { "--dy": "8px" } as React.CSSProperties)}
             >
-              <strong>aarav.mehta</strong> PRICE
+              <strong className="mr-[3px]">aarav.mehta</strong> PRICE
             </p>
             <p
               className={`${styles.in} pl-4 flex gap-1.5`}
@@ -196,7 +196,7 @@ const InstagramVisual = () => {
             >
               <Avatar size={16} />
               <span>
-                <strong>wanderly.travels</strong>{" "}
+                <strong className="mr-[3px]">wanderly.travels</strong>{" "}
                 <span style={{ color: "#0c4fa8" }}>@aarav.mehta</span> Sent you
                 the price list in your DMs!
               </span>
@@ -226,7 +226,7 @@ const InstagramVisual = () => {
             </span>
           </div>
           <div
-            className="flex-1 px-3 py-3 flex flex-col justify-end gap-2 min-h-[250px]"
+            className="flex-1 px-3 py-3 flex flex-col justify-end gap-2 min-h-[190px]"
             style={{ background: "#ffffff" }}
           >
             <p
@@ -249,16 +249,16 @@ const InstagramVisual = () => {
                   Hey Aarav! Here&apos;s our Thailand price list
                 </p>
                 <div
-                  className={`${styles.in} rounded-[18px] overflow-hidden`}
+                  className={`${styles.in} flex items-center gap-3 rounded-[18px] p-2.5`}
                   style={delay(T.card, {
                     "--dy": "10px",
                     background: "#efefef"
                   } as React.CSSProperties)}
                 >
-                  <div style={{ aspectRatio: "240 / 100" }}>
+                  <div className="w-[64px] h-[64px] rounded-xl overflow-hidden shrink-0">
                     <TravelPhoto className="block w-full h-full" />
                   </div>
-                  <div className="px-3 py-2 leading-tight">
+                  <div className="leading-tight min-w-0">
                     <p
                       className="text-[12.5px] font-semibold"
                       style={{ color: "#0b1210" }}
@@ -266,7 +266,7 @@ const InstagramVisual = () => {
                       Thailand packages
                     </p>
                     <p
-                      className="text-[11px] mt-0.5"
+                      className="text-[11px] mt-1"
                       style={{ color: "#667781" }}
                     >
                       From ₹48,900 · 4–6 days
