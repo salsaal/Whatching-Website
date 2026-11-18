@@ -3,11 +3,11 @@ import { CheckCircle2 } from "lucide-react";
 import { Reveal } from "./Primitives";
 
 const items = [
-  "Built on Meta's official WhatsApp platform",
-  "WhatsApp and Instagram in one inbox",
+  "Built on Meta's official platform",
+  "WhatsApp + Instagram in one inbox",
   "Prices in rupees",
-  "0% markup on Meta's charges",
-  "7-day free trial, no card needed"
+  "0% markup on Meta charges",
+  "7-day free trial, no card"
 ];
 
 const Pill = ({ item }: { item: string }) => (
@@ -34,7 +34,9 @@ const TrustBar = () => (
     <Reveal>
       {/* A still, wrapped list at every width. A scrolling strip on phone
           moved so slowly it read as cut-off text. */}
-      <ul className="container-wide flex flex-wrap items-center justify-center gap-x-8 gap-y-3 max-sm:gap-x-5 max-sm:gap-y-2.5">
+      {/* One row on desktop, spread across the content width; wraps
+          centred below that. */}
+      <ul className="container-wide flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-x-8 gap-y-3 max-sm:gap-x-5 max-sm:gap-y-2.5">
         {items.map((item) => (
           <li key={item}>
             <Pill item={item} />

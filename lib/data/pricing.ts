@@ -109,27 +109,27 @@ export const metaPricingSource = {
 export const metaConversationPricing = [
   {
     category: "Marketing",
-    desc: "Promotional messages, offers, announcements",
+    desc: "Offers, announcements and reminders to buy",
     price: "₹0.8631"
   },
   {
     category: "Utility",
-    desc: "Order updates, receipts, transactional alerts",
+    desc: "Order updates, receipts and account alerts",
     price: "₹0.1150"
   },
   {
     category: "Authentication",
-    desc: "OTPs and verification (India)",
+    desc: "Login and verification codes to Indian numbers",
     price: "₹0.1150"
   },
   {
-    category: "Auth – International",
-    desc: "OTPs for international numbers",
+    category: "Authentication, international",
+    desc: "Login codes to numbers outside India",
     price: "₹2.4971"
   },
   {
     category: "Service",
-    desc: "Replies to customers within 24 hours. The first 1,000 each month are free for every WhatsApp number.",
+    desc: "Replies within 24 hours of a customer's message. The first 1,000 a month are free for each number.",
     price: "₹0.1150"
   }
 ];

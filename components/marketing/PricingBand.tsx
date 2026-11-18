@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { Reveal } from "./Primitives";
 import { PricingPlan, pricingPlans } from "@/lib/data/pricing";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
@@ -44,6 +43,13 @@ const highlightsFor = (plan: PricingPlan) => {
   return pool.filter((feature) => wanted.includes(feature));
 };
 
+// A short line under each button, so the next step is clear.
+const ctaNotes: Record<string, string> = {
+  basic: "Billed monthly. Cancel anytime.",
+  pro: "7-day free trial. No card needed.",
+  enterprise: "For more numbers or very high volumes."
+};
+
 const PricingBand = () => (
   <section className="section-padding-large" id="pricing">
     <div className="container-wide">
@@ -66,47 +72,59 @@ const PricingBand = () => (
       </div>
 
       <div className="grid md:grid-cols-3 gap-4 items-stretch">
-        {pricingPlans.map((plan, i) => {
+        {pricingPlans.map((plan) => {
           const featured = plan.id === "pro";
-          const muted = featured
-            ? "rgba(255,255,255,0.62)"
-            : "var(--text-muted)";
+          const soft = featured
+            ? "rgba(255,255,255,0.68)"
+            : "var(--text-secondary)";
           const href = plan.ctaHref === "app" ? PRODUCT_APP_URL : plan.ctaHref;
           return (
-            <Reveal
+            <div
               key={plan.id}
-              delay={i * 0.06}
-              className="rounded-3xl p-6 flex flex-col h-full"
+              className="rounded-3xl p-6 lg:p-7 flex flex-col"
               style={
                 featured
                   ? {
-                      background: "var(--text-primary)",
+                      background: "var(--graphite, #0b1210)",
                       color: "#ffffff",
-                      boxShadow: "0 30px 60px -30px rgba(11,18,16,0.55)"
+                      boxShadow: "0 30px 60px -34px rgba(11,18,16,0.6)"
                     }
                   : {
-                      background: "var(--background-secondary)",
+                      background: "var(--surface)",
                       border: "1px solid var(--border-light)"
                     }
               }
             >
-              <div className="flex items-center justify-between gap-2 flex-wrap min-h-[28px]">
-                <p className="text-[17px] font-semibold">{plan.name}</p>
+              <div className="flex items-center justify-between gap-2 min-h-[28px]">
+                <h3
+                  className="text-[17px] font-semibold"
+                  style={
+                    featured ? undefined : { color: "var(--text-primary)" }
+                  }
+                >
+                  {plan.name}
+                </h3>
                 {featured && (
                   <span
                     className="text-xs font-semibold px-2.5 py-1 rounded-full"
                     style={{
-                      background: "rgba(34,197,94,0.16)",
-                      color: "#4ade80"
+                      background: "rgba(74,222,128,0.14)",
+                      color: "#86efac"
                     }}
                   >
-                    Free 7 days
+                    Free for 7 days
                   </span>
                 )}
               </div>
+              <p
+                className="text-sm mt-1.5 md:min-h-[40px]"
+                style={{ color: soft }}
+              >
+                {plan.tagline}
+              </p>
 
               <p
-                className="mt-4 text-[38px] font-extrabold tracking-tight leading-none"
+                className="mt-5 text-[40px] font-extrabold tracking-tight leading-none"
                 style={featured ? undefined : { color: "var(--text-primary)" }}
               >
                 {plan.monthlyPrice === null
@@ -114,24 +132,41 @@ const PricingBand = () => (
                   : `${plan.currency}${plan.monthlyPrice.toLocaleString("en-IN")}`}
                 {plan.monthlyPrice !== null && (
                   <span
-                    className="text-sm font-medium ml-1"
-                    style={{ color: muted }}
+                    className="text-sm font-medium ml-1 tracking-normal"
+                    style={{ color: soft }}
                   >
                     /month
                   </span>
                 )}
               </p>
-              <p className="text-xs mt-2" style={{ color: muted }}>
+              <p className="text-xs mt-2" style={{ color: soft }}>
                 {plan.monthlyPrice === null
                   ? "Priced to your volume"
                   : "plus 18% GST"}
               </p>
 
-              <ul className="mt-6 space-y-3 flex-1">
+              <Link
+                href={href}
+                className={`${featured ? "btn-primary" : "btn-secondary"} w-full mt-6`}
+              >
+                {plan.ctaLabel}
+              </Link>
+              <p className="text-xs mt-2.5 text-center" style={{ color: soft }}>
+                {ctaNotes[plan.id]}
+              </p>
+
+              <ul
+                className="mt-6 pt-6 space-y-2.5 border-t"
+                style={{
+                  borderColor: featured
+                    ? "rgba(255,255,255,0.12)"
+                    : "var(--border-light)"
+                }}
+              >
                 {highlightsFor(plan).map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-2.5 text-[13.5px] leading-snug"
+                    className="flex items-start gap-2.5 text-[14px] leading-snug"
                     style={{
                       color: featured
                         ? "rgba(255,255,255,0.88)"
@@ -148,14 +183,7 @@ const PricingBand = () => (
                   </li>
                 ))}
               </ul>
-
-              <Link
-                href={href}
-                className={`${featured ? "btn-primary" : "btn-secondary"} w-full justify-center mt-7`}
-              >
-                {plan.ctaLabel}
-              </Link>
-            </Reveal>
+            </div>
           );
         })}
       </div>

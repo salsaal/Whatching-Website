@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, Minus } from "lucide-react";
+import { Check, CheckCircle2, Minus } from "lucide-react";
 import Seo from "@/components/Seo/Seo";
 import {
   absoluteUrl,
@@ -12,6 +12,7 @@ import SiteShell from "@/components/marketing/SiteShell";
 import FaqAccordion from "@/components/marketing/FaqAccordion";
 import FinalCta from "@/components/marketing/FinalCta";
 import PricingCard from "@/components/marketing/PricingCard";
+import MetaCostCalculator from "@/components/marketing/MetaCostCalculator";
 import { Reveal, SectionHeading } from "@/components/marketing/Primitives";
 import {
   metaConversationPricing,
@@ -37,6 +38,22 @@ const comparisonRows: {
   { label: "Instagram automation", values: [false, true, true] },
   { label: "Dedicated account manager", values: [false, false, true] },
   { label: "Priority support", values: [false, false, true] }
+];
+
+// The cases where Meta doesn't charge, from Meta's pricing page.
+const freeCases = [
+  {
+    title: "Messages to you are free",
+    desc: "Meta never charges for messages customers send you."
+  },
+  {
+    title: "1,000 free replies a month",
+    desc: "Replies within 24 hours of a customer's message are free for the first 1,000 each month, for each number."
+  },
+  {
+    title: "Free after a Click-to-WhatsApp ad",
+    desc: "When someone messages you from your ad on their phone and you reply within 24 hours, that chat is free for up to 7 days."
+  }
 ];
 
 const Cell = ({ value }: { value: string | boolean }) => {
@@ -180,129 +197,143 @@ const PricingPage = () => {
           </div>
         </section>
 
-        {/* Meta pricing transparency */}
+        {/* What Meta charges: what's free, the rate table and a calculator */}
         <section
           className="section-padding-large"
           style={{ background: "var(--background-secondary)" }}
+          id="meta-charges"
         >
-          <div className="container-wide max-w-5xl">
-            <Reveal>
-              <SectionHeading
-                align="center"
-                title="What Meta charges per message"
-                description="Your plan covers Whatching. Meta also charges a small fee for each message you send, based on its type. We pass it on at Meta's own rate, with 0% markup."
-              />
-            </Reveal>
-
-            <div className="grid md:grid-cols-3 gap-4 mt-10 mb-8">
-              <Reveal className="surface-card p-5">
-                <p
-                  className="text-lg font-semibold mb-1.5"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Messages to you are free
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Meta never charges for messages customers send you.
-                </p>
-              </Reveal>
-              <Reveal delay={0.04} className="surface-card p-5">
-                <p
-                  className="text-lg font-semibold mb-1.5"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  1,000 free replies a month
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  Replies within 24 hours of a customer&apos;s message are
-                  service messages. Each WhatsApp number gets 1,000 free a
-                  month; after that Meta charges per reply.
-                </p>
-              </Reveal>
-              <Reveal delay={0.08} className="surface-card p-5">
-                <p
-                  className="text-lg font-semibold mb-1.5"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  Free after a Click-to-WhatsApp ad
-                </p>
-                <p
-                  className="text-sm"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  When someone messages you from your ad on their phone and you
-                  reply within 24 hours, Meta doesn&apos;t charge for that chat
-                  for up to 7 days.
-                </p>
-              </Reveal>
+          <div className="container-wide">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-4 items-end mb-10">
+              <h2 className="heading-2">What Meta charges per message</h2>
+              <p
+                className="body-large"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Your plan covers Whatching. Meta also charges a small fee for
+                each message you send, based on its type. We pass it on at
+                Meta&apos;s own rate, with 0% markup.
+              </p>
             </div>
 
-            <Reveal
-              delay={0.1}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {metaConversationPricing.map((item) => (
-                <div
-                  key={item.category}
-                  className="product-card !cursor-default flex flex-col justify-between"
-                >
-                  <div>
-                    <h3
-                      className="font-semibold mb-1"
+            <ul className="grid md:grid-cols-3 gap-x-8 gap-y-5 mb-10">
+              {freeCases.map((item) => (
+                <li key={item.title} className="flex items-start gap-3">
+                  <CheckCircle2
+                    className="w-5 h-5 mt-0.5 shrink-0"
+                    style={{ color: "var(--primary)" }}
+                    aria-hidden
+                  />
+                  <span>
+                    <span
+                      className="block font-semibold"
                       style={{ color: "var(--text-primary)" }}
                     >
-                      {item.category}
-                    </h3>
-                    <p
-                      className="text-sm mb-4"
+                      {item.title}
+                    </span>
+                    <span
+                      className="block text-sm mt-1 leading-relaxed"
                       style={{ color: "var(--text-secondary)" }}
                     >
                       {item.desc}
-                    </p>
-                  </div>
-                  <div
-                    className="text-lg font-semibold"
-                    style={{
-                      color:
-                        item.price === "Free"
-                          ? "var(--primary)"
-                          : "var(--text-primary)"
-                    }}
-                  >
-                    {item.price}
-                    <span
-                      className="text-xs"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {" "}
-                      /message
                     </span>
-                  </div>
-                </div>
+                  </span>
+                </li>
               ))}
-            </Reveal>
-            <p
-              className="text-xs text-center mt-6"
-              style={{ color: "var(--text-muted)" }}
-            >
-              Meta&apos;s list rates for India in INR, as of{" "}
-              {metaPricingSource.asOf}. Source:{" "}
-              <a
-                href={metaPricingSource.url}
-                target="_blank"
-                rel="noreferrer"
-                className="underline"
+            </ul>
+
+            <div className="grid lg:grid-cols-12 gap-6 items-start">
+              <div
+                className="lg:col-span-7 rounded-2xl overflow-hidden"
+                style={{
+                  background: "var(--surface)",
+                  border: "1px solid var(--border-light)"
+                }}
               >
-                Meta&apos;s WhatsApp pricing page
-              </a>
-              . Meta may change these rates.
-            </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-[15px] border-collapse">
+                    <caption className="sr-only">
+                      Meta&apos;s WhatsApp rates for India, per message, as of{" "}
+                      {metaPricingSource.asOf}
+                    </caption>
+                    <thead>
+                      <tr style={{ background: "var(--surface-hover)" }}>
+                        <th
+                          scope="col"
+                          className="text-left text-sm font-semibold px-5 py-3"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          Message type
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-right text-sm font-semibold px-5 py-3 whitespace-nowrap"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          Per message
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {metaConversationPricing.map((item) => (
+                        <tr
+                          key={item.category}
+                          className="border-t"
+                          style={{ borderColor: "var(--border-light)" }}
+                        >
+                          <th
+                            scope="row"
+                            className="text-left font-normal px-5 py-4 align-top"
+                          >
+                            <span
+                              className="block font-semibold"
+                              style={{ color: "var(--text-primary)" }}
+                            >
+                              {item.category}
+                            </span>
+                            <span
+                              className="block text-sm mt-0.5"
+                              style={{ color: "var(--text-secondary)" }}
+                            >
+                              {item.desc}
+                            </span>
+                          </th>
+                          <td
+                            className="text-right px-5 py-4 align-top font-semibold tabular-nums whitespace-nowrap"
+                            style={{ color: "var(--text-primary)" }}
+                          >
+                            {item.price}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p
+                  className="text-xs px-5 py-4 border-t"
+                  style={{
+                    color: "var(--text-muted)",
+                    borderColor: "var(--border-light)"
+                  }}
+                >
+                  Meta&apos;s list rates for India in INR, as of{" "}
+                  {metaPricingSource.asOf}. Source:{" "}
+                  <a
+                    href={metaPricingSource.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline"
+                  >
+                    Meta&apos;s WhatsApp pricing page
+                  </a>
+                  . Meta may change these rates.
+                </p>
+              </div>
+
+              <div className="lg:col-span-5">
+                <MetaCostCalculator />
+              </div>
+            </div>
           </div>
         </section>
 
