@@ -53,8 +53,8 @@ const ctaNotes: Record<string, string> = {
 const PricingBand = () => (
   <section className="section-padding-large" id="pricing">
     <div className="container-wide">
-      {/* Heading and description stacked, then the three plans at full width. */}
-      <div className="max-w-2xl mb-10">
+      {/* Heading and description centred above the three plans. */}
+      <div className="max-w-2xl mx-auto text-center mb-10">
         <h2 className="heading-2 mb-4">
           Pricing in rupees. No markup on Meta.
         </h2>
