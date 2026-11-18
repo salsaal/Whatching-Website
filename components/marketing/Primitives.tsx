@@ -1,53 +1,23 @@
 import React from "react";
-import { motion, useReducedMotion, Variants } from "framer-motion";
 
+// Sections no longer fade in as they scroll into view: content is visible as
+// soon as the page loads (faster to show, and kinder to search engines and
+// AI crawlers). Reveal stays as a plain wrapper so existing layouts keep
+// their structure; `delay` is accepted and ignored.
 export const Reveal = ({
   children,
   className,
-  style,
-  delay = 0
+  style
 }: {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
   delay?: number;
-}) => {
-  // Always render the same motion element so the server HTML and the first
-  // client render match. Swapping in a plain <div> for reduced motion kept the
-  // server's opacity: 0 after hydration, leaving content invisible.
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      className={className}
-      style={style}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={
-        reduceMotion
-          ? { duration: 0 }
-          : { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }
-      }
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-export const staggerContainer: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } }
-};
-
-export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
-  }
-};
+}) => (
+  <div className={className} style={style}>
+    {children}
+  </div>
+);
 
 export const Eyebrow = ({
   children,
@@ -56,18 +26,17 @@ export const Eyebrow = ({
   children: React.ReactNode;
   tone?: "primary" | "instagram" | "neutral";
 }) => {
+  // A plain sentence-case label in the section's colour: no pill, no
+  // tracked capitals.
   const colors = {
-    primary: { color: "var(--primary-dark)", background: "var(--accent-wash)" },
-    instagram: { color: "#b8218a", background: "rgba(214,36,159,0.08)" },
-    neutral: {
-      color: "var(--text-secondary)",
-      background: "var(--surface-hover)"
-    }
+    primary: { color: "var(--primary-dark)" },
+    instagram: { color: "#b8218a" },
+    neutral: { color: "var(--text-secondary)" }
   }[tone];
 
   return (
     <span
-      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-full"
+      className="inline-flex items-center gap-1.5 text-sm font-semibold"
       style={colors}
     >
       {children}

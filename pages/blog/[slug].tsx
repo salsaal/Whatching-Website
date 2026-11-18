@@ -68,7 +68,7 @@ export default function BlogPostPage({ post }: { post: BlogPost }) {
                 <ArrowLeft className="w-3.5 h-3.5" /> Back to blog
               </Link>
               <p
-                className="text-xs font-semibold uppercase tracking-wide mb-3"
+                className="text-sm font-semibold mb-3"
                 style={{ color: "var(--primary-dark)" }}
               >
                 {post.category}

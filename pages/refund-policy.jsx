@@ -12,7 +12,7 @@ function RefundPolicy() {
       />
       <SiteShell>
         <section className="section-padding !pt-32">
-          <div className="container max-w-3xl">
+          <div className="container-wide max-w-3xl">
             <h1 className="heading-2 mb-8 text-center">
               Whatching Refund Policy
             </h1>

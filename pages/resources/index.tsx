@@ -1,11 +1,20 @@
 import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Bot, Instagram, MessageCircle } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Bot,
+  Instagram,
+  MessageCircle
+} from "lucide-react";
 import SiteShell from "@/components/marketing/SiteShell";
 import { Reveal, SectionHeading } from "@/components/marketing/Primitives";
 import { blogCategories, blogPosts } from "@/lib/data/blog";
 
-const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const categoryIcons: Record<
+  string,
+  React.ComponentType<{ className?: string }>
+> = {
   "WhatsApp Marketing": MessageCircle,
   "Instagram Automation": Instagram,
   "WhatsApp API": BookOpen,
@@ -24,7 +33,8 @@ export default function ResourcesPage() {
         <section className="hero-section !pb-14">
           <div className="container-wide relative">
             <Reveal>
-              <SectionHeading as="h1"
+              <SectionHeading
+                as="h1"
                 align="center"
                 eyebrow="Resources"
                 title="Guides on WhatsApp and Instagram automation."
@@ -41,14 +51,29 @@ export default function ResourcesPage() {
               const count = blogPosts.filter((p) => p.category === cat).length;
               return (
                 <Reveal key={cat} delay={i * 0.06}>
-                  <Link href={`/blog?category=${encodeURIComponent(cat)}`} className="product-card block h-full">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ background: "var(--accent-wash)", color: "var(--primary)" }}>
+                  <Link
+                    href={`/blog?category=${encodeURIComponent(cat)}`}
+                    className="product-card block h-full"
+                  >
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                      style={{
+                        background: "var(--accent-wash)",
+                        color: "var(--primary)"
+                      }}
+                    >
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-[15px] font-semibold mb-1" style={{ color: "var(--text-primary)" }}>
+                    <h3
+                      className="text-[15px] font-semibold mb-1"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {cat}
                     </h3>
-                    <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                    <p
+                      className="text-xs"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {count} guide{count !== 1 ? "s" : ""}
                     </p>
                   </Link>
@@ -58,7 +83,10 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        <section className="section-padding-large" style={{ background: "var(--background-secondary)" }}>
+        <section
+          className="section-padding-large"
+          style={{ background: "var(--background-secondary)" }}
+        >
           <div className="container-wide">
             <Reveal>
               <SectionHeading title="Latest from the blog" />
@@ -66,17 +94,32 @@ export default function ResourcesPage() {
             <div className="grid md:grid-cols-2 gap-6 mt-10">
               {blogPosts.slice(0, 4).map((post, i) => (
                 <Reveal key={post.slug} delay={i * 0.06}>
-                  <Link href={`/blog/${post.slug}`} className="product-card block h-full">
-                    <p className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--primary-dark)" }}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="product-card block h-full"
+                  >
+                    <p
+                      className="text-sm font-semibold mb-2"
+                      style={{ color: "var(--primary-dark)" }}
+                    >
                       {post.category}
                     </p>
-                    <h3 className="text-[16px] font-semibold mb-2" style={{ color: "var(--text-primary)" }}>
+                    <h3
+                      className="text-[16px] font-semibold mb-2"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {post.title}
                     </h3>
-                    <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>
+                    <p
+                      className="text-sm mb-3"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       {post.excerpt}
                     </p>
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: "var(--primary-dark)" }}>
+                    <span
+                      className="inline-flex items-center gap-1 text-xs font-semibold"
+                      style={{ color: "var(--primary-dark)" }}
+                    >
                       Read guide <ArrowRight className="w-3 h-3" />
                     </span>
                   </Link>
@@ -84,7 +127,11 @@ export default function ResourcesPage() {
               ))}
             </div>
             <Reveal delay={0.15} className="text-center mt-10">
-              <Link href="/blog" className="text-sm font-semibold" style={{ color: "var(--primary-dark)" }}>
+              <Link
+                href="/blog"
+                className="text-sm font-semibold"
+                style={{ color: "var(--primary-dark)" }}
+              >
                 View all guides →
               </Link>
             </Reveal>

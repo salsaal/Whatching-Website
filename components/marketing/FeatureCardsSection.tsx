@@ -34,10 +34,7 @@ const FeatureCardsSection = () => (
   <section className="section-padding-large" id="features">
     <div className="container-wide">
       <Reveal>
-        <SectionHeading
-          align="center"
-          title="Everything you need to keep the conversation going."
-        />
+        <SectionHeading title="Everything you need to keep the conversation going." />
       </Reveal>
       <div className="grid lg:grid-cols-3 gap-6 mt-12">
         {cards.map((card, i) => (

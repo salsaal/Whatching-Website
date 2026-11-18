@@ -13,8 +13,8 @@ import { useInViewPlay } from "./useInViewPlay";
 
 // The Whatching AI agent from the product demo: it learns from the business's
 // own content, then answers a customer's question from it.
-// Timeline (seconds): sources 0.3 / 0.7 / 1.1 · typing 1.6 · sent 3.2 ·
-// "replying" 3.7 · answer streams 4.5 → 5.9.
+// Timeline (seconds): sources 0.05 / 0.17 / 0.29, typing 0.45, sent 1.0,
+// "replying" 1.1, answer streams 1.4 to about 2.3.
 const SOURCES = [
   "Thailand packages.pdf",
   "Pricing & EMI policy",
@@ -25,14 +25,14 @@ const ANSWER =
   "Yes! Airport pickup is included in every Thailand package. And you can pay in 3 easy EMIs. Want me to hold 12–17 Dec for you?";
 
 const T = {
-  source: 0.3,
-  sourceStep: 0.4,
-  typeStart: 1.6,
-  charStep: 0.028,
-  send: 3.2,
-  replying: 3.7,
-  answer: 4.5,
-  wordStep: 0.05
+  source: 0.05,
+  sourceStep: 0.12,
+  typeStart: 0.45,
+  charStep: 0.011,
+  send: 1.0,
+  replying: 1.1,
+  answer: 1.4,
+  wordStep: 0.035
 };
 
 const delay = (seconds: number, extra: React.CSSProperties = {}) =>

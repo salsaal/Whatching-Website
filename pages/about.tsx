@@ -153,7 +153,7 @@ export default function About() {
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Link href={PRODUCT_APP_URL} className="btn-primary">
-                  Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+                  Start your free 7-day trial
                 </Link>
                 <a
                   href={WHATSAPP_URL}

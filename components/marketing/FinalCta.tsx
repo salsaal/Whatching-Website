@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "./Primitives";
 import OnboardingForm from "./OnboardingForm";
@@ -15,13 +14,6 @@ const FinalCta = () => {
       <div className="container-wide">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <Reveal>
-            <span className="pill mb-5">
-              <Sparkles
-                className="w-3.5 h-3.5"
-                style={{ color: "var(--primary)" }}
-              />
-              Get started today
-            </span>
             <h2 className="heading-2 mb-5">
               Your customers are already messaging you.
             </h2>
@@ -31,7 +23,7 @@ const FinalCta = () => {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href={PRODUCT_APP_URL} className="btn-primary">
-                Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+                Start your free 7-day trial
               </Link>
             </div>
             <div

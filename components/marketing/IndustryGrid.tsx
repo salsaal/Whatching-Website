@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
+  ArrowUpRight,
   Building2,
   GraduationCap,
   Home,
@@ -9,12 +9,7 @@ import {
   ShoppingBag,
   Stethoscope
 } from "lucide-react";
-import {
-  Reveal,
-  SectionHeading,
-  staggerContainer,
-  staggerItem
-} from "./Primitives";
+import { Reveal, SectionHeading } from "./Primitives";
 import { industries } from "@/lib/data/industries";
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -36,48 +31,48 @@ const IndustryGrid = ({ headingAs = "h2" }: { headingAs?: "h1" | "h2" }) => (
       <Reveal>
         <SectionHeading
           as={headingAs}
-          align="center"
           eyebrow="Industries"
           title="Built for businesses that run on conversations."
           description="From e-commerce to real estate, Whatching adapts to how your industry actually sells."
         />
       </Reveal>
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10"
-      >
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-10">
         {industries.map((ind) => {
           const Icon = icons[ind.slug] ?? Building2;
           return (
-            <motion.div key={ind.slug} variants={staggerItem}>
+            <div key={ind.slug}>
               <Link
                 href={`/industries/${ind.slug}`}
-                className="product-card block h-full"
+                className="product-card !p-4 sm:!p-5 flex h-full items-start gap-3 sm:gap-4"
               >
-                <div className="icon-badge mb-4">
+                <span className="icon-badge !w-10 !h-10 max-sm:hidden">
                   <Icon className="w-5 h-5" />
-                </div>
-                <h3
-                  className="text-[15px] font-semibold mb-1.5"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {ind.name}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {ind.headline}
-                </p>
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span
+                    className="flex items-center justify-between gap-2 text-[15px] font-semibold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {ind.name}
+                    <ArrowUpRight
+                      className="w-4 h-4 shrink-0"
+                      style={{ color: "var(--text-muted)" }}
+                      aria-hidden
+                    />
+                  </span>
+                  <span
+                    className="block text-sm leading-relaxed mt-1"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {ind.headline}
+                  </span>
+                </span>
               </Link>
-            </motion.div>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
     </div>
   </section>
 );

@@ -278,46 +278,45 @@ function PrivacyPolicy() {
         path="/privacy-policy"
       />
       <SiteShell>
+        <section className="section-padding !pt-32">
+          <div className="container-wide max-w-4xl">
+            <h1 className="heading-2 mb-8 text-center">
+              {heading || "Privacy Policy"}
+            </h1>
+            <div className="space-y-5 body-medium text-[var(--text-secondary)] legal-preformatted">
+              {body.map((line, index) => {
+                const trimmed = line.trim();
+                if (!trimmed) return <div key={index} className="h-2" />;
 
-      <section className="section-padding !pt-32">
-        <div className="container max-w-4xl">
-          <h1 className="heading-2 mb-8 text-center">
-            {heading || "Privacy Policy"}
-          </h1>
-          <div className="space-y-5 body-medium text-[var(--text-secondary)] legal-preformatted">
-            {body.map((line, index) => {
-              const trimmed = line.trim();
-              if (!trimmed) return <div key={index} className="h-2" />;
+                const isSectionHeading =
+                  /^\d+\.\s/.test(trimmed) ||
+                  /^[A-Z][A-Z\s&-]+$/.test(trimmed) ||
+                  trimmed === "Refund Policy";
 
-              const isSectionHeading =
-                /^\d+\.\s/.test(trimmed) ||
-                /^[A-Z][A-Z\s&-]+$/.test(trimmed) ||
-                trimmed === "Refund Policy";
+                if (isSectionHeading) {
+                  return (
+                    <h3
+                      key={index}
+                      className="heading-3 pt-4 text-[var(--text-primary)]"
+                    >
+                      {trimmed}
+                    </h3>
+                  );
+                }
 
-              if (isSectionHeading) {
-                return (
-                  <h3
-                    key={index}
-                    className="heading-3 pt-4 text-[var(--text-primary)]"
-                  >
-                    {trimmed}
-                  </h3>
-                );
-              }
+                if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
+                  return (
+                    <p key={index} className="pl-5">
+                      {trimmed}
+                    </p>
+                  );
+                }
 
-              if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
-                return (
-                  <p key={index} className="pl-5">
-                    {trimmed}
-                  </p>
-                );
-              }
-
-              return <p key={index}>{trimmed}</p>;
-            })}
+                return <p key={index}>{trimmed}</p>;
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </SiteShell>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
-import { ArrowRight, Headphones, Mail, Users } from "lucide-react";
+import { Headphones, Mail, Users } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import SiteShell from "@/components/marketing/SiteShell";
 import { WHATSAPP_NUMBER, WHATSAPP_URL } from "@/lib/constants";
@@ -185,8 +185,7 @@ export default function Contact() {
                     className="btn-primary w-full"
                     disabled={loading}
                   >
-                    {loading ? "Sending..." : "Send Message"}{" "}
-                    <ArrowRight className="w-4 h-4" />
+                    {loading ? "Sending..." : "Send Message"}
                   </button>
                   {submitError && (
                     <p

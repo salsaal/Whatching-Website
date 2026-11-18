@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import HeroPhone from "./HeroPhone";
 import VideoDialog from "./VideoDialog";
@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     <section className="hero-section !pb-12">
-      <div className="container relative grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-12 lg:gap-14 items-center">
+      <div className="container-wide relative grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-12 lg:gap-14 items-center">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="pill mb-7">
             <FaWhatsapp
@@ -37,7 +37,7 @@ const Hero = () => {
 
           <div className="flex flex-wrap justify-center lg:justify-start gap-3 mt-8">
             <Link href={PRODUCT_APP_URL} className="btn-primary">
-              Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+              Start your free 7-day trial
             </Link>
             <button
               type="button"

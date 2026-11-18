@@ -82,7 +82,7 @@ export default function BlogIndex() {
                   className="product-card block h-full"
                 >
                   <p
-                    className="text-xs font-semibold uppercase tracking-wide mb-2"
+                    className="text-sm font-semibold mb-2"
                     style={{ color: "var(--primary-dark)" }}
                   >
                     {post.category}

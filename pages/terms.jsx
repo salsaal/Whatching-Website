@@ -156,7 +156,7 @@ function Terms() {
       />
       <SiteShell>
         <section className="section-padding !pt-32">
-          <div className="container max-w-4xl">
+          <div className="container-wide max-w-4xl">
             <h1 className="heading-2 mb-8 text-center">
               {heading || "Terms & Conditions"}
             </h1>

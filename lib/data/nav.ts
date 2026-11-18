@@ -28,7 +28,7 @@ export const footerColumns = {
     { label: "Analytics", href: "/features/analytics" },
     { label: "Instagram Automation", href: "/features/instagram-automation" },
     {
-      label: "Instagram Comment Auto Reply",
+      label: "Comment Auto-Reply",
       href: "/features/instagram-comment-automation"
     },
     {
@@ -45,7 +45,7 @@ export const footerColumns = {
     { label: "Agencies", href: "/industries/agencies" }
   ],
   resources: [
-    { label: "Product demo", href: "/demo" },
+    { label: "Product Tour", href: "/demo" },
     { label: "Blog", href: "/blog" },
     { label: "Guides", href: "/resources" },
     { label: "FAQ", href: "/faq" },

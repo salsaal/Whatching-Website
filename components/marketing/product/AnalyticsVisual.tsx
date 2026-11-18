@@ -12,14 +12,14 @@ import { useInViewPlay } from "./useInViewPlay";
 // Broadcasts card. Plain counts only. Meta's charges are the real India
 // per-message rates (Marketing ₹0.8631, Utility and Authentication ₹0.1150,
 // Service free for the first 1,000 a month) applied to these counts.
-// Timeline (seconds): tiles 0.2 + 0.18 each · chart 1.0 · bars 1.2 · total 3.1.
+// Timeline (seconds): tiles from 0.05, chart 0.3, bars 0.45, done by about 1.5.
 const T = {
-  tile: 0.2,
-  tileStep: 0.18,
-  chart: 1.0,
-  bars: 1.2,
-  barStep: 0.15,
-  foot: 3.1
+  tile: 0.05,
+  tileStep: 0.08,
+  chart: 0.3,
+  bars: 0.45,
+  barStep: 0.08,
+  foot: 1.2
 };
 
 const delay = (seconds: number, extra: React.CSSProperties = {}) =>

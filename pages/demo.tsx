@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
@@ -95,7 +95,7 @@ export default function DemoPage() {
                   <FaWhatsapp className="w-4 h-4" /> Chat with us on WhatsApp
                 </a>
                 <Link href={PRODUCT_APP_URL} className="btn-secondary">
-                  Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+                  Start your free 7-day trial
                 </Link>
               </div>
               <p

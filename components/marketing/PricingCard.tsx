@@ -32,10 +32,9 @@ const PricingCard = ({
     >
       {plan.recommended && (
         <span
-          className="absolute -top-3.5 left-7 text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full text-white"
+          className="absolute -top-3.5 left-7 text-xs font-semibold px-3 py-1.5 rounded-full text-white"
           style={{
-            background: "var(--gradient-button)",
-            boxShadow: "var(--shadow-glow)"
+            background: "var(--button-primary)"
           }}
         >
           Most popular

@@ -12,16 +12,16 @@ import { useInViewPlay } from "./useInViewPlay";
 
 // The shared team inbox from the product demo. A customer's reply arrives, a
 // teammate is assigned from the "Assign to…" menu, and the teammate replies.
-// Timeline (seconds): arrives 0.4 · menu opens 1.7 · Meera picked 2.4 ·
-// assigned 2.9 · typing 3.2 · reply sent 4.8.
+// Timeline (seconds): arrives 0.05, menu opens 0.45, Meera picked 0.75,
+// assigned 0.95, typing 1.1, reply sent 1.9.
 const T = {
-  arrive: 0.4,
-  menu: 1.7,
-  pick: 2.4,
-  assigned: 2.9,
-  typeStart: 3.2,
-  charStep: 0.02,
-  send: 4.8
+  arrive: 0.05,
+  menu: 0.45,
+  pick: 0.75,
+  assigned: 0.95,
+  typeStart: 1.1,
+  charStep: 0.011,
+  send: 1.9
 };
 const REPLY =
   "Done! 12–17 Dec is on hold for you. Sending the booking link now.";

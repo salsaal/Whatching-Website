@@ -30,7 +30,7 @@
 }
 
 .in {
-  animation: in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+  animation: in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
 }
 
 .out {
@@ -38,7 +38,7 @@
 }
 
 .press {
-  animation: press 0.7s ease var(--d, 0s) both;
+  animation: press 0.45s ease var(--d, 0s) both;
 }
 
 .pop {
@@ -55,7 +55,7 @@
 }
 
 .tint {
-  animation: tint 0.5s ease var(--d, 0s) both;
+  animation: tint 0.35s ease var(--d, 0s) both;
 }
 
 .caret {
@@ -63,12 +63,12 @@
 }
 
 .wipe {
-  animation: wipe 1.4s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0s) both;
+  animation: wipe 0.9s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0s) both;
 }
 
 .growx {
   transform-origin: left center;
-  animation: growx 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
+  animation: growx 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s) both;
 }
 
 [data-play="false"] .in,

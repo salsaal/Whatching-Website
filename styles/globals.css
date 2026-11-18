@@ -170,12 +170,17 @@
   /* Core surfaces */
   --primary: #169f49;
   --primary-dark: #0c7d38;
+  /* Button fills: a shade deeper than the brand green for readable white text. */
+  --button-primary: #12843d;
+  --button-primary-hover: #0e7535;
+  --button-primary-active: #0b652d;
   --primary-light: #22c55e;
   --background: #fbfdfb;
   --background-secondary: #eef6f1;
   --surface: #ffffff;
   --surface-hover: #f2f8f4;
   --band-dark: #0a2417;
+  --graphite: #0b1210;
   --band-dark-soft: #0f2f1e;
 
   /* Text hierarchy — neutral graphite, not brand-colored headings */

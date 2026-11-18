@@ -1,17 +1,10 @@
 import React from "react";
 import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import SiteShell from "./SiteShell";
 import FinalCta from "./FinalCta";
-import {
-  Reveal,
-  SectionHeading,
-  Eyebrow,
-  staggerContainer,
-  staggerItem
-} from "./Primitives";
+import { Reveal, SectionHeading, Eyebrow } from "./Primitives";
 import { Industry } from "@/lib/data/industries";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 import { breadcrumbSchema } from "@/lib/seo";
@@ -59,7 +52,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
                 {industry.subheadline}
               </p>
               <Link href={PRODUCT_APP_URL} className="btn-primary">
-                Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+                Start your free 7-day trial
               </Link>
             </Reveal>
           </div>
@@ -76,17 +69,10 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
                 >
                   {industry.summary}
                 </p>
-                <motion.div
-                  variants={staggerContainer}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, margin: "-60px" }}
-                  className="flex flex-wrap items-center gap-2"
-                >
+                <div className="flex flex-wrap items-center gap-2">
                   {industry.journey.map((step, i) => (
                     <React.Fragment key={step}>
-                      <motion.span
-                        variants={staggerItem}
+                      <span
                         className="pill !text-[13px]"
                         style={
                           i === industry.journey.length - 1
@@ -99,7 +85,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
                         }
                       >
                         {step}
-                      </motion.span>
+                      </span>
                       {i < industry.journey.length - 1 && (
                         <ArrowRight
                           className="w-3.5 h-3.5"
@@ -108,7 +94,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
                       )}
                     </React.Fragment>
                   ))}
-                </motion.div>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -123,7 +109,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
             <div>
               <Reveal>
                 <p
-                  className="text-xs font-semibold uppercase tracking-wide mb-5"
+                  className="text-sm font-semibold mb-5"
                   style={{ color: "var(--text-muted)" }}
                 >
                   Common challenges
@@ -151,7 +137,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
             <div>
               <Reveal>
                 <p
-                  className="text-xs font-semibold uppercase tracking-wide mb-5"
+                  className="text-sm font-semibold mb-5"
                   style={{ color: "var(--primary-dark)" }}
                 >
                   How Whatching helps

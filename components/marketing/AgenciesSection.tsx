@@ -76,7 +76,7 @@ const AgenciesSection = () => (
         </ul>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-9">
           <Link href={PRODUCT_APP_URL} className="btn-primary">
-            Start your free 7-day trial <ArrowRight className="w-4 h-4" />
+            Start your free 7-day trial
           </Link>
           <Link
             href="/industries/agencies"

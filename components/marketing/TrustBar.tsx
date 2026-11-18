@@ -25,20 +25,13 @@ const Pill = ({ item }: { item: string }) => (
 
 const TrustBar = () => (
   <section
-    className="py-10 max-sm:py-7 border-y"
+    className="py-7 max-sm:py-6 border-y"
     style={{
       borderColor: "var(--border-light)",
       background: "var(--background-secondary)"
     }}
   >
     <Reveal>
-      <p
-        className="text-center text-xs font-semibold uppercase tracking-[0.14em] mb-6 max-sm:mb-4 px-4"
-        style={{ color: "var(--text-muted)" }}
-      >
-        Powering customer conversations
-      </p>
-
       {/* A still, wrapped list at every width. A scrolling strip on phone
           moved so slowly it read as cut-off text. */}
       <ul className="container-wide flex flex-wrap items-center justify-center gap-x-8 gap-y-3 max-sm:gap-x-5 max-sm:gap-y-2.5">

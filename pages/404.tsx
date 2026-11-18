@@ -26,8 +26,7 @@ export default function NotFound() {
       />
       <SiteShell>
         <section className="pt-36 pb-24 max-sm:pt-28 max-sm:pb-16">
-          {/* Inline width until App.css stops overriding Tailwind's max-w-*. */}
-          <div className="container" style={{ maxWidth: 728 }}>
+          <div className="container-wide max-w-3xl">
             <p
               className="text-sm font-semibold mb-3"
               style={{ color: "var(--primary-dark)" }}

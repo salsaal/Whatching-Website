@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Plays a visual's CSS animation while it is on screen and pauses it when it
 // scrolls away. Spread `ref` and `data-play` onto the visual's root.
-export const useInViewPlay = <T extends HTMLElement>(threshold = 0.35) => {
+export const useInViewPlay = <T extends HTMLElement>(threshold = 0.15) => {
   const ref = useRef<T>(null);
   const [playing, setPlaying] = useState(false);
 

@@ -14,10 +14,10 @@ import { useInViewPlay } from "./useInViewPlay";
 
 // The "Trip planner flow" from the product demo, on the flow canvas: blocks
 // are dropped in one after another and joined, then the flow is published.
-// Timeline (seconds): nodes at 0.4 + 0.8 each · publish at 4.7.
-const NODE_START = 0.4;
-const NODE_STEP = 0.8;
-const PUBLISH = NODE_START + NODE_STEP * 5 + 0.3;
+// Timeline (seconds): blocks every 0.28s from 0.1, published at 1.7.
+const NODE_START = 0.1;
+const NODE_STEP = 0.28;
+const PUBLISH = NODE_START + NODE_STEP * 5 + 0.2;
 
 const delay = (seconds: number, extra: React.CSSProperties = {}) =>
   ({ "--d": `${seconds}s`, ...extra }) as React.CSSProperties;
@@ -184,7 +184,7 @@ const FlowVisual = () => {
                 <div className="h-[13px] flex justify-center" aria-hidden>
                   <span
                     className={`${styles.grow} block w-[2px] h-full rounded-full`}
-                    style={delay(at + 0.4, { background: "#169f49" })}
+                    style={delay(at + 0.15, { background: "#169f49" })}
                   />
                 </div>
               )}

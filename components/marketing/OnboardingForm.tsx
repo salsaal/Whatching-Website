@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 // Free onboarding call request. Posts to /api/lead, the same lead sheet as
 // the contact form.
@@ -104,8 +104,7 @@ const OnboardingForm = ({
             className="btn-primary w-full"
             disabled={loading}
           >
-            {loading ? "Sending…" : "Book my free call"}{" "}
-            <ArrowRight className="w-4 h-4" />
+            {loading ? "Sending…" : "Book my free call"}
           </button>
           {submitError && (
             <p

@@ -15,8 +15,9 @@ import { useInViewPlay } from "./useInViewPlay";
 // The "Summer Escape" broadcast from the product demo: the approved
 // summer_escape template goes out, ticks turn from sent to delivered to read,
 // the counts fill in, and a customer taps "Plan my trip".
-// Timeline (seconds): send 0.5 · delivered 1.9 · read 2.9 · tap 3.8.
-const T = { send: 0.5, delivered: 1.9, read: 2.9, tap: 3.8 };
+// Timeline (seconds): send 0.15, delivered 0.7, read 1.1, tap 1.5. The whole
+// story finishes in about 2 seconds, so a visitor scrolling past still sees it.
+const T = { send: 0.15, delivered: 0.7, read: 1.1, tap: 1.5 };
 
 const delay = (seconds: number, extra: React.CSSProperties = {}) =>
   ({ "--d": `${seconds}s`, ...extra }) as React.CSSProperties;

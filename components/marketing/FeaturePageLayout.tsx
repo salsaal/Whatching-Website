@@ -57,7 +57,7 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
                 {feature.subheadline}
               </p>
               <Link href={PRODUCT_APP_URL} className="btn-primary">
-                {feature.ctaLabel} <ArrowRight className="w-4 h-4" />
+                {feature.ctaLabel}
               </Link>
             </Reveal>
           </div>
@@ -68,7 +68,7 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
           <div className="container-wide grid md:grid-cols-2 gap-6">
             <Reveal className="surface-card p-7">
               <p
-                className="text-xs font-semibold uppercase tracking-wide mb-3"
+                className="text-sm font-semibold mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 The problem
@@ -86,7 +86,7 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
               style={{ background: "var(--accent-wash)" }}
             >
               <p
-                className="text-xs font-semibold uppercase tracking-wide mb-3"
+                className="text-sm font-semibold mb-3"
                 style={{ color: "var(--primary-dark)" }}
               >
                 How Whatching helps

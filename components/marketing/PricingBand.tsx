@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { Reveal } from "./Primitives";
 import { PricingPlan, pricingPlans } from "@/lib/data/pricing";
-import { industries } from "@/lib/data/industries";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
 // The highlights shown on the home page. They are picked from each plan's own
@@ -47,40 +46,26 @@ const highlightsFor = (plan: PricingPlan) => {
 
 const PricingBand = () => (
   <section className="section-padding-large" id="pricing">
-    <div className="container-wide grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-      <Reveal className="lg:col-span-4 flex flex-col gap-4 lg:sticky lg:top-28">
+    <div className="container-wide">
+      {/* Heading row above the cards, so the three plans get the full width. */}
+      <div className="grid lg:grid-cols-2 gap-x-12 gap-y-4 items-end mb-10">
         <h2 className="heading-2">Pricing in rupees. No markup on Meta.</h2>
-        <p className="body-large" style={{ color: "var(--text-secondary)" }}>
-          Prices per month, plus 18% GST. Meta&apos;s message charges are passed
-          through at 0% markup.
-        </p>
-        <p
-          className="text-sm font-semibold mt-2"
-          style={{ color: "var(--text-primary)" }}
-        >
-          Built for
-        </p>
-        <div className="flex flex-wrap gap-2 -mt-1">
-          {industries.map((ind) => (
-            <Link
-              key={ind.slug}
-              href={`/industries/${ind.slug}`}
-              className="pill !py-1.5 !text-[13px] hover:border-[var(--primary)]"
-            >
-              {ind.name}
-            </Link>
-          ))}
+        <div>
+          <p className="body-large" style={{ color: "var(--text-secondary)" }}>
+            Prices per month, plus 18% GST. Meta&apos;s message charges are
+            passed on at 0% markup.
+          </p>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold mt-3"
+            style={{ color: "var(--primary-dark)" }}
+          >
+            Compare all plans <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-        <Link
-          href="/pricing"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold mt-3"
-          style={{ color: "var(--primary-dark)" }}
-        >
-          Compare all plans <ArrowRight className="w-4 h-4" />
-        </Link>
-      </Reveal>
+      </div>
 
-      <div className="lg:col-span-8 grid sm:grid-cols-3 gap-4 items-stretch">
+      <div className="grid md:grid-cols-3 gap-4 items-stretch">
         {pricingPlans.map((plan, i) => {
           const featured = plan.id === "pro";
           const muted = featured
@@ -109,7 +94,7 @@ const PricingBand = () => (
                 <p className="text-[17px] font-semibold">{plan.name}</p>
                 {featured && (
                   <span
-                    className="text-[11px] font-bold uppercase tracking-[0.08em] px-2.5 py-1 rounded-full"
+                    className="text-xs font-semibold px-2.5 py-1 rounded-full"
                     style={{
                       background: "rgba(34,197,94,0.16)",
                       color: "#4ade80"
