@@ -53,22 +53,22 @@ const ctaNotes: Record<string, string> = {
 const PricingBand = () => (
   <section className="section-padding-large" id="pricing">
     <div className="container-wide">
-      {/* Heading row above the cards, so the three plans get the full width. */}
-      <div className="grid lg:grid-cols-2 gap-x-12 gap-y-4 items-end mb-10">
-        <h2 className="heading-2">Pricing in rupees. No markup on Meta.</h2>
-        <div>
-          <p className="body-large" style={{ color: "var(--text-secondary)" }}>
-            Prices per month, plus 18% GST. Meta&apos;s message charges are
-            passed on at 0% markup.
-          </p>
-          <Link
-            href="/pricing"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold mt-3"
-            style={{ color: "var(--primary-dark)" }}
-          >
-            Compare all plans <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+      {/* Heading and description stacked, then the three plans at full width. */}
+      <div className="max-w-2xl mb-10">
+        <h2 className="heading-2 mb-4">
+          Pricing in rupees. No markup on Meta.
+        </h2>
+        <p className="body-large" style={{ color: "var(--text-secondary)" }}>
+          Prices per month, plus 18% GST. Meta&apos;s message charges are passed
+          on at 0% markup.
+        </p>
+        <Link
+          href="/pricing"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold mt-4"
+          style={{ color: "var(--primary-dark)" }}
+        >
+          Compare all plans <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
 
       <div className="grid md:grid-cols-3 gap-4 items-stretch">

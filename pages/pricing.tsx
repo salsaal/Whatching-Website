@@ -204,16 +204,12 @@ const PricingPage = () => {
           id="meta-charges"
         >
           <div className="container-wide">
-            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-4 items-end mb-10">
-              <h2 className="heading-2">What Meta charges per message</h2>
-              <p
-                className="body-large"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Your plan covers Whatching. Meta also charges a small fee for
-                each message you send, based on its type. We pass it on at
-                Meta&apos;s own rate, with 0% markup.
-              </p>
+            <div className="mb-12">
+              <SectionHeading
+                align="center"
+                title="What Meta charges per message"
+                description="Your plan covers Whatching. Meta also charges a small fee for each message you send, based on its type. We pass it on at Meta's own rate, with 0% markup."
+              />
             </div>
 
             <ul className="grid md:grid-cols-3 gap-x-8 gap-y-5 mb-10">
