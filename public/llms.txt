@@ -1,0 +1,28 @@
+# Whatching
+
+> Whatching is WhatsApp Business API and Instagram messaging software for small businesses in India. It is built on Meta's official WhatsApp Business Platform. Businesses use it to send broadcasts with Meta-approved templates, build chatbots with a drag-and-drop builder, run an AI agent that answers from their own documents, website and FAQs, reply as a team from one shared inbox, automate Instagram comments, DMs and story replies, and see results in an analytics dashboard.
+
+Plans are priced per month in Indian rupees, plus 18% GST: Basic ₹2,499, Pro ₹3,999 (includes Instagram automation), Enterprise custom. Meta's own per-message charges are passed on at 0% markup. There is a free 7-day trial of Pro with no card needed. Billing is monthly. Businesses can keep using the WhatsApp Business app on the same number (coexistence).
+
+## Product
+- [Features](https://www.whatching.com/features): every feature, grouped by WhatsApp, Instagram, and team and insights
+- [WhatsApp broadcasts](https://www.whatching.com/features/whatsapp-broadcast)
+- [Chatbot builder](https://www.whatching.com/features/whatsapp-flows)
+- [AI agent](https://www.whatching.com/features/ai-chatbot)
+- [Shared team inbox](https://www.whatching.com/features/shared-inbox)
+- [Instagram automation](https://www.whatching.com/features/instagram-automation)
+- [Analytics](https://www.whatching.com/features/analytics)
+
+## Pricing
+- [Pricing](https://www.whatching.com/pricing): plans, a full comparison, Meta's India rates per message with the source and date, and a calculator
+
+## Guides
+- [WhatsApp Business API pricing in India](https://www.whatching.com/blog/whatsapp-business-api-pricing-india)
+- [WhatsApp Business app vs API](https://www.whatching.com/blog/whatsapp-business-app-vs-api)
+- [What is the WhatsApp Business API?](https://www.whatching.com/blog/whatsapp-business-api-explained)
+- [All guides](https://www.whatching.com/blog)
+
+## Company
+- [About](https://www.whatching.com/about)
+- [Contact](https://www.whatching.com/contact): WhatsApp +91 70447 02435, hello@whatching.com, Kolkata, India
+- [FAQ](https://www.whatching.com/faq)

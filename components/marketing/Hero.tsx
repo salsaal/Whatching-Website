@@ -3,7 +3,10 @@ import Link from "next/link";
 import { Play } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import HeroPhone from "./HeroPhone";
-import VideoDialog from "./VideoDialog";
+import dynamic from "next/dynamic";
+
+// The video pop-up (and its dialog library) loads only when it is opened.
+const VideoDialog = dynamic(() => import("./VideoDialog"), { ssr: false });
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 import { DEMO_VIDEO } from "@/lib/data/video";
 

@@ -9,7 +9,7 @@ import {
   ShoppingBag,
   Stethoscope
 } from "lucide-react";
-import { Reveal, SectionHeading } from "./Primitives";
+import { SectionHeading } from "./Primitives";
 import { industries } from "@/lib/data/industries";
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -21,23 +21,26 @@ const icons: Record<string, React.ComponentType<{ className?: string }>> = {
   agencies: Building2
 };
 
-const IndustryGrid = ({ headingAs = "h2" }: { headingAs?: "h1" | "h2" }) => (
+// `plain` drops the heading and band background, for pages that have their
+// own intro (the /industries index).
+const IndustryGrid = ({ plain = false }: { plain?: boolean }) => (
   <section
-    className="section-padding-large"
-    style={{ background: "var(--background-secondary)" }}
+    className={plain ? "py-10" : "section-padding-large"}
+    style={plain ? undefined : { background: "var(--background-secondary)" }}
     id="industries"
   >
     <div className="container-wide">
-      <Reveal>
+      {!plain && (
         <SectionHeading
-          as={headingAs}
           eyebrow="Industries"
           title="Built for businesses that run on conversations."
-          description="From e-commerce to real estate, Whatching adapts to how your industry actually sells."
+          description="From e-commerce to real estate, Whatching adapts to how your industry sells."
         />
-      </Reveal>
+      )}
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-10">
+      <div
+        className={`grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 ${plain ? "" : "mt-10"}`}
+      >
         {industries.map((ind) => {
           const Icon = icons[ind.slug] ?? Building2;
           return (

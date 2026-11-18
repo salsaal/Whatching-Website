@@ -1,5 +1,6 @@
 import { FaqItem } from "@/lib/data/faq";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { pricingPlans } from "@/lib/data/pricing";
 
 export const SITE_URL = "https://www.whatching.com";
 export const SITE_NAME = "Whatching";
@@ -37,6 +38,9 @@ export const organizationSchema: JsonLd = {
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
   name: SITE_NAME,
+  // "Whatching" reads like "watching", so the description says what it is.
+  description:
+    "Whatching is WhatsApp Business API and Instagram automation software for small businesses in India: broadcasts, chatbots, an AI agent, a shared team inbox and analytics.",
   url: SITE_URL,
   logo: `${SITE_URL}/assets/logo.png`,
   email: "hello@whatching.com",
@@ -89,3 +93,40 @@ export const faqSchema = (items: FaqItem[]): JsonLd => ({
 });
 
 export const organizationRef = { "@id": ORGANIZATION_ID };
+
+const SOFTWARE_ID = `${SITE_URL}/#software`;
+export const softwareApplicationRef = { "@id": SOFTWARE_ID };
+
+// The product, described once and referenced from every page that's about it.
+// Offers come from lib/data/pricing.ts, so prices stay in one place. No ratings
+// or reviews until there are real ones.
+export const softwareApplicationSchema: JsonLd = {
+  "@type": "SoftwareApplication",
+  "@id": SOFTWARE_ID,
+  name: SITE_NAME,
+  description:
+    "WhatsApp Business API and Instagram messaging software: broadcasts with approved templates, a drag-and-drop chatbot builder, an AI agent that answers from your own content, a shared team inbox and analytics.",
+  applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Customer messaging",
+  operatingSystem: "Web",
+  url: SITE_URL,
+  inLanguage: "en-IN",
+  publisher: organizationRef,
+  offers: pricingPlans
+    .filter((plan) => plan.monthlyPrice !== null)
+    .map((plan) => ({
+      "@type": "Offer",
+      name: plan.name,
+      description: `${plan.tagline} Price per month, plus 18% GST.`,
+      price: String(plan.monthlyPrice),
+      priceCurrency: "INR",
+      url: absoluteUrl("/pricing"),
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: String(plan.monthlyPrice),
+        priceCurrency: "INR",
+        billingDuration: "P1M",
+        valueAddedTaxIncluded: false
+      }
+    }))
+};

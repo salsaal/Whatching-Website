@@ -11,6 +11,35 @@ import { PRODUCT_APP_URL, WHATSAPP_URL } from "@/lib/constants";
 import { breadcrumbSchema } from "@/lib/seo";
 import { DEMO_VIDEO, demoVideoSchema } from "@/lib/data/video";
 
+// What the product tour shows, in order. Shown under the video so visitors
+// and search engines can see what it covers without playing it.
+const tourTopics = [
+  {
+    title: "Broadcasts",
+    desc: "sending an approved template to a contact list and seeing who received, read and tapped it."
+  },
+  {
+    title: "Chatbot builder",
+    desc: "building a chatbot with menus, carousels and a hand-over to a teammate."
+  },
+  {
+    title: "AI agent",
+    desc: "teaching it from your own documents and FAQs, then answering a customer."
+  },
+  {
+    title: "Shared inbox",
+    desc: "WhatsApp and Instagram chats in one place, assigned to a teammate."
+  },
+  {
+    title: "Instagram",
+    desc: "a comment that triggers a DM, with a public reply."
+  },
+  {
+    title: "Analytics",
+    desc: "broadcast results, button taps and what Meta charges."
+  }
+];
+
 const callAgenda = [
   "Connecting your WhatsApp Business number",
   "Setting up your first message templates and broadcast",
@@ -22,7 +51,7 @@ export default function DemoPage() {
   return (
     <>
       <Seo
-        title="Whatching Demo: WhatsApp & Instagram Automation | Whatching"
+        title="Product Tour and Free Onboarding Call | Whatching"
         description="Watch a 3-minute demo of Whatching, then book a free onboarding call. See WhatsApp broadcasts, chatbots, the AI agent and the shared team inbox."
         path="/demo"
         jsonLd={[
@@ -52,6 +81,35 @@ export default function DemoPage() {
                 poster={<DemoPoster lengthLabel={DEMO_VIDEO.lengthAdjective} />}
               />
             </Reveal>
+            <div className="max-w-4xl mx-auto mt-10">
+              <h2
+                className="text-lg font-semibold mb-4"
+                style={{ color: "var(--text-primary)" }}
+              >
+                What the tour covers
+              </h2>
+              <ul
+                className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-[15px]"
+                style={{ color: "var(--text-body)" }}
+              >
+                {tourTopics.map((t) => (
+                  <li key={t.title} className="flex gap-3">
+                    <Check
+                      className="w-4 h-4 mt-1 shrink-0"
+                      style={{ color: "var(--primary)" }}
+                      strokeWidth={2.6}
+                      aria-hidden
+                    />
+                    <span>
+                      <strong style={{ color: "var(--text-primary)" }}>
+                        {t.title}:
+                      </strong>{" "}
+                      {t.desc}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 

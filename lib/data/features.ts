@@ -27,6 +27,8 @@ export interface Feature {
   name: string;
   /** The "How it works" heading, written out so grammar and casing are right. */
   howTitle: string;
+  /** Used in headings such as "What you get with …", in sentence case. */
+  shortName: string;
   eyebrow: string;
   headline: string;
   subheadline: string;
@@ -49,6 +51,7 @@ export const features: Feature[] = [
     visual: "marketing",
     name: "WhatsApp Marketing",
     howTitle: "How WhatsApp marketing works in Whatching",
+    shortName: "WhatsApp marketing",
     eyebrow: "WhatsApp Marketing",
     headline: "WhatsApp marketing, done the official way.",
     subheadline:
@@ -118,6 +121,16 @@ export const features: Feature[] = [
         question: "Is this the same as bulk WhatsApp senders?",
         answer:
           "No. Whatching sends through the official WhatsApp Business API and follows Meta's messaging policies, rather than unofficial automation infrastructure."
+      },
+      {
+        question: "How much does WhatsApp marketing cost?",
+        answer:
+          "You pay for your Whatching plan, from ₹2,499 a month plus 18% GST, and Meta's fee for each message you send. A marketing message in India costs ₹0.8631 at Meta's rate, which we pass on with 0% markup. Our pricing page has the full rates and a cost calculator."
+      },
+      {
+        question: "Can I keep using the WhatsApp Business app?",
+        answer:
+          "Yes. You can keep using the WhatsApp Business app on your phone with the same number while you use Whatching. Meta calls this coexistence."
       }
     ],
     ctaLabel: "Start your free 7-day trial",
@@ -129,6 +142,7 @@ export const features: Feature[] = [
     visual: "broadcast",
     name: "WhatsApp Broadcasts",
     howTitle: "How WhatsApp broadcasts work",
+    shortName: "WhatsApp broadcasts",
     eyebrow: "Broadcasts",
     headline: "Broadcast campaigns that actually start conversations.",
     subheadline:
@@ -194,6 +208,16 @@ export const features: Feature[] = [
       {
         question: "How far ahead can I schedule a campaign?",
         answer: "You can pick a later date and time for a broadcast to go out."
+      },
+      {
+        question: "How much does a WhatsApp broadcast cost?",
+        answer:
+          "Meta charges for each delivered message, based on its type. In India a marketing message costs ₹0.8631 and a utility message ₹0.1150 at Meta's rates, which we pass on with 0% markup. Your Whatching plan is separate."
+      },
+      {
+        question: "Can I see who read my broadcast?",
+        answer:
+          "Yes. Each broadcast shows how many messages were delivered, read and replied to, and how many people tapped each button."
       }
     ],
     ctaLabel: "Create a broadcast",
@@ -205,6 +229,7 @@ export const features: Feature[] = [
     visual: "ai",
     name: "AI Chatbot",
     howTitle: "How the AI chatbot works",
+    shortName: "the AI chatbot",
     eyebrow: "AI Automation",
     headline: "AI that talks to your customers, not at them.",
     subheadline:
@@ -273,6 +298,21 @@ export const features: Feature[] = [
         question: "Does the AI need to be trained per business?",
         answer:
           "Yes, the AI is configured around your business's products, policies and common questions."
+      },
+      {
+        question: "What can the AI agent learn from?",
+        answer:
+          "Your own documents, your website and your FAQs. It answers customer questions from that information, so keep it up to date when prices or policies change."
+      },
+      {
+        question: "Does the AI agent work on Instagram too?",
+        answer:
+          "Yes. The Instagram AI agent is part of the Pro plan, alongside the WhatsApp AI agent that comes with every plan."
+      },
+      {
+        question: "Is AI usage included in my plan?",
+        answer:
+          "Yes. Basic includes 1M of AI usage, Pro includes 3M and Enterprise is unlimited. If you need more, you can buy AI token top-ups from inside Whatching."
       }
     ],
     ctaLabel: "Set up your AI agent",
@@ -284,6 +324,7 @@ export const features: Feature[] = [
     visual: "flow",
     name: "Chatbot Builder",
     howTitle: "How the chatbot builder works",
+    shortName: "the chatbot builder",
     eyebrow: "Chatbot builder",
     headline: "Build customer journeys without writing code.",
     subheadline:
@@ -351,6 +392,16 @@ export const features: Feature[] = [
         question: "Can flows hand off to a human agent?",
         answer:
           "Yes — any flow step can assign the conversation to an agent or team."
+      },
+      {
+        question: "What can a chatbot include?",
+        answer:
+          "Messages, list menus, carousels, questions with branches, AI replies, and a hand-over to a teammate. You build it by dragging blocks onto a canvas."
+      },
+      {
+        question: "Can I use the same builder for Instagram?",
+        answer:
+          "Yes. The chatbot builder works for Instagram DMs too on the Pro plan."
       }
     ],
     ctaLabel: "Build your first chatbot",
@@ -362,6 +413,7 @@ export const features: Feature[] = [
     visual: "inbox",
     name: "Shared Inbox",
     howTitle: "How the shared inbox works",
+    shortName: "the shared inbox",
     eyebrow: "Team Inbox",
     headline: "One inbox for your entire team.",
     subheadline:
@@ -428,6 +480,15 @@ export const features: Feature[] = [
       {
         question: "Can I assign conversations to specific agents?",
         answer: "Yes — assign any conversation to a teammate from the inbox."
+      },
+      {
+        question: "Can I control what each teammate can see or do?",
+        answer: "Yes. Role-based team permissions come with every plan."
+      },
+      {
+        question: "How many team members can I add?",
+        answer:
+          "Basic includes the owner plus 2 team members, Pro the owner plus 5, and Enterprise has unlimited team members."
       }
     ],
     ctaLabel: "Try the shared inbox",
@@ -439,6 +500,7 @@ export const features: Feature[] = [
     visual: "analytics",
     name: "Analytics",
     howTitle: "How the analytics dashboard works",
+    shortName: "analytics",
     eyebrow: "Analytics",
     headline: "See what's working. Fix what isn't.",
     subheadline:
@@ -505,6 +567,11 @@ export const features: Feature[] = [
         question: "Does analytics cover Instagram too?",
         answer:
           "Yes — WhatsApp and Instagram performance both live in the same dashboard."
+      },
+      {
+        question: "Can I see what Meta is charging me?",
+        answer:
+          "Yes. The dashboard shows what Meta charges for your messages, alongside broadcast results and the ads that bring in chats."
       }
     ],
     ctaLabel: "See your analytics",
@@ -516,6 +583,7 @@ export const features: Feature[] = [
     visual: "instagram-comment",
     name: "Instagram Automation",
     howTitle: "How Instagram automation works",
+    shortName: "Instagram automation",
     eyebrow: "Instagram",
     headline: "Turn Instagram engagement into conversations.",
     subheadline:
@@ -580,6 +648,16 @@ export const features: Feature[] = [
         question: "Can a story reply start an automation?",
         answer:
           "Yes — a story reply can start an automated DM, the same as a comment or a new message."
+      },
+      {
+        question: "Which plan includes Instagram automation?",
+        answer:
+          "Instagram automation is part of the Pro plan, at ₹3,999 a month plus 18% GST. You can try it free for 7 days with no card."
+      },
+      {
+        question: "What kind of Instagram account do I need?",
+        answer:
+          "An Instagram professional account. We walk you through connecting it when you set up, or on a free onboarding call if you fill in the form on our demo page."
       }
     ],
     ctaLabel: "Automate Instagram",
@@ -595,6 +673,7 @@ export const features: Feature[] = [
     visual: "instagram-comment",
     name: "Instagram Comment Automation",
     howTitle: "How comment automation works",
+    shortName: "comment automation",
     eyebrow: "Comment Automation",
     headline: "Every comment can become a conversation.",
     subheadline:
@@ -660,6 +739,11 @@ export const features: Feature[] = [
         question: "What happens after the DM is sent?",
         answer:
           "Yes. The DM can lead into a chatbot that asks questions and collects the customer's details."
+      },
+      {
+        question: "Can the reply also show publicly under the comment?",
+        answer:
+          "Yes. Whatching can post a public reply to the comment as well as sending the person a DM."
       }
     ],
     ctaLabel: "Automate comments",
@@ -675,6 +759,7 @@ export const features: Feature[] = [
     visual: "instagram-flow",
     name: "Instagram DM Automation",
     howTitle: "How Instagram DM automation works",
+    shortName: "Instagram DM automation",
     eyebrow: "DM Flows",
     headline: "Answer every Instagram DM straight away.",
     subheadline:
@@ -742,6 +827,11 @@ export const features: Feature[] = [
         question: "Do I need a developer to build a DM flow?",
         answer:
           "No. DM flows use the same drag-and-drop chatbot builder you use for WhatsApp."
+      },
+      {
+        question: "Can the AI agent answer Instagram DMs?",
+        answer:
+          "Yes. The Instagram AI agent is part of the Pro plan. It answers from your own content and hands the chat to your team when a person is needed."
       }
     ],
     ctaLabel: "Build an Instagram DM flow",

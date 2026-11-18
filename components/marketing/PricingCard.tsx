@@ -1,21 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { PricingPlan } from "@/lib/data/pricing";
+import { highlightsFor, PricingPlan } from "@/lib/data/pricing";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
-const PricingCard = ({
-  plan,
-  featureLimit,
-  showAllFeatures = false
-}: {
-  plan: PricingPlan;
-  featureLimit?: number;
-  showAllFeatures?: boolean;
-}) => {
-  const features = featureLimit
-    ? plan.features.slice(0, featureLimit)
-    : plan.features;
+// A plan card on /pricing: price, button, then the plan's six highlights.
+// Everything else is in the comparison table below the cards.
+const PricingCard = ({ plan }: { plan: PricingPlan }) => {
+  const features = highlightsFor(plan);
 
   return (
     <div
@@ -106,28 +98,7 @@ const PricingCard = ({
           </div>
         ))}
 
-        {showAllFeatures &&
-          plan.featureGroups?.map((group) => (
-            <div key={group.heading}>
-              <p
-                className="font-semibold text-sm pt-2"
-                style={{ color: "var(--text-primary)" }}
-              >
-                {group.heading}
-              </p>
-              {group.items.map((f) => (
-                <div key={f} className="flex items-start gap-2.5 text-sm mt-3">
-                  <Check
-                    className="w-4 h-4 mt-0.5 shrink-0"
-                    style={{ color: "var(--primary)" }}
-                  />
-                  <span style={{ color: "var(--text-secondary)" }}>{f}</span>
-                </div>
-              ))}
-            </div>
-          ))}
-
-        {showAllFeatures && plan.comingSoon && (
+        {plan.comingSoon && (
           <>
             <p
               className="font-semibold text-sm pt-2"
@@ -146,6 +117,13 @@ const PricingCard = ({
             ))}
           </>
         )}
+        <a
+          href="#compare"
+          className="inline-block text-sm font-semibold pt-2"
+          style={{ color: "var(--primary-dark)" }}
+        >
+          Everything in {plan.name} <span aria-hidden>↓</span>
+        </a>
       </div>
     </div>
   );

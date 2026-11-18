@@ -1,13 +1,7 @@
 import React from "react";
 import { Check, CheckCircle2, Minus } from "lucide-react";
 import Seo from "@/components/Seo/Seo";
-import {
-  absoluteUrl,
-  faqSchema,
-  JsonLd,
-  organizationRef,
-  SITE_NAME
-} from "@/lib/seo";
+import { faqSchema, softwareApplicationSchema } from "@/lib/seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import FaqAccordion from "@/components/marketing/FaqAccordion";
 import FinalCta from "@/components/marketing/FinalCta";
@@ -21,23 +15,75 @@ import {
   pricingPlans
 } from "@/lib/data/pricing";
 
-const comparisonRows: {
-  label: string;
-  values: [string | boolean, string | boolean, string | boolean];
-}[] = [
-  { label: "WhatsApp contacts", values: ["10,000", "25,000", "Higher limits"] },
+type Value = string | boolean;
+type Row = { label: string; values: [Value, Value, Value] };
+
+// Every plan feature from lib/data/pricing.ts, grouped. Enterprise includes
+// everything in Pro.
+const comparisonGroups: { heading: string; rows: Row[] }[] = [
   {
-    label: "Team members",
-    values: ["Owner + 2", "Owner + 5", "Unlimited"]
+    heading: "Limits",
+    rows: [
+      {
+        label: "WhatsApp contacts",
+        values: ["10,000", "25,000", "Higher limits"]
+      },
+      { label: "WhatsApp numbers", values: ["1", "Up to 2", "More"] },
+      {
+        label: "Team members",
+        values: ["Owner + 2", "Owner + 5", "Unlimited"]
+      },
+      { label: "AI usage included", values: ["1M", "3M", "Unlimited"] },
+      {
+        label: "Incoming customer messages",
+        values: ["Unlimited", "Unlimited", "Unlimited"]
+      },
+      { label: "Markup on Meta's charges", values: ["0%", "0%", "0%"] }
+    ]
   },
-  { label: "WhatsApp numbers", values: ["1", "Up to 2", "More"] },
-  { label: "AI usage included", values: ["1M", "3M", "Unlimited"] },
-  { label: "Markup on Meta's charges", values: ["0%", "0%", "0%"] },
-  { label: "Shared team inbox", values: [true, true, true] },
-  { label: "Chatbot builder", values: [true, true, true] },
-  { label: "Instagram automation", values: [false, true, true] },
-  { label: "Dedicated account manager", values: [false, false, true] },
-  { label: "Priority support", values: [false, false, true] }
+  {
+    heading: "WhatsApp",
+    rows: [
+      { label: "Bulk messaging and broadcasts", values: [true, true, true] },
+      { label: "Message template management", values: [true, true, true] },
+      { label: "Drag-and-drop chatbot builder", values: [true, true, true] },
+      { label: "WhatsApp AI agent", values: [true, true, true] },
+      { label: "Automatic follow-up bot", values: [true, true, true] },
+      { label: "Automatic lead qualification", values: [true, true, true] },
+      { label: "Click-to-WhatsApp ad tracking", values: [true, true, true] },
+      {
+        label: "Keep using the WhatsApp Business app",
+        values: [true, true, true]
+      }
+    ]
+  },
+  {
+    heading: "Instagram",
+    rows: [
+      { label: "Instagram automations", values: [false, true, true] },
+      { label: "Automatic replies to comments", values: [false, true, true] },
+      { label: "Chatbot builder for Instagram", values: [false, true, true] },
+      { label: "Instagram AI agent", values: [false, true, true] },
+      {
+        label: "Unlimited Instagram conversations",
+        values: [false, true, true]
+      }
+    ]
+  },
+  {
+    heading: "Team and support",
+    rows: [
+      { label: "Shared team inbox", values: [true, true, true] },
+      { label: "Role-based team permissions", values: [true, true, true] },
+      { label: "Analytics dashboard", values: [true, true, true] },
+      {
+        label: "Custom set-up for your business",
+        values: [false, false, true]
+      },
+      { label: "Dedicated account manager", values: [false, false, true] },
+      { label: "Priority support", values: [false, false, true] }
+    ]
+  }
 ];
 
 // The cases where Meta doesn't charge, from Meta's pricing page.
@@ -56,44 +102,23 @@ const freeCases = [
   }
 ];
 
-const Cell = ({ value }: { value: string | boolean }) => {
+const Cell = ({ value }: { value: Value }) => {
   if (typeof value === "boolean") {
     return value ? (
-      <Check className="w-4 h-4 mx-auto" style={{ color: "var(--primary)" }} />
+      <Check
+        className="w-4 h-4 mx-auto"
+        style={{ color: "var(--primary)" }}
+        aria-label="Included"
+      />
     ) : (
       <Minus
         className="w-4 h-4 mx-auto"
         style={{ color: "var(--text-muted)" }}
+        aria-label="Not included"
       />
     );
   }
   return <span style={{ color: "var(--text-body)" }}>{value}</span>;
-};
-
-const softwareApplicationSchema: JsonLd = {
-  "@type": "SoftwareApplication",
-  name: SITE_NAME,
-  applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
-  url: absoluteUrl("/pricing"),
-  publisher: organizationRef,
-  offers: pricingPlans
-    .filter((plan) => plan.monthlyPrice !== null)
-    .map((plan) => ({
-      "@type": "Offer",
-      name: plan.name,
-      description: `${plan.tagline} Price per month, plus 18% GST.`,
-      price: String(plan.monthlyPrice),
-      priceCurrency: "INR",
-      url: absoluteUrl("/pricing"),
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: String(plan.monthlyPrice),
-        priceCurrency: "INR",
-        billingDuration: "P1M",
-        valueAddedTaxIncluded: false
-      }
-    }))
 };
 
 const PricingPage = () => {
@@ -129,71 +154,105 @@ const PricingPage = () => {
 
         <section className="pb-8">
           <div className="container-wide">
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch">
               {pricingPlans.map((plan, i) => (
                 <Reveal key={plan.id} delay={i * 0.08}>
-                  <PricingCard plan={plan} showAllFeatures />
+                  <PricingCard plan={plan} />
                 </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Comparison table */}
-        <section className="section-padding-large">
+        {/* Comparison table. The header row stays in view on wide screens. */}
+        <section className="section-padding-large" id="compare">
           <div className="container-wide">
-            <Reveal>
-              <SectionHeading
-                align="center"
-                title="Which plan is right for me?"
-              />
-            </Reveal>
-            <Reveal
-              delay={0.1}
-              className="mt-10 max-w-4xl mx-auto overflow-x-auto"
-            >
-              <table className="w-full text-sm border-collapse">
+            <SectionHeading align="center" title="Compare every plan" />
+            <div className="mt-10 max-w-4xl mx-auto overflow-x-auto lg:overflow-visible">
+              <table className="w-full text-[15px] border-collapse min-w-[560px]">
+                <caption className="sr-only">
+                  Features included in each Whatching plan
+                </caption>
                 <thead>
-                  <tr style={{ borderBottom: "1px solid var(--border-light)" }}>
+                  <tr>
                     <th
-                      className="text-left py-3 pr-4"
-                      style={{ color: "var(--text-muted)" }}
+                      scope="col"
+                      className="text-left py-3 pr-4 font-semibold lg:sticky lg:top-[84px] z-10"
+                      style={{
+                        color: "var(--text-secondary)",
+                        background: "var(--background)"
+                      }}
                     >
                       Feature
                     </th>
                     {pricingPlans.map((p) => (
                       <th
                         key={p.id}
-                        className="py-3 px-4 text-center font-semibold"
-                        style={{ color: "var(--text-primary)" }}
+                        scope="col"
+                        className="py-3 px-4 text-center font-semibold lg:sticky lg:top-[84px] z-10"
+                        style={{
+                          color: "var(--text-primary)",
+                          background: "var(--background)"
+                        }}
                       >
                         {p.name}
+                        <span
+                          className="block text-xs font-normal"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          {p.monthlyPrice === null
+                            ? "Custom"
+                            : `${p.currency}${p.monthlyPrice.toLocaleString("en-IN")}/month`}
+                        </span>
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody>
-                  {comparisonRows.map((row) => (
-                    <tr
-                      key={row.label}
-                      style={{ borderBottom: "1px solid var(--border-light)" }}
-                    >
-                      <td
-                        className="py-3 pr-4 font-medium"
-                        style={{ color: "var(--text-primary)" }}
+                {comparisonGroups.map((group) => (
+                  <tbody key={group.heading}>
+                    <tr>
+                      <th
+                        colSpan={4}
+                        scope="colgroup"
+                        className="text-left pt-7 pb-2 text-sm font-semibold"
+                        style={{ color: "var(--primary-dark)" }}
                       >
-                        {row.label}
-                      </td>
-                      {row.values.map((v, i) => (
-                        <td key={i} className="py-3 px-4 text-center">
-                          <Cell value={v} />
-                        </td>
-                      ))}
+                        {group.heading}
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
+                    {group.rows.map((row) => (
+                      <tr
+                        key={row.label}
+                        style={{ borderTop: "1px solid var(--border-light)" }}
+                      >
+                        <th
+                          scope="row"
+                          className="text-left font-medium py-3 pr-4"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {row.label}
+                        </th>
+                        {row.values.map((v, i) => (
+                          <td
+                            key={i}
+                            className="py-3 px-4 text-center tabular-nums"
+                          >
+                            <Cell value={v} />
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                ))}
               </table>
-            </Reveal>
+            </div>
+            <p
+              className="text-sm text-center mt-6"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Prices per month, plus 18% GST. Billed monthly; cancel any time
+              and your plan runs to the end of the month you paid for.
+            </p>
           </div>
         </section>
 

@@ -7,15 +7,113 @@ export interface NavLink {
   href: string;
 }
 
-// Flat, no-dropdown nav. Every page on the site is reachable from here or
-// the footer, so search engines can find it without the sitemap.
+export interface MenuLink extends NavLink {
+  desc: string;
+}
+
+// Top-level menu. Features and Industries open a panel; the rest are links.
+// Every page is reachable from here or the footer, so search engines can
+// find it without the sitemap.
 export const navLinks: NavLink[] = [
-  { label: "Features", href: "/features" },
-  { label: "Instagram", href: "/features/instagram-automation" },
-  { label: "Industries", href: "/industries" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
+  { label: "Guides", href: "/blog" },
   { label: "Contact", href: "/contact" }
+];
+
+export const featureMenu: { heading: string; links: MenuLink[] }[] = [
+  {
+    heading: "WhatsApp",
+    links: [
+      {
+        label: "Broadcasts",
+        desc: "Offers and updates to many customers",
+        href: "/features/whatsapp-broadcast"
+      },
+      {
+        label: "Chatbot builder",
+        desc: "Menus and questions, no coding",
+        href: "/features/whatsapp-flows"
+      },
+      {
+        label: "AI agent",
+        desc: "Answers from your own content",
+        href: "/features/ai-chatbot"
+      },
+      {
+        label: "WhatsApp marketing",
+        desc: "Campaigns, follow-ups and replies",
+        href: "/features/whatsapp-marketing"
+      }
+    ]
+  },
+  {
+    heading: "Instagram",
+    links: [
+      {
+        label: "Instagram automation",
+        desc: "Comments, DMs and story replies",
+        href: "/features/instagram-automation"
+      },
+      {
+        label: "Comment auto-reply",
+        desc: "Reply and DM on a keyword",
+        href: "/features/instagram-comment-automation"
+      },
+      {
+        label: "DM automation",
+        desc: "Answer every DM straight away",
+        href: "/features/instagram-dm-automation"
+      }
+    ]
+  },
+  {
+    heading: "Team and insights",
+    links: [
+      {
+        label: "Shared inbox",
+        desc: "One inbox for your whole team",
+        href: "/features/shared-inbox"
+      },
+      {
+        label: "Analytics",
+        desc: "Results, ad chats and Meta charges",
+        href: "/features/analytics"
+      }
+    ]
+  }
+];
+
+export const industryMenu: MenuLink[] = [
+  {
+    label: "E-commerce",
+    desc: "Answer shoppers and send updates",
+    href: "/industries/ecommerce"
+  },
+  {
+    label: "Education",
+    desc: "Admissions enquiries and reminders",
+    href: "/industries/education"
+  },
+  {
+    label: "Real estate",
+    desc: "Property enquiries and site visits",
+    href: "/industries/real-estate"
+  },
+  {
+    label: "Healthcare",
+    desc: "Appointments and patient questions",
+    href: "/industries/healthcare"
+  },
+  {
+    label: "Travel",
+    desc: "Package enquiries and trip updates",
+    href: "/industries/travel"
+  },
+  {
+    label: "Agencies",
+    desc: "Many client businesses, one login",
+    href: "/industries/agencies"
+  }
 ];
 
 export const footerColumns = {
@@ -46,8 +144,7 @@ export const footerColumns = {
   ],
   resources: [
     { label: "Product Tour", href: "/demo" },
-    { label: "Blog", href: "/blog" },
-    { label: "Guides", href: "/resources" },
+    { label: "Guides", href: "/blog" },
     { label: "FAQ", href: "/faq" },
     { label: "Pricing", href: "/pricing" }
   ],

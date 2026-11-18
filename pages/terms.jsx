@@ -1,9 +1,9 @@
 import React from "react";
-import SiteShell from "@/components/marketing/SiteShell";
-import Seo from "@/components/Seo/Seo";
+import LegalLayout from "@/components/marketing/LegalLayout";
 
-const content = `Terms & Conditions
-
+// The policy text, one paragraph per line. LegalLayout turns numbered and
+// all-caps lines into sections and builds the contents list.
+const content = `
 1. Introduction
 
 Welcome to Whatching. These Terms of Service govern your access to and use of our services, including our website, web application, and any other software or services provided by Whatching (collectively referred to as "Services"). By accessing or using our Services, you agree to be bound by these Terms.
@@ -144,59 +144,14 @@ These Terms, together with our Privacy Policy, constitute the entire agreement b
 
 Refunds, cancellations and the free trial are covered by our Refund Policy, published at https://www.whatching.com/refund-policy.`;
 
-function Terms() {
-  const [heading, ...body] = content.split("\n");
-
+export default function Page() {
   return (
-    <>
-      <Seo
-        title="Terms of Service | Whatching"
-        description="The terms that govern your use of the Whatching website and platform, including subscriptions, acceptable use and your responsibilities."
-        path="/terms"
-      />
-      <SiteShell>
-        <section className="section-padding !pt-32">
-          <div className="container-wide max-w-4xl">
-            <h1 className="heading-2 mb-8 text-center">
-              {heading || "Terms & Conditions"}
-            </h1>
-            <div className="space-y-5 body-medium text-[var(--text-secondary)] legal-preformatted">
-              {body.map((line, index) => {
-                const trimmed = line.trim();
-                if (!trimmed) return <div key={index} className="h-2" />;
-
-                const isSectionHeading =
-                  /^\d+\.\s/.test(trimmed) ||
-                  /^[A-Z][A-Z\s&-]+$/.test(trimmed) ||
-                  trimmed === "Refund Policy";
-
-                if (isSectionHeading) {
-                  return (
-                    <h3
-                      key={index}
-                      className="heading-3 pt-4 text-[var(--text-primary)]"
-                    >
-                      {trimmed}
-                    </h3>
-                  );
-                }
-
-                if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
-                  return (
-                    <p key={index} className="pl-5">
-                      {trimmed}
-                    </p>
-                  );
-                }
-
-                return <p key={index}>{trimmed}</p>;
-              })}
-            </div>
-          </div>
-        </section>
-      </SiteShell>
-    </>
+    <LegalLayout
+      title="Terms of Service"
+      description="The terms that govern your use of the Whatching website and platform, including subscriptions, acceptable use and your responsibilities."
+      path="/terms"
+      text={content}
+      updated="18 November 2026"
+    />
   );
 }
-
-export default Terms;

@@ -1,47 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { PricingPlan, pricingPlans } from "@/lib/data/pricing";
+import { highlightsFor, pricingPlans } from "@/lib/data/pricing";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
-
-// The highlights shown on the home page. They are picked from each plan's own
-// feature list in lib/data/pricing.ts, so wording and limits stay in sync; the
-// full lists are on /pricing.
-const highlightNames: Record<string, string[]> = {
-  basic: [
-    "Bulk WhatsApp messaging",
-    "10,000 WhatsApp contacts",
-    "Drag-and-drop chatbot builder",
-    "WhatsApp AI agent",
-    "Owner + 2 team members",
-    "Shared team inbox"
-  ],
-  pro: [
-    "Everything in Basic",
-    "25,000 WhatsApp contacts",
-    "Up to 2 WhatsApp numbers",
-    "Owner + 5 team members",
-    "Instagram automations",
-    "Instagram AI agent"
-  ],
-  enterprise: [
-    "Everything in Pro",
-    "Higher contact limits",
-    "Unlimited team members",
-    "More WhatsApp numbers",
-    "Dedicated account manager",
-    "Priority support"
-  ]
-};
-
-const highlightsFor = (plan: PricingPlan) => {
-  const wanted = highlightNames[plan.id] ?? [];
-  const pool = [
-    ...plan.features,
-    ...(plan.featureGroups?.flatMap((g) => g.items) ?? [])
-  ];
-  return pool.filter((feature) => wanted.includes(feature));
-};
 
 // A short line under each button, so the next step is clear.
 const ctaNotes: Record<string, string> = {
@@ -63,7 +24,7 @@ const PricingBand = () => (
           on at 0% markup.
         </p>
         <Link
-          href="/pricing"
+          href="/pricing#compare"
           className="inline-flex items-center gap-1.5 text-sm font-semibold mt-4"
           style={{ color: "var(--primary-dark)" }}
         >

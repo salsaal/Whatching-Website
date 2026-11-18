@@ -98,6 +98,45 @@ export const pricingPlans: PricingPlan[] = [
   }
 ];
 
+// The six highlights shown on each plan card (home and /pricing). They are
+// picked from each plan's own feature list above, so wording stays in sync;
+// the full comparison table on /pricing lists everything.
+const highlightNames: Record<string, string[]> = {
+  basic: [
+    "Bulk WhatsApp messaging",
+    "10,000 WhatsApp contacts",
+    "Drag-and-drop chatbot builder",
+    "WhatsApp AI agent",
+    "Owner + 2 team members",
+    "Shared team inbox"
+  ],
+  pro: [
+    "Everything in Basic",
+    "25,000 WhatsApp contacts",
+    "Up to 2 WhatsApp numbers",
+    "Owner + 5 team members",
+    "Instagram automations",
+    "Instagram AI agent"
+  ],
+  enterprise: [
+    "Everything in Pro",
+    "Higher contact limits",
+    "Unlimited team members",
+    "More WhatsApp numbers",
+    "Dedicated account manager",
+    "Priority support"
+  ]
+};
+
+export const highlightsFor = (plan: PricingPlan) => {
+  const wanted = highlightNames[plan.id] ?? [];
+  const pool = [
+    ...plan.features,
+    ...(plan.featureGroups?.flatMap((g) => g.items) ?? [])
+  ];
+  return pool.filter((feature) => wanted.includes(feature));
+};
+
 // Meta's per-message list rates for India in INR, read from Meta's official
 // pricing page (rate card effective 1 October 2026, checked 18 November 2026).
 // Update the date and figures together when Meta changes them.
@@ -124,7 +163,7 @@ export const metaConversationPricing = [
   },
   {
     category: "Authentication, international",
-    desc: "Login codes to numbers outside India",
+    desc: "Login codes sent to Indian numbers by businesses based outside India",
     price: "₹2.4971"
   },
   {

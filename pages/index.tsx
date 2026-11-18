@@ -11,7 +11,7 @@ import AnalyticsSection from "@/components/marketing/AnalyticsSection";
 import IndustryGrid from "@/components/marketing/IndustryGrid";
 import PricingBand from "@/components/marketing/PricingBand";
 import FaqSection, { homepageFaqs } from "@/components/marketing/FaqSection";
-import { faqSchema } from "@/lib/seo";
+import { faqSchema, softwareApplicationSchema } from "@/lib/seo";
 import FinalCta from "@/components/marketing/FinalCta";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
         title="WhatsApp Business API & Marketing Software | Whatching"
         description="Sell and support customers on WhatsApp and Instagram from one place. Official WhatsApp Business API, broadcasts, chatbots and a team inbox. Free 7-day trial."
         path="/"
-        jsonLd={[faqSchema(homepageFaqs)]}
+        jsonLd={[softwareApplicationSchema, faqSchema(homepageFaqs)]}
       />
       <SiteShell>
         <Hero />

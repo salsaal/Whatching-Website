@@ -3,6 +3,8 @@ export interface IndustryStep {
   description: string;
 }
 
+import type { VisualType } from "./features";
+
 export interface Industry {
   slug: string;
   name: string;
@@ -18,6 +20,11 @@ export interface Industry {
   challenges: IndustryStep[];
   solutions: IndustryStep[];
   useCases: IndustryStep[];
+  /** The product picture in the hero. "phone" is the home page phone. */
+  visual: VisualType | "phone" | "switcher";
+  /** Feature slugs most useful for this industry. */
+  relatedFeatures: string[];
+  faq: { question: string; answer: string }[];
 }
 
 export const industries: Industry[] = [
@@ -25,6 +32,30 @@ export const industries: Industry[] = [
     slug: "ecommerce",
     name: "E-commerce",
     useCasesTitle: "How online stores use Whatching",
+    visual: "broadcast",
+    relatedFeatures: [
+      "whatsapp-broadcast",
+      "ai-chatbot",
+      "shared-inbox",
+      "instagram-comment-automation"
+    ],
+    faq: [
+      {
+        question: "Can the AI agent answer questions about my products?",
+        answer:
+          "Yes. It answers from the documents, website pages and FAQs you give it, such as sizes, delivery areas and your return policy, and hands the chat to your team when a person is needed."
+      },
+      {
+        question: "Can I tell customers about sales and new arrivals?",
+        answer:
+          "Yes. Send a broadcast with a marketing template that Meta has approved. In India Meta charges ₹0.8631 per marketing message, which we pass on with 0% markup."
+      },
+      {
+        question: "Does Whatching connect to my online store?",
+        answer:
+          "Not at the moment. You manage contacts, broadcasts and chats inside Whatching; it doesn't read orders or stock from your store."
+      }
+    ],
     eyebrow: "E-commerce",
     headline: "Answer shoppers fast and drive repeat purchases.",
     subheadline:
@@ -84,6 +115,30 @@ export const industries: Industry[] = [
     slug: "education",
     name: "Education",
     useCasesTitle: "How schools and coaching institutes use Whatching",
+    visual: "flow",
+    relatedFeatures: [
+      "whatsapp-flows",
+      "ai-chatbot",
+      "whatsapp-broadcast",
+      "shared-inbox"
+    ],
+    faq: [
+      {
+        question: "Can a chatbot answer admission questions?",
+        answer:
+          "Yes. A menu chatbot can cover courses, fees and timings, the AI agent can answer from your brochure and FAQs, and the chat goes to a counsellor when a person is needed."
+      },
+      {
+        question: "Can I send class or exam reminders?",
+        answer:
+          "Yes. Send them as a broadcast with an approved message template, now or scheduled. Meta decides the template's category, which sets the price per message."
+      },
+      {
+        question: "Can the whole admissions team use one WhatsApp number?",
+        answer:
+          "Yes. Everyone replies from the shared inbox, and you can assign each chat to a teammate and control what each person can do with role-based permissions."
+      }
+    ],
     eyebrow: "Education",
     headline: "Capture enquiries and automate admissions.",
     subheadline:
@@ -142,6 +197,30 @@ export const industries: Industry[] = [
     slug: "real-estate",
     name: "Real Estate",
     useCasesTitle: "How real estate teams use Whatching",
+    visual: "inbox",
+    relatedFeatures: [
+      "whatsapp-flows",
+      "shared-inbox",
+      "ai-chatbot",
+      "analytics"
+    ],
+    faq: [
+      {
+        question: "Can I see which ads bring in property enquiries?",
+        answer:
+          "Yes. Click-to-WhatsApp ad tracking shows which ad each chat came from, so you can see which campaigns bring in enquiries."
+      },
+      {
+        question: "Can a chatbot ask what a buyer is looking for?",
+        answer:
+          "Yes. It can ask for budget, location and property type with menus and questions, then hand the chat to an agent on your team."
+      },
+      {
+        question: "Can I send brochures and photos?",
+        answer:
+          "Yes. Broadcasts can include an image, and your team can share documents and photos in the chat."
+      }
+    ],
     eyebrow: "Real Estate",
     headline: "Qualify property leads instantly.",
     subheadline:
@@ -202,6 +281,30 @@ export const industries: Industry[] = [
     slug: "healthcare",
     name: "Healthcare",
     useCasesTitle: "How clinics use Whatching",
+    visual: "ai",
+    relatedFeatures: [
+      "ai-chatbot",
+      "whatsapp-broadcast",
+      "shared-inbox",
+      "whatsapp-flows"
+    ],
+    faq: [
+      {
+        question: "Can I send appointment reminders on WhatsApp?",
+        answer:
+          "Yes, with an approved message template. You can schedule them as a broadcast to the patients concerned."
+      },
+      {
+        question: "What does the AI agent answer?",
+        answer:
+          "Only what you give it, such as clinic timings, services, fees and how to book. Keep medical advice with your doctors; the AI agent hands the chat to your team when a person is needed."
+      },
+      {
+        question: "Can reception and doctors share one WhatsApp number?",
+        answer:
+          "Yes. Everyone works from the shared inbox, and role-based permissions control what each person can see and do."
+      }
+    ],
     eyebrow: "Healthcare",
     headline: "Manage enquiries and appointments.",
     subheadline:
@@ -260,6 +363,30 @@ export const industries: Industry[] = [
     slug: "travel",
     name: "Travel & Hospitality",
     useCasesTitle: "How travel agencies use Whatching",
+    visual: "phone",
+    relatedFeatures: [
+      "ai-chatbot",
+      "whatsapp-broadcast",
+      "shared-inbox",
+      "instagram-automation"
+    ],
+    faq: [
+      {
+        question: "Can the AI agent answer questions about my packages?",
+        answer:
+          "Yes. It answers from your package documents, website and FAQs, such as what's included, prices and payment options."
+      },
+      {
+        question: "Can Whatching take bookings for me?",
+        answer:
+          "No. Chatbots and the AI agent collect the details, like dates, destination and group size, and your team confirms the booking."
+      },
+      {
+        question: "Can I promote seasonal packages?",
+        answer:
+          "Yes. Send a broadcast with an approved marketing template, with an image and buttons such as Plan my trip and View packages."
+      }
+    ],
     eyebrow: "Travel & Hospitality",
     headline: "Convert enquiries into bookings.",
     subheadline:
@@ -320,6 +447,30 @@ export const industries: Industry[] = [
     slug: "agencies",
     name: "Agencies",
     useCasesTitle: "How agencies use Whatching",
+    visual: "switcher",
+    relatedFeatures: [
+      "whatsapp-marketing",
+      "analytics",
+      "shared-inbox",
+      "instagram-automation"
+    ],
+    faq: [
+      {
+        question: "Can I manage several client businesses from one login?",
+        answer:
+          "Yes. You switch between client businesses without logging out, and each one has its own WhatsApp and Instagram set-up."
+      },
+      {
+        question: "Does each client need its own plan?",
+        answer:
+          "Yes. Each business has its own plan, so you can start one client on Basic and another on Pro."
+      },
+      {
+        question: "Can I see which ads bring chats for each client?",
+        answer:
+          "Yes. Each business's analytics shows which Click-to-WhatsApp ads brought in chats, along with broadcast results and Meta charges."
+      }
+    ],
     eyebrow: "Agencies",
     headline: "Manage multiple clients and campaigns.",
     subheadline:

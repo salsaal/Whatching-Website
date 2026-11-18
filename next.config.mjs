@@ -20,6 +20,10 @@ const nextConfig = {
       }
     ]
   },
+  // /resources listed the same posts as /blog; the address keeps working.
+  async redirects() {
+    return [{ source: "/resources", destination: "/blog", permanent: true }];
+  },
   compress: true,
   compiler: {
     removeConsole: false

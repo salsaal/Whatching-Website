@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Reveal, SectionHeading } from "./Primitives";
+import { SectionHeading } from "./Primitives";
 import BroadcastVisual from "./product/BroadcastVisual";
 import FlowVisual from "./product/FlowVisual";
 import AIAgentVisual from "./product/AIAgentVisual";
@@ -33,20 +33,25 @@ const cards = [
 const FeatureCardsSection = () => (
   <section className="section-padding-large" id="features">
     <div className="container-wide">
-      <Reveal>
-        <SectionHeading title="Everything you need to keep the conversation going." />
-      </Reveal>
-      <div className="grid lg:grid-cols-3 gap-6 mt-12">
-        {cards.map((card, i) => (
-          <Reveal key={card.title} delay={i * 0.06} className="h-full">
+      <SectionHeading title="Everything you need to keep the conversation going." />
+      {/* Three columns on desktop. Below that, a sideways-swiping row so the
+          three tall cards don't stack into a very long page; the next card
+          peeks in to show there's more. */}
+      <ul
+        className="swipe-row mt-12 flex lg:grid lg:grid-cols-3 gap-4 lg:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:-mx-6 md:px-6 lg:mx-0 lg:px-0 pb-2 lg:pb-0"
+        aria-label="Features"
+      >
+        {cards.map((card) => (
+          <li
+            key={card.title}
+            className="snap-start shrink-0 w-[86%] sm:w-[56%] lg:w-auto"
+          >
             <div
-              className="h-full rounded-3xl p-3 flex flex-col md:flex-row lg:flex-col gap-5 md:items-center lg:items-stretch"
+              className="h-full rounded-3xl p-3 flex flex-col gap-5"
               style={{ background: "var(--background-secondary)" }}
             >
-              <div className="w-full md:w-1/2 lg:w-full shrink-0 lg:h-[440px]">
-                {card.visual}
-              </div>
-              <div className="px-3 pb-4 md:pb-0 lg:pb-4 flex flex-col gap-2 lg:flex-1">
+              <div className="w-full shrink-0 h-[440px]">{card.visual}</div>
+              <div className="px-3 pb-4 flex flex-col gap-2 flex-1">
                 <h3
                   className="text-[19px] font-semibold"
                   style={{ color: "var(--text-primary)" }}
@@ -61,16 +66,16 @@ const FeatureCardsSection = () => (
                 </p>
                 <Link
                   href={card.href}
-                  className="inline-flex items-center gap-1 text-sm font-semibold mt-1 lg:mt-auto lg:pt-1"
+                  className="inline-flex items-center gap-1 text-sm font-semibold mt-auto pt-1"
                   style={{ color: "var(--primary-dark)" }}
                 >
                   {card.linkLabel} <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
-          </Reveal>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 );

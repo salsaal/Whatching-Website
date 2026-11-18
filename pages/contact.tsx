@@ -1,245 +1,145 @@
-import React, { useState } from "react";
-import Seo from "@/components/Seo/Seo";
+import React from "react";
 import Link from "next/link";
 import { Headphones, Mail, Users } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
+import OnboardingForm from "@/components/marketing/OnboardingForm";
 import { WHATSAPP_NUMBER, WHATSAPP_URL } from "@/lib/constants";
-import { Reveal, SectionHeading } from "@/components/marketing/Primitives";
+import { breadcrumbSchema } from "@/lib/seo";
 
 const options = [
   {
+    icon: FaWhatsapp,
+    title: "Chat with us on WhatsApp",
+    desc: WHATSAPP_NUMBER,
+    action: "Open WhatsApp",
+    href: WHATSAPP_URL,
+    primary: true
+  },
+  {
     icon: Users,
-    title: "Talk to Sales",
-    desc: "See a demo and find the right plan for your team.",
+    title: "See a demo",
+    desc: "Watch the 3-minute tour and book a free onboarding call.",
+    action: "Go to the demo",
     href: "/demo"
   },
   {
     icon: Headphones,
-    title: "Get Support",
-    desc: "Already a customer? Our team is here to help.",
+    title: "Get support",
+    desc: "Already a customer? Email us and we'll help.",
+    action: "Email support",
     href: "mailto:hello@whatching.com?subject=Support"
-  },
-  {
-    icon: FaWhatsapp,
-    title: "Chat with us on WhatsApp",
-    desc: `Prefer WhatsApp? Message us on ${WHATSAPP_NUMBER}.`,
-    href: WHATSAPP_URL
   }
 ];
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-
-  const [submitError, setSubmitError] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setSubmitError(false);
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setSubmitted(true);
-    } catch (err) {
-      console.error(err);
-      setSubmitError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <>
       <Seo
-        title="Contact Whatching | Sales & Support"
-        description="Talk to the Whatching team about WhatsApp Business API setup, plans or support. Email hello@whatching.com or send us a message and we usually reply within a day."
+        title="Contact Whatching | Sales and Support"
+        description="Talk to the Whatching team about WhatsApp Business API set-up, plans or support. Message us on WhatsApp, email hello@whatching.com or send a message."
         path="/contact"
+        jsonLd={[
+          {
+            "@type": "ContactPage",
+            name: "Contact Whatching",
+            url: "https://www.whatching.com/contact"
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" }
+          ])
+        ]}
       />
       <SiteShell>
-        <section className="hero-section !pb-16">
-          <div className="container-wide relative">
-            <Reveal>
-              <SectionHeading
-                as="h1"
-                align="center"
-                eyebrow="Contact"
-                title="Let's talk."
-                description="Whether it's sales, support, or a quick question — we usually reply within a day."
-              />
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="pb-16">
-          <div className="container-wide grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {options.map((o, i) => (
-              <Reveal key={o.title} delay={i * 0.08}>
-                <a
-                  href={o.href}
-                  target={o.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noreferrer"
-                  className="product-card block h-full"
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                    style={{
-                      background: "var(--accent-wash)",
-                      color: "var(--primary)"
-                    }}
-                  >
-                    <o.icon className="w-5 h-5" />
-                  </div>
-                  <h3
-                    className="text-[15px] font-semibold mb-1.5"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {o.title}
-                  </h3>
-                  <p
-                    className="text-sm"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {o.desc}
-                  </p>
-                </a>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-
-        <section
-          className="section-padding-large"
-          style={{ background: "var(--background-secondary)" }}
-        >
-          <div className="container-wide max-w-xl">
-            <Reveal className="surface-card p-8">
-              {!submitted ? (
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <h2
-                    className="text-xl font-semibold mb-1"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    Send us a message
-                  </h2>
-                  <p
-                    className="text-sm"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    Fill in the form and we&apos;ll set up a free onboarding
-                    call.
-                  </p>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <input
-                      required
-                      placeholder="Your name"
-                      className="input"
-                      value={form.name}
-                      onChange={(e) =>
-                        setForm({ ...form, name: e.target.value })
-                      }
-                    />
-                    <input
-                      required
-                      type="tel"
-                      placeholder="Phone number"
-                      className="input"
-                      value={form.phone}
-                      onChange={(e) =>
-                        setForm({ ...form, phone: e.target.value })
-                      }
-                    />
-                  </div>
-                  <input
-                    required
-                    type="email"
-                    placeholder="Work email"
-                    className="input"
-                    value={form.email}
-                    onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
-                    }
-                  />
-                  <textarea
-                    placeholder="How can we help?"
-                    rows={4}
-                    className="input resize-none"
-                    value={form.message}
-                    onChange={(e) =>
-                      setForm({ ...form, message: e.target.value })
-                    }
-                  />
-                  <button
-                    type="submit"
-                    className="btn-primary w-full"
-                    disabled={loading}
-                  >
-                    {loading ? "Sending..." : "Send Message"}
-                  </button>
-                  {submitError && (
-                    <p
-                      className="text-xs text-center"
-                      style={{ color: "var(--danger)" }}
-                    >
-                      Something went wrong. Please try again, or email{" "}
-                      <a
-                        href="mailto:hello@whatching.com"
-                        className="underline"
-                      >
-                        hello@whatching.com
-                      </a>
-                      .
-                    </p>
-                  )}
-                </form>
-              ) : (
-                <div className="text-center py-6">
-                  <h3
-                    className="text-lg font-semibold mb-2"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    Message sent
-                  </h3>
-                  <p
-                    className="text-sm"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    Our team will get back to you shortly.
-                  </p>
-                </div>
-              )}
-            </Reveal>
-
-            <Reveal
-              delay={0.1}
-              className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mt-6 text-sm"
-            >
-              <a
-                href="mailto:hello@whatching.com"
-                className="inline-flex items-center gap-2"
+        <section className="pt-32 pb-20 max-sm:pt-28">
+          <div className="container-wide grid lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] gap-12 lg:gap-16 items-start">
+            <div className="min-w-0">
+              <h1 className="heading-2 mb-4">Talk to us</h1>
+              <p
+                className="body-large max-w-xl mb-8"
                 style={{ color: "var(--text-secondary)" }}
               >
-                <Mail className="w-4 h-4" /> hello@whatching.com
-              </a>
-              <Link
-                href="/faq"
-                style={{ color: "var(--primary-dark)" }}
-                className="font-semibold"
+                Sales, support or a quick question. We usually reply within a
+                day, and fastest on WhatsApp.
+              </p>
+              <ul className="space-y-3 max-w-xl">
+                {options.map((o) => (
+                  <li key={o.title}>
+                    <a
+                      href={o.href}
+                      target={o.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noreferrer"
+                      className="product-card flex items-start gap-4 !p-5"
+                      style={
+                        o.primary
+                          ? { borderColor: "var(--border-strong)" }
+                          : undefined
+                      }
+                    >
+                      <span
+                        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                        style={{
+                          background: "var(--accent-wash)",
+                          color: o.primary ? "#1a9e55" : "var(--primary)"
+                        }}
+                      >
+                        <o.icon className="w-5 h-5" />
+                      </span>
+                      <span className="min-w-0">
+                        <span
+                          className="block font-semibold"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {o.title}
+                        </span>
+                        <span
+                          className={`block text-[15px] mt-0.5 ${o.primary ? "whitespace-nowrap" : ""}`}
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          {o.desc}
+                        </span>
+                        <span
+                          className="inline-block text-sm font-semibold mt-2"
+                          style={{ color: "var(--primary-dark)" }}
+                        >
+                          {o.action} <span aria-hidden>→</span>
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div
+                className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-sm"
+                style={{ color: "var(--text-secondary)" }}
               >
-                Check the FAQ →
-              </Link>
-            </Reveal>
+                <a
+                  href="mailto:hello@whatching.com"
+                  className="inline-flex items-center gap-2 hover:underline"
+                >
+                  <Mail className="w-4 h-4" aria-hidden /> hello@whatching.com
+                </a>
+                <Link
+                  href="/faq"
+                  className="font-semibold"
+                  style={{ color: "var(--primary-dark)" }}
+                >
+                  Read the FAQ <span aria-hidden>→</span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="surface-card p-6 sm:p-8">
+              <OnboardingForm
+                headingAs="h2"
+                title="Send us a message"
+                intro="Fill this in and we'll get back to you. New to Whatching? We'll set up a free onboarding call."
+                withMessage
+                submitLabel="Send message"
+              />
+            </div>
           </div>
         </section>
       </SiteShell>

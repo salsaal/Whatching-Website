@@ -18,12 +18,12 @@ const capabilities = [
 ];
 
 const audiences = [
-  "Online stores",
-  "Coaching institutes",
-  "Real estate",
-  "Clinics",
-  "Travel agencies",
-  "Marketing agencies"
+  { label: "Online stores", href: "/industries/ecommerce" },
+  { label: "Coaching institutes", href: "/industries/education" },
+  { label: "Real estate", href: "/industries/real-estate" },
+  { label: "Clinics", href: "/industries/healthcare" },
+  { label: "Travel agencies", href: "/industries/travel" },
+  { label: "Marketing agencies", href: "/industries/agencies" }
 ];
 
 export default function About() {
@@ -97,9 +97,13 @@ export default function About() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {audiences.map((a) => (
-                  <span key={a} className="pill !text-[13px]">
-                    {a}
-                  </span>
+                  <Link
+                    key={a.href}
+                    href={a.href}
+                    className="pill !text-[13px] hover:border-[var(--border-strong)]"
+                  >
+                    {a.label}
+                  </Link>
                 ))}
               </div>
               <Link

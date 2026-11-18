@@ -1,0 +1,13 @@
+{
+  "name": "Whatching",
+  "short_name": "Whatching",
+  "description": "WhatsApp Business API and Instagram automation software for small businesses in India.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbfdfb",
+  "theme_color": "#fbfdfb",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
