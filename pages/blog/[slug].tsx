@@ -19,7 +19,7 @@ import { authorById } from "@/lib/data/authors";
 import {
   absoluteUrl,
   breadcrumbSchema,
-  DEFAULT_OG_IMAGE,
+  pageOgImage,
   faqSchema,
   organizationRef
 } from "@/lib/seo";
@@ -65,7 +65,7 @@ export default function BlogPostPage({ post, related, features }: Props) {
             articleSection: post.category,
             ...(post.keyword ? { keywords: post.keyword } : {}),
             inLanguage: "en-IN",
-            image: DEFAULT_OG_IMAGE.url,
+            image: pageOgImage(post.seoTitle ?? post.title, path).url,
             author: {
               "@type": "Person",
               name: author.name,

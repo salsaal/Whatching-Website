@@ -1,10 +1,10 @@
 import Head from "next/head";
 import {
   absoluteUrl,
-  DEFAULT_OG_IMAGE,
   JsonLd,
   OgImage,
   organizationSchema,
+  pageOgImage,
   SITE_NAME,
   websiteSchema
 } from "@/lib/seo";
@@ -28,13 +28,15 @@ const Seo = ({
   description,
   path,
   type = "website",
-  image = DEFAULT_OG_IMAGE,
+  image,
   publishedTime,
   modifiedTime,
   noindex,
   jsonLd = []
 }: SeoProps) => {
   const url = absoluteUrl(path);
+  // Every page gets its own preview image unless one is passed in.
+  const og = image ?? pageOgImage(title, path);
   const graph = {
     "@context": "https://schema.org",
     "@graph": [organizationSchema, websiteSchema, ...jsonLd]
@@ -57,18 +59,18 @@ const Seo = ({
         property="og:description"
         content={description}
       />
-      <meta key="og:image" property="og:image" content={image.url} />
+      <meta key="og:image" property="og:image" content={og.url} />
       <meta
         key="og:image:width"
         property="og:image:width"
-        content={String(image.width)}
+        content={String(og.width)}
       />
       <meta
         key="og:image:height"
         property="og:image:height"
-        content={String(image.height)}
+        content={String(og.height)}
       />
-      <meta key="og:image:alt" property="og:image:alt" content={image.alt} />
+      <meta key="og:image:alt" property="og:image:alt" content={og.alt} />
       {publishedTime && (
         <meta
           key="article:published_time"
@@ -95,12 +97,8 @@ const Seo = ({
         name="twitter:description"
         content={description}
       />
-      <meta key="twitter:image" name="twitter:image" content={image.url} />
-      <meta
-        key="twitter:image:alt"
-        name="twitter:image:alt"
-        content={image.alt}
-      />
+      <meta key="twitter:image" name="twitter:image" content={og.url} />
+      <meta key="twitter:image:alt" name="twitter:image:alt" content={og.alt} />
 
       <script
         key="ld-json"

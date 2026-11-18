@@ -145,6 +145,12 @@ export const footerColumns = {
   resources: [
     { label: "Product Tour", href: "/demo" },
     { label: "Guides", href: "/blog" },
+    { label: "Message Templates", href: "/templates" },
+    {
+      label: "WhatsApp Link Generator",
+      href: "/tools/whatsapp-link-generator"
+    },
+    { label: "Glossary", href: "/glossary" },
     { label: "FAQ", href: "/faq" },
     { label: "Pricing", href: "/pricing" }
   ],

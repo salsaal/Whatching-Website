@@ -19,6 +19,32 @@ export const DEFAULT_OG_IMAGE: OgImage = {
   alt: "Whatching logo"
 };
 
+// A share-preview image for a page, drawn from its title by /api/og.
+const kickerFor = (path: string) => {
+  if (path.startsWith("/blog/")) return "Guide";
+  if (path.startsWith("/features/")) return "Feature";
+  if (path.startsWith("/industries/")) return "For your industry";
+  if (path.startsWith("/tools/")) return "Free tool";
+  if (path === "/pricing") return "Pricing";
+  if (path === "/glossary") return "Glossary";
+  if (path === "/templates" || path.startsWith("/templates/"))
+    return "Templates";
+  return "";
+};
+
+export const pageOgImage = (title: string, path: string): OgImage => {
+  const clean = title.replace(/\s*\|\s*Whatching$/, "");
+  const params = new URLSearchParams({ title: clean });
+  const kicker = kickerFor(path);
+  if (kicker) params.set("kicker", kicker);
+  return {
+    url: `${SITE_URL}/api/og?${params.toString()}`,
+    width: 1200,
+    height: 630,
+    alt: clean
+  };
+};
+
 export const SOCIAL_PROFILES = [
   "https://www.instagram.com/whatching_official",
   "https://www.linkedin.com/company/whatching/",

@@ -22,6 +22,11 @@ Plans are priced per month in Indian rupees, plus 18% GST: Basic â‚¹2,499, Pro â
 - [What is the WhatsApp Business API?](https://www.whatching.com/blog/whatsapp-business-api-explained)
 - [All guides](https://www.whatching.com/blog)
 
+## Free resources
+- [WhatsApp message templates](https://www.whatching.com/templates): ready-to-use templates by industry, with category and cost per message in India
+- [WhatsApp link generator](https://www.whatching.com/tools/whatsapp-link-generator): create a wa.me chat link with a pre-filled message
+- [WhatsApp Business glossary](https://www.whatching.com/glossary): plain definitions of templates, the 24-hour window, messaging limits and more
+
 ## Company
 - [About](https://www.whatching.com/about)
 - [Contact](https://www.whatching.com/contact): WhatsApp +91 70447 02435, hello@whatching.com, Kolkata, India
