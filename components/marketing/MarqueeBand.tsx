@@ -1,6 +1,5 @@
 import React from "react";
 import { CheckCheck } from "lucide-react";
-import { Reveal } from "./Primitives";
 
 const eventsA = [
   "Broadcast delivered",
@@ -54,29 +53,16 @@ const MarqueeRow = ({
   </div>
 );
 
+// A thin moving divider between sections: things that happen in Whatching
+// every day. Decorative only, so it carries no heading.
 const MarqueeBand = () => (
-  <section className="py-16 max-sm:py-10" style={{ background: "var(--band-dark)" }}>
-    <div className="container-wide mb-8 text-center">
-      <Reveal>
-        <p
-          className="text-xs font-semibold uppercase tracking-wide mb-2"
-          style={{ color: "var(--primary-light)" }}
-        >
-          Live thread energy
-        </p>
-        <h2
-          className="text-2xl mb-8 md:text-3xl font-extrabold text-white"
-          style={{ letterSpacing: "-0.02em" }}
-        >
-          Deals close in chat.
-        </h2>
-      </Reveal>
-    </div>
-    <div className="space-y-3">
-      <MarqueeRow items={rowA} />
-      <MarqueeRow items={rowB} reverse />
-    </div>
-  </section>
+  <div
+    className="py-9 max-sm:py-7 space-y-3"
+    style={{ background: "var(--band-dark)" }}
+  >
+    <MarqueeRow items={rowA} />
+    <MarqueeRow items={rowB} reverse />
+  </div>
 );
 
 export default MarqueeBand;

@@ -6,6 +6,8 @@ export interface IndustryStep {
 export interface Industry {
   slug: string;
   name: string;
+  /** Heading for the use-case section, written out so grammar is right. */
+  useCasesTitle: string;
   eyebrow: string;
   headline: string;
   subheadline: string;
@@ -22,6 +24,7 @@ export const industries: Industry[] = [
   {
     slug: "ecommerce",
     name: "E-commerce",
+    useCasesTitle: "How online stores use Whatching",
     eyebrow: "E-commerce",
     headline: "Answer shoppers fast and drive repeat purchases.",
     subheadline:
@@ -80,6 +83,7 @@ export const industries: Industry[] = [
   {
     slug: "education",
     name: "Education",
+    useCasesTitle: "How schools and coaching institutes use Whatching",
     eyebrow: "Education",
     headline: "Capture enquiries and automate admissions.",
     subheadline:
@@ -137,6 +141,7 @@ export const industries: Industry[] = [
   {
     slug: "real-estate",
     name: "Real Estate",
+    useCasesTitle: "How real estate teams use Whatching",
     eyebrow: "Real Estate",
     headline: "Qualify property leads instantly.",
     subheadline:
@@ -196,6 +201,7 @@ export const industries: Industry[] = [
   {
     slug: "healthcare",
     name: "Healthcare",
+    useCasesTitle: "How clinics use Whatching",
     eyebrow: "Healthcare",
     headline: "Manage enquiries and appointments.",
     subheadline:
@@ -253,21 +259,22 @@ export const industries: Industry[] = [
   {
     slug: "travel",
     name: "Travel & Hospitality",
+    useCasesTitle: "How travel agencies use Whatching",
     eyebrow: "Travel & Hospitality",
     headline: "Convert enquiries into bookings.",
     subheadline:
-      "Answer availability and pricing questions instantly, and keep guests engaged before and after their stay.",
+      "Answer questions about your packages and prices straight away, and keep in touch with guests before and after their trip.",
     seoTitle: "WhatsApp Automation for Travel & Hospitality | Whatching",
     seoDescription:
-      "Turn travel enquiries into bookings with WhatsApp and Instagram automation — instant availability answers, booking flows and guest follow-up.",
+      "Turn travel enquiries into bookings with WhatsApp and Instagram automation: instant answers on packages and prices, enquiry chatbots and guest follow-up.",
     summary:
-      "Travel shoppers compare multiple options fast. Whatching answers availability and pricing instantly, so you're the one who gets the booking.",
+      "Travellers compare several options quickly. Whatching's AI agent answers questions about your packages and prices straight away, and your team confirms the booking.",
     journey: [
       "Instagram / website enquiry",
       "WhatsApp conversation",
-      "AI availability check",
-      "Booking flow",
-      "Confirmation",
+      "AI answers package questions",
+      "Team confirms the booking",
+      "Confirmation message",
       "Pre-trip updates",
       "Repeat booking"
     ],
@@ -278,23 +285,26 @@ export const industries: Industry[] = [
       },
       {
         title: "Repetitive questions",
-        description: "Availability and pricing questions repeat endlessly."
+        description:
+          "The same questions about packages and prices come in all day."
       }
     ],
     solutions: [
       {
-        title: "Instant availability answers",
-        description: "AI handles common pricing and availability questions."
+        title: "Instant answers on packages",
+        description:
+          "The AI agent answers common package and price questions from your own documents."
       },
       {
-        title: "Booking & itinerary flows",
-        description: "Guide guests from enquiry to confirmed booking."
+        title: "Enquiry chatbots",
+        description:
+          "A chatbot collects dates, destination and group size, then hands the chat to your team to confirm."
       }
     ],
     useCases: [
       {
         title: "Booking enquiries",
-        description: "Instant response with availability and pricing."
+        description: "An instant reply with package details and prices."
       },
       {
         title: "Pre-trip communication",
@@ -309,6 +319,7 @@ export const industries: Industry[] = [
   {
     slug: "agencies",
     name: "Agencies",
+    useCasesTitle: "How agencies use Whatching",
     eyebrow: "Agencies",
     headline: "Manage multiple clients and campaigns.",
     subheadline:

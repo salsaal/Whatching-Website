@@ -38,9 +38,10 @@ const Footer = () => {
               className="text-sm mt-4 max-w-[320px] leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Whatching helps businesses turn WhatsApp and Instagram
-              conversations into revenue — campaigns, AI automation, a shared
-              inbox and analytics, built on official messaging APIs.
+              Whatching helps small businesses sell and support customers on
+              WhatsApp and Instagram: broadcasts, chatbots, an AI agent, a
+              shared team inbox and analytics. Built on Meta&apos;s official
+              WhatsApp Business Platform.
             </p>
             <div className="flex items-center gap-2.5 mt-5">
               {socialLinks.map((link, i) => (

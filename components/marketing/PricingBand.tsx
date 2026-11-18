@@ -11,35 +11,29 @@ import { PRODUCT_APP_URL } from "@/lib/data/nav";
 // full lists are on /pricing.
 const highlightNames: Record<string, string[]> = {
   basic: [
-    "Bulk WhatsApp Messaging",
-    "10,000 WhatsApp Contacts",
-    "Drag & Drop Chatbot Builder",
-    "WhatsApp AI Agent",
-    "Owner + 2 Team Members",
-    "Multi Agent Shared Inbox"
+    "Bulk WhatsApp messaging",
+    "10,000 WhatsApp contacts",
+    "Drag-and-drop chatbot builder",
+    "WhatsApp AI agent",
+    "Owner + 2 team members",
+    "Shared team inbox"
   ],
   pro: [
-    "Includes all Basic features",
-    "25,000 WhatsApp Contacts",
-    "Upto 2 Phone Numbers per Organization",
-    "Owner + 5 Team Members",
-    "Instagram Automations",
-    "Instagram AI Agent"
+    "Everything in Basic",
+    "25,000 WhatsApp contacts",
+    "Up to 2 WhatsApp numbers",
+    "Owner + 5 team members",
+    "Instagram automations",
+    "Instagram AI agent"
   ],
   enterprise: [
-    "Includes all Pro features",
-    "High Volume Subscribers",
-    "Unlimited Team Members",
-    "More WhatsApp Numbers",
-    "Dedicated Account Manager",
-    "Priority Support"
+    "Everything in Pro",
+    "Higher contact limits",
+    "Unlimited team members",
+    "More WhatsApp numbers",
+    "Dedicated account manager",
+    "Priority support"
   ]
-};
-
-const ctaLabels: Record<string, string> = {
-  basic: "Get started",
-  pro: "Start free trial",
-  enterprise: "Contact sales"
 };
 
 const highlightsFor = (plan: PricingPlan) => {
@@ -174,7 +168,7 @@ const PricingBand = () => (
                 href={href}
                 className={`${featured ? "btn-primary" : "btn-secondary"} w-full justify-center mt-7`}
               >
-                {ctaLabels[plan.id] ?? plan.ctaLabel}
+                {plan.ctaLabel}
               </Link>
             </Reveal>
           );

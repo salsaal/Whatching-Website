@@ -2,7 +2,6 @@ import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
-import EcosystemDiagram from "@/components/marketing/EcosystemDiagram";
 import AgenciesSection from "@/components/marketing/AgenciesSection";
 import MarqueeBand from "@/components/marketing/MarqueeBand";
 import FeatureCardsSection from "@/components/marketing/FeatureCardsSection";
@@ -27,7 +26,6 @@ export default function Home() {
       <SiteShell>
         <Hero />
         <TrustBar />
-        <EcosystemDiagram />
         <AgenciesSection />
         <MarqueeBand />
         <FeatureCardsSection />

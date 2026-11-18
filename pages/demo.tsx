@@ -5,14 +5,11 @@ import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import OnboardingForm from "@/components/marketing/OnboardingForm";
 import YouTubeLite from "@/components/marketing/YouTubeLite";
+import DemoPoster from "@/components/marketing/DemoPoster";
 import { Reveal, SectionHeading } from "@/components/marketing/Primitives";
 import { PRODUCT_APP_URL, WHATSAPP_URL } from "@/lib/constants";
 import { breadcrumbSchema } from "@/lib/seo";
-import {
-  DEMO_VIDEO,
-  demoVideoSchema,
-  demoVideoThumbnail
-} from "@/lib/data/video";
+import { DEMO_VIDEO, demoVideoSchema } from "@/lib/data/video";
 
 const callAgenda = [
   "Connecting your WhatsApp Business number",
@@ -52,9 +49,7 @@ export default function DemoPage() {
               <YouTubeLite
                 id={DEMO_VIDEO.id}
                 title={DEMO_VIDEO.title}
-                thumbnail={demoVideoThumbnail}
-                label={`Watch the demo · ${DEMO_VIDEO.lengthLabel}`}
-                priority
+                poster={<DemoPoster lengthLabel={DEMO_VIDEO.lengthAdjective} />}
               />
             </Reveal>
           </div>

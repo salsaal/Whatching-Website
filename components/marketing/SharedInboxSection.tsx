@@ -1,6 +1,5 @@
 import React from "react";
 import StorySection from "./StorySection";
-import { PRODUCT_APP_URL } from "@/lib/data/nav";
 import InboxVisual from "./product/InboxVisual";
 
 const SharedInboxSection = () => (
@@ -8,7 +7,7 @@ const SharedInboxSection = () => (
     id="inbox"
     eyebrow="Shared Inbox"
     title="One inbox for your entire team."
-    description="WhatsApp, Instagram, AI and human agents — all inside one unified conversation view. Assign every chat to the right teammate, and keep the whole team on one WhatsApp number."
+    description="WhatsApp and Instagram chats, and the AI agent's replies, in one inbox your whole team shares. Assign each chat to a teammate and keep everyone on one WhatsApp number."
     points={[
       {
         title: "Nothing falls through",
@@ -23,8 +22,8 @@ const SharedInboxSection = () => (
         desc: "WhatsApp and Instagram conversations in the same workspace."
       }
     ]}
-    ctaLabel="Explore Shared Inbox"
-    ctaHref={PRODUCT_APP_URL}
+    ctaLabel="See the shared inbox"
+    ctaHref="/features/shared-inbox"
     reverse
     background="var(--background-secondary)"
     visual={<InboxVisual />}

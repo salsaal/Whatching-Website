@@ -24,13 +24,16 @@ const comparisonRows: {
   label: string;
   values: [string | boolean, string | boolean, string | boolean];
 }[] = [
-  { label: "WhatsApp contacts", values: ["10,000", "25,000", "High volume"] },
-  { label: "Team members", values: ["2", "5", "Unlimited"] },
-  { label: "WhatsApp numbers", values: ["1", "Up to 2", "Multiple"] },
+  { label: "WhatsApp contacts", values: ["10,000", "25,000", "Higher limits"] },
+  {
+    label: "Team members",
+    values: ["Owner + 2", "Owner + 5", "Unlimited"]
+  },
+  { label: "WhatsApp numbers", values: ["1", "Up to 2", "More"] },
   { label: "AI usage included", values: ["1M", "3M", "Unlimited"] },
-  { label: "Meta fee markup", values: ["0%", "0%", "0%"] },
-  { label: "Shared inbox", values: [true, true, true] },
-  { label: "No-code flow builder", values: [true, true, true] },
+  { label: "Markup on Meta's charges", values: ["0%", "0%", "0%"] },
+  { label: "Shared team inbox", values: [true, true, true] },
+  { label: "Chatbot builder", values: [true, true, true] },
   { label: "Instagram automation", values: [false, true, true] },
   { label: "Dedicated account manager", values: [false, false, true] },
   { label: "Priority support", values: [false, false, true] }
@@ -94,7 +97,14 @@ const PricingPage = () => {
                 align="center"
                 eyebrow="Pricing"
                 title="Flexible pricing for every business."
-                description="Plans from ₹2,499 a month. Meta's own message charges are passed through at 0% markup. Start your free 7-day trial of Pro. No card needed."
+                description={
+                  <>
+                    Plans from ₹2,499 a month, plus GST. Meta&apos;s own message
+                    charges are passed on at 0% markup. Start your free{" "}
+                    <span className="whitespace-nowrap">7-day</span> trial of
+                    Pro. No card needed.
+                  </>
+                }
               />
             </Reveal>
           </div>
@@ -179,13 +189,27 @@ const PricingPage = () => {
             <Reveal>
               <SectionHeading
                 align="center"
-                title="Transparent WhatsApp conversation pricing"
-                description="Your subscription covers the platform. Meta charges a small fee for each message, based on its type — billed at Meta's official rates with 0% markup."
+                title="What Meta charges per message"
+                description="Your plan covers Whatching. Meta also charges a small fee for each message you send, based on its type. We pass it on at Meta's own rate, with 0% markup."
               />
             </Reveal>
 
-            <div className="grid md:grid-cols-2 gap-4 mt-10 mb-8">
+            <div className="grid md:grid-cols-3 gap-4 mt-10 mb-8">
               <Reveal className="surface-card p-5">
+                <p
+                  className="text-lg font-semibold mb-1.5"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Messages to you are free
+                </p>
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Meta never charges for messages customers send you.
+                </p>
+              </Reveal>
+              <Reveal delay={0.04} className="surface-card p-5">
                 <p
                   className="text-lg font-semibold mb-1.5"
                   style={{ color: "var(--text-primary)" }}
@@ -196,23 +220,25 @@ const PricingPage = () => {
                   className="text-sm"
                   style={{ color: "var(--text-secondary)" }}
                 >
-                  Messages customers send you are free. Meta gives each WhatsApp
-                  number 1,000 free replies a month, then charges per reply.
+                  Replies within 24 hours of a customer&apos;s message are
+                  service messages. Each WhatsApp number gets 1,000 free a
+                  month; after that Meta charges per reply.
                 </p>
               </Reveal>
-              <Reveal delay={0.06} className="surface-card p-5">
+              <Reveal delay={0.08} className="surface-card p-5">
                 <p
                   className="text-lg font-semibold mb-1.5"
                   style={{ color: "var(--text-primary)" }}
                 >
-                  Outbound messages are paid
+                  Free after a Click-to-WhatsApp ad
                 </p>
                 <p
                   className="text-sm"
                   style={{ color: "var(--text-secondary)" }}
                 >
-                  Meta charges per message based on the approved template
-                  category.
+                  When someone messages you from your ad on their phone and you
+                  reply within 24 hours, Meta doesn&apos;t charge for that chat
+                  for up to 7 days.
                 </p>
               </Reveal>
             </div>

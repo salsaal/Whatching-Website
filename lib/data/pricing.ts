@@ -22,56 +22,56 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "basic",
     name: "Basic",
-    tagline: "Ideal for small businesses getting started on WhatsApp.",
+    tagline: "For small businesses getting started on WhatsApp.",
     monthlyPrice: 2499,
     currency: "₹",
-    ctaLabel: "Get Started",
+    ctaLabel: "Get started",
     ctaHref: "app",
     features: [
-      "Bulk WhatsApp Messaging",
-      "10,000 WhatsApp Contacts",
-      "Automatic Lead Qualification",
-      "0% Markup Fees",
-      "Drag & Drop Chatbot Builder",
-      "Automated Follow Up Bot",
-      "WhatsApp AI Agent",
+      "Bulk WhatsApp messaging",
+      "10,000 WhatsApp contacts",
+      "Automatic lead qualification",
+      "0% markup on Meta's charges",
+      "Drag-and-drop chatbot builder",
+      "Automatic follow-up bot",
+      "WhatsApp AI agent",
       "AI usage included: 1M",
-      "Owner + 2 Team Members",
-      "Role-Based Team Permissions",
-      "Sync WhatsApp Business App",
-      "Single Phone Number Integration",
-      "Messaging Template Management",
-      "Analytics Dashboard",
+      "Owner + 2 team members",
+      "Role-based team permissions",
+      "Keep using the WhatsApp Business app on the same number",
+      "1 WhatsApp number",
+      "Message template management",
+      "Analytics dashboard",
       "Unlimited incoming customer messages",
-      "Multi Agent Shared Inbox",
-      "Click-to-WhatsApp Ad Tracking"
+      "Shared team inbox",
+      "Click-to-WhatsApp ad tracking"
     ]
   },
   {
     id: "pro",
     name: "Pro",
-    tagline: "Advanced automation for growing businesses.",
+    tagline: "More automation and Instagram for growing businesses.",
     monthlyPrice: 3999,
     currency: "₹",
     recommended: true,
-    ctaLabel: "Get Started",
+    ctaLabel: "Start free trial",
     ctaHref: "app",
     features: [
-      "Includes all Basic features",
-      "25,000 WhatsApp Contacts",
-      "Upto 2 Phone Numbers per Organization",
-      "Owner + 5 Team Members",
+      "Everything in Basic",
+      "25,000 WhatsApp contacts",
+      "Up to 2 WhatsApp numbers",
+      "Owner + 5 team members",
       "AI usage included: 3M"
     ],
     featureGroups: [
       {
         heading: "Instagram",
         items: [
-          "Instagram Automations",
-          "Unlimited Instagram Conversations",
-          "Drag & Drop Chatbot Builder for Instagram",
-          "Instagram AI Agent",
-          "Automated Instagram Comments Reply"
+          "Instagram automations",
+          "Unlimited Instagram conversations",
+          "Drag-and-drop chatbot builder for Instagram",
+          "Instagram AI agent",
+          "Automatic replies to Instagram comments"
         ]
       }
     ],
@@ -80,28 +80,30 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "enterprise",
     name: "Enterprise",
-    tagline: "For high-scale, multi-number operations.",
+    tagline: "For businesses with more numbers or very high volumes.",
     monthlyPrice: null,
     currency: "₹",
-    ctaLabel: "Contact Sales",
+    ctaLabel: "Contact sales",
     ctaHref: "mailto:hello@whatching.com?subject=Enterprise%20plan",
     features: [
-      "Includes all Pro features",
-      "High Volume Subscribers",
-      "Any Custom Business Logic",
-      "Unlimited Team Members",
-      "More WhatsApp Numbers",
-      "Dedicated Account Manager",
-      "Priority Support"
+      "Everything in Pro",
+      "Higher contact limits",
+      "Custom set-up for your business",
+      "Unlimited team members",
+      "More WhatsApp numbers",
+      "Unlimited AI usage",
+      "Dedicated account manager",
+      "Priority support"
     ]
   }
 ];
 
 // Meta's per-message list rates for India in INR, read from Meta's official
-// pricing page. Update the date and figures together when Meta changes them.
+// pricing page (rate card effective 1 October 2026, checked 18 November 2026).
+// Update the date and figures together when Meta changes them.
 export const metaPricingSource = {
   asOf: "1 October 2026",
-  url: "https://developers.facebook.com/docs/whatsapp/pricing"
+  url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing"
 };
 
 export const metaConversationPricing = [
@@ -134,9 +136,9 @@ export const metaConversationPricing = [
 
 export const pricingFaq = [
   {
-    question: "Is the WhatsApp API included in the subscription?",
+    question: "Is the connection to WhatsApp included in the plan?",
     answer:
-      "Yes — your Whatching subscription includes the platform and API connection. Meta charges a small per-message fee separately, based on message type."
+      "Yes. Your Whatching plan includes connecting your number to Meta's official WhatsApp Business Platform. Meta charges a small fee per message separately, based on the message type."
   },
   {
     question: "Are Meta charges included in the plan price?",
@@ -151,12 +153,17 @@ export const pricingFaq = [
   {
     question: "How does message pricing work?",
     answer:
-      "Meta charges per message. Messages customers send you are free. Each WhatsApp number gets 1,000 free replies (service messages) a month, then ₹0.1150 each. Marketing, utility and authentication templates are charged at Meta's rate for India, with 0% markup from us."
+      "Meta charges per message. Messages customers send you are free. Each WhatsApp number gets 1,000 free replies (service messages) a month, then ₹0.1150 each. Chats that start from a Click-to-WhatsApp ad are free for up to 7 days if you reply within 24 hours. Marketing, utility and login-code messages are charged at Meta's rate for India, with 0% markup from us."
+  },
+  {
+    question: "Can I buy more AI usage?",
+    answer:
+      "Yes. Each plan includes AI usage (1M on Basic, 3M on Pro). If you need more, you can buy AI token top-ups from inside Whatching."
   },
   {
     question: "Can I add team members?",
     answer:
-      "Yes — Basic includes 2 team members and Pro includes 5, with role-based permissions on every plan."
+      "Yes. Basic includes the owner plus 2 team members and Pro includes the owner plus 5, with role-based permissions on every plan."
   },
   {
     question: "Can I use Instagram automation?",

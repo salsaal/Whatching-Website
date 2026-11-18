@@ -3,8 +3,9 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   category: string;
-  readTime: string;
   date: string;
+  /** Key in lib/data/authors.ts; defaults to the co-founder. */
+  authorId?: string;
   seoDescription: string;
   content: string[];
 }
@@ -23,14 +24,13 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Segmentation, personalization and timing tactics that turn broadcasts into conversations instead of one-way blasts.",
     category: "WhatsApp Marketing",
-    readTime: "6 min read",
     date: "2026-08-12",
     seoDescription:
       "Practical WhatsApp broadcast best practices — segmentation, personalization, CTA buttons and timing — to improve delivery and reply rates.",
     content: [
       "A broadcast that gets ignored is worse than no broadcast at all — it trains customers to skip your messages. The businesses that see strong reply rates treat every campaign as the start of a conversation, not the end of one.",
       "Segment before you send. A single list blasted with one message rarely performs as well as three smaller, targeted sends built around what each group actually cares about.",
-      "Personalize beyond the first name. Order status, last purchase category, or the specific product a contact viewed all make a message feel relevant rather than mass-produced.",
+      "Personalize beyond the first name. The city a customer asked about, the product they enquired about, or anything else you have saved for that contact makes a message feel personal rather than mass-produced.",
       "Give people something to do. A quick-reply or CTA button turns a passive read into an action, and gives you a much clearer signal of intent than a message with no next step.",
       "Watch delivered, read and replied counts and template button clicks per campaign, not just in aggregate — that's how you learn which segments, send times and message types actually convert."
     ]
@@ -41,7 +41,6 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "The 'comment LINK and I'll DM you' pattern, explained — and how to set it up without losing the personal feel.",
     category: "Instagram Automation",
-    readTime: "5 min read",
     date: "2026-07-28",
     seoDescription:
       "A practical guide to Instagram comment automation — how keyword-triggered DMs work and how to set up your first automated comment-to-lead flow.",
@@ -58,7 +57,6 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "What the official API actually is, how it differs from unofficial senders, and what businesses need to know before signing up.",
     category: "WhatsApp API",
-    readTime: "7 min read",
     date: "2026-07-10",
     seoDescription:
       "A plain-language explanation of the WhatsApp Business API — how it differs from unofficial senders and what to look for in a provider.",
@@ -75,7 +73,6 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Why keyword-matching bots frustrate customers, and what changes when a bot actually understands intent.",
     category: "AI Automation",
-    readTime: "5 min read",
     date: "2026-06-22",
     seoDescription:
       "The practical difference between a scripted keyword bot and an AI chatbot that understands intent — and when to use each.",
@@ -83,10 +80,16 @@ export const blogPosts: BlogPost[] = [
       "A scripted bot matches keywords to fixed replies. It's predictable, but brittle — one typo or an unexpected phrasing and the conversation breaks.",
       "An AI chatbot works from intent, not exact wording. 'do you deliver to Pune' and 'can I get this in Pune' get handled the same way, because the system understands what's being asked.",
       "The real advantage shows up in follow-up questions. A scripted bot resets with every message; an AI chatbot keeps context across the conversation.",
-      "Neither replaces a human for judgment calls — the goal is deflecting the repetitive 80% so your team can focus on the 20% that actually needs them."
+      "Neither replaces a person for judgement calls. The aim is to answer the repeated questions automatically, so your team can spend its time on the chats that really need them."
     ]
   }
 ];
 
 export const blogPostBySlug = (slug: string) =>
   blogPosts.find((p) => p.slug === slug);
+
+// Reading time from the actual word count, at about 200 words a minute.
+export const readTimeFor = (post: BlogPost) => {
+  const words = post.content.join(" ").split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / 200))} min read`;
+};

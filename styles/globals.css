@@ -182,7 +182,8 @@
   --text-primary: #0a120e;
   --text-body: #16211b;
   --text-secondary: #57685f;
-  --text-muted: #8e9c94;
+  /* Darkened from #8e9c94, which was about 2.8:1 on the page background. */
+  --text-muted: #637169;
 
   /* Borders */
   --border: rgba(10, 18, 14, 0.08);
@@ -237,10 +238,12 @@
     rgba(22, 159, 73, 0.1) 0%,
     transparent 60%
   );
+  /* Starts at the brand green, not the lighter green, so white text keeps
+     at least 3.4:1 on bold button text. */
   --gradient-button: linear-gradient(
     180deg,
-    var(--primary-light),
-    var(--primary)
+    var(--primary),
+    var(--primary-dark)
   );
 }
 

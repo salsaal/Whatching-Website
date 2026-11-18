@@ -218,6 +218,34 @@
   container-type: inline-size;
 }
 
+/* Demo video poster: the hero phone, sized to the poster's width and
+   cropped by its bottom edge. */
+.posterStage {
+  container-type: inline-size;
+}
+
+.posterZoom {
+  zoom: 0.8;
+}
+
+@container (max-width: 760px) {
+  .posterZoom {
+    zoom: 0.62;
+  }
+}
+
+@container (max-width: 560px) {
+  .posterZoom {
+    zoom: 0.47;
+  }
+}
+
+@container (max-width: 420px) {
+  .posterZoom {
+    zoom: 0.36;
+  }
+}
+
 .heroZoom {
   zoom: 1;
 }

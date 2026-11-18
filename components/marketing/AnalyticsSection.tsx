@@ -9,8 +9,8 @@ const AnalyticsSection = () => (
         <SectionHeading
           align="center"
           eyebrow="Analytics"
-          title="Know what's working. Scale what isn't."
-          description="Broadcast results, template button clicks, the ads that bring in chats and what Meta charges — across WhatsApp and Instagram — in one dashboard. Figures shown are illustrative demo data."
+          title="See what's working. Fix what isn't."
+          description="Broadcast results, button taps, the ads that bring in chats and what Meta charges you, for WhatsApp and Instagram, in one dashboard."
         />
       </Reveal>
 

@@ -51,7 +51,7 @@ const Navbar = () => {
               href={PRODUCT_APP_URL}
               className="btn-primary !min-h-[40px] !py-0 !px-5 !text-[0.875rem]"
             >
-              Start Free Trial
+              Start free trial
             </Link>
           </div>
 
@@ -111,7 +111,7 @@ const Navbar = () => {
                     Login
                   </Link>
                   <Link href={PRODUCT_APP_URL} className="btn-primary">
-                    Start Free Trial
+                    Start free trial
                   </Link>
                 </div>
               </div>

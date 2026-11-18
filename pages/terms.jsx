@@ -6,7 +6,7 @@ const content = `Terms & Conditions
 
 1. Introduction
 
-Welcome to Whatching. These Terms of Service govern your access to and use of our services, including our website, mobile application, and any other software or services provided by Whatching (collectively referred to as "Services"). By accessing or using our Services, you agree to be bound by these Terms.
+Welcome to Whatching. These Terms of Service govern your access to and use of our services, including our website, web application, and any other software or services provided by Whatching (collectively referred to as "Services"). By accessing or using our Services, you agree to be bound by these Terms.
 
 2. Acceptance of Terms
 
@@ -88,26 +88,9 @@ You may not access or use the Site for any purpose other than that for which we 
 • Use the Site as part of any effort to compete with us or otherwise use the Site and/or the Content for any revenue-generating endeavor or commercial enterprise.
 • Sell or otherwise transfer your profile.
 
-13. Mobile Application License
+13. Mobile Apps
 
-Use License
-
-If you access the Site via a mobile application, then we grant you a revocable, non-exclusive, non-transferable, limited right to install and use the mobile application on wireless electronic devices owned or controlled by you, and to access and use the mobile application on such devices strictly in accordance with the terms and conditions of this mobile application license contained in these Terms and Conditions. You shall not:
-(1) except as permitted by applicable law, decompile, reverse engineer, disassemble, attempt to derive the source code of, or decrypt the application; (2) make any modification, adaptation, improvement, enhancement, translation, or derivative work from the application;
-(3) violate any applicable laws, rules, or regulations in connection with your access or use of the application;
-(4) remove, alter, or obscure any proprietary notice (including any notice of copyright or trademark) posted by us or the licensors of the application; (5) use the application for any revenue generating endeavor, commercial enterprise, or other purpose for which it is not designed or intended;
-(6) make the application available over a network or other environment permitting access or use by multiple devices or users at the same time;
-(7) use the application for creating a product, service, or software that is, directly or indirectly, competitive with or in any way a substitute for the application;
-(8) use the application to send automated queries to any website or to send any unsolicited commercial e-mail; or
-(9) use any proprietary information or any of our interfaces or our other intellectual property in the design, development, manufacture, licensing, or distribution of any applications, accessories, or devices for use with the application.
-
-Apple and Android Devices
-The following terms apply when you use a mobile application obtained from either the Apple Store or Google Play (each an "App Distributor") to access the Site:
-(1) the license granted to you for our mobile application is limited to a non-transferable license to use the application on a device that utilizes the Apple iOS or Android operating systems, as applicable, and in accordance with the usage rules set forth in the applicable App Distributor's terms of service; (2) we are responsible for providing any maintenance and support services with respect to the mobile application as specified in the terms and conditions of this mobile application license contained in these Terms and Conditions or as otherwise required under applicable law, and you acknowledge that each App Distributor has no obligation whatsoever to furnish any maintenance and support services with respect to the mobile application;
-(3) in the event of any failure of the mobile application to conform to any applicable warranty, you may notify the applicable App Distributor, and the App Distributor, in accordance with its terms and policies, may refund the purchase price, if any, paid for the mobile application, and to the maximum extent permitted by applicable law, the App Distributor will have no other warranty obligation whatsoever with respect to the mobile application;
-(4) you represent and warrant that (i) you are not located in a country that is subject to a U.S. government embargo, or that has been designated by the U.S. government as a "terrorist supporting" country and (ii) you are not listed on any U.S. government list of prohibited or restricted parties;
-(5) you must comply with applicable third-party terms of agreement when using the mobile application, e.g., if you have a VoIP application, then you must not be in violation of their wireless data service agreement when using the mobile application; and
-(6) you acknowledge and agree that the App Distributors are third-party beneficiaries of the terms and conditions in this mobile application license contained in these Terms and Conditions, and that each App Distributor will have the right (and will be deemed to have accepted the right) to enforce the terms and conditions in this mobile application license contained in these Terms and Conditions against you as a third-party beneficiary thereof.
+Whatching does not offer a mobile app. Our Services are provided through our website and web application, which you can also use in a mobile browser.
 
 14. SOCIAL MEDIA
 As part of the functionality of the Site, you may link your account with online accounts you have with third-party service providers (each such account, a "Third-Party Account") by either:
@@ -157,40 +140,9 @@ If any provision of these Terms is found to be invalid or unenforceable, the rem
 
 These Terms, together with our Privacy Policy, constitute the entire agreement between you and Whatching regarding your use of our Services. Any failure by us to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision.
 
-Refund Policy
+24. Refunds
 
-This policy is designed to be fair and reasonable, ensuring that customers feel secure in their transactions with Whatching, while also protecting the company from potential abuse of the refund process.
-
-
-1. Trial Period
-Whatching offers a 7-day free trial for new users, during which they can explore the platform. Since no credit card is required to start the trial and users are not charged.
-
-2. Subscription Services
-Following the free trial, if a user subscribes to any of Whatching's paid services, they are ineligible to receive a refund. The free trial is provided to ensure that the users try out all the services and decide whether to continue with the Whatching platform. If the user feels unsatisfied, they can cancel their free trial anytime and they will not be charged. If the user has subscribed to any Whatching plan, they are not eligible for a refund. They can cancel their subscription to ensure they are not charged the next month.
-
-3. Non-Refundable Services
-All Whatching services, such as the charges for a Whatching Plan, WhatsApp Conversation Credits (WCCs), Add-ons or any third-party integrations, are non-refundable due to the nature of the service and the costs incurred by Whatching to provide these services. This includes one-time Chatbot development and other one-time setup payments.
-
-4. Technical Issues
-If a user experiences continuous technical issues that prevent them from using the service effectively, and if these issues are verified by Whatching's support team, a partial or full refund may be granted at Whatching's discretion.
-
-5. Unauthorized Charges
-In the case of unauthorized or fraudulent charges, users should contact Whatching support immediately. If such claims are verified, Whatching will issue a full refund.
-
-6. Cancellation Policy
-A user may cancel their subscription at any time. However, the cancellation will be effective at the end of the current billing cycle, and users will not receive a refund for the remaining period of the subscription, except under special circumstances that will be reviewed on a case-by-case basis.
-
-7. Contact and Support
-For any refund-related queries, users are encouraged to contact Whatching's customer support team, which is committed to providing efficient and personalized assistance.
-
-8. Refund Process
-To request a refund, users should write to us at hello@whatching.com. The request must include the transaction details and a clear explanation of the reason for the refund request.
-
-9. Policy Amendments
-Whatching reserves the right to modify this refund policy at any time, and the changes will be effective immediately upon posting the updated policy on the Whatching website.
-
-10. Legal Compliance
-This refund policy complies with the local laws and regulations where Whatching operates. Users are also encouraged to review the Terms of Service and Privacy Policy for a comprehensive understanding of their rights and obligations.`;
+Refunds, cancellations and the free trial are covered by our Refund Policy, published at https://www.whatching.com/refund-policy.`;
 
 function Terms() {
   const [heading, ...body] = content.split("\n");
@@ -203,46 +155,45 @@ function Terms() {
         path="/terms"
       />
       <SiteShell>
+        <section className="section-padding !pt-32">
+          <div className="container max-w-4xl">
+            <h1 className="heading-2 mb-8 text-center">
+              {heading || "Terms & Conditions"}
+            </h1>
+            <div className="space-y-5 body-medium text-[var(--text-secondary)] legal-preformatted">
+              {body.map((line, index) => {
+                const trimmed = line.trim();
+                if (!trimmed) return <div key={index} className="h-2" />;
 
-      <section className="section-padding !pt-32">
-        <div className="container max-w-4xl">
-          <h1 className="heading-2 mb-8 text-center">
-            {heading || "Terms & Conditions"}
-          </h1>
-          <div className="space-y-5 body-medium text-[var(--text-secondary)] legal-preformatted">
-            {body.map((line, index) => {
-              const trimmed = line.trim();
-              if (!trimmed) return <div key={index} className="h-2" />;
+                const isSectionHeading =
+                  /^\d+\.\s/.test(trimmed) ||
+                  /^[A-Z][A-Z\s&-]+$/.test(trimmed) ||
+                  trimmed === "Refund Policy";
 
-              const isSectionHeading =
-                /^\d+\.\s/.test(trimmed) ||
-                /^[A-Z][A-Z\s&-]+$/.test(trimmed) ||
-                trimmed === "Refund Policy";
+                if (isSectionHeading) {
+                  return (
+                    <h3
+                      key={index}
+                      className="heading-3 pt-4 text-[var(--text-primary)]"
+                    >
+                      {trimmed}
+                    </h3>
+                  );
+                }
 
-              if (isSectionHeading) {
-                return (
-                  <h3
-                    key={index}
-                    className="heading-3 pt-4 text-[var(--text-primary)]"
-                  >
-                    {trimmed}
-                  </h3>
-                );
-              }
+                if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
+                  return (
+                    <p key={index} className="pl-5">
+                      {trimmed}
+                    </p>
+                  );
+                }
 
-              if (trimmed.startsWith("•") || trimmed.startsWith("-")) {
-                return (
-                  <p key={index} className="pl-5">
-                    {trimmed}
-                  </p>
-                );
-              }
-
-              return <p key={index}>{trimmed}</p>;
-            })}
+                return <p key={index}>{trimmed}</p>;
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </SiteShell>
     </>
   );

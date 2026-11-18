@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { Reveal, staggerContainer, staggerItem } from "./Primitives";
 import InstagramPhone from "./InstagramPhone";
-import { PRODUCT_APP_URL } from "@/lib/data/nav";
 
 const capabilities = [
   { icon: Send, title: "Instagram DM automation" },
@@ -95,10 +94,10 @@ const InstagramAutomationSection = () => (
 
         <Reveal delay={0.15} className="mt-8">
           <Link
-            href={PRODUCT_APP_URL}
+            href="/features/instagram-automation"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:opacity-80"
           >
-            Automate Instagram <span aria-hidden>→</span>
+            See Instagram automation <span aria-hidden>→</span>
           </Link>
         </Reveal>
       </div>

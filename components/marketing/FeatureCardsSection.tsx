@@ -11,18 +11,21 @@ const cards = [
     title: "Broadcasts",
     desc: "Send offers and updates to thousands of contacts at once, now or scheduled, and see who received, read and tapped.",
     href: "/features/whatsapp-broadcast",
+    linkLabel: "See broadcasts",
     visual: <BroadcastVisual />
   },
   {
     title: "Chatbot builder",
     desc: "Build automated chats on a drag-and-drop canvas: menus, questions and branches, with a hand-over to a person. No coding.",
     href: "/features/whatsapp-flows",
+    linkLabel: "See the chatbot builder",
     visual: <FlowVisual />
   },
   {
     title: "AI agent",
     desc: "Answers customer questions from your own documents, website and FAQs, on WhatsApp and Instagram, and hands over to your team.",
     href: "/features/ai-chatbot",
+    linkLabel: "See the AI agent",
     visual: <AIAgentVisual />
   }
 ];
@@ -46,7 +49,7 @@ const FeatureCardsSection = () => (
               <div className="w-full md:w-1/2 lg:w-full shrink-0 lg:h-[440px]">
                 {card.visual}
               </div>
-              <div className="px-3 pb-4 md:pb-0 lg:pb-4 flex flex-col gap-2">
+              <div className="px-3 pb-4 md:pb-0 lg:pb-4 flex flex-col gap-2 lg:flex-1">
                 <h3
                   className="text-[19px] font-semibold"
                   style={{ color: "var(--text-primary)" }}
@@ -61,10 +64,10 @@ const FeatureCardsSection = () => (
                 </p>
                 <Link
                   href={card.href}
-                  className="inline-flex items-center gap-1 text-sm font-semibold mt-1"
+                  className="inline-flex items-center gap-1 text-sm font-semibold mt-1 lg:mt-auto lg:pt-1"
                   style={{ color: "var(--primary-dark)" }}
                 >
-                  Learn more <ArrowRight className="w-3.5 h-3.5" />
+                  {card.linkLabel} <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>

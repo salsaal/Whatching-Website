@@ -104,7 +104,7 @@ const OnboardingForm = ({
             className="btn-primary w-full"
             disabled={loading}
           >
-            {loading ? "Submitting..." : "Get Free Setup"}{" "}
+            {loading ? "Sending…" : "Book my free call"}{" "}
             <ArrowRight className="w-4 h-4" />
           </button>
           {submitError && (

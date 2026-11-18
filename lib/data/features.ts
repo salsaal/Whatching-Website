@@ -25,6 +25,8 @@ export interface Feature {
   category: FeatureCategory;
   visual: VisualType;
   name: string;
+  /** The "How it works" heading, written out so grammar and casing are right. */
+  howTitle: string;
   eyebrow: string;
   headline: string;
   subheadline: string;
@@ -46,11 +48,11 @@ export const features: Feature[] = [
     category: "WhatsApp",
     visual: "marketing",
     name: "WhatsApp Marketing",
+    howTitle: "How WhatsApp marketing works in Whatching",
     eyebrow: "WhatsApp Marketing",
-    headline:
-      "WhatsApp marketing that reads like a platform, not a bulk sender.",
+    headline: "WhatsApp marketing, done the official way.",
     subheadline:
-      "Plan campaigns, automate follow-ups, and manage every lead from one workspace built on the official WhatsApp Business API.",
+      "Plan broadcasts, automate follow-ups and reply to every customer from one place, built on Meta's official WhatsApp Business Platform.",
     seoTitle: "WhatsApp Marketing Software for Businesses | Whatching",
     seoDescription:
       "WhatsApp marketing software on the official WhatsApp Business API: broadcasts, message templates, chatbots, AI replies and a shared team inbox. Free 7-day trial.",
@@ -126,17 +128,18 @@ export const features: Feature[] = [
     category: "WhatsApp",
     visual: "broadcast",
     name: "WhatsApp Broadcasts",
+    howTitle: "How WhatsApp broadcasts work",
     eyebrow: "Broadcasts",
     headline: "Broadcast campaigns that actually start conversations.",
     subheadline:
-      "Send personalized promotional and transactional campaigns through the official WhatsApp Business API, with delivery analytics on every send.",
+      "Send offers and updates to thousands of customers at once, each with their own name, and see who received, read and tapped every message.",
     seoTitle: "WhatsApp Broadcast & Bulk Messaging Software | Whatching",
     seoDescription:
       "Send a WhatsApp broadcast to thousands of contacts at once, now or scheduled, using approved templates with images and buttons. Track delivered, read and replied.",
     problem:
       "Generic blasts get ignored, and most bulk-messaging tools give you no visibility into what happened after you hit send.",
     solution:
-      "Build segmented, personalized campaigns with media, CTA buttons and approved templates — then see delivered, read and replied counts, plus template button clicks, for every send.",
+      "Choose who gets each message, add their name, a picture and buttons, and send it with a template Meta has approved. Then see how many messages were delivered, read and replied to, and which buttons people tapped.",
     howItWorks: [
       {
         title: "Pick your audience",
@@ -173,8 +176,9 @@ export const features: Feature[] = [
         description: "Time-boxed offers segmented by customer tier."
       },
       {
-        title: "Restock & drop alerts",
-        description: "Notify interested customers the moment inventory is back."
+        title: "Back in stock and new arrivals",
+        description:
+          "Tell customers when a popular item is back or a new range lands."
       },
       {
         title: "Event reminders",
@@ -185,33 +189,33 @@ export const features: Feature[] = [
       {
         question: "Do broadcasts require pre-approved templates?",
         answer:
-          "Yes — outbound marketing messages use Meta-approved templates. Whatching's template manager handles submission and status tracking."
+          "Yes. Messages you send first use a template Meta has approved. You write and submit templates in Whatching and see when they're approved."
       },
       {
         question: "How far ahead can I schedule a campaign?",
-        answer:
-          "Campaigns can be scheduled weeks in advance and adjusted any time before they go out."
+        answer: "You can pick a later date and time for a broadcast to go out."
       }
     ],
-    ctaLabel: "Create a Campaign",
+    ctaLabel: "Create a broadcast",
     related: ["whatsapp-marketing", "analytics", "shared-inbox"]
   },
   {
     slug: "ai-chatbot",
     category: "WhatsApp",
     visual: "ai",
-    name: "AI Chatbots",
+    name: "AI Chatbot",
+    howTitle: "How the AI chatbot works",
     eyebrow: "AI Automation",
     headline: "AI that talks to your customers, not at them.",
     subheadline:
-      "Whatching AI understands questions, qualifies leads, and hands off to your team the moment a human touch matters more.",
+      "An AI agent that answers customer questions from your own documents, website and FAQs, and hands the chat to your team when a person is needed.",
     seoTitle: "AI Chatbot for WhatsApp & Instagram | Whatching",
     seoDescription:
       "An AI agent that answers customer questions on WhatsApp and Instagram from your own documents, website and FAQs, and hands over to your team when needed.",
     problem:
       "Scripted keyword bots frustrate customers, and having agents answer every FAQ around the clock doesn't scale.",
     solution:
-      "Whatching's AI understands customer intent, answers naturally, collects the details your team needs, and hands the conversation to a person at the right moment.",
+      "Whatching's AI agent reads each question, answers from what you've taught it, collects the details your team needs, and hands the chat to a person when needed.",
     howItWorks: [
       {
         title: "AI detects intent",
@@ -271,25 +275,26 @@ export const features: Feature[] = [
           "Yes, the AI is configured around your business's products, policies and common questions."
       }
     ],
-    ctaLabel: "Build an AI Assistant",
+    ctaLabel: "Set up your AI agent",
     related: ["whatsapp-flows", "shared-inbox", "whatsapp-marketing"]
   },
   {
     slug: "whatsapp-flows",
     category: "WhatsApp",
     visual: "flow",
-    name: "WhatsApp Flows",
-    eyebrow: "No-Code Automation",
+    name: "Chatbot Builder",
+    howTitle: "How the chatbot builder works",
+    eyebrow: "Chatbot builder",
     headline: "Build customer journeys without writing code.",
     subheadline:
-      "Design multi-step conversational flows visually — welcome messages, questions, conditions, and lead capture, all without a developer.",
+      "Build chatbots by dragging blocks onto a canvas: welcome messages, menus, questions and branches, with a hand-over to a person. No developer needed.",
     seoTitle: "No-Code WhatsApp Chatbot Builder | Whatching",
     seoDescription:
       "Build a WhatsApp chatbot on a drag-and-drop canvas: menus, questions, branching and handing over to a person. No coding needed.",
     problem:
       "Every custom conversation journey used to mean a developer ticket and a wait — by the time it shipped, the campaign was over.",
     solution:
-      "Whatching's visual flow builder lets marketing and support teams design and launch conversational journeys themselves, with full control over logic and branching.",
+      "Whatching's chatbot builder lets you build and change chatbots yourself, including the menus, the questions and where each answer leads.",
     howItWorks: [
       {
         title: "Set the trigger",
@@ -302,8 +307,8 @@ export const features: Feature[] = [
           "Add messages, questions, conditions and actions on a visual canvas."
       },
       {
-        title: "Publish & monitor",
-        description: "Launch instantly and see where users drop off or convert."
+        title: "Publish and adjust",
+        description: "Publish in one click and change the chatbot any time."
       }
     ],
     benefits: [
@@ -348,7 +353,7 @@ export const features: Feature[] = [
           "Yes — any flow step can assign the conversation to an agent or team."
       }
     ],
-    ctaLabel: "Build Your First Flow",
+    ctaLabel: "Build your first chatbot",
     related: ["ai-chatbot", "shared-inbox", "instagram-dm-automation"]
   },
   {
@@ -356,17 +361,18 @@ export const features: Feature[] = [
     category: "WhatsApp",
     visual: "inbox",
     name: "Shared Inbox",
+    howTitle: "How the shared inbox works",
     eyebrow: "Team Inbox",
     headline: "One inbox for your entire team.",
     subheadline:
-      "WhatsApp, Instagram, AI and human agents — all inside one unified conversation view, with every chat assigned to the right person.",
+      "WhatsApp and Instagram chats, and the AI agent's replies, in one inbox your whole team shares, with a clear owner on every chat.",
     seoTitle: "Shared Team Inbox for WhatsApp & Instagram | Whatching",
     seoDescription:
-      "Your whole team replies to WhatsApp and Instagram chats from one inbox, with every chat assigned to the right person. One WhatsApp number, many teammates.",
+      "Your whole team replies to WhatsApp and Instagram chats from one inbox, and you assign each chat to a teammate. One WhatsApp number, many teammates.",
     problem:
       "When every agent works from their own phone or tab, conversations get missed, duplicated, or answered twice.",
     solution:
-      "Whatching's shared inbox brings WhatsApp and Instagram conversations, AI replies and human agents into one place — with clear ownership on every chat.",
+      "Whatching's shared inbox brings WhatsApp and Instagram chats, AI replies and your team into one place, with a clear owner on every chat.",
     howItWorks: [
       {
         title: "Conversations arrive centrally",
@@ -417,14 +423,14 @@ export const features: Feature[] = [
       {
         question: "Can multiple agents use one WhatsApp number?",
         answer:
-          "Yes — the shared inbox lets your whole team work from the same number without collisions."
+          "Yes. Your whole team replies from the same number and the same inbox."
       },
       {
         question: "Can I assign conversations to specific agents?",
         answer: "Yes — assign any conversation to a teammate from the inbox."
       }
     ],
-    ctaLabel: "Explore Shared Inbox",
+    ctaLabel: "Try the shared inbox",
     related: ["ai-chatbot", "whatsapp-marketing", "analytics"]
   },
   {
@@ -432,8 +438,9 @@ export const features: Feature[] = [
     category: "Platform",
     visual: "analytics",
     name: "Analytics",
+    howTitle: "How the analytics dashboard works",
     eyebrow: "Analytics",
-    headline: "Know what's working. Scale what isn't.",
+    headline: "See what's working. Fix what isn't.",
     subheadline:
       "Track delivery, replies and template button clicks for every campaign, see which ads bring in chats, and see what Meta charges, across WhatsApp and Instagram.",
     seoTitle: "WhatsApp Analytics Dashboard | Whatching",
@@ -500,7 +507,7 @@ export const features: Feature[] = [
           "Yes — WhatsApp and Instagram performance both live in the same dashboard."
       }
     ],
-    ctaLabel: "See Analytics",
+    ctaLabel: "See your analytics",
     related: ["whatsapp-broadcast", "shared-inbox", "instagram-automation"]
   },
   {
@@ -508,10 +515,11 @@ export const features: Feature[] = [
     category: "Instagram",
     visual: "instagram-comment",
     name: "Instagram Automation",
+    howTitle: "How Instagram automation works",
     eyebrow: "Instagram",
     headline: "Turn Instagram engagement into conversations.",
     subheadline:
-      "Transform comments, DMs and story replies into automated customer journeys — and hand qualified leads to your team.",
+      "Reply to comments, DMs and story replies automatically, and hand interested customers to your team.",
     seoTitle: "Instagram Automation for DMs & Comments | Whatching",
     seoDescription:
       "Auto-reply to Instagram comments, send a DM when someone comments a keyword, automate DMs and run an AI agent on Instagram. Included in the Pro plan.",
@@ -586,6 +594,7 @@ export const features: Feature[] = [
     category: "Instagram",
     visual: "instagram-comment",
     name: "Instagram Comment Automation",
+    howTitle: "How comment automation works",
     eyebrow: "Comment Automation",
     headline: "Every comment can become a conversation.",
     subheadline:
@@ -594,9 +603,9 @@ export const features: Feature[] = [
     seoDescription:
       "Auto-reply to Instagram comments and send a DM to anyone who comments a keyword on your post. Turn comments into conversations without replying by hand.",
     problem:
-      '"Comment LINK and I\'ll send it to you" posts generate hundreds of comments — and most brands still reply to them one by one, hours later.',
+      '"Comment LINK and I\'ll send it to you" posts can bring in a lot of comments, and replying to each one by hand takes hours.',
     solution:
-      "Whatching watches your posts for keyword comments and instantly opens a DM conversation, so the reply feels immediate even at scale.",
+      "Whatching watches your posts for keyword comments and sends a DM straight away, however many people comment.",
     howItWorks: [
       {
         title: "Set a trigger keyword",
@@ -618,12 +627,14 @@ export const features: Feature[] = [
         description: "No one waits hours for a reply in the comments."
       },
       {
-        title: "Scales with virality",
-        description: "Handles 10 comments or 10,000 the same way."
+        title: "Busy posts covered",
+        description:
+          "Every keyword comment gets its DM, without anyone replying by hand."
       },
       {
-        title: "Feeds your funnel",
-        description: "Every DM can continue into a lead-capture flow."
+        title: "The chat keeps going",
+        description:
+          "The DM can lead into a chatbot that asks for the customer's details."
       }
     ],
     useCases: [
@@ -648,10 +659,10 @@ export const features: Feature[] = [
       {
         question: "What happens after the DM is sent?",
         answer:
-          "The conversation can continue into a full Instagram message flow to qualify and capture the lead."
+          "Yes. The DM can lead into a chatbot that asks questions and collects the customer's details."
       }
     ],
-    ctaLabel: "Automate Instagram Comments",
+    ctaLabel: "Automate comments",
     related: [
       "instagram-dm-automation",
       "instagram-automation",
@@ -663,8 +674,9 @@ export const features: Feature[] = [
     category: "Instagram",
     visual: "instagram-flow",
     name: "Instagram DM Automation",
+    howTitle: "How Instagram DM automation works",
     eyebrow: "DM Flows",
-    headline: "Build Instagram DM journeys that convert.",
+    headline: "Answer every Instagram DM straight away.",
     subheadline:
       "Welcome, qualify and collect details from every Instagram DM, then hand the chat to your team — without anyone typing the first reply.",
     seoTitle: "Instagram DM Automation | Whatching",
@@ -712,7 +724,7 @@ export const features: Feature[] = [
       },
       {
         title: "Product interest",
-        description: "Qualify interest before assigning a sales rep."
+        description: "Ask what they're looking for before your team steps in."
       },
       {
         title: "Support triage",
@@ -729,10 +741,10 @@ export const features: Feature[] = [
       {
         question: "Do I need a developer to build a DM flow?",
         answer:
-          "No — DM flows use the same no-code visual builder as WhatsApp Flows."
+          "No. DM flows use the same drag-and-drop chatbot builder you use for WhatsApp."
       }
     ],
-    ctaLabel: "Build an Instagram Flow",
+    ctaLabel: "Build an Instagram DM flow",
     related: ["instagram-comment-automation", "whatsapp-flows", "shared-inbox"]
   }
 ];

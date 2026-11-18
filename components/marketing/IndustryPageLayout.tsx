@@ -186,7 +186,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
               <SectionHeading
                 align="center"
                 eyebrow="Use cases"
-                title={`How ${industry.name.toLowerCase()} teams use Whatching`}
+                title={industry.useCasesTitle}
               />
             </Reveal>
             <div className="grid md:grid-cols-3 gap-6 mt-12">

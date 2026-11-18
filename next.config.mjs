@@ -13,23 +13,16 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        // Only YouTube thumbnails; an open pattern let any site use our
+        // image optimiser.
         protocol: "https",
-        hostname: "*"
+        hostname: "i.ytimg.com"
       }
     ]
   },
   compress: true,
   compiler: {
     removeConsole: false
-  },
-  env: {
-    NEXT_APP_BASE_URL: process.env.NEXT_APP_BASE_URL,
-    NEXT_APP_ENCRYPTION_KEY: process.env.NEXT_APP_ENCRYPTION_KEY,
-    NEXT_APP_TOKEN_NAME: process.env.NEXT_APP_TOKEN_NAME,
-    NEXT_APP_CLIENT_ID: process.env.NEXT_APP_CLIENT_ID,
-    NEXT_APP_CLIENT_SECRET: process.env.NEXT_APP_CLIENT_SECRET,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET
   },
   typescript: { ignoreBuildErrors: false }
 };

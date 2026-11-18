@@ -33,15 +33,27 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
         <section className="hero-section !pb-14">
           <div className="container-wide relative">
             <Reveal className="max-w-2xl">
-              <nav className="text-xs mb-5" style={{ color: "var(--text-muted)" }} aria-label="Breadcrumb">
+              <nav
+                className="text-xs mb-5"
+                style={{ color: "var(--text-muted)" }}
+                aria-label="Breadcrumb"
+              >
                 <Link href="/features" style={{ color: "var(--text-muted)" }}>
                   Features
                 </Link>{" "}
-                / <span style={{ color: "var(--text-secondary)" }}>{feature.name}</span>
+                /{" "}
+                <span style={{ color: "var(--text-secondary)" }}>
+                  {feature.name}
+                </span>
               </nav>
               <Eyebrow tone={tone}>{feature.eyebrow}</Eyebrow>
-              <h1 className="heading-1 !text-[clamp(2rem,4vw,3rem)] mt-4 mb-5">{feature.headline}</h1>
-              <p className="body-large mb-8" style={{ color: "var(--text-secondary)" }}>
+              <h1 className="heading-1 !text-[clamp(2rem,4vw,3rem)] mt-4 mb-5">
+                {feature.headline}
+              </h1>
+              <p
+                className="body-large mb-8"
+                style={{ color: "var(--text-secondary)" }}
+              >
                 {feature.subheadline}
               </p>
               <Link href={PRODUCT_APP_URL} className="btn-primary">
@@ -55,18 +67,34 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
         <section className="pb-20">
           <div className="container-wide grid md:grid-cols-2 gap-6">
             <Reveal className="surface-card p-7">
-              <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: "var(--text-muted)" }}>
+              <p
+                className="text-xs font-semibold uppercase tracking-wide mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
                 The problem
               </p>
-              <p className="text-[15px] leading-relaxed" style={{ color: "var(--text-body)" }}>
+              <p
+                className="text-[15px] leading-relaxed"
+                style={{ color: "var(--text-body)" }}
+              >
                 {feature.problem}
               </p>
             </Reveal>
-            <Reveal delay={0.08} className="surface-card p-7" style={{ background: "var(--accent-wash)" }}>
-              <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: "var(--primary-dark)" }}>
+            <Reveal
+              delay={0.08}
+              className="surface-card p-7"
+              style={{ background: "var(--accent-wash)" }}
+            >
+              <p
+                className="text-xs font-semibold uppercase tracking-wide mb-3"
+                style={{ color: "var(--primary-dark)" }}
+              >
                 How Whatching helps
               </p>
-              <p className="text-[15px] leading-relaxed" style={{ color: "var(--text-body)" }}>
+              <p
+                className="text-[15px] leading-relaxed"
+                style={{ color: "var(--text-body)" }}
+              >
                 {feature.solution}
               </p>
             </Reveal>
@@ -74,24 +102,41 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
         </section>
 
         {/* How it works */}
-        <section className="section-padding-large" style={{ background: "var(--background-secondary)" }}>
+        <section
+          className="section-padding-large"
+          style={{ background: "var(--background-secondary)" }}
+        >
           <div className="container-wide">
             <Reveal>
-              <SectionHeading align="center" eyebrow="How it works" title={`How ${feature.name.toLowerCase()} works`} />
+              <SectionHeading
+                align="center"
+                eyebrow="How it works"
+                title={feature.howTitle}
+              />
             </Reveal>
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               {feature.howItWorks.map((step, i) => (
-                <Reveal key={step.title} delay={i * 0.08} className="product-card !cursor-default">
+                <Reveal
+                  key={step.title}
+                  delay={i * 0.08}
+                  className="product-card !cursor-default"
+                >
                   <span
                     className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-4"
                     style={{ background: "var(--primary)", color: "#fff" }}
                   >
                     {i + 1}
                   </span>
-                  <h3 className="text-[15px] font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
+                  <h3
+                    className="text-[15px] font-semibold mb-1.5"
+                    style={{ color: "var(--text-primary)" }}
+                  >
                     {step.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {step.description}
                   </p>
                 </Reveal>
@@ -104,17 +149,30 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
         <section className="section-padding-large">
           <div className="container-wide">
             <Reveal>
-              <SectionHeading align="center" eyebrow="Benefits" title="Why teams switch to Whatching" />
+              <SectionHeading
+                align="center"
+                eyebrow="Benefits"
+                title="Why teams switch to Whatching"
+              />
             </Reveal>
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               {feature.benefits.map((b, i) => (
                 <Reveal key={b.title} delay={i * 0.08} className="flex gap-3">
-                  <Check className="w-5 h-5 shrink-0 mt-0.5" style={{ color: "var(--primary)" }} />
+                  <Check
+                    className="w-5 h-5 shrink-0 mt-0.5"
+                    style={{ color: "var(--primary)" }}
+                  />
                   <div>
-                    <p className="font-semibold text-[15px] mb-1" style={{ color: "var(--text-primary)" }}>
+                    <p
+                      className="font-semibold text-[15px] mb-1"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {b.title}
                     </p>
-                    <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                    <p
+                      className="text-sm"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       {b.description}
                     </p>
                   </div>
@@ -125,18 +183,35 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
         </section>
 
         {/* Use cases */}
-        <section className="section-padding-large" style={{ background: "var(--background-secondary)" }}>
+        <section
+          className="section-padding-large"
+          style={{ background: "var(--background-secondary)" }}
+        >
           <div className="container-wide">
             <Reveal>
-              <SectionHeading align="center" eyebrow="Use cases" title="Where teams use this every day" />
+              <SectionHeading
+                align="center"
+                eyebrow="Use cases"
+                title="Where teams use this every day"
+              />
             </Reveal>
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               {feature.useCases.map((u, i) => (
-                <Reveal key={u.title} delay={i * 0.08} className="product-card !cursor-default">
-                  <h3 className="text-[15px] font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
+                <Reveal
+                  key={u.title}
+                  delay={i * 0.08}
+                  className="product-card !cursor-default"
+                >
+                  <h3
+                    className="text-[15px] font-semibold mb-1.5"
+                    style={{ color: "var(--text-primary)" }}
+                  >
                     {u.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {u.description}
                   </p>
                 </Reveal>
@@ -162,12 +237,19 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
           <section className="pb-20">
             <div className="container-wide">
               <Reveal>
-                <p className="text-sm font-semibold mb-5" style={{ color: "var(--text-primary)" }}>
+                <p
+                  className="text-sm font-semibold mb-5"
+                  style={{ color: "var(--text-primary)" }}
+                >
                   Related features
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {related.map((r) => (
-                    <Link key={r.slug} href={`/features/${r.slug}`} className="pill hover:border-[var(--primary)]">
+                    <Link
+                      key={r.slug}
+                      href={`/features/${r.slug}`}
+                      className="pill hover:border-[var(--primary)]"
+                    >
                       {r.name} <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   ))}
