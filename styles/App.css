@@ -463,6 +463,12 @@
     background: var(--surface);
   }
 
+  /* Tables with three or more columns keep a readable width on phones and
+     scroll sideways inside their box instead of squeezing every cell. */
+  .article-table-wide table {
+    min-width: 40rem;
+  }
+
   .article-table table {
     width: 100%;
     border-collapse: collapse;

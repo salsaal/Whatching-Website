@@ -168,8 +168,8 @@ const PricingPage = () => {
         <section className="section-padding-large" id="compare">
           <div className="container-wide">
             <SectionHeading align="center" title="Compare every plan" />
-            <div className="mt-10 max-w-4xl mx-auto overflow-x-auto lg:overflow-visible">
-              <table className="w-full text-[15px] border-collapse min-w-[560px]">
+            <div className="mt-10 max-w-4xl mx-auto">
+              <table className="w-full text-[14px] sm:text-[15px] border-collapse">
                 <caption className="sr-only">
                   Features included in each Whatching plan
                 </caption>
@@ -177,7 +177,7 @@ const PricingPage = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="text-left py-3 pr-4 font-semibold lg:sticky lg:top-[84px] z-10"
+                      className="text-left py-3 pr-2 sm:pr-4 font-semibold lg:sticky lg:top-[84px] z-10"
                       style={{
                         color: "var(--text-secondary)",
                         background: "var(--background)"
@@ -189,7 +189,7 @@ const PricingPage = () => {
                       <th
                         key={p.id}
                         scope="col"
-                        className="py-3 px-4 text-center font-semibold lg:sticky lg:top-[84px] z-10"
+                        className="py-3 px-1.5 sm:px-4 text-center font-semibold lg:sticky lg:top-[84px] z-10"
                         style={{
                           color: "var(--text-primary)",
                           background: "var(--background)"
@@ -227,7 +227,7 @@ const PricingPage = () => {
                       >
                         <th
                           scope="row"
-                          className="text-left font-medium py-3 pr-4"
+                          className="text-left font-medium py-3 pr-2 sm:pr-4"
                           style={{ color: "var(--text-primary)" }}
                         >
                           {row.label}
@@ -235,7 +235,7 @@ const PricingPage = () => {
                         {row.values.map((v, i) => (
                           <td
                             key={i}
-                            className="py-3 px-4 text-center tabular-nums"
+                            className="py-3 px-1.5 sm:px-4 text-center tabular-nums"
                           >
                             <Cell value={v} />
                           </td>

@@ -118,36 +118,48 @@ const ArticleBody = ({ blocks }: { blocks: Block[] }) => (
         }
         case "table":
           return (
-            <div key={i} className="article-table">
-              <table>
-                {b.caption && <caption>{b.caption}</caption>}
-                <thead>
-                  <tr>
-                    {b.head.map((h, j) => (
-                      <th key={j} scope="col">
-                        <Inline text={h} />
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {b.rows.map((row, r) => (
-                    <tr key={r}>
-                      {row.map((cell, c) =>
-                        c === 0 ? (
-                          <th key={c} scope="row">
-                            <Inline text={cell} />
-                          </th>
-                        ) : (
-                          <td key={c}>
-                            <Inline text={cell} />
-                          </td>
-                        )
-                      )}
+            <div key={i}>
+              {b.head.length >= 3 && (
+                <p
+                  className="sm:hidden text-[13px] mb-2"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Swipe the table sideways to see every column.
+                </p>
+              )}
+              <div
+                className={`article-table ${b.head.length >= 3 ? "article-table-wide" : ""}`}
+              >
+                <table>
+                  {b.caption && <caption>{b.caption}</caption>}
+                  <thead>
+                    <tr>
+                      {b.head.map((h, j) => (
+                        <th key={j} scope="col">
+                          <Inline text={h} />
+                        </th>
+                      ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {b.rows.map((row, r) => (
+                      <tr key={r}>
+                        {row.map((cell, c) =>
+                          c === 0 ? (
+                            <th key={c} scope="row">
+                              <Inline text={cell} />
+                            </th>
+                          ) : (
+                            <td key={c}>
+                              <Inline text={cell} />
+                            </td>
+                          )
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           );
         case "callout":
