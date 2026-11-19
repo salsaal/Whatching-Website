@@ -135,12 +135,13 @@ const Navbar = () => {
   const panelShell = (
     p: Exclude<Panel, null>,
     body: React.ReactNode,
-    footer: React.ReactNode
+    footer: React.ReactNode,
+    position = "left-0 right-0 pt-2"
   ) => (
     <div
       id={`menu-${p}`}
       hidden={panel !== p}
-      className="absolute left-0 right-0 top-full pt-2 z-50"
+      className={`absolute top-full z-50 ${position}`}
       {...hover(p)}
     >
       <div
@@ -188,7 +189,49 @@ const Navbar = () => {
             aria-label="Primary"
           >
             {trigger("features", "Features")}
-            {trigger("industries", "Industries")}
+            {/* Sized to its content and centred under its button. */}
+            <div className="relative">
+              {trigger("industries", "Industries")}
+              {panelShell(
+                "industries",
+                <div className="grid grid-cols-[auto_auto] whitespace-nowrap">
+                  {[industryMenu.slice(0, 3), industryMenu.slice(3)].map(
+                    (col, ci) => (
+                      <div
+                        key={ci}
+                        className={`space-y-1 ${ci > 0 ? "pl-6 ml-6 border-l" : ""}`}
+                        style={
+                          ci > 0
+                            ? { borderColor: "var(--border-light)" }
+                            : undefined
+                        }
+                      >
+                        {col.map((link) => (
+                          <PanelLink key={link.href} link={link} />
+                        ))}
+                      </div>
+                    )
+                  )}
+                </div>,
+                <>
+                  <FooterLink href="/industries">All industries</FooterLink>
+                  <Link
+                    href="/demo#book"
+                    className="ml-auto text-sm"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    Not sure where to start?{" "}
+                    <span
+                      className="font-semibold"
+                      style={{ color: "var(--primary-dark)" }}
+                    >
+                      Book a free call <span aria-hidden>→</span>
+                    </span>
+                  </Link>
+                </>,
+                "left-1/2 -translate-x-1/2 w-max pt-4"
+              )}
+            </div>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="nav-link">
                 {link.label}
@@ -294,58 +337,6 @@ const Navbar = () => {
               Questions? Chat with us on WhatsApp
             </a>
           </>
-        )}
-
-        {panelShell(
-          "industries",
-          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_280px] gap-x-8">
-            {/* Two columns of three, like the Features panel. */}
-            {[industryMenu.slice(0, 3), industryMenu.slice(3)].map(
-              (col, ci) => (
-                <div
-                  key={ci}
-                  className={`space-y-1 ${ci > 0 ? "pl-8 border-l" : ""}`}
-                  style={
-                    ci > 0 ? { borderColor: "var(--border-light)" } : undefined
-                  }
-                >
-                  {col.map((link) => (
-                    <PanelLink key={link.href} link={link} />
-                  ))}
-                </div>
-              )
-            )}
-            <Link
-              href="/demo#book"
-              className="rounded-2xl p-5 flex flex-col"
-              style={{
-                background: "var(--background-secondary)",
-                border: "1px solid var(--border-light)"
-              }}
-            >
-              <span
-                className="block text-[16px] font-semibold"
-                style={{ color: "var(--text-primary)" }}
-              >
-                Not sure where to start?
-              </span>
-              <span
-                className="block text-[13.5px] mt-1.5 leading-snug"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Book a free onboarding call and we&apos;ll set it up with you
-                for your kind of business.
-              </span>
-              <span
-                className="inline-flex items-center gap-1.5 text-sm font-semibold mt-auto pt-4"
-                style={{ color: "var(--primary-dark)" }}
-              >
-                Book a free call{" "}
-                <ArrowRight className="w-3.5 h-3.5" aria-hidden />
-              </span>
-            </Link>
-          </div>,
-          <FooterLink href="/industries">All industries</FooterLink>
         )}
       </header>
 
