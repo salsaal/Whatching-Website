@@ -151,9 +151,9 @@
     position: sticky;
     top: 14px;
     z-index: 50;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(20px) saturate(1.4);
-    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    /* Solid white: a background blur here was invisible behind a 97%
+       white bar but was redrawn on every frame of scrolling. */
+    background: #ffffff;
     border: 1px solid var(--border-light);
     border-radius: var(--radius-pill);
     box-shadow: var(--shadow-nav);
@@ -695,27 +695,44 @@
     );
   }
 
+  /* Only colour, opacity and transform change while scrolling the story:
+     nothing that makes the browser lay the page out again. */
   .story-ease {
     transition:
       color 0.35s ease,
-      font-size 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-      height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.35s ease;
+      opacity 0.35s ease,
+      background-color 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
   }
 
-  .story-msg {
-    transition:
-      grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 0.3s ease;
+  .story-fill {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .story-msg > div > * {
-    transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  @keyframes story-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.97);
+    }
   }
 
-  .story-msg[aria-hidden="true"] > div > * {
-    transform: translateY(10px) scale(0.97);
+  .story-in {
+    animation: story-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Phones and tablets show one step at a time; the new one fades in. */
+  @keyframes story-step {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @media (max-width: 1023.98px) {
+    .story-step-on {
+      animation: story-step 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
   }
 
   @keyframes story-dot {
@@ -748,12 +765,13 @@
 
   @media (prefers-reduced-motion: reduce) {
     .story-ease,
-    .story-msg,
-    .story-msg > div > * {
+    .story-fill {
       transition: none;
     }
     .story-dot,
-    .story-caption {
+    .story-caption,
+    .story-in,
+    .story-step-on {
       animation: none;
     }
   }

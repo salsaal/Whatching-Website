@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -328,11 +334,24 @@ const useChatSequence = (active: number, reduced: boolean) => {
   return shown;
 };
 
+// Runs before paint in the browser; a plain effect during server rendering.
+const useIsoLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+const PHONE_W = 340;
+const PHONE_H = Math.round(PHONE_W * 2.06);
+
 const ScrollStory = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
+  const colRef = useRef<HTMLDivElement>(null);
+  const lastColH = useRef<number | null>(null);
   const [active, setActive] = useState(0);
   const [reduced, setReduced] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [compact, setCompact] = useState(false);
+  const [fill, setFill] = useState(0);
   const shown = useChatSequence(active, reduced);
 
   useEffect(() => {
@@ -342,40 +361,98 @@ const ScrollStory = () => {
     mq.addEventListener("change", onMq);
 
     let frame = 0;
+    let current = -1;
+    let size = "";
+
+    // Size the phone from the pinned panel's height (100svh). Unlike the
+    // window height, it stays put while a phone's address bar slides in and
+    // out, so the phone is not resized in the middle of a scroll.
+    const fit = () => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      const h = panel.clientHeight;
+      const w = window.innerWidth;
+      const key = `${w}x${h}`;
+      if (key === size) return;
+      size = key;
+      const wide = w >= 1024;
+      const room = h - (wide ? 170 : 450);
+      setZoom(Math.round(Math.max(0.5, Math.min(1, room / 700)) * 100) / 100);
+      // Short laptop screens: only the current step shows its description.
+      setCompact(wide && h < 780);
+    };
+
+    // The scroll position picks the step. Only a change of step updates the
+    // page; scrolling within a step does nothing.
     const measure = () => {
       frame = 0;
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const travel = rect.height - window.innerHeight;
-      const p = travel > 0 ? Math.min(1, Math.max(0, -rect.top / travel)) : 0;
-      setActive(
-        Math.min(STEPS.length - 1, Math.floor(p * STEPS.length * 0.999))
+      const track = trackRef.current;
+      const panel = panelRef.current;
+      if (!track || !panel) return;
+      const travel = track.offsetHeight - panel.clientHeight;
+      const top = track.getBoundingClientRect().top;
+      const p = travel > 0 ? Math.min(1, Math.max(0, -top / travel)) : 0;
+      const next = Math.min(
+        STEPS.length - 1,
+        Math.floor(p * STEPS.length * 0.999)
       );
-      // Fit the phone to the screen height (it is 659px tall at full size).
-      const wide = window.innerWidth >= 1024;
-      const room = window.innerHeight - (wide ? 170 : 450);
-      setZoom(Math.max(0.5, Math.min(1, room / 700)));
+      if (next !== current) {
+        current = next;
+        setActive(next);
+      }
     };
     const onScroll = () => {
       if (!frame) frame = window.requestAnimationFrame(measure);
     };
+    const onResize = () => {
+      fit();
+      onScroll();
+    };
+    fit();
     measure();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
       mq.removeEventListener("change", onMq);
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
 
+  // New messages: the whole column slides up by the height that was added
+  // (a single move the graphics chip can do), instead of every message
+  // being laid out again on every frame.
+  useIsoLayoutEffect(() => {
+    const col = colRef.current;
+    if (!col) return;
+    const h = col.offsetHeight;
+    const prev = lastColH.current;
+    lastColH.current = h;
+    if (prev === null || reduced || h === prev) return;
+    col.style.transition = "none";
+    col.style.transform = `translateY(${h - prev}px)`;
+    col.getBoundingClientRect();
+    col.style.transition = "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)";
+    col.style.transform = "translateY(0)";
+  }, [shown, reduced]);
+
+  // The green line on the left runs down to the current step's dot.
+  useIsoLayoutEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const item = list.querySelectorAll<HTMLElement>(":scope > li")[active];
+    const span = list.clientHeight - 24;
+    if (!item || span <= 0) return;
+    setFill(Math.min(1, Math.max(0, (item.offsetTop + 10 - 12) / span)));
+  }, [active, compact, zoom]);
+
   const goTo = useCallback((i: number) => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY;
-    const travel = el.offsetHeight - window.innerHeight;
+    const track = trackRef.current;
+    const panel = panelRef.current;
+    if (!track || !panel) return;
+    const top = track.getBoundingClientRect().top + window.scrollY;
+    const travel = track.offsetHeight - panel.clientHeight;
     window.scrollTo({
       top: top + (travel * (i + 0.5)) / STEPS.length,
       behavior: "smooth"
@@ -411,34 +488,57 @@ const ScrollStory = () => {
 
       {/* The scroll track: tall enough for each step to get its own stretch of scrolling. */}
       <div
-        ref={sectionRef}
+        ref={trackRef}
         className="relative"
         style={{ height: `calc(100svh + ${(STEPS.length - 1) * 75}svh)` }}
       >
-        <div className="sticky top-0 h-[100svh] flex items-center pt-[84px] pb-6 max-lg:items-start max-lg:pt-[92px]">
-          <div className="container-wide w-full grid lg:grid-cols-[minmax(0,1fr)_minmax(0,480px)] gap-8 lg:gap-16 items-center max-lg:gap-4">
-            {/* Steps */}
-            <ol className="relative lg:pl-6 max-lg:min-h-[176px]">
+        <div
+          ref={panelRef}
+          className="sticky top-0 h-[100svh] flex items-center pt-[84px] pb-6 max-lg:items-start max-lg:pt-[92px]"
+        >
+          <div className="container-wide w-full grid lg:grid-cols-[minmax(0,1fr)_minmax(0,480px)] gap-8 lg:gap-16 items-center lg:items-stretch max-lg:gap-4">
+            {/* Steps. From lg up all four are listed beside the phone, as
+                tall as the phone; on smaller screens only the current one
+                shows, above the phone. */}
+            <ol
+              ref={listRef}
+              className="relative lg:pl-7 lg:flex lg:flex-col lg:justify-between max-lg:min-h-[176px]"
+            >
               <span
                 aria-hidden
-                className="max-lg:hidden absolute left-0 top-2 bottom-2 w-[2px] rounded-full"
+                className="max-lg:hidden absolute left-[5px] top-3 bottom-3 w-[2px] rounded-full"
                 style={{ background: "var(--border-light)" }}
               />
               <span
                 aria-hidden
-                className="max-lg:hidden absolute left-0 top-2 w-[2px] rounded-full story-ease"
+                className="max-lg:hidden absolute left-[5px] top-3 bottom-3 w-[2px] rounded-full origin-top story-fill"
                 style={{
                   background: "var(--primary)",
-                  height: `calc((100% - 16px) * ${(active + 1) / STEPS.length})`
+                  transform: `scaleY(${fill})`
                 }}
               />
               {STEPS.map((s, i) => {
                 const on = i === active;
+                const reached = i <= active;
                 return (
                   <li
                     key={s.label}
-                    className={`${on ? "" : "max-lg:hidden"} lg:py-3`}
+                    className={`relative story-ease ${on ? "story-step-on" : "max-lg:hidden"}`}
+                    style={{ opacity: on ? 1 : 0.42 }}
                   >
+                    <span
+                      aria-hidden
+                      className="max-lg:hidden absolute -left-[28px] top-1 w-3 h-3 rounded-full story-ease"
+                      style={{
+                        background: reached
+                          ? "var(--primary)"
+                          : "var(--surface)",
+                        border: `2px solid ${reached ? "var(--primary)" : "var(--border-medium)"}`,
+                        boxShadow: on
+                          ? "0 0 0 4px rgba(22,159,73,0.16)"
+                          : "none"
+                      }}
+                    />
                     <button
                       type="button"
                       onClick={() => goTo(i)}
@@ -474,44 +574,27 @@ const ScrollStory = () => {
                         </span>
                       </span>
                       <span
-                        className="block mt-1.5 font-bold tracking-tight story-ease"
-                        style={{
-                          color: on
-                            ? "var(--text-primary)"
-                            : "var(--text-secondary)",
-                          fontSize: on
-                            ? "clamp(1.35rem, 2.4vw, 2rem)"
-                            : "1.05rem",
-                          lineHeight: 1.15
-                        }}
+                        className="block mt-1.5 font-bold tracking-tight leading-[1.15] text-[1.35rem] lg:text-[clamp(1.2rem,1.65vw,1.5rem)] group-hover:underline decoration-2 underline-offset-4"
+                        style={{ color: "var(--text-primary)" }}
                       >
                         {s.title}
                       </span>
                     </button>
-                    <div
-                      className="grid story-ease"
-                      style={{
-                        gridTemplateRows: on ? "1fr" : "0fr",
-                        opacity: on ? 1 : 0
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <p
-                          className="mt-3 text-[16.5px] leading-relaxed max-w-md max-lg:text-[15px] max-lg:mt-2"
-                          style={{ color: "var(--text-secondary)" }}
-                        >
-                          {s.desc}
-                        </p>
-                        <Link
-                          href={s.href}
-                          className="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold max-lg:mt-2"
-                          style={{ color: "var(--primary-dark)" }}
-                          tabIndex={on ? 0 : -1}
-                        >
-                          {s.link}{" "}
-                          <ArrowRight className="w-4 h-4" aria-hidden />
-                        </Link>
-                      </div>
+                    <div className={!on && compact ? "hidden" : ""}>
+                      <p
+                        className="mt-2 text-[15px] lg:text-[15.5px] leading-relaxed max-w-md"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {s.desc}
+                      </p>
+                      <Link
+                        href={s.href}
+                        className="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold"
+                        style={{ color: "var(--primary-dark)" }}
+                        tabIndex={on ? 0 : -1}
+                      >
+                        {s.link} <ArrowRight className="w-4 h-4" aria-hidden />
+                      </Link>
                     </div>
                   </li>
                 );
@@ -525,27 +608,33 @@ const ScrollStory = () => {
                 className="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 w-[130%] aspect-square rounded-full story-spot"
               />
               <div
-                style={{ zoom }}
+                className="relative"
+                style={{ width: PHONE_W * zoom, height: PHONE_H * zoom }}
                 role="img"
                 aria-label="A WhatsApp conversation between a customer, Aarav, and Wanderly Travels: an offer, a chatbot menu, an answer from the AI agent and a reply from Meera on the team"
               >
-                <ChatPhone width={340}>
-                  {MESSAGES.map((m, i) => (
-                    <div
-                      key={i}
-                      className={`grid ${m.kind === "me" ? "justify-items-end" : "justify-items-start"} ${reduced ? "" : "story-msg"}`}
-                      style={{
-                        gridTemplateRows: shown.has(i) ? "1fr" : "0fr",
-                        opacity: shown.has(i) ? 1 : 0
-                      }}
-                      aria-hidden={!shown.has(i)}
-                    >
-                      <div className="overflow-hidden flex flex-col min-h-0 w-full">
-                        <Bubble m={m} readUpTo />
-                      </div>
+                <div
+                  style={{
+                    width: PHONE_W,
+                    transform: `scale(${zoom})`,
+                    transformOrigin: "top left"
+                  }}
+                >
+                  <ChatPhone width={PHONE_W}>
+                    <div ref={colRef} className="flex flex-col gap-[5px]">
+                      {MESSAGES.map((m, i) =>
+                        shown.has(i) ? (
+                          <div
+                            key={i}
+                            className={`flex flex-col w-full ${reduced ? "" : "story-in"}`}
+                          >
+                            <Bubble m={m} readUpTo />
+                          </div>
+                        ) : null
+                      )}
                     </div>
-                  ))}
-                </ChatPhone>
+                  </ChatPhone>
+                </div>
               </div>
               <figcaption
                 key={active}
