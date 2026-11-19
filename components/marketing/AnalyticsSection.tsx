@@ -7,6 +7,7 @@ const AnalyticsSection = () => (
     <div className="container-wide">
       <Reveal>
         <SectionHeading
+          align="center"
           eyebrow="Analytics"
           title="See what's working. Fix what isn't."
           description="Broadcast results, button taps, the ads that bring in chats and what Meta charges you, for WhatsApp and Instagram, in one dashboard."

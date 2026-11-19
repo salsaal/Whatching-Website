@@ -33,7 +33,10 @@ const cards = [
 const FeatureCardsSection = () => (
   <section className="section-padding-large" id="features">
     <div className="container-wide">
-      <SectionHeading title="Everything you need to keep the conversation going." />
+      <SectionHeading
+        align="center"
+        title="Everything you need to keep the conversation going."
+      />
       {/* Three columns on desktop. Below that, a sideways-swiping row so the
           three tall cards don't stack into a very long page; the next card
           peeks in to show there's more. */}

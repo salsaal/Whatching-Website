@@ -32,6 +32,7 @@ const IndustryGrid = ({ plain = false }: { plain?: boolean }) => (
     <div className="container-wide">
       {!plain && (
         <SectionHeading
+          align="center"
           eyebrow="Industries"
           title="Built for businesses that run on conversations."
           description="From e-commerce to real estate, Whatching adapts to how your industry sells."
