@@ -16,7 +16,7 @@ Plans are priced per month in Indian rupees, plus 18% GST: Basic â‚¹2,499, Pro â
 ## Pricing
 - [Pricing](https://www.whatching.com/pricing): plans, a full comparison, Meta's India rates per message with the source and date, and a calculator
 
-## Guides
+## Blog
 - [WhatsApp Business API pricing in India](https://www.whatching.com/blog/whatsapp-business-api-pricing-india)
 - [WhatsApp Business app vs API](https://www.whatching.com/blog/whatsapp-business-app-vs-api)
 - [What is the WhatsApp Business API?](https://www.whatching.com/blog/whatsapp-business-api-explained)

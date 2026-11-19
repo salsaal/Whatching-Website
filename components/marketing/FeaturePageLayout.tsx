@@ -12,12 +12,41 @@ import { blogPosts } from "@/lib/data/blog";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 import { breadcrumbSchema, faqSchema, softwareApplicationRef } from "@/lib/seo";
 
+// Free tools that go with a feature, shown beside its blog posts.
+const TEMPLATES = {
+  href: "/templates",
+  title: "WhatsApp message templates",
+  desc: "36 ready-to-use templates, with what Meta charges to send each one."
+};
+const LINK_TOOL = {
+  href: "/tools/whatsapp-link-generator",
+  title: "Free WhatsApp link generator",
+  desc: "A wa.me link with a message typed in, for your bio, website or ads."
+};
+const GLOSSARY = {
+  href: "/glossary",
+  title: "WhatsApp Business glossary",
+  desc: "Templates, the 24-hour window and other terms, explained simply."
+};
+const freeResources: Record<
+  string,
+  { href: string; title: string; desc: string }[]
+> = {
+  "whatsapp-broadcast": [TEMPLATES],
+  "whatsapp-marketing": [TEMPLATES, LINK_TOOL],
+  "shared-inbox": [LINK_TOOL],
+  "whatsapp-flows": [GLOSSARY],
+  "ai-chatbot": [GLOSSARY],
+  analytics: [LINK_TOOL]
+};
+
 const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
   const tone = feature.category === "Instagram" ? "instagram" : "primary";
   const related = features.filter((f) => feature.related.includes(f.slug));
   const guides = blogPosts
     .filter((p) => p.relatedFeatures?.includes(feature.slug))
     .slice(0, 3);
+  const resources = freeResources[feature.slug] ?? [];
   const path = `/features/${feature.slug}`;
   // The wide pictures read better under the text than beside it.
   const wideVisual = feature.visual === "analytics";
@@ -287,7 +316,7 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
         </section>
 
         {/* Related features and guides */}
-        {(related.length > 0 || guides.length > 0) && (
+        {(related.length > 0 || guides.length > 0 || resources.length > 0) && (
           <section className="section-padding">
             <div className="container-wide grid lg:grid-cols-2 gap-10">
               {related.length > 0 && (
@@ -330,15 +359,39 @@ const FeaturePageLayout = ({ feature }: { feature: Feature }) => {
                   </ul>
                 </div>
               )}
-              {guides.length > 0 && (
+              {(guides.length > 0 || resources.length > 0) && (
                 <div>
                   <h2
                     className="text-lg font-semibold mb-4"
                     style={{ color: "var(--text-primary)" }}
                   >
-                    Guides
+                    {guides.length > 0 ? "From the blog" : "Free resources"}
                   </h2>
                   <ul className="space-y-3">
+                    {resources.map((r) => (
+                      <li key={r.href}>
+                        <Link href={r.href} className="product-card block !p-5">
+                          <span
+                            className="block text-sm font-semibold mb-1"
+                            style={{ color: "var(--primary-dark)" }}
+                          >
+                            Free resource
+                          </span>
+                          <span
+                            className="block font-semibold"
+                            style={{ color: "var(--text-primary)" }}
+                          >
+                            {r.title}
+                          </span>
+                          <span
+                            className="block text-sm mt-1 leading-relaxed"
+                            style={{ color: "var(--text-secondary)" }}
+                          >
+                            {r.desc}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
                     {guides.map((g) => (
                       <li key={g.slug}>
                         <Link

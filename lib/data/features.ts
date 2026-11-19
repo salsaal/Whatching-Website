@@ -374,7 +374,8 @@ export const features: Feature[] = [
       },
       {
         title: "Appointment booking",
-        description: "Guide users to a booked slot without leaving WhatsApp."
+        description:
+          "Ask for a preferred date and time, then hand the chat to your team to confirm."
       },
       {
         title: "Lead qualification",

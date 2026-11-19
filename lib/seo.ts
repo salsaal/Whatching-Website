@@ -21,7 +21,7 @@ export const DEFAULT_OG_IMAGE: OgImage = {
 
 // A share-preview image for a page, drawn from its title by /api/og.
 const kickerFor = (path: string) => {
-  if (path.startsWith("/blog/")) return "Guide";
+  if (path.startsWith("/blog/")) return "Blog";
   if (path.startsWith("/features/")) return "Feature";
   if (path.startsWith("/industries/")) return "For your industry";
   if (path.startsWith("/tools/")) return "Free tool";

@@ -16,7 +16,7 @@ export interface MenuLink extends NavLink {
 // find it without the sitemap.
 export const navLinks: NavLink[] = [
   { label: "Pricing", href: "/pricing" },
-  { label: "Guides", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" }
 ];
 
@@ -144,7 +144,7 @@ export const footerColumns = {
   ],
   resources: [
     { label: "Product Tour", href: "/demo" },
-    { label: "Guides", href: "/blog" },
+    { label: "Blog", href: "/blog" },
     { label: "Message Templates", href: "/templates" },
     {
       label: "WhatsApp Link Generator",

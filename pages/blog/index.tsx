@@ -36,7 +36,7 @@ export default function BlogIndex() {
   return (
     <>
       <Seo
-        title="WhatsApp Business API Guides and Blog | Whatching"
+        title="WhatsApp Business API Blog for Indian Businesses | Whatching"
         description="Plain-language guides to the WhatsApp Business API in India: Meta's pricing, setup, messaging limits, the green tick, broadcasts, chatbots and Instagram."
         path="/blog"
         jsonLd={[
@@ -49,9 +49,7 @@ export default function BlogIndex() {
       <SiteShell>
         <section className="pt-32 pb-8 max-sm:pt-28">
           <div className="container-wide max-w-3xl text-center">
-            <h1 className="heading-2 mb-4">
-              Guides to WhatsApp and Instagram for business
-            </h1>
+            <h1 className="heading-2 mb-4">The Whatching blog</h1>
             <p
               className="body-large"
               style={{ color: "var(--text-secondary)" }}
@@ -61,45 +59,6 @@ export default function BlogIndex() {
               businesses.
             </p>
           </div>
-        </section>
-
-        <section className="pb-8">
-          <ul className="container-wide grid sm:grid-cols-3 gap-3">
-            {[
-              {
-                href: "/templates",
-                title: "Message templates",
-                desc: "Ready-to-use templates with what Meta charges for each."
-              },
-              {
-                href: "/tools/whatsapp-link-generator",
-                title: "WhatsApp link generator",
-                desc: "A wa.me link with a message typed in, for your bio or website."
-              },
-              {
-                href: "/glossary",
-                title: "Glossary",
-                desc: "Templates, the 24-hour window, the green tick and more, explained."
-              }
-            ].map((r) => (
-              <li key={r.href}>
-                <Link href={r.href} className="product-card block h-full !p-5">
-                  <span
-                    className="block font-semibold"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {r.title}
-                  </span>
-                  <span
-                    className="block text-sm mt-1 leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {r.desc}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </section>
 
         {categories.length > 1 && (

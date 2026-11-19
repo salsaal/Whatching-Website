@@ -1,34 +1,12 @@
 import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  BarChart3,
-  Bot,
-  Inbox,
-  Instagram,
-  Megaphone,
-  MessageCircleReply,
-  MessagesSquare,
-  Send,
-  Workflow
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { NavIcon } from "@/components/marketing/navIcons";
 import SiteShell from "@/components/marketing/SiteShell";
 import FinalCta from "@/components/marketing/FinalCta";
 import { featureMenu } from "@/lib/data/nav";
 import { featureBySlug } from "@/lib/data/features";
 import { breadcrumbSchema, softwareApplicationSchema } from "@/lib/seo";
-
-const icons: Record<string, React.ComponentType<{ className?: string }>> = {
-  "/features/whatsapp-broadcast": Megaphone,
-  "/features/whatsapp-flows": Workflow,
-  "/features/ai-chatbot": Bot,
-  "/features/whatsapp-marketing": MessagesSquare,
-  "/features/instagram-automation": Instagram,
-  "/features/instagram-comment-automation": MessageCircleReply,
-  "/features/instagram-dm-automation": Send,
-  "/features/shared-inbox": Inbox,
-  "/features/analytics": BarChart3
-};
 
 const groupIntro: Record<string, string> = {
   WhatsApp:
@@ -101,7 +79,6 @@ export default function FeaturesIndex() {
                 className={`grid gap-4 ${cols[group.links.length] ?? "md:grid-cols-3"}`}
               >
                 {group.links.map((link) => {
-                  const Icon = icons[link.href] ?? MessagesSquare;
                   const feature = featureBySlug(
                     link.href.split("/").pop() ?? ""
                   );
@@ -112,9 +89,7 @@ export default function FeaturesIndex() {
                         className="product-card flex flex-col h-full !p-6"
                       >
                         <span className="flex items-start justify-between gap-3">
-                          <span className="icon-badge">
-                            <Icon className="w-5 h-5" />
-                          </span>
+                          <NavIcon href={link.href} />
                           <ArrowUpRight
                             className="w-4 h-4"
                             style={{ color: "var(--text-muted)" }}

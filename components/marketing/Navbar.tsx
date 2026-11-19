@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ChevronDown, Menu, PlayCircle, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Logo from "../../public/assets/logo.png";
+import { NavIcon } from "./navIcons";
+import DemoPosterMini from "./DemoPosterMini";
 import {
   featureMenu,
   industryMenu,
@@ -16,23 +18,52 @@ import { WHATSAPP_URL } from "@/lib/constants";
 
 type Panel = "features" | "industries" | null;
 
+// A menu item: icon tile, name and one line about it.
 const PanelLink = ({ link }: { link: MenuLink }) => (
   <Link
     href={link.href}
-    className="block rounded-xl px-3 py-2.5 hover:bg-[var(--surface-hover)]"
+    className="group flex items-start gap-3 rounded-xl p-2.5 -mx-2.5 hover:bg-[var(--surface-hover)]"
   >
-    <span
-      className="block text-[14px] font-semibold"
-      style={{ color: "var(--text-primary)" }}
-    >
-      {link.label}
+    <NavIcon href={link.href} />
+    <span className="min-w-0 pt-px">
+      <span
+        className="block text-[15px] font-semibold leading-tight"
+        style={{ color: "var(--text-primary)" }}
+      >
+        {link.label}
+      </span>
+      <span
+        className="block text-[13.5px] mt-1 leading-snug"
+        style={{ color: "var(--text-secondary)" }}
+      >
+        {link.desc}
+      </span>
     </span>
-    <span
-      className="block text-[13px] mt-0.5"
-      style={{ color: "var(--text-secondary)" }}
-    >
-      {link.desc}
-    </span>
+  </Link>
+);
+
+const GroupLabel = ({ children }: { children: React.ReactNode }) => (
+  <p
+    className="text-[13px] font-semibold mb-2"
+    style={{ color: "var(--text-secondary)" }}
+  >
+    {children}
+  </p>
+);
+
+const FooterLink = ({
+  href,
+  children
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => (
+  <Link
+    href={href}
+    className="inline-flex items-center gap-1.5 text-sm font-semibold"
+    style={{ color: "var(--primary-dark)" }}
+  >
+    {children} <ArrowRight className="w-3.5 h-3.5" aria-hidden />
   </Link>
 );
 
@@ -70,8 +101,12 @@ const Navbar = () => {
   };
   const closeSoon = () => {
     window.clearTimeout(closeTimer.current);
-    closeTimer.current = window.setTimeout(() => setPanel(null), 140);
+    closeTimer.current = window.setTimeout(() => setPanel(null), 160);
   };
+  const hover = (p: Exclude<Panel, null>) => ({
+    onMouseEnter: () => openPanel(p),
+    onMouseLeave: closeSoon
+  });
 
   const trigger = (p: Exclude<Panel, null>, label: string) => (
     <button
@@ -80,6 +115,12 @@ const Navbar = () => {
       aria-expanded={panel === p}
       aria-controls={`menu-${p}`}
       onClick={() => setPanel(panel === p ? null : p)}
+      {...hover(p)}
+      style={
+        panel === p
+          ? { background: "var(--surface-hover)", color: "var(--text-primary)" }
+          : undefined
+      }
     >
       {label}
       <ChevronDown
@@ -90,11 +131,39 @@ const Navbar = () => {
     </button>
   );
 
-  const panelStyle = {
-    background: "var(--surface)",
-    border: "1px solid var(--border-light)",
-    boxShadow: "0 24px 60px -24px rgba(10,18,14,0.28)"
-  };
+  // Panels hang below the whole bar (not under their button), full width.
+  const panelShell = (
+    p: Exclude<Panel, null>,
+    body: React.ReactNode,
+    footer: React.ReactNode
+  ) => (
+    <div
+      id={`menu-${p}`}
+      hidden={panel !== p}
+      className="absolute left-0 right-0 top-full pt-2 z-50"
+      {...hover(p)}
+    >
+      <div
+        className="menu-drop rounded-3xl overflow-hidden"
+        style={{
+          background: "var(--surface)",
+          border: "1px solid var(--border-light)",
+          boxShadow: "0 30px 70px -28px rgba(10,18,14,0.32)"
+        }}
+      >
+        <div className="p-6">{body}</div>
+        <div
+          className="px-6 py-3.5 border-t flex flex-wrap items-center gap-x-7 gap-y-2"
+          style={{
+            borderColor: "var(--border-light)",
+            background: "var(--background-secondary)"
+          }}
+        >
+          {footer}
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="sticky top-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4 pb-2">
@@ -118,101 +187,8 @@ const Navbar = () => {
             className="hidden lg:flex items-center gap-1"
             aria-label="Primary"
           >
-            <div
-              className="relative"
-              onMouseEnter={() => openPanel("features")}
-              onMouseLeave={closeSoon}
-            >
-              {trigger("features", "Features")}
-              {/* Rendered even when closed, so the links are in the page. */}
-              <div
-                id="menu-features"
-                hidden={panel !== "features"}
-                className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50"
-              >
-                <div
-                  className="menu-drop w-[760px] rounded-2xl p-4"
-                  style={panelStyle}
-                >
-                  <div className="grid grid-cols-3 gap-2">
-                    {featureMenu.map((group) => (
-                      <div key={group.heading}>
-                        <p
-                          className="px-3 pt-1 pb-1.5 text-[13px] font-semibold"
-                          style={{ color: "var(--text-secondary)" }}
-                        >
-                          {group.heading}
-                        </p>
-                        {group.links.map((link) => (
-                          <PanelLink key={link.href} link={link} />
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  <div
-                    className="mt-3 pt-3 px-3 border-t flex items-center justify-between text-sm"
-                    style={{ borderColor: "var(--border-light)" }}
-                  >
-                    <Link
-                      href="/features"
-                      className="font-semibold"
-                      style={{ color: "var(--primary-dark)" }}
-                    >
-                      All features <span aria-hidden>→</span>
-                    </Link>
-                    <Link
-                      href="/demo"
-                      className="inline-flex items-center gap-1.5 font-semibold"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      <PlayCircle
-                        className="w-4 h-4"
-                        style={{ color: "var(--primary)" }}
-                        aria-hidden
-                      />
-                      Watch the 3-minute tour
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="relative"
-              onMouseEnter={() => openPanel("industries")}
-              onMouseLeave={closeSoon}
-            >
-              {trigger("industries", "Industries")}
-              <div
-                id="menu-industries"
-                hidden={panel !== "industries"}
-                className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50"
-              >
-                <div
-                  className="menu-drop w-[520px] rounded-2xl p-4"
-                  style={panelStyle}
-                >
-                  <div className="grid grid-cols-2 gap-1">
-                    {industryMenu.map((link) => (
-                      <PanelLink key={link.href} link={link} />
-                    ))}
-                  </div>
-                  <div
-                    className="mt-3 pt-3 px-3 border-t text-sm"
-                    style={{ borderColor: "var(--border-light)" }}
-                  >
-                    <Link
-                      href="/industries"
-                      className="font-semibold"
-                      style={{ color: "var(--primary-dark)" }}
-                    >
-                      All industries <span aria-hidden>→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            {trigger("features", "Features")}
+            {trigger("industries", "Industries")}
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="nav-link">
                 {link.label}
@@ -246,6 +222,120 @@ const Navbar = () => {
             )}
           </button>
         </div>
+
+        {panelShell(
+          "features",
+          <div className="grid grid-cols-[repeat(3,minmax(0,1fr))_280px] gap-x-8">
+            {featureMenu.map((group, gi) => (
+              <div
+                key={group.heading}
+                className={gi > 0 ? "pl-8 border-l" : ""}
+                style={
+                  gi > 0 ? { borderColor: "var(--border-light)" } : undefined
+                }
+              >
+                <GroupLabel>{group.heading}</GroupLabel>
+                <div className="space-y-1">
+                  {group.links.map((link) => (
+                    <PanelLink key={link.href} link={link} />
+                  ))}
+                </div>
+              </div>
+            ))}
+            <Link
+              href="/demo"
+              className="group rounded-2xl p-4 flex flex-col"
+              style={{
+                background: "var(--background-secondary)",
+                border: "1px solid var(--border-light)"
+              }}
+            >
+              <DemoPosterMini />
+              <span
+                className="block text-[16px] font-semibold mt-4"
+                style={{ color: "var(--text-primary)" }}
+              >
+                See Whatching in action
+              </span>
+              <span
+                className="block text-[13.5px] mt-1 leading-snug"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                A 3-minute tour of broadcasts, the chatbot builder and the AI
+                agent.
+              </span>
+              <span
+                className="inline-flex items-center gap-1.5 text-sm font-semibold mt-auto pt-4"
+                style={{ color: "var(--primary-dark)" }}
+              >
+                Watch the tour{" "}
+                <ArrowRight
+                  className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden
+                />
+              </span>
+            </Link>
+          </div>,
+          <>
+            <FooterLink href="/features">All features</FooterLink>
+            <FooterLink href="/pricing#compare">Compare plans</FooterLink>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="ml-auto inline-flex items-center gap-2 text-sm font-semibold"
+              style={{ color: "var(--text-primary)" }}
+            >
+              <FaWhatsapp
+                className="w-4 h-4"
+                style={{ color: "#25d366" }}
+                aria-hidden
+              />
+              Questions? Chat with us on WhatsApp
+            </a>
+          </>
+        )}
+
+        {panelShell(
+          "industries",
+          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px] gap-x-8 gap-y-1">
+            {industryMenu.map((link) => (
+              <div key={link.href}>
+                <PanelLink link={link} />
+              </div>
+            ))}
+            <Link
+              href="/demo#book"
+              className="row-span-2 col-start-4 row-start-1 rounded-2xl p-5 flex flex-col"
+              style={{
+                background: "var(--background-secondary)",
+                border: "1px solid var(--border-light)"
+              }}
+            >
+              <span
+                className="block text-[16px] font-semibold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Not sure where to start?
+              </span>
+              <span
+                className="block text-[13.5px] mt-1.5 leading-snug"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Book a free onboarding call and we&apos;ll set it up with you
+                for your kind of business.
+              </span>
+              <span
+                className="inline-flex items-center gap-1.5 text-sm font-semibold mt-auto pt-4"
+                style={{ color: "var(--primary-dark)" }}
+              >
+                Book a free call{" "}
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden />
+              </span>
+            </Link>
+          </div>,
+          <FooterLink href="/industries">All industries</FooterLink>
+        )}
       </header>
 
       {mobileOpen && (
@@ -305,22 +395,27 @@ const Navbar = () => {
                     />
                   </button>
                   {mobileSection === key && (
-                    <ul className="pb-2 pl-2">
+                    <ul className="pb-2 px-2 space-y-0.5">
                       {links.map((link) => (
                         <li key={link.href}>
                           <Link
                             href={link.href}
-                            className="block px-4 py-2.5 rounded-xl text-[15px]"
-                            style={{ color: "var(--text-body)" }}
+                            className="flex items-center gap-3 px-2 py-2 rounded-xl"
                           >
-                            {link.label}
+                            <NavIcon href={link.href} size="sm" />
+                            <span
+                              className="text-[15px]"
+                              style={{ color: "var(--text-body)" }}
+                            >
+                              {link.label}
+                            </span>
                           </Link>
                         </li>
                       ))}
                       <li>
                         <Link
                           href={allHref}
-                          className="block px-4 py-2.5 text-[15px] font-semibold"
+                          className="block px-2 py-2.5 text-[15px] font-semibold"
                           style={{ color: "var(--primary-dark)" }}
                         >
                           {allLabel} <span aria-hidden>→</span>

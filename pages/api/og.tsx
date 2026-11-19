@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 // Share-preview image (1200 × 630) for any page: the page's title on the
 // brand background, with an optional small label above it. Used as og:image
 // and twitter:image by components/Seo. Example:
-//   /api/og?title=WhatsApp%20Business%20API%20pricing%20in%20India&kicker=Guide
+//   /api/og?title=WhatsApp%20Business%20API%20pricing%20in%20India&kicker=Blog
 
 export const config = { runtime: "edge" };
 
