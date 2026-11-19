@@ -20,6 +20,9 @@ const post: BlogPost = {
   seoDescription:
     "Whatching vs Interakt: plan prices, Meta message rates, team limits, Instagram, AI and billing compared, with each Interakt fact linked to its own page.",
   category: "Comparisons",
+  cover: {
+    versus: "Interakt"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "interakt alternative",

@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "WhatsApp coexistence explained: keep the WhatsApp Business app and use the API on one number. What syncs, what Meta switches off and how to set it up.",
   category: "Setup",
+  cover: {
+    big: "App + API",
+    small: "One number, both at once"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "whatsapp coexistence",
@@ -34,6 +38,12 @@ const post: BlogPost = {
     {
       type: "p",
       text: "You keep the same number and the same account name. During setup, Meta converts your existing WhatsApp Business account so the platform can use it."
+    },
+    {
+      type: "figure",
+      name: "coexistence",
+      caption:
+        "With coexistence, the WhatsApp Business app and Whatching use the same number. One-to-one chats from the last 6 months and your contacts can sync, from Meta's coexistence documentation."
     },
     {
       type: "h2",

@@ -6,6 +6,7 @@ import { Inline, slugify } from "./Inline";
 
 export { Inline, slugify };
 import MetaCostCalculator from "./MetaCostCalculator";
+import ArticleFigure from "./ArticleFigure";
 import { PRODUCT_APP_URL } from "@/lib/constants";
 
 // Renders an article's blocks (see lib/data/blog.ts) as readable HTML:
@@ -170,6 +171,12 @@ const ArticleBody = ({ blocks }: { blocks: Block[] }) => (
                 <Inline text={b.text} />
               </p>
             </aside>
+          );
+        case "figure":
+          return (
+            <div key={i} className="my-10">
+              <ArticleFigure name={b.name} caption={b.caption} />
+            </div>
           );
         case "embed":
           if (b.name === "meta-calculator")

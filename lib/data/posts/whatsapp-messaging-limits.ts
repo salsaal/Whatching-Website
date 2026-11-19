@@ -10,6 +10,11 @@ const post: BlogPost = {
   seoDescription:
     "The WhatsApp Business message limit per day explained: Meta's tiers from 250 to unlimited, what counts, how quality affects it and how to raise your limit.",
   category: "Setup",
+  cover: {
+    big: "250",
+    small:
+      "people a day to start. Meta raises it to 2,000, then all the way to unlimited."
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "whatsapp business message limit per day",
@@ -96,6 +101,12 @@ const post: BlogPost = {
     {
       type: "p",
       text: "You move from 250 to 2,000 by completing one of Meta's scaling paths. After that, Meta raises the limit on its own whenever you meet its automatic scaling criteria."
+    },
+    {
+      type: "figure",
+      name: "limits-ladder",
+      caption:
+        "Meta's messaging limit levels: how many different people a business portfolio can send templates to in a rolling 24 hours, and how each level is reached. From Meta's messaging limits page, updated 21 May 2026."
     },
     {
       type: "h3",

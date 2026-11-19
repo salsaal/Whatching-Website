@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SiteShell from "@/components/marketing/SiteShell";
 import FinalCta from "@/components/marketing/FinalCta";
+import PostCover from "@/components/marketing/PostCover";
 import { blogCategories, blogPosts, readTimeFor } from "@/lib/data/blog";
 import { breadcrumbSchema } from "@/lib/seo";
 
@@ -96,32 +97,33 @@ export default function BlogIndex() {
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="product-card flex flex-col h-full !p-6"
+                  className="product-card group flex flex-col h-full !p-2"
                 >
-                  <span
-                    className="block text-sm font-semibold mb-2"
-                    style={{ color: "var(--primary-dark)" }}
-                  >
-                    {post.category}
+                  <PostCover
+                    category={post.category}
+                    cover={post.cover}
+                    className="rounded-[14px]"
+                  />
+                  <span className="flex flex-col flex-1 px-3.5 pt-4 pb-3.5">
+                    <h2
+                      className="text-[17px] font-semibold leading-snug mb-2 group-hover:underline decoration-1 underline-offset-[3px]"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {post.title}
+                    </h2>
+                    <span
+                      className="block text-sm leading-relaxed mb-4"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {post.excerpt}
+                    </span>
+                    <span
+                      className="block mt-auto text-sm"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {readTimeFor(post)}
+                    </span>
                   </span>
-                  <h2
-                    className="text-[17px] font-semibold leading-snug mb-2"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {post.title}
-                  </h2>
-                  <p
-                    className="text-sm leading-relaxed mb-4"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {post.excerpt}
-                  </p>
-                  <p
-                    className="mt-auto text-sm"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {readTimeFor(post)}
-                  </p>
                 </Link>
               </li>
             ))}

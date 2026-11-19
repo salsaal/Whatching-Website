@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "How to get the WhatsApp Business API: what Meta asks for, each step of its signup flow, what happens to your current number and how to fix common errors.",
   category: "Setup",
+  cover: {
+    big: "8 steps",
+    small: "in Meta's signup window, from Facebook login to display name"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "how to get whatsapp business api",

@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "How a WhatsApp broadcast works on the official platform: opt-in, templates, Meta's India rates, segments, buttons, timing and how to read your results.",
   category: "WhatsApp Marketing",
+  cover: {
+    big: "One button",
+    small: "A chosen segment, the customer’s name and one clear button"
+  },
   date: "2026-08-12",
   updated: "2026-11-19",
   keyword: "whatsapp broadcast",

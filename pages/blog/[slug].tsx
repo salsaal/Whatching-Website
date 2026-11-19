@@ -4,10 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 import Seo from "@/components/Seo/Seo";
 import SiteShell from "@/components/marketing/SiteShell";
 import FinalCta from "@/components/marketing/FinalCta";
-import ArticleBody, {
-  Inline,
-  slugify
-} from "@/components/marketing/ArticleBody";
+import ArticleToc from "@/components/marketing/ArticleToc";
+import PostCover from "@/components/marketing/PostCover";
+import ArticleBody, { Inline } from "@/components/marketing/ArticleBody";
 import {
   BlogPost,
   blogPostBySlug,
@@ -33,7 +32,9 @@ const formatDate = (iso: string) =>
 
 interface Props {
   post: BlogPost;
-  related: Pick<BlogPost, "slug" | "title" | "excerpt" | "category">[];
+  related: (Pick<BlogPost, "slug" | "title" | "excerpt" | "category"> & {
+    cover: BlogPost["cover"] | null;
+  })[];
   features: { slug: string; name: string }[];
 }
 
@@ -263,34 +264,7 @@ export default function BlogPostPage({ post, related, features }: Props) {
               )}
             </div>
 
-            {headings.length > 2 && (
-              <nav aria-label="On this page" className="hidden xl:block">
-                <div className="sticky top-28">
-                  <p
-                    className="text-sm font-semibold mb-3"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    On this page
-                  </p>
-                  <ol
-                    className="space-y-2 text-sm border-l"
-                    style={{ borderColor: "var(--border-light)" }}
-                  >
-                    {headings.map((h) => (
-                      <li key={h}>
-                        <a
-                          href={`#${slugify(h)}`}
-                          className="block pl-3 -ml-px border-l border-transparent hover:border-[var(--primary)] leading-snug"
-                          style={{ color: "var(--text-secondary)" }}
-                        >
-                          {h.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </nav>
-            )}
+            {headings.length > 2 && <ArticleToc headings={headings} />}
           </div>
         </article>
 
@@ -309,25 +283,26 @@ export default function BlogPostPage({ post, related, features }: Props) {
                   <li key={r.slug}>
                     <Link
                       href={`/blog/${r.slug}`}
-                      className="product-card block h-full !p-6"
+                      className="product-card group flex flex-col h-full !p-2"
                     >
-                      <span
-                        className="block text-sm font-semibold mb-2"
-                        style={{ color: "var(--primary-dark)" }}
-                      >
-                        {r.category}
-                      </span>
-                      <span
-                        className="block font-semibold leading-snug"
-                        style={{ color: "var(--text-primary)" }}
-                      >
-                        {r.title}
-                      </span>
-                      <span
-                        className="block text-sm mt-2 leading-relaxed"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        {r.excerpt}
+                      <PostCover
+                        category={r.category}
+                        cover={r.cover ?? undefined}
+                        className="rounded-[14px]"
+                      />
+                      <span className="block px-3.5 pt-4 pb-3.5">
+                        <span
+                          className="block font-semibold leading-snug group-hover:underline decoration-1 underline-offset-[3px]"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {r.title}
+                        </span>
+                        <span
+                          className="block text-sm mt-2 leading-relaxed"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          {r.excerpt}
+                        </span>
                       </span>
                     </Link>
                   </li>
@@ -354,7 +329,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     slug: p.slug,
     title: p.title,
     excerpt: p.excerpt,
-    category: p.category
+    category: p.category,
+    cover: p.cover ?? null
   });
   const chosen = (post.related ?? [])
     .map((s) => blogPostBySlug(s))

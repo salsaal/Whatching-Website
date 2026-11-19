@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "Compare a WhatsApp AI chatbot with a scripted menu bot: what each does well, when to use both, how to prepare your content and keep the answers accurate.",
   category: "AI Automation",
+  cover: {
+    big: "Menu + AI",
+    small: "Most businesses do best with both, and a hand-over to a person"
+  },
   date: "2026-06-22",
   updated: "2026-11-19",
   keyword: "whatsapp ai chatbot",

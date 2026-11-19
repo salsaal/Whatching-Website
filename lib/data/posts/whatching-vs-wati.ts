@@ -25,6 +25,9 @@ const post: BlogPost = {
   seoDescription:
     "Whatching vs Wati for Indian businesses: rupee plan prices, Meta message rates, users, Instagram, AI and billing compared, with each Wati fact linked.",
   category: "Comparisons",
+  cover: {
+    versus: "Wati"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "wati alternative india",

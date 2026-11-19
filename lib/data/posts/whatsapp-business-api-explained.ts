@@ -10,6 +10,10 @@ const post: BlogPost = {
   seoDescription:
     "What is WhatsApp Business API? A plain-English guide to how it works, templates, the 24-hour window, what you need and the risks of unofficial tools.",
   category: "WhatsApp API",
+  cover: {
+    big: "24 hours",
+    small: "to reply freely after a customer's last message"
+  },
   date: "2026-07-10",
   updated: "2026-11-19",
   keyword: "what is whatsapp business api",
@@ -93,6 +97,12 @@ const post: BlogPost = {
     {
       type: "p",
       text: "Each new message from the customer resets the timer to 24 hours. Once the window closes, you can only reach that customer with an approved template. For example, if a Wanderly customer asks about visa documents at 6 pm on 3 December 2026, the team can reply normally until 6 pm on 4 December 2026. After that, a follow-up has to be a template."
+    },
+    {
+      type: "figure",
+      name: "service-window",
+      caption:
+        "The 24-hour customer service window, using the Wanderly Travels example above."
     },
     {
       type: "p",

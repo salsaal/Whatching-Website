@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "WhatsApp Business app vs API compared: users, broadcasts, chatbots, AI, team inbox, cost and green tick, plus when to switch and how to use both.",
   category: "WhatsApp API",
+  cover: {
+    big: "App or API?",
+    small: "Or both on one number, with coexistence"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "whatsapp business app vs api",

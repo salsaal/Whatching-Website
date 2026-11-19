@@ -651,6 +651,18 @@
     }
   }
 
+  .toc-bar {
+    transition:
+      top 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toc-bar {
+      transition: none;
+    }
+  }
+
   /* Scroll story (components/marketing/ScrollStory.tsx) */
   .story-section {
     /* clip, not hidden, so the pinned phone still sticks */

@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "Set up an Instagram auto DM from a comment keyword: the account you need, Meta's one-message and 7-day rules, writing the DM, public replies and hand-over.",
   category: "Instagram Automation",
+  cover: {
+    big: "Comment → DM",
+    small: "One private reply, within 7 days of the comment"
+  },
   date: "2026-07-28",
   updated: "2026-11-19",
   keyword: "instagram auto dm from comment",
@@ -34,6 +38,12 @@ const post: BlogPost = {
         "The DM lands in their main inbox if they follow you, or in their message **Requests** folder if they do not.",
         "If they reply, the conversation is open and your bot or your team can carry on."
       ]
+    },
+    {
+      type: "figure",
+      name: "comment-to-dm",
+      caption:
+        "How a comment becomes a conversation on Instagram, following Meta's private replies rules."
     },
     {
       type: "p",

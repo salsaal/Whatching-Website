@@ -9,6 +9,11 @@ const post: BlogPost = {
   seoDescription:
     "How click to WhatsApp ads work: setup in Meta Ads Manager, the free entry point window for messages, replying fast and tracking which ad sent each chat.",
   category: "WhatsApp Marketing",
+  cover: {
+    big: "Up to 7 days",
+    small:
+      "of free messages to people who chat from your ad, if you reply within 24 hours"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "click to whatsapp ads",
@@ -87,6 +92,12 @@ const post: BlogPost = {
         "Your first reply is free, and the free window starts from the moment you send it.",
         "While the window is open, Meta does not charge for marketing, utility, authentication or service messages to that person."
       ]
+    },
+    {
+      type: "figure",
+      name: "ad-window",
+      caption:
+        "The free entry point window for chats that start from a click to WhatsApp ad, as Meta describes it. Not to scale."
     },
     {
       type: "p",

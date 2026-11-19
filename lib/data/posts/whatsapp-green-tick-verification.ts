@@ -9,6 +9,10 @@ const post: BlogPost = {
   seoDescription:
     "Green tick for WhatsApp Business explained: Meta's Official Business Account checkmark, who qualifies, how to apply and how it differs from Meta Verified.",
   category: "Setup",
+  cover: {
+    big: "30 days",
+    small: "on the WhatsApp Business Platform before your number qualifies"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "green tick whatsapp business",

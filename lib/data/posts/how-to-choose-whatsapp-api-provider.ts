@@ -19,6 +19,10 @@ const post: BlogPost = {
   seoDescription:
     "How to pick the best WhatsApp Business API provider in India: a checklist covering Meta charges, GST, limits, Instagram, AI, trials, support and ownership.",
   category: "Comparisons",
+  cover: {
+    big: "10 checks",
+    small: "before you choose a WhatsApp API provider"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "best whatsapp business api provider india",

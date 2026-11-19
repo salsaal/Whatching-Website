@@ -19,7 +19,28 @@ export type Block =
   | { type: "table"; caption?: string; head: string[]; rows: string[][] }
   | { type: "callout"; title?: string; text: string }
   /** Product pieces placed inside an article. */
-  | { type: "embed"; name: "meta-calculator" | "trial" | "demo" };
+  | { type: "embed"; name: "meta-calculator" | "trial" | "demo" }
+  /** A drawn diagram (components/marketing/ArticleFigure.tsx) with a caption. */
+  | { type: "figure"; name: FigureName; caption: string };
+
+export type FigureName =
+  | "limits-ladder"
+  | "ad-window"
+  | "coexistence"
+  | "service-window"
+  | "comment-to-dm";
+
+/**
+ * The drawn cover on blog cards: one fact from the article in large type,
+ * with a short line under it. `rows` shows a small price list instead, and
+ * `versus` names the other product in a comparison.
+ */
+export interface PostCover {
+  big?: string;
+  small?: string;
+  rows?: [string, string][];
+  versus?: string;
+}
 
 export const blogCategories = [
   "WhatsApp API",
@@ -62,6 +83,8 @@ export interface BlogPost {
   related?: string[];
   /** Feature slugs (lib/data/features.ts) this article is about. */
   relatedFeatures?: string[];
+  /** What the drawn cover on blog cards shows. */
+  cover?: PostCover;
 }
 
 export const blogPosts: BlogPost[] = [...allPosts].sort((a, b) =>

@@ -10,6 +10,16 @@ const post: BlogPost = {
   seoDescription:
     "WhatsApp Business API pricing in India: Meta's per-message rates from 1 October 2026, what's free, 18% GST on your plan and worked monthly cost examples.",
   category: "Pricing",
+  cover: {
+    big: "Meta's rates",
+    small: "India, from 1 Oct 2026",
+    rows: [
+      ["Marketing", "₹0.8631"],
+      ["Utility", "₹0.1150"],
+      ["Authentication", "₹0.1150"],
+      ["Service", "₹0.1150"]
+    ]
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "whatsapp business api pricing india",

@@ -21,6 +21,9 @@ const post: BlogPost = {
   seoDescription:
     "Whatching vs AiSensy: plan prices, chatbot and AI add-ons, Meta message rates, team limits, Instagram and billing compared, each AiSensy fact linked.",
   category: "Comparisons",
+  cover: {
+    versus: "AiSensy"
+  },
   date: "2026-11-19",
   updated: "2026-11-19",
   keyword: "aisensy alternative",
