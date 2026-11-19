@@ -194,12 +194,12 @@ const Navbar = () => {
               {trigger("industries", "Industries")}
               {panelShell(
                 "industries",
-                <div className="grid grid-cols-[auto_auto] whitespace-nowrap">
+                <div className="grid grid-cols-[auto_auto_250px] items-stretch">
                   {[industryMenu.slice(0, 3), industryMenu.slice(3)].map(
                     (col, ci) => (
                       <div
                         key={ci}
-                        className={`space-y-1 ${ci > 0 ? "pl-6 ml-6 border-l" : ""}`}
+                        className={`space-y-1 whitespace-nowrap ${ci > 0 ? "pl-6 ml-6 border-l" : ""}`}
                         style={
                           ci > 0
                             ? { borderColor: "var(--border-light)" }
@@ -212,23 +212,38 @@ const Navbar = () => {
                       </div>
                     )
                   )}
-                </div>,
-                <>
-                  <FooterLink href="/industries">All industries</FooterLink>
+                  {/* The free onboarding call, as a compact card. */}
                   <Link
                     href="/demo#book"
-                    className="ml-auto text-sm"
-                    style={{ color: "var(--text-secondary)" }}
+                    className="ml-6 rounded-2xl p-4 flex flex-col"
+                    style={{
+                      background: "var(--background-secondary)",
+                      border: "1px solid var(--border-light)"
+                    }}
                   >
-                    Not sure where to start?{" "}
                     <span
-                      className="font-semibold"
+                      className="block text-[15px] font-semibold"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      Not sure where to start?
+                    </span>
+                    <span
+                      className="block text-[13.5px] mt-1.5 leading-snug"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Book a free onboarding call and we&apos;ll set it up with
+                      you for your kind of business.
+                    </span>
+                    <span
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold mt-auto pt-3"
                       style={{ color: "var(--primary-dark)" }}
                     >
-                      Book a free call <span aria-hidden>→</span>
+                      Book a free call{" "}
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden />
                     </span>
                   </Link>
-                </>,
+                </div>,
+                <FooterLink href="/industries">All industries</FooterLink>,
                 "left-1/2 -translate-x-1/2 w-max pt-4"
               )}
             </div>
