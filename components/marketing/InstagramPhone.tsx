@@ -4,7 +4,6 @@ import {
   ChevronLeft,
   MessageCircle,
   Phone,
-  Send,
   Video,
   Wifi
 } from "lucide-react";
@@ -12,7 +11,7 @@ import OfferBanner from "./media/OfferBanner";
 import styles from "./product/product.module.css";
 
 // A still picture for the Instagram section: a phone showing the DM a
-// customer gets after commenting "PRICE", with three labels around it. Drawn
+// customer gets after commenting "PRICE", with two straight labels. Drawn
 // in code so it stays sharp; it scales down on narrow screens.
 
 const igGradient = "linear-gradient(135deg,#f9a53b,#e1306c 50%,#833ab4)";
@@ -42,24 +41,18 @@ const Avatar = ({ size, ring = false }: { size: number; ring?: boolean }) => (
 
 const Chip = ({
   children,
-  style,
-  className = "",
-  gradient = false
+  style
 }: {
   children: React.ReactNode;
   style: React.CSSProperties;
-  className?: string;
-  gradient?: boolean;
 }) => (
   <span
-    className={`${className} absolute z-10 inline-flex items-center gap-2.5 rounded-2xl whitespace-nowrap font-bold`}
+    className="absolute z-10 inline-flex items-center gap-2 rounded-full whitespace-nowrap font-semibold"
     style={{
-      background: gradient
-        ? "linear-gradient(135deg,#d6249f,#f77737)"
-        : "#ffffff",
-      color: gradient ? "#ffffff" : "#0b1210",
+      background: "#ffffff",
+      color: "#0b1210",
       boxShadow:
-        "0 18px 38px -12px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.12)",
+        "0 14px 30px -12px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.12)",
       letterSpacing: "-0.01em",
       ...style
     }}
@@ -259,48 +252,39 @@ const InstagramPhone = () => (
         </div>
       </div>
 
+      {/* Two straight labels over the parts of the phone with no text:
+          the status bar (top right) and the message bar (bottom left). */}
       <Chip
-        className="left-[-78px] max-sm:left-[-52px] top-[96px]"
         style={{
-          transform: "rotate(-3deg)",
-          fontSize: 17,
-          padding: "11px 20px 11px 12px"
+          right: -74,
+          top: 2,
+          fontSize: 15,
+          padding: "8px 16px 8px 8px"
         }}
       >
         <span
-          className="w-8 h-8 rounded-full flex items-center justify-center text-white"
+          className="w-7 h-7 rounded-full flex items-center justify-center text-white"
           style={{ background: igGradient }}
         >
-          <MessageCircle className="w-4 h-4" aria-hidden />
+          <MessageCircle className="w-3.5 h-3.5" aria-hidden />
         </span>
         Comment “PRICE”
       </Chip>
       <Chip
-        className="right-[-118px] max-sm:right-[-72px] top-[262px]"
         style={{
-          transform: "rotate(4deg)",
-          fontSize: 16,
-          padding: "10px 18px 10px 12px"
+          left: -74,
+          bottom: 18,
+          fontSize: 15,
+          padding: "8px 16px 8px 8px"
         }}
       >
         <span
           className="w-7 h-7 rounded-full flex items-center justify-center text-white"
           style={{ background: "#169f49" }}
         >
-          <Check className="w-4 h-4" strokeWidth={3} aria-hidden />
+          <Check className="w-3.5 h-3.5" strokeWidth={3} aria-hidden />
         </span>
-        Public reply sent
-      </Chip>
-      <Chip
-        gradient
-        className="right-[-56px] max-sm:right-[-40px] top-[-20px]"
-        style={{
-          transform: "rotate(6deg)",
-          fontSize: 22,
-          padding: "11px 22px"
-        }}
-      >
-        <Send className="w-5 h-5" aria-hidden /> Instant DM
+        DM and public reply sent
       </Chip>
     </div>
   </div>

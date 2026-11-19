@@ -2,7 +2,6 @@ import React from "react";
 import {
   BadgeCheck,
   Camera,
-  Check,
   CheckCheck,
   ChevronLeft,
   ExternalLink,
@@ -11,19 +10,16 @@ import {
   Reply,
   Smile,
   Sparkles,
-  Users,
   Video,
-  Wifi,
-  Zap
+  Wifi
 } from "lucide-react";
 import OfferBanner from "./media/OfferBanner";
 import styles from "./product/product.module.css";
 
-// The hero picture, drawn in code so it stays sharp at any size: a tilted
+// The hero picture, drawn in code so it stays sharp at any size: an upright
 // phone showing the Wanderly Travels offer, the customer's tap and the AI
-// agent's reply, with four floating chips on a soft green background. It is a
-// still picture (no animation). The chips say "Delivered & read" and "AI agent
-// replied" instead of the figures the original thumbnail showed.
+// agent's reply, with two straight labels on a soft green background. It is
+// a still picture (no animation).
 
 const bubbleShadow = "0 1px 1px rgba(11,20,26,0.1)";
 
@@ -69,12 +65,12 @@ const Chip = ({
   tone?: "light" | "green";
 }) => (
   <span
-    className="absolute z-10 inline-flex items-center gap-2.5 rounded-2xl whitespace-nowrap font-bold"
+    className="absolute z-10 inline-flex items-center gap-2 rounded-full whitespace-nowrap font-semibold"
     style={{
       background: tone === "green" ? "#15a24b" : "#ffffff",
       color: tone === "green" ? "#ffffff" : "#0b1210",
       boxShadow:
-        "0 18px 38px -12px rgba(11,18,16,0.3), 0 2px 8px rgba(11,18,16,0.08)",
+        "0 14px 30px -12px rgba(11,18,16,0.28), 0 1px 3px rgba(11,18,16,0.08)",
       letterSpacing: "-0.01em",
       ...style
     }}
@@ -83,21 +79,20 @@ const Chip = ({
   </span>
 );
 
-// The tilted phone on its own, without the stage or labels. Reused by the
+// The phone on its own, without the stage or labels. Reused by the
 // demo video poster.
 export const HeroPhoneDevice = () => (
   <>
     <span
       aria-hidden
-      className="absolute left-[8%] right-[-6%] bottom-[-26px] h-[46px] rounded-[50%]"
+      className="absolute left-[6%] right-[6%] bottom-[-22px] h-[44px] rounded-[50%]"
       style={{
-        background: "rgba(8,64,36,0.38)",
-        filter: "blur(26px)",
-        transform: "rotate(-6deg)"
+        background: "rgba(8,64,36,0.34)",
+        filter: "blur(26px)"
       }}
     />
 
-    <div className="absolute inset-0" style={{ transform: "rotate(-6deg)" }}>
+    <div className="absolute inset-0">
       <div
         className="absolute inset-0 rounded-[48px] p-[10px]"
         style={{
@@ -331,70 +326,41 @@ export const HeroPhoneDevice = () => (
   </>
 );
 
+// Two straight labels, placed over the parts of the phone that carry no
+// text: the status bar (top right) and the typing bar (bottom left).
 const HeroChips = () => (
   <>
     <Chip
       style={{
-        left: -84,
-        top: 150,
-        transform: "rotate(-3deg)",
-        fontSize: 17,
-        padding: "11px 20px 11px 12px"
+        right: -74,
+        top: 2,
+        fontSize: 15,
+        padding: "8px 16px 8px 8px"
       }}
     >
       <span
-        className="w-8 h-8 rounded-full flex items-center justify-center text-white"
-        style={{ background: "#1aa64e" }}
+        className="w-7 h-7 rounded-full flex items-center justify-center"
+        style={{ background: "#e8f6fd", color: "#2a9fd8" }}
       >
-        <CheckCheck className="w-4 h-4" strokeWidth={2.8} aria-hidden />
+        <CheckCheck className="w-4 h-4" strokeWidth={2.6} aria-hidden />
       </span>
       Delivered &amp; read
     </Chip>
     <Chip
-      tone="green"
       style={{
-        right: -56,
-        top: 44,
-        transform: "rotate(7deg)",
-        fontSize: 25,
-        padding: "12px 22px"
-      }}
-    >
-      One tap <Check className="w-6 h-6" strokeWidth={3.2} aria-hidden />
-    </Chip>
-    <Chip
-      style={{
-        right: -92,
-        top: 404,
-        transform: "rotate(3deg)",
-        fontSize: 17,
-        padding: "11px 22px 11px 12px"
+        left: -74,
+        bottom: 18,
+        fontSize: 15,
+        padding: "8px 16px 8px 8px"
       }}
     >
       <span
-        className="w-8 h-8 rounded-full flex items-center justify-center"
+        className="w-7 h-7 rounded-full flex items-center justify-center"
         style={{ background: "#0f3a2c", color: "#3ddc84" }}
       >
-        <Zap className="w-4 h-4" strokeWidth={2.6} aria-hidden />
+        <Sparkles className="w-3.5 h-3.5" strokeWidth={2.4} aria-hidden />
       </span>
       AI agent replied
-    </Chip>
-    <Chip
-      style={{
-        left: -84,
-        bottom: -6,
-        transform: "rotate(-3.5deg)",
-        fontSize: 17,
-        padding: "11px 22px 11px 12px"
-      }}
-    >
-      <span
-        className="w-8 h-8 rounded-full flex items-center justify-center text-white"
-        style={{ background: "#f05a40" }}
-      >
-        <Users className="w-4 h-4" strokeWidth={2.4} aria-hidden />
-      </span>
-      Lead qualified · HOT
     </Chip>
   </>
 );
