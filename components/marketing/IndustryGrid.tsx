@@ -68,7 +68,7 @@ const IndustryGrid = ({ plain = false }: { plain?: boolean }) => (
                     className="block text-sm leading-relaxed mt-1"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    {ind.headline}
+                    {ind.cardLine}
                   </span>
                 </span>
               </Link>

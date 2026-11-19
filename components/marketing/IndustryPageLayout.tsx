@@ -1,18 +1,28 @@
 import React from "react";
 import Seo from "@/components/Seo/Seo";
 import Link from "next/link";
-import { ArrowUpRight, PlayCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, PlayCircle } from "lucide-react";
 import SiteShell from "./SiteShell";
 import FinalCta from "./FinalCta";
 import FaqAccordion from "./FaqAccordion";
-import FeatureVisual from "./FeatureVisual";
 import HeroPhone from "./HeroPhone";
+import IndustryPhone from "./IndustryPhone";
+import TemplateCard from "./TemplateCard";
 import { BusinessSwitcher } from "./AgenciesSection";
-import { Eyebrow, SectionHeading } from "./Primitives";
+import { NavIcon } from "./navIcons";
+import { Eyebrow } from "./Primitives";
 import { Industry } from "@/lib/data/industries";
 import { featureBySlug } from "@/lib/data/features";
+import { blogPostBySlug } from "@/lib/data/blog";
+import { templates } from "@/lib/data/templates";
+import { metaConversationPricing } from "@/lib/data/pricing";
 import { PRODUCT_APP_URL } from "@/lib/data/nav";
 import { breadcrumbSchema, faqSchema, softwareApplicationRef } from "@/lib/seo";
+
+const rateFor = (category: string) =>
+  metaConversationPricing.find((r) => r.category === category)?.price;
+
+const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const IndustryVisual = ({ industry }: { industry: Industry }) => {
   if (industry.visual === "phone") return <HeroPhone />;
@@ -28,15 +38,26 @@ const IndustryVisual = ({ industry }: { industry: Industry }) => {
         <BusinessSwitcher />
       </div>
     );
-  return <FeatureVisual type={industry.visual} />;
+  return <IndustryPhone slug={industry.slug} />;
 };
+
+const H2 = ({ children, id }: { children: React.ReactNode; id?: string }) => (
+  <h2 id={id} className="heading-2 !text-[clamp(1.7rem,3.2vw,2.3rem)] mb-3">
+    {children}
+  </h2>
+);
 
 const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
   const path = `/industries/${industry.slug}`;
   const features = industry.relatedFeatures
     .map((s) => featureBySlug(s))
     .filter((f): f is NonNullable<typeof f> => Boolean(f));
-  const pairs = industry.challenges.length === industry.solutions.length;
+  const posts = industry.relatedPosts
+    .map((s) => blogPostBySlug(s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const examples = industry.templateSlugs
+    .map((s) => templates.find((t) => t.slug === s))
+    .filter((t): t is NonNullable<typeof t> => Boolean(t));
 
   return (
     <>
@@ -50,7 +71,11 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
             "@id": `https://www.whatching.com${path}#webpage`,
             name: industry.seoTitle,
             description: industry.seoDescription,
-            about: softwareApplicationRef
+            about: softwareApplicationRef,
+            audience: {
+              "@type": "BusinessAudience",
+              name: capitalise(industry.audience)
+            }
           },
           breadcrumbSchema([
             { name: "Home", path: "/" },
@@ -61,7 +86,8 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
         ]}
       />
       <SiteShell>
-        <section className="pt-28 pb-16 max-sm:pt-24 max-sm:pb-12">
+        {/* Hero */}
+        <section className="pt-28 pb-14 max-sm:pt-24 max-sm:pb-10">
           <div className="container-wide grid lg:grid-cols-[minmax(0,1fr)_minmax(0,540px)] gap-10 lg:gap-14 items-center">
             <div>
               <nav
@@ -89,7 +115,7 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href={PRODUCT_APP_URL} className="btn-primary">
-                  Start your free 7‑day trial
+                  Start your free 7{"‑"}day trial
                 </Link>
                 <Link href="/demo" className="btn-secondary">
                   <PlayCircle
@@ -100,52 +126,99 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
                   Watch the 3-minute tour
                 </Link>
               </div>
+              <p
+                className="text-sm mt-4"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                No card needed. Free onboarding call when you fill in the form
+                on our{" "}
+                <Link
+                  href="/demo#book"
+                  className="underline underline-offset-2"
+                >
+                  demo page
+                </Link>
+                .
+              </p>
             </div>
-            <div className="min-w-0">
+            <figure className="min-w-0">
               <IndustryVisual industry={industry} />
-            </div>
+              {industry.visual !== "switcher" && (
+                <figcaption
+                  className="text-[13px] mt-3 text-center"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  An example conversation with a fictional business.
+                </figcaption>
+              )}
+            </figure>
           </div>
         </section>
 
-        {/* The customer's path, as numbered steps */}
+        {/* Short answer, then the steps */}
         <section className="pb-20 max-sm:pb-14">
           <div className="container-wide">
-            <h2 className="heading-2 !text-[clamp(1.6rem,3vw,2.1rem)] mb-3">
-              From first message to repeat customer
-            </h2>
-            <p
-              className="max-w-2xl mb-8 text-[17px] leading-relaxed"
-              style={{ color: "var(--text-secondary)" }}
+            <div
+              className="rounded-3xl p-6 sm:p-8 grid lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] gap-4 lg:gap-12"
+              style={{
+                background: "var(--background-secondary)",
+                border: "1px solid var(--border-light)"
+              }}
             >
-              {industry.summary}
-            </p>
-            <ol className="grid gap-2 sm:grid-cols-2 lg:grid-flow-col lg:auto-cols-fr lg:grid-cols-none">
-              {industry.journey.map((step, i) => (
+              <H2>How {industry.audience} use WhatsApp</H2>
+              <p
+                className="text-[17px] leading-relaxed"
+                style={{ color: "var(--text-body)" }}
+              >
+                {industry.intro}
+              </p>
+            </div>
+
+            <h3
+              className="text-[20px] font-semibold mt-14 mb-6"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {industry.stepsTitle}
+            </h3>
+            <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {industry.steps.map((step, i) => (
                 <li
-                  key={step}
-                  className="flex lg:flex-col items-center lg:items-start gap-3 rounded-2xl px-4 py-3.5 lg:py-4"
+                  key={step.title}
+                  className="relative rounded-2xl p-6"
                   style={{
-                    background:
-                      i === industry.journey.length - 1
-                        ? "var(--accent-wash)"
-                        : "var(--surface)",
+                    background: "var(--surface)",
                     border: "1px solid var(--border-light)"
                   }}
                 >
-                  <span
-                    className="w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-bold shrink-0"
-                    style={{
-                      background: "var(--graphite, #0b1210)",
-                      color: "#fff"
-                    }}
-                  >
-                    {i + 1}
+                  <span className="flex items-center gap-3 mb-4">
+                    <span
+                      className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
+                      style={{
+                        background: "var(--graphite, #0b1210)",
+                        color: "#fff"
+                      }}
+                    >
+                      {i + 1}
+                    </span>
+                    {i < industry.steps.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="hidden lg:block h-px flex-1"
+                        style={{ background: "var(--border-medium)" }}
+                      />
+                    )}
                   </span>
                   <span
-                    className="text-[14.5px] font-semibold leading-snug"
+                    className="block text-[16px] font-semibold"
                     style={{ color: "var(--text-primary)" }}
                   >
-                    {step}
+                    {step.title}
+                  </span>
+                  <span
+                    className="block text-[15px] mt-1.5 leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {step.description}
                   </span>
                 </li>
               ))}
@@ -153,173 +226,196 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
           </div>
         </section>
 
-        {/* Problems and answers, side by side */}
+        {/* Problems and answers */}
         <section
           className="section-padding-large"
           style={{ background: "var(--background-secondary)" }}
         >
           <div className="container-wide">
-            <SectionHeading
-              title={`What gets in the way, and how Whatching helps`}
-            />
-            {pairs ? (
-              <ul className="mt-10 space-y-3">
-                {industry.challenges.map((c, i) => (
-                  <li
-                    key={c.title}
-                    className="grid md:grid-cols-2 gap-px rounded-2xl overflow-hidden"
-                    style={{
-                      background: "var(--border-light)",
-                      border: "1px solid var(--border-light)"
-                    }}
-                  >
-                    <div
-                      className="p-6"
-                      style={{ background: "var(--surface)" }}
-                    >
-                      <p
-                        className="text-sm font-semibold mb-1.5"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        The problem
-                      </p>
-                      <p
-                        className="font-semibold text-[16px]"
-                        style={{ color: "var(--text-primary)" }}
-                      >
-                        {c.title}
-                      </p>
-                      <p
-                        className="text-[15px] mt-1 leading-relaxed"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        {c.description}
-                      </p>
-                    </div>
-                    <div
-                      className="p-6"
-                      style={{ background: "var(--surface-hover)" }}
-                    >
-                      <p
-                        className="text-sm font-semibold mb-1.5"
-                        style={{ color: "var(--primary-dark)" }}
-                      >
-                        How Whatching helps
-                      </p>
-                      <p
-                        className="font-semibold text-[16px]"
-                        style={{ color: "var(--text-primary)" }}
-                      >
-                        {industry.solutions[i].title}
-                      </p>
-                      <p
-                        className="text-[15px] mt-1 leading-relaxed"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        {industry.solutions[i].description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="mt-10 grid md:grid-cols-2 gap-10">
-                {[industry.challenges, industry.solutions].map((list, k) => (
-                  <ul key={k} className="space-y-5">
-                    {list.map((c) => (
-                      <li key={c.title}>
-                        <p
-                          className="font-semibold text-[16px]"
-                          style={{ color: "var(--text-primary)" }}
-                        >
-                          {c.title}
-                        </p>
-                        <p
-                          className="text-[15px] mt-1"
-                          style={{ color: "var(--text-secondary)" }}
-                        >
-                          {c.description}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Use cases */}
-        <section className="section-padding-large">
-          <div className="container-wide">
-            <SectionHeading
-              eyebrow="Use cases"
-              title={industry.useCasesTitle}
-            />
-            <ul className="grid md:grid-cols-3 gap-4 mt-10">
-              {industry.useCases.map((u) => (
+            <H2>What gets in the way, and how Whatching helps</H2>
+            <ul className="mt-8 space-y-3">
+              {industry.problems.map(({ problem, answer }) => (
                 <li
-                  key={u.title}
-                  className="rounded-2xl p-6"
+                  key={problem.title}
+                  className="grid md:grid-cols-2 gap-px rounded-2xl overflow-hidden"
                   style={{
-                    background: "var(--surface)",
+                    background: "var(--border-light)",
                     border: "1px solid var(--border-light)"
                   }}
                 >
-                  <h3
-                    className="text-[16px] font-semibold mb-1.5"
-                    style={{ color: "var(--text-primary)" }}
+                  <div className="p-6" style={{ background: "var(--surface)" }}>
+                    <p
+                      className="text-sm font-semibold mb-1.5"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      The problem
+                    </p>
+                    <p
+                      className="font-semibold text-[16px]"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {problem.title}
+                    </p>
+                    <p
+                      className="text-[15px] mt-1 leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {problem.description}
+                    </p>
+                  </div>
+                  <div
+                    className="p-6"
+                    style={{ background: "var(--surface-hover)" }}
                   >
-                    {u.title}
-                  </h3>
-                  <p
-                    className="text-[15px] leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {u.description}
-                  </p>
+                    <p
+                      className="text-sm font-semibold mb-1.5"
+                      style={{ color: "var(--primary-dark)" }}
+                    >
+                      How Whatching helps
+                    </p>
+                    <p
+                      className="font-semibold text-[16px]"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {answer.title}
+                    </p>
+                    <p
+                      className="text-[15px] mt-1 leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {answer.description}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
 
-            {features.length > 0 && (
-              <div className="mt-14">
-                <h2
-                  className="text-lg font-semibold mb-4"
-                  style={{ color: "var(--text-primary)" }}
+        {/* Example messages */}
+        {examples.length > 0 && (
+          <section className="section-padding-large">
+            <div className="container-wide">
+              <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+                <div className="max-w-2xl">
+                  <H2>{industry.useCasesTitle}</H2>
+                  <p style={{ color: "var(--text-secondary)" }}>
+                    Example message templates you can copy, change and submit to
+                    Meta for approval, with what Meta charges to send each one
+                    in India.
+                  </p>
+                </div>
+                <Link
+                  href="/templates"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold"
+                  style={{ color: "var(--primary-dark)" }}
                 >
-                  Features{" "}
-                  {industry.name.toLowerCase() === "agencies"
-                    ? "agencies"
-                    : "these businesses"}{" "}
-                  use most
-                </h2>
-                <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                  {features.map((f) => (
-                    <li key={f.slug}>
-                      <Link
-                        href={`/features/${f.slug}`}
-                        className="product-card flex h-full items-start justify-between gap-3 !p-5"
-                      >
-                        <span>
-                          <span
-                            className="block font-semibold"
-                            style={{ color: "var(--text-primary)" }}
-                          >
-                            {f.name}
-                          </span>
-                          <span
-                            className="block text-sm mt-1 leading-relaxed"
-                            style={{ color: "var(--text-secondary)" }}
-                          >
-                            {f.headline}
-                          </span>
+                  See all 36 templates{" "}
+                  <ArrowRight className="w-4 h-4" aria-hidden />
+                </Link>
+              </div>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+                {examples.map((t) => (
+                  <TemplateCard key={t.slug} t={t} rate={rateFor(t.category)} />
+                ))}
+              </div>
+
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 mt-14">
+                {industry.useCases.map((u) => (
+                  <li
+                    key={u.title}
+                    className="border-t pt-4"
+                    style={{ borderColor: "var(--border-medium)" }}
+                  >
+                    <span
+                      className="block text-[16px] font-semibold"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {u.title}
+                    </span>
+                    <span
+                      className="block text-[15px] mt-1 leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {u.description}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+
+        {/* Features and reading */}
+        <section
+          className="section-padding-large"
+          style={{ background: "var(--background-secondary)" }}
+        >
+          <div className="container-wide grid lg:grid-cols-2 gap-12">
+            <div>
+              <H2>Features {industry.audience} use most</H2>
+              <ul className="mt-6 space-y-2">
+                {features.map((f) => (
+                  <li key={f.slug}>
+                    <Link
+                      href={`/features/${f.slug}`}
+                      className="flex items-start gap-3 rounded-2xl p-4 hover:bg-[var(--surface)]"
+                      style={{
+                        border: "1px solid var(--border-light)",
+                        background: "rgba(255,255,255,0.6)"
+                      }}
+                    >
+                      <NavIcon href={`/features/${f.slug}`} />
+                      <span className="min-w-0 flex-1">
+                        <span
+                          className="block font-semibold"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {f.name}
                         </span>
-                        <ArrowUpRight
-                          className="w-4 h-4 shrink-0 mt-1"
-                          style={{ color: "var(--text-muted)" }}
-                          aria-hidden
-                        />
+                        <span
+                          className="block text-[14.5px] mt-0.5 leading-snug"
+                          style={{ color: "var(--text-secondary)" }}
+                        >
+                          {f.headline}
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        className="w-4 h-4 shrink-0 mt-1"
+                        style={{ color: "var(--text-muted)" }}
+                        aria-hidden
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {posts.length > 0 && (
+              <div>
+                <H2>From the blog</H2>
+                <ul className="mt-6 space-y-2">
+                  {posts.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        href={`/blog/${p.slug}`}
+                        className="block rounded-2xl p-4 hover:bg-[var(--surface)]"
+                        style={{
+                          border: "1px solid var(--border-light)",
+                          background: "rgba(255,255,255,0.6)"
+                        }}
+                      >
+                        <span
+                          className="block text-sm font-semibold mb-1"
+                          style={{ color: "var(--primary-dark)" }}
+                        >
+                          {p.category}
+                        </span>
+                        <span
+                          className="block font-semibold leading-snug"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {p.title}
+                        </span>
                       </Link>
                     </li>
                   ))}
@@ -330,15 +426,10 @@ const IndustryPageLayout = ({ industry }: { industry: Industry }) => {
         </section>
 
         {/* Questions */}
-        <section
-          className="section-padding-large"
-          style={{ background: "var(--background-secondary)" }}
-        >
+        <section className="section-padding-large">
           <div className="container-wide grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             <div className="lg:col-span-4">
-              <h2 className="heading-2 !text-[clamp(1.6rem,3vw,2.1rem)] mb-3">
-                Common questions
-              </h2>
+              <H2>Questions from {industry.audience}</H2>
               <p style={{ color: "var(--text-secondary)" }}>
                 More answers on our{" "}
                 <Link href="/faq" className="article-link">

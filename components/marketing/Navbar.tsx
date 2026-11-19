@@ -298,15 +298,26 @@ const Navbar = () => {
 
         {panelShell(
           "industries",
-          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_280px] gap-x-8 gap-y-1">
-            {industryMenu.map((link) => (
-              <div key={link.href}>
-                <PanelLink link={link} />
-              </div>
-            ))}
+          <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_280px] gap-x-8">
+            {/* Two columns of three, like the Features panel. */}
+            {[industryMenu.slice(0, 3), industryMenu.slice(3)].map(
+              (col, ci) => (
+                <div
+                  key={ci}
+                  className={`space-y-1 ${ci > 0 ? "pl-8 border-l" : ""}`}
+                  style={
+                    ci > 0 ? { borderColor: "var(--border-light)" } : undefined
+                  }
+                >
+                  {col.map((link) => (
+                    <PanelLink key={link.href} link={link} />
+                  ))}
+                </div>
+              )
+            )}
             <Link
               href="/demo#book"
-              className="row-span-2 col-start-4 row-start-1 rounded-2xl p-5 flex flex-col"
+              className="rounded-2xl p-5 flex flex-col"
               style={{
                 background: "var(--background-secondary)",
                 border: "1px solid var(--border-light)"
