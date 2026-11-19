@@ -72,7 +72,7 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="w-full max-w-[560px] mx-auto">
+        <div className="w-full max-w-[560px] mx-auto scroll-drift">
           <HeroPhone />
         </div>
       </div>

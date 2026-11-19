@@ -55,7 +55,7 @@ const InstagramAutomationSection = () => (
 
       <Reveal
         delay={0.1}
-        className="lg:col-start-2 lg:row-start-1 lg:row-span-2 w-full"
+        className="lg:col-start-2 lg:row-start-1 lg:row-span-2 w-full scroll-rise"
       >
         <InstagramPhone />
       </Reveal>

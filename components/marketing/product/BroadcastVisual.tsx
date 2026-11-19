@@ -8,7 +8,7 @@ import {
   Send,
   Eye
 } from "lucide-react";
-import TravelPhoto from "./TravelPhoto";
+import OfferBanner from "../media/OfferBanner";
 import styles from "./product.module.css";
 import { useInViewPlay } from "./useInViewPlay";
 
@@ -130,7 +130,7 @@ const BroadcastVisual = () => {
               className="rounded-lg overflow-hidden"
               style={{ aspectRatio: "240 / 84" }}
             >
-              <TravelPhoto className="block w-full h-full" />
+              <OfferBanner fill className="block w-full h-full" />
             </div>
           </div>
           <div className="px-2.5 pt-1 pb-1.5 text-[12.5px] leading-[1.45]">

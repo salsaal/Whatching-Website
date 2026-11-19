@@ -17,16 +17,10 @@
 }
 
 .chat {
-  background-color: #efeae2;
-  background-image:
-    radial-gradient(rgba(17, 27, 33, 0.05) 1px, transparent 1.2px),
-    radial-gradient(rgba(17, 27, 33, 0.035) 1px, transparent 1.2px);
-  background-size:
-    18px 18px,
-    18px 18px;
-  background-position:
-    0 0,
-    9px 9px;
+  /* The same original doodle wallpaper as the phone chats. */
+  background-color: #efe7dd;
+  background-image: var(--wa-doodle);
+  background-size: 180px 180px;
 }
 
 .in {

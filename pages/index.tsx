@@ -4,7 +4,7 @@ import Hero from "@/components/marketing/Hero";
 import TrustBar from "@/components/marketing/TrustBar";
 import AgenciesSection from "@/components/marketing/AgenciesSection";
 import MarqueeBand from "@/components/marketing/MarqueeBand";
-import FeatureCardsSection from "@/components/marketing/FeatureCardsSection";
+import ScrollStory from "@/components/marketing/ScrollStory";
 import InstagramAutomationSection from "@/components/marketing/InstagramAutomationSection";
 import SharedInboxSection from "@/components/marketing/SharedInboxSection";
 import AnalyticsSection from "@/components/marketing/AnalyticsSection";
@@ -28,7 +28,7 @@ export default function Home() {
         <TrustBar />
         <AgenciesSection />
         <MarqueeBand />
-        <FeatureCardsSection />
+        <ScrollStory />
         <InstagramAutomationSection />
         <SharedInboxSection />
         <AnalyticsSection />

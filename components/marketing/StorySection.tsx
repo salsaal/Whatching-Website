@@ -122,7 +122,10 @@ const StorySection = ({
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className={reverse ? "lg:order-1" : "lg:order-2"}>
+        <Reveal
+          delay={0.1}
+          className={`scroll-rise ${reverse ? "lg:order-1" : "lg:order-2"}`}
+        >
           {visual}
         </Reveal>
       </div>

@@ -16,7 +16,7 @@ import {
   Wifi,
   Zap
 } from "lucide-react";
-import TravelPhoto from "./product/TravelPhoto";
+import OfferBanner from "./media/OfferBanner";
 import styles from "./product/product.module.css";
 
 // The hero picture, drawn in code so it stays sharp at any size: a tilted
@@ -210,7 +210,7 @@ export const HeroPhoneDevice = () => (
                   className="rounded-lg overflow-hidden"
                   style={{ aspectRatio: "240 / 92" }}
                 >
-                  <TravelPhoto className="block w-full h-full" />
+                  <OfferBanner fill className="block w-full h-full" />
                 </div>
               </div>
               <div
@@ -408,17 +408,7 @@ const HeroPhone = () => (
       border: "1px solid rgba(22,159,73,0.12)"
     }}
   >
-    <span
-      aria-hidden
-      className="absolute inset-0"
-      style={{
-        backgroundImage:
-          "radial-gradient(rgba(10,18,14,0.16) 1px, transparent 1.2px)",
-        backgroundSize: "22px 22px",
-        WebkitMaskImage: "linear-gradient(to right, #000, transparent 55%)",
-        maskImage: "linear-gradient(to right, #000, transparent 55%)"
-      }}
-    />
+    <span aria-hidden className="absolute inset-0 grain" />
 
     <div
       className={`${styles.heroZoom} relative mx-auto my-11`}

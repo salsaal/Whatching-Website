@@ -10,15 +10,8 @@ import InstagramPhone from "./InstagramPhone";
 // The code-drawn product picture for a feature or industry page hero. The
 // card-sized pictures sit on a soft stage so they fill the column.
 const Stage = ({ children }: { children: React.ReactNode }) => (
-  <div
-    className="rounded-[28px] p-5 sm:p-8 flex items-center justify-center"
-    style={{
-      background:
-        "radial-gradient(70% 60% at 80% 90%, rgba(34,197,94,0.22), rgba(34,197,94,0) 70%), linear-gradient(145deg, #f5faf6 0%, #e6f4ec 60%, #d8eee1 100%)",
-      border: "1px solid rgba(22,159,73,0.12)"
-    }}
-  >
-    {children}
+  <div className="media-stage rounded-[28px] p-5 sm:p-8 flex items-center justify-center">
+    <div className="relative w-full flex justify-center">{children}</div>
   </div>
 );
 

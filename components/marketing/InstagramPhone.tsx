@@ -8,7 +8,7 @@ import {
   Video,
   Wifi
 } from "lucide-react";
-import TravelPhoto from "./product/TravelPhoto";
+import OfferBanner from "./media/OfferBanner";
 import styles from "./product/product.module.css";
 
 // A still picture for the Instagram section: a phone showing the DM a
@@ -77,17 +77,7 @@ const InstagramPhone = () => (
       border: "1px solid rgba(255,255,255,0.08)"
     }}
   >
-    <span
-      aria-hidden
-      className="absolute inset-0"
-      style={{
-        backgroundImage:
-          "radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1.2px)",
-        backgroundSize: "22px 22px",
-        WebkitMaskImage: "linear-gradient(to right, #000, transparent 55%)",
-        maskImage: "linear-gradient(to right, #000, transparent 55%)"
-      }}
-    />
+    <span aria-hidden className="absolute inset-0 grain grain-light" />
 
     <div
       className={`${styles.heroZoom} relative mx-auto my-11`}
@@ -205,7 +195,7 @@ const InstagramPhone = () => (
                 </span>
               </div>
               <div style={{ aspectRatio: "240 / 130" }}>
-                <TravelPhoto className="block w-full h-full" />
+                <OfferBanner fill className="block w-full h-full" />
               </div>
               <p
                 className="px-2.5 py-1.5 text-[10.5px] leading-snug"
@@ -237,7 +227,7 @@ const InstagramPhone = () => (
                   style={{ background: "#efefef" }}
                 >
                   <div className="w-[56px] h-[56px] rounded-xl overflow-hidden shrink-0">
-                    <TravelPhoto className="block w-full h-full" />
+                    <OfferBanner fill className="block w-full h-full" />
                   </div>
                   <div className="leading-tight min-w-0">
                     <p

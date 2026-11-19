@@ -208,7 +208,9 @@ const AgenciesSection = () => (
           </div>
         </div>
 
-        <BusinessSwitcher />
+        <div className="scroll-rise">
+          <BusinessSwitcher />
+        </div>
       </div>
     </div>
   </section>

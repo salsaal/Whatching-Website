@@ -574,6 +574,178 @@
     display: none;
   }
 
+  /* Media stages: soft light in the scene's colour (--tint as "r,g,b") and
+   fine grain, behind phones and product pictures. */
+  .media-stage {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        70% 55% at 50% 38%,
+        rgba(var(--tint, 22, 159, 73), 0.18),
+        rgba(var(--tint, 22, 159, 73), 0) 72%
+      ),
+      linear-gradient(180deg, #fcfdfc 0%, #f1f5f2 100%);
+    border: 1px solid var(--border-light);
+  }
+
+  .media-stage::before,
+  .grain {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--grain);
+    opacity: 0.45;
+  }
+
+  .grain-light {
+    opacity: 0.6;
+    mix-blend-mode: screen;
+  }
+
+  .phone-zoom {
+    zoom: 1;
+  }
+
+  @media (max-width: 420px) {
+    .phone-zoom {
+      zoom: 0.88;
+    }
+  }
+
+  /* Scroll-linked motion for large pictures, driven by scroll position.
+   Only where the browser supports it and motion is welcome; pictures never
+   start fully hidden, so nothing depends on the effect. */
+  @keyframes scroll-rise {
+    from {
+      opacity: 0.4;
+      transform: translateY(56px) scale(0.965);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes scroll-drift {
+    to {
+      transform: translateY(70px) scale(0.97);
+      opacity: 0.85;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .scroll-rise {
+        animation: scroll-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 32%;
+      }
+
+      .scroll-drift {
+        animation: scroll-drift linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 700px;
+      }
+    }
+  }
+
+  /* Scroll story (components/marketing/ScrollStory.tsx) */
+  .story-section {
+    /* clip, not hidden, so the pinned phone still sticks */
+    overflow-x: clip;
+    background:
+      radial-gradient(
+        60% 50% at 75% 55%,
+        rgba(34, 197, 94, 0.1),
+        rgba(34, 197, 94, 0) 70%
+      ),
+      var(--background);
+  }
+
+  /* Fine film grain over the section, so the light reads as real light. */
+  .story-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: var(--grain);
+  }
+
+  .story-spot {
+    background: radial-gradient(
+      closest-side,
+      rgba(22, 159, 73, 0.16),
+      rgba(22, 159, 73, 0.05) 55%,
+      rgba(22, 159, 73, 0) 100%
+    );
+  }
+
+  .story-ease {
+    transition:
+      color 0.35s ease,
+      font-size 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.35s ease;
+  }
+
+  .story-msg {
+    transition:
+      grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+
+  .story-msg > div > * {
+    transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story-msg[aria-hidden="true"] > div > * {
+    transform: translateY(10px) scale(0.97);
+  }
+
+  @keyframes story-dot {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.55;
+    }
+    30% {
+      transform: translateY(-3px);
+      opacity: 1;
+    }
+  }
+
+  .story-dot {
+    animation: story-dot 1s ease-in-out infinite;
+  }
+
+  @keyframes story-caption {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+
+  .story-caption {
+    animation: story-caption 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-ease,
+    .story-msg,
+    .story-msg > div > * {
+      transition: none;
+    }
+    .story-dot,
+    .story-caption {
+      animation: none;
+    }
+  }
+
   /* Marquee */
   @keyframes marquee {
     from {

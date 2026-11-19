@@ -14,7 +14,7 @@ const AnalyticsSection = () => (
         />
       </Reveal>
 
-      <Reveal delay={0.1} className="mt-12">
+      <Reveal delay={0.1} className="mt-12 scroll-rise">
         <AnalyticsVisual />
       </Reveal>
     </div>

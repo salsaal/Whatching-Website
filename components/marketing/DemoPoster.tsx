@@ -15,17 +15,7 @@ const DemoPoster = ({ lengthLabel }: { lengthLabel: string }) => (
         "radial-gradient(70% 70% at 82% 100%, rgba(34,197,94,0.30), rgba(34,197,94,0) 70%), linear-gradient(145deg, #f5faf6 0%, #e6f4ec 55%, #d3ecdd 100%)"
     }}
   >
-    <span
-      aria-hidden
-      className="absolute inset-0 block"
-      style={{
-        backgroundImage:
-          "radial-gradient(rgba(10,18,14,0.14) 1px, transparent 1.2px)",
-        backgroundSize: "22px 22px",
-        WebkitMaskImage: "linear-gradient(to right, #000, transparent 50%)",
-        maskImage: "linear-gradient(to right, #000, transparent 50%)"
-      }}
-    />
+    <span aria-hidden className="absolute inset-0 block grain" />
 
     <span className="absolute left-[7%] top-1/2 -translate-y-1/2 w-[50%] flex flex-col items-start gap-[2.4cqw]">
       <span
