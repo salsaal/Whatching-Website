@@ -4,7 +4,7 @@ import LegalLayout from "@/components/marketing/LegalLayout";
 // The policy text, one paragraph per line. LegalLayout turns numbered and
 // all-caps lines into sections and builds the contents list.
 const content = `This Privacy Policy is intended for global users and is designed to align with generally applicable international privacy and data protection principles, including GDPR, CCPA/CPRA, and similar privacy frameworks where applicable.
-Last Updated: May 12, 2026
+Last Updated: November 21, 2026
 This Privacy Policy describes how Whatching collects, uses, stores, shares, and protects your information when you use our website, platform, APIs, dashboard, WhatsApp automation tools, and related services (collectively, the "Services").
 By accessing or using our Services, you agree to the practices described in this Privacy Policy.
 Please also review our Terms of Service, which govern your use of the Services.
@@ -73,7 +73,41 @@ Log files
 Cookies and tracking identifiers
 This information helps us improve platform reliability, security, and performance.
 
-2. HOW DO WE PROCESS YOUR INFORMATION?
+2. ONLINE STORE CONNECTIONS (WOOCOMMERCE)
+This section explains what happens to shoppers' information when a business connects its WooCommerce online store to Whatching.
+Who Controls the Data
+When a business connects its online store to Whatching, we handle its shoppers' details on the business's behalf, only to send the WhatsApp messages that the business turns on.
+The business is responsible for having its shoppers' permission to message them, including permission for marketing messages such as cart reminders.
+Order Messages
+For each order, we receive:
+The order number, status and payment method
+The order total and currency
+The buyer's first name, last name and phone number
+We don't receive addresses, email addresses or the list of products ordered.
+Cart Reminders
+Cart reminders work only if the business installs our WordPress plugin, "Whatching – Cart Recovery on WhatsApp", and turns reminders on. Then, when a shopper types a phone number at checkout, we receive:
+The phone number, country and first name
+The names and quantities of items in the cart
+The cart total and currency
+A random cart code
+When an order is placed, we receive its order number and total, so that reminders stop.
+We don't receive addresses or email addresses.
+What Cart Details Are Used For
+We use cart details to:
+Send up to 3 WhatsApp reminders with a link that brings back the cart
+Show the business which carts were recovered
+Reminders stop when the shopper places an order, replies or opts out.
+Where the Cart's Products Are Kept
+The products in the cart stay on the business's own website for 7 days, so that the reminder link can refill the cart. They aren't stored by Whatching.
+Plugin Check-ins
+While a store is connected, our plugin checks in with Whatching every 15 minutes. The only thing it shares is its version number.
+How Long We Keep Store Data
+We keep online store data as follows:
+A cart with no activity for 7 days is closed
+Cart details are deleted 30 days after the cart is closed
+- When a business disconnects its store, its order and cart data is deleted 30 days later
+
+3. HOW DO WE PROCESS YOUR INFORMATION?
 We process your information for purposes including:
 Providing and operating our Services
 Managing user accounts
@@ -89,7 +123,7 @@ Providing customer support
 Analyzing product usage and performance
 We process personal information only where we have a valid legal basis.
 
-3. WHAT LEGAL BASES DO WE RELY ON?
+4. WHAT LEGAL BASES DO WE RELY ON?
 Depending on your jurisdiction, we may process your information under the following legal bases:
 Your consent
 Performance of a contract
@@ -99,7 +133,7 @@ Protection against fraud or misuse
 Protection of vital interests
 If you are located in the European Economic Area (EEA), United Kingdom, or similar jurisdictions, you may have additional rights under applicable privacy laws including GDPR.
 
-4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
+5. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
 We may share your information with:
 Cloud hosting providers
 Analytics providers
@@ -117,7 +151,7 @@ To comply with court orders or applicable laws
 We do not sell personal information.
 We also do not share personal information for cross-context behavioral advertising except where permitted by law and explicitly disclosed.
 
-5. DO WE USE COOKIES AND TRACKING TECHNOLOGIES?
+6. DO WE USE COOKIES AND TRACKING TECHNOLOGIES?
 Yes. We use cookies, pixels, analytics tools, and similar tracking technologies to:
 Keep users logged in
 Understand platform usage
@@ -128,12 +162,12 @@ Support marketing and advertising activities
 You may disable cookies through your browser settings, but certain features may not function properly.
 Where required by applicable law, we obtain consent before using non-essential cookies or tracking technologies.
 
-6. HOW DO WE HANDLE SOCIAL LOGINS?
+7. HOW DO WE HANDLE SOCIAL LOGINS?
 If you choose to register or log in using third-party providers such as Google, Facebook, or similar services, we may receive profile information associated with your account.
 The information received depends on your privacy settings with the provider.
 We recommend reviewing the privacy policies of those third-party providers.
 
-7. HOW LONG DO WE KEEP YOUR INFORMATION?
+8. HOW LONG DO WE KEEP YOUR INFORMATION?
 We retain personal information only for as long as reasonably necessary to:
 Provide the Services
 Comply with legal obligations
@@ -143,7 +177,7 @@ Maintain business records
 When data is no longer required, we delete, anonymize, or securely isolate it unless retention is legally required.
 We do not guarantee permanent storage of message history, uploaded contact lists, automation logs, or related platform data unless explicitly stated in your subscription plan or separate written agreement.
 
-8. HOW DO WE KEEP YOUR INFORMATION SAFE?
+9. HOW DO WE KEEP YOUR INFORMATION SAFE?
 We implement appropriate technical and organizational safeguards including:
 Role-based access controls
 Secure credential handling
@@ -160,12 +194,12 @@ Monitoring and logging
 Regular security updates
 However, no electronic transmission or storage method is completely secure, and we cannot guarantee absolute security.
 
-9. DO WE COLLECT INFORMATION FROM MINORS?
+10. DO WE COLLECT INFORMATION FROM MINORS?
 Our Services are not intended for individuals under 18 years of age.
 We do not knowingly collect personal information from minors. If we become aware that such information has been collected, we will take appropriate steps to delete it.
 If you believe a minor has provided us with information, contact us at hello@whatching.com
 
-10. WHAT ARE YOUR PRIVACY RIGHTS?
+11. WHAT ARE YOUR PRIVACY RIGHTS?
 Depending on applicable laws, you may have the right to:
 Access your personal information
 Correct inaccurate data
@@ -183,11 +217,11 @@ Replying STOP to messages where applicable
 Contacting us directly
 We may still send service-related communications.
 
-11. DO-NOT-TRACK FEATURES
+12. DO-NOT-TRACK FEATURES
 Some browsers include Do-Not-Track (DNT) settings.
 Because there is currently no universal standard for DNT signals, our Services may not respond to such signals.
 
-12. CALIFORNIA PRIVACY RIGHTS
+13. CALIFORNIA PRIVACY RIGHTS
 If you are a California resident, you may have rights under the California Consumer Privacy Act (CCPA) or California Privacy Rights Act (CPRA), including rights to:
 Know what personal data we collect
 Request deletion of your data
@@ -200,11 +234,11 @@ We also do not share personal information for cross-context behavioral advertisi
 To exercise California privacy rights, contact:
 hello@whatching.com
 
-13. INTERNATIONAL USERS
+14. INTERNATIONAL USERS
 If you access our Services from outside India, your information may be transferred to and processed in countries where data protection laws may differ from your jurisdiction.
 By using our Services, you consent to such transfers where legally permitted.
 
-14. THIRD-PARTY SERVICES
+15. THIRD-PARTY SERVICES
 Our platform may integrate with third-party services including:
 Meta / WhatsApp APIs
 Stripe
@@ -215,12 +249,12 @@ CRM platforms
 Marketing tools
 We are not responsible for the privacy practices, security controls, or data handling activities of third-party services. Users should review the privacy policies of all third-party integrations before enabling them.
 
-15. DO WE MAKE UPDATES TO THIS POLICY?
+16. DO WE MAKE UPDATES TO THIS POLICY?
 Yes. We may update this Privacy Policy periodically.
 Updated versions will include a revised "Last Updated" date. Continued use of the Services after changes become effective constitutes acceptance of the revised policy.
 If material changes are made, we may provide additional notice through the Services, email notifications, or website announcements where required by law.
 
-16. HOW CAN YOU CONTACT US?
+17. HOW CAN YOU CONTACT US?
 If you have questions, requests, or concerns regarding this Privacy Policy, contact us at:
 Whatching
 6/8A Kustia Road
@@ -229,14 +263,14 @@ India
 Email: hello@whatching.com
 Website: https://www.whatching.com/
 
-17. HOW CAN YOU REVIEW, UPDATE, OR DELETE YOUR DATA?
+18. HOW CAN YOU REVIEW, UPDATE, OR DELETE YOUR DATA?
 You may request access, correction, or deletion of your personal information by:
 Logging into your account settings
 Contacting our support team
 Submitting a privacy request through our website
 We will process requests in accordance with applicable privacy and data protection laws.
 
-18. GDPR PRIVACY RIGHTS (EUROPEAN USERS)
+19. GDPR PRIVACY RIGHTS (EUROPEAN USERS)
 If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, you may have rights under applicable privacy laws including the GDPR.
 These rights may include:
 Right of access
@@ -249,7 +283,7 @@ Right to withdraw consent
 Right to lodge complaints with a supervisory authority
 Where required by law, we rely on lawful bases such as consent, contractual necessity, legal obligations, or legitimate interests.
 
-19. U.S. STATE PRIVACY RIGHTS
+20. U.S. STATE PRIVACY RIGHTS
 Residents of certain U.S. states may have additional rights under applicable privacy laws, including rights to:
 Access collected personal information
 Request deletion
@@ -259,11 +293,11 @@ Limit use of sensitive personal information
 Appeal denied privacy requests
 Users may exercise these rights by contacting us at hello@whatching.com.
 
-20. CROSS-BORDER DATA TRANSFERS
+21. CROSS-BORDER DATA TRANSFERS
 Your information may be processed and stored in countries other than your own.
 Where legally required, we implement reasonable safeguards for international data transfers, which may include contractual protections, data processing agreements, or equivalent mechanisms recognized under applicable laws.
 
-21. GOVERNING LAW
+22. GOVERNING LAW
 This Privacy Policy shall be governed by and construed in accordance with the laws of India, without regard to conflict of law principles.
 Any disputes arising in connection with this Privacy Policy shall be subject to the exclusive jurisdiction of the courts located in Kolkata, West Bengal, India.`;
 

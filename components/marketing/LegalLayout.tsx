@@ -44,7 +44,9 @@ const KEEP = new Map(
     "Google",
     "Apple",
     "Razorpay",
-    "Stripe"
+    "Stripe",
+    "WooCommerce",
+    "WordPress"
   ].map((w) => [w.toLowerCase(), w])
 );
 
