@@ -130,11 +130,15 @@ export const parseLegal = (
 };
 
 const Linked = ({ text }: { text: string }) => {
-  const parts = text.split(/([\w.+-]+@[\w-]+\.[\w.]+|https?:\/\/[^\s)]+)/g);
+  // An email address never ends in a full stop, so one that ends a sentence
+  // links to the address alone.
+  const parts = text.split(
+    /([\w.+-]+@[\w-]+(?:\.[\w-]+)+|https?:\/\/[^\s)]+)/g
+  );
   return (
     <>
       {parts.map((part, i) => {
-        if (/^[\w.+-]+@[\w-]+\.[\w.]+$/.test(part))
+        if (/^[\w.+-]+@[\w-]+(?:\.[\w-]+)+$/.test(part))
           return (
             <a key={i} href={`mailto:${part}`} className="article-link">
               {part}

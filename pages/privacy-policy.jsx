@@ -46,6 +46,7 @@ Profile details
 Login credentials
 Customer support messages
 Marketing preferences
+
 Payment Information
 Payments may be processed by third-party payment providers such as Razorpay, Stripe, Chargebee, or similar providers. We do not store full payment card details on our servers.
 Please review the privacy policy of your payment processor before making payments.
@@ -97,8 +98,8 @@ We use cart details to:
 Send up to 3 WhatsApp reminders with a link that brings back the cart
 Show the business which carts were recovered
 Reminders stop when the shopper places an order, replies or opts out.
-Where the Cart's Products Are Kept
-The products in the cart stay on the business's own website for 7 days, so that the reminder link can refill the cart. They aren't stored by Whatching.
+Where the Cart Is Kept
+To refill the cart when the shopper taps the reminder link, the cart itself stays on the business's own website for 7 days. Whatching only keeps the item names and quantities described above.
 Plugin Check-ins
 While a store is connected, our plugin checks in with Whatching every 15 minutes. The only thing it shares is its version number.
 How Long We Keep Store Data
@@ -209,7 +210,7 @@ Withdraw consent
 Object to certain processing activities
 Request data portability
 Lodge complaints with regulators
-To exercise your rights, contact us at hello@whatching.com
+To exercise your rights, contact us at hello@whatching.com.
 Marketing Communications
 You may opt out of promotional emails or messages at any time by:
 Clicking the unsubscribe link
